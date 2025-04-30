@@ -1,0 +1,559 @@
+unit Main;
+
+interface
+
+
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxNavBarGroupItems, dxNavBarCollns, cxClasses,
+  dxNavBarBase, dxNavBar, System.ImageList, Vcl.ImgList, cxImageList,
+  dxNavBarStyles, Vcl.Menus, System.Actions, Vcl.ActnList, Uni, dxSkinsCore,
+  dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
+  dxSkinOffice2019Colorful;
+
+  procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
+  function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
+  procedure MesajHata(AMesaj : string);
+  procedure MesajBilgi(AMesaj : string);
+  Function MesajSor(AMesaj : string) : Boolean;
+  procedure qAcKapa_fn(AQry : TUniQuery);
+  function VeriCek_fn(ATabloAdi, AKolonAdi, AVeri, ADonusKolon: string): string;
+  function VeriEkle_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
+  function VeriSil_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
+  function StokKoduVarmi_fn(AStokKodu : string): Boolean;
+  function CariKoduVarmi_fn(ACariKodu : string): Boolean;
+  function StokBarkodVarmi_fn(ABarkod : string): Boolean;
+  function StokAdiVarmi_fn(AStokAdi : string): Boolean;
+  function CariAdiVarmi_fn(ACariAdi : string): Boolean;
+  function StokIdHareketVarmi_fn(AStokId : string): Boolean;
+  function CariIdHareketVarmi_fn( ACariId : string): Boolean;
+  function StokIdKartiSil_fn( AStokId : string): Boolean;
+  function CariIdKartiSil_fn( ACariId : string): Boolean;
+  procedure CariKartiAc_fn(ACariID : string = '');
+  procedure FaturaKartiAc_fn(AFaturaTipi : string = ''; AFaturaID : string = '');
+
+
+
+type
+  TfrmMain = class(TForm)
+    NavBarSol: TdxNavBar;
+    nbgStoklar: TdxNavBarGroup;
+    nbgCariler: TdxNavBarGroup;
+    nbitemStokGirisi: TdxNavBarItem;
+    nbitemStokHarList: TdxNavBarItem;
+    nbitemYeniStokKarti: TdxNavBarItem;
+    NavBarSolGroup3: TdxNavBarGroup;
+    nbgFatura: TdxNavBarGroup;
+    NavBarSolGroup5: TdxNavBarGroup;
+    NavBarSolGroup6: TdxNavBarGroup;
+    nbgAyarlar: TdxNavBarGroup;
+    nbitemStokCikisi: TdxNavBarItem;
+    nbItemTumStoklar: TdxNavBarItem;
+    nbitemTumCariler: TdxNavBarItem;
+    nbitemCariAlacakEkle: TdxNavBarItem;
+    nbitemCariBorcEkle: TdxNavBarItem;
+    nbitemCariHareketler: TdxNavBarItem;
+    nbitemYeniCari: TdxNavBarItem;
+    imgListSolMenu: TcxImageList;
+    NavBarStyleListe: TdxNavBarStyleItem;
+    NavBarStyleListeHover: TdxNavBarStyleItem;
+    NavBarStyleListeHeader: TdxNavBarStyleItem;
+    MainMenu1: TMainMenu;
+    ActionList1: TActionList;
+    acYeniStokKarti: TAction;
+    Stoklar1: TMenuItem;
+    YeniStokKart1: TMenuItem;
+    nbiTanimlar: TdxNavBarItem;
+    acTanimlar: TAction;
+    acTumStoklar: TAction;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyleContentEven: TcxStyle;
+    cxStyleContentOld: TcxStyle;
+    cxStyleActive: TcxStyle;
+    cxStyleclMoneyGreen: TcxStyle;
+    cxUygun: TcxStyle;
+    cxStylePasif: TcxStyle;
+    cxStyleKilitli: TcxStyle;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
+    dxSkinController1: TdxSkinController;
+    acStokGirisi: TAction;
+    acStokCikisi: TAction;
+    acStokHarList: TAction;
+    acYeniCariKarti: TAction;
+    acCariHarList: TAction;
+    acTumCariler: TAction;
+    acCariOdeme: TAction;
+    acCariTahsilat: TAction;
+    acSatisFaturasi: TAction;
+    nbiSatisFaturasi: TdxNavBarItem;
+    procedure acYeniStokKartiExecute(Sender: TObject);
+    procedure acTanimlarExecute(Sender: TObject);
+    procedure acTumStoklarExecute(Sender: TObject);
+    procedure acStokGirisiExecute(Sender: TObject);
+    procedure StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
+    procedure CariHareketEkleFormuAc_fn(AGCKodu : string; ACariID : string = '');
+    procedure StokHarListFormuAc_fn(AStokID : string = '');
+    procedure CariHarListFormuAc_fn(ACariID : string = '');
+    procedure acStokCikisiExecute(Sender: TObject);
+    procedure acStokHarListExecute(Sender: TObject);
+    procedure acYeniCariKartiExecute(Sender: TObject);
+    procedure acCariHarListExecute(Sender: TObject);
+    procedure acTumCarilerExecute(Sender: TObject);
+    procedure acCariOdemeExecute(Sender: TObject);
+    procedure acCariTahsilatExecute(Sender: TObject);
+    procedure acSatisFaturasiExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+type
+  tip_STOK_HAR_ISLEM_TIPI = (SH_KASIYER_SATIS, SH_GIRIS, SH_CIKIS, SH_SATIS_FATURASI);
+  tip_CARI_TIPI = (CT_MUSTERI, CT_TEDARIKCI, CT_MUSTERITEDARIKCI);
+  tip_CARI_HAR_ISLEM_TIPI = (CH_TAHSILAT_NAKIT, CH_ODEME_NAKIT, CH_TAHSILAT_KK, CH_ODEME_KK);
+  tip_FATURA_TIPI           =(FT_SATIS_FATURASI, FT_ALIS_FATURASI);
+
+const
+  APP_NAME = 'Kolay Hesap Pro';
+  VERI_YOK = 'VERI_YOK';
+  O           = 'O';   // Cariye yapýlan ödeme
+  T           = 'T';   // cariden YAPILAN tahsilat
+  SATIS_FATURASI = 'SATIS_FATURASI';
+  ALIS_FATURASI = 'ALIS_FATURASI';
+
+
+var
+  frmMain: TfrmMain;
+  StokSec_StokID, CariSec_CariID : string;
+
+implementation
+
+uses
+  YeniStokKartiFrm, TanimlarFrm, MainDM,StokListFrm, StokSecFrm, StokHareketEkleFrm, StokHarListFrm, YeniCariKartFrm,
+  CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm;
+
+{$R *.dfm}
+
+procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
+begin
+  try
+    screen.cursor := crHourGlass;
+    if not assigned(formadi) or checkIfNotExist then
+    begin
+      Application.CreateForm(tformadi, formadi);
+    end;
+  finally
+    screen.cursor := crDefault;
+  end;
+end;
+
+function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
+var
+  Ch, SequenceLength: Integer;
+begin
+  SequenceLength := Length(ACharSequence);
+  SetLength(Result, ALength);
+  Randomize;
+
+  for Ch := Low(Result) to High(Result) do
+    Result[Ch] := ACharSequence.Chars[Random(SequenceLength)];
+end;
+
+procedure MesajHata(AMesaj : string);
+begin
+  Application.MessageBox(PWideChar(AMesaj), PWideChar(APP_NAME), MB_ICONERROR );
+end;
+
+procedure MesajBilgi(AMesaj : string);
+begin
+  Application.MessageBox(PWideChar(AMesaj), PWideChar(APP_NAME), MB_ICONINFORMATION );
+end;
+
+Function MesajSor(AMesaj : string) : Boolean;
+begin
+  result := Application.MessageBox(PWideChar(AMesaj), PWideChar(APP_NAME), MB_ICONQUESTION + MB_YESNO ) = IDYES;
+end;
+
+procedure qAcKapa_fn(AQry : TUniQuery);
+begin
+  if AQry.Active then
+    AQry.Active := False;
+  AQry.Open;
+end;
+
+function VeriCek_fn(ATabloAdi, AKolonAdi, AVeri, ADonusKolon: string): string;
+begin
+  with dmMain.qry1 do
+  begin
+    try
+      Close;
+      SQL.Text := 'select * from '+ATabloAdi+ ' where '+ AKolonAdi+ '='+ QuotedStr(AVeri);
+      Open;
+      if RecordCount >0 then
+        Result := FieldByName(ADonusKolon).AsString
+      else
+        Result := VERI_YOK;
+    except
+      Result := 'HATA';
+    end;
+    Close;
+  end;
+end;
+
+function VeriEkle_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
+begin
+  with dmMain.qry1 do
+  begin
+    try
+      Close;
+      SQL.Text := 'insert into '+ ATabloAdi + ' (' + AKolonAdi + ')' + ' VALUES(' + QuotedStr(AVeri) + ')';
+      Execute;
+      Result := 'OK';
+    except on E: Exception do
+      Result := 'HATA. Hata mesajý : ' + E.Message;
+    end;
+    Close;
+  end;
+end;
+
+function VeriSil_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
+begin
+  with dmMain.qry1 do
+  begin
+    try
+      Close;
+      SQL.Text := 'delete from '+ATabloAdi+ ' where '+ AKolonAdi+ '='+ QuotedStr(AVeri);
+      Execute;
+      Result := 'OK'
+    except
+      Result := 'HATA';
+    end;
+    Close;
+  end;
+end;
+
+function StokKoduVarmi_fn(AStokKodu : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('STOK', 'STOKKODU', AStokKodu, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
+function CariKoduVarmi_fn(ACariKodu : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('CARI', 'CARIKODU', ACariKodu, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
+function StokBarkodVarmi_fn(ABarkod : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('STOK', 'BARKOD', ABarkod, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
+function StokAdiVarmi_fn(AStokAdi : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('STOK', 'STOKADI', AStokAdi, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
+
+function CariAdiVarmi_fn(ACariAdi : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('CARI', 'UNVAN', ACariAdi, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
+function StokIdHareketVarmi_fn( AStokId : string): Boolean;
+begin
+  result := False;
+
+  if (
+     (VeriCek_fn('STOK_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('SATIS_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('FATURA_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
+     )
+  then
+    result := True;
+end;
+
+function CariIdHareketVarmi_fn( ACariId : string): Boolean;
+begin
+  result := False;
+
+  if (
+     (VeriCek_fn('CARI_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('KASA_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('POS_H',  'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('SATIS',  'CARIID', ACariId, 'ID') <> VERI_YOK)
+     )
+  then
+    result := True;
+end;
+
+function StokIdKartiSil_fn( AStokId : string): Boolean;
+begin
+  Result := False;
+  if trim(AStokId) <> EmptyStr then
+  begin
+    if StokIdHareketVarmi_fn(trim(AStokId)) then
+    begin
+      MesajHata('Bu stok kartýna ait hareket var. Silinemez..');
+      exit;
+    end
+    else
+    if MesajSor('Seçili stok kartý silinecek. Eminmisiniz?') then
+    begin
+      if VeriSil_fn('STOK','ID', AStokId) = 'OK' then
+         Result := True;
+    end;
+  end;
+end;
+
+function CariIdKartiSil_fn( ACariId : string): Boolean;
+begin
+  Result := False;
+  if trim(ACariId) <> EmptyStr then
+  begin
+    if CariIdHareketVarmi_fn(trim(ACariId)) then
+    begin
+      MesajHata('Bu cari kartýna ait hareket var. Silinemez..');
+      exit;
+    end
+    else
+    if MesajSor('Seçili cari kartý silinecek. Eminmisiniz?') then
+    begin
+      if VeriSil_fn('CARI','ID', ACariId) = 'OK' then
+         Result := True;
+    end;
+  end;
+end;
+
+procedure CariKartiAc_fn(ACariID : string = '');
+var
+  FForm : TfrmYeniCariKart;
+begin
+  FForm := TfrmYeniCariKart.Create(Application);
+  FForm.CariID := ACariID;
+  FForm.ShowModal;
+end;
+
+procedure FaturaKartiAc_fn(AFaturaTipi : string = ''; AFaturaID : string = '');
+var
+  FForm : TfrmFaturaEkle;
+begin
+  FForm := TfrmFaturaEkle.Create(Application);
+  FForm.FaturaTipi := AFaturaTipi;
+  FForm.FaturaID := AFaturaID;
+  FForm.ShowModal;
+end;
+
+function StokSec_fn(): string;
+var
+  FForm : TfrmStokSec;
+begin
+  result := '';
+  StokSec_StokID := '';
+
+  FForm := TfrmStokSec.Create(Application);
+  FForm.ShowModal;
+
+  if trim(StokSec_StokID) <> EmptyStr then
+    Result := StokSec_StokID;
+end;
+
+function CariSec_fn(): string;
+var
+  FForm : TfrmCariSec;
+begin
+  result := '';
+  CariSec_CariID := '';
+
+  FForm := TfrmCariSec.Create(Application);
+  FForm.ShowModal;
+
+  if trim(CariSec_CariID) <> EmptyStr then
+    Result := CariSec_CariID;
+end;
+
+procedure TfrmMain.acCariTahsilatExecute(Sender: TObject);
+begin
+  CariHareketEkleFormuAc_fn(T);
+end;
+
+procedure TfrmMain.acCariOdemeExecute(Sender: TObject);
+begin
+  CariHareketEkleFormuAc_fn(O);
+end;
+
+procedure TfrmMain.acCariHarListExecute(Sender: TObject);
+begin
+  CariHarListFormuAc_fn;
+end;
+
+procedure TfrmMain.acStokCikisiExecute(Sender: TObject);
+begin
+  StokGirisCikisFormuAc_fn('C');
+end;
+
+procedure TfrmMain.acStokGirisiExecute(Sender: TObject);
+begin
+  StokGirisCikisFormuAc_fn('G');
+end;
+
+procedure TfrmMain.acStokHarListExecute(Sender: TObject);
+begin
+  StokHarListFormuAc_fn;
+end;
+
+
+procedure TfrmMain.StokHarListFormuAc_fn(AStokID : string = '');
+var
+  FForm : TfrmStokHarList;
+  s : string;
+begin
+  if AStokID <> EmptyStr then
+    s := AStokID
+  else
+    s := StokSec_fn;
+
+  if s <> EmptyStr then
+  begin
+    FForm := TfrmStokHarList.Create(Application);
+    FForm.StokID := s;
+    FForm.ShowModal;
+  end;
+end;
+
+procedure TfrmMain.CariHarListFormuAc_fn(ACariID : string = '');
+var
+  FForm : TfrmCariHarList;
+  s : string;
+begin
+  if ACariID <> EmptyStr then
+    s := ACariID
+  else
+    s := CariSec_fn;
+
+  if s <> EmptyStr then
+  begin
+    FForm := TfrmCariHarList.Create(Application);
+    FForm.CariID := s;
+    FForm.ShowModal;
+  end;
+end;
+
+procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
+var
+  FForm : TfrmStokHareketEkle;
+  s : string;
+begin
+  if AStokID = EmptyStr then
+    s := StokSec_fn
+  else
+    s := AStokID;
+
+  if s <> EmptyStr then
+  begin
+    FForm := TfrmStokHareketEkle.Create(Application);
+    FForm.StokID := s;
+    FForm.GCKodu := AGCKodu;
+    FForm.ShowModal;
+  end;
+end;
+
+procedure TfrmMain.CariHareketEkleFormuAc_fn(AGCKodu : string; ACariID : string = '');
+var
+  FForm : TfrmCariHareketEkle;
+  s : string;
+begin
+  if ACariID = EmptyStr then
+    s := CariSec_fn
+  else
+    s := ACariID;
+
+  if s <> EmptyStr then
+  begin
+    FForm := TfrmCariHareketEkle.Create(Application);
+    FForm.CariID := s;
+    FForm.GCKodu := AGCKodu;
+    FForm.ShowModal;
+  end;
+end;
+
+procedure TfrmMain.acTanimlarExecute(Sender: TObject);
+var
+  FForm : TfrmTanimlar;
+begin
+  FForm := TfrmTanimlar.Create(Application);
+  FForm.ShowModal;
+end;
+
+procedure TfrmMain.acSatisFaturasiExecute(Sender: TObject);
+begin
+  FaturaKartiAc_fn(SATIS_FATURASI);
+end;
+
+procedure TfrmMain.acTumCarilerExecute(Sender: TObject);
+var
+  FForm : TfrmCariList;
+begin
+  FForm := TfrmCariList.Create(Application);
+  FForm.ShowModal;
+end;
+
+procedure TfrmMain.acTumStoklarExecute(Sender: TObject);
+var
+  FForm : TfrmStokList;
+begin
+  FForm := TfrmStokList.Create(Application);
+  FForm.ShowModal;
+end;
+
+procedure TfrmMain.acYeniCariKartiExecute(Sender: TObject);
+begin
+  CariKartiAc_fn;
+end;
+
+procedure TfrmMain.acYeniStokKartiExecute(Sender: TObject);
+var
+  FForm : TfrmYeniStokKarti;
+begin
+  FForm := TfrmYeniStokKarti.Create(Application);
+  FForm.StokID := '';
+  FForm.ShowModal;
+end;
+
+end.
