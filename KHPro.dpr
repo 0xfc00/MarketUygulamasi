@@ -18,7 +18,11 @@ uses
   CariHarListFrm in 'CariHarListFrm.pas' {frmCariHarList},
   CariSecFrm in 'CariSecFrm.pas' {frmCariSec},
   CariHareketEkleFrm in 'CariHareketEkleFrm.pas' {frmCariHareketEkle},
-  FaturaEkleFrm in 'FaturaEkleFrm.pas' {frmFaturaEkle};
+  FaturaEkleFrm in 'FaturaEkleFrm.pas' {frmFaturaEkle},
+  frmHizliSatisF in 'frmHizliSatisF.pas' {frmHizliSatis},
+  _cons in '_cons.pas',
+  _func in '_func.pas',
+  _vars in '_vars.pas';
 
 {$R *.res}
 
@@ -26,11 +30,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TdmMain, dmMain);
-  Application.CreateForm(TfrmCariList, frmCariList);
-  Application.CreateForm(TfrmCariHarList, frmCariHarList);
-  Application.CreateForm(TfrmCariSec, frmCariSec);
-  Application.CreateForm(TfrmCariHareketEkle, frmCariHareketEkle);
-  Application.CreateForm(TfrmFaturaEkle, frmFaturaEkle);
   Application.Run;
 end.

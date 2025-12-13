@@ -13,6 +13,7 @@ object frmMain: TfrmMain
   Menu = MainMenu1
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object NavBarSol: TdxNavBar
@@ -32,6 +33,8 @@ object frmMain: TfrmMain
     View = 8
     OptionsImage.LargeImages = imgListSolMenu
     OptionsImage.SmallImages = imgListSolMenu
+    ExplicitLeft = 8
+    ExplicitTop = 8
     object nbgStoklar: TdxNavBarGroup
       Caption = 'Stoklar'
       LargeImageIndex = 0
@@ -90,8 +93,8 @@ object frmMain: TfrmMain
           Item = nbitemTumCariler
         end>
     end
-    object NavBarSolGroup3: TdxNavBarGroup
-      Caption = 'Kasiyer Sat'#305#351
+    object nbgSatis: TdxNavBarGroup
+      Caption = 'Sat'#305#351
       SelectedLinkIndex = -1
       SmallImageIndex = 7
       TopVisibleLinkIndex = 0
@@ -101,13 +104,17 @@ object frmMain: TfrmMain
       CustomStyles.HeaderActivePressed = NavBarStyleListeHeader
       CustomStyles.HeaderHotTracked = NavBarStyleListeHeader
       CustomStyles.HeaderPressed = NavBarStyleListeHeader
-      Links = <>
+      Links = <
+        item
+          Item = nbiHizliSatis
+        end>
     end
     object nbgFatura: TdxNavBarGroup
       Caption = 'Fatura'
       SelectedLinkIndex = -1
       SmallImageIndex = 0
       TopVisibleLinkIndex = 0
+      Visible = False
       CustomStyles.Header = NavBarStyleListeHeader
       CustomStyles.HeaderActive = NavBarStyleListeHeader
       CustomStyles.HeaderActiveHotTracked = NavBarStyleListeHeader
@@ -229,6 +236,12 @@ object frmMain: TfrmMain
     end
     object nbiSatisFaturasi: TdxNavBarItem
       Action = acSatisFaturasi
+      CustomStyles.Item = NavBarStyleListe
+      CustomStyles.ItemHotTracked = NavBarStyleListeHover
+      CustomStyles.ItemPressed = NavBarStyleListeHover
+    end
+    object nbiHizliSatis: TdxNavBarItem
+      Action = acHizliSatis
       CustomStyles.Item = NavBarStyleListe
       CustomStyles.ItemHotTracked = NavBarStyleListeHover
       CustomStyles.ItemPressed = NavBarStyleListeHover
@@ -1279,12 +1292,6 @@ object frmMain: TfrmMain
   object MainMenu1: TMainMenu
     Left = 560
     Top = 56
-    object Stoklar1: TMenuItem
-      Caption = 'Stoklar'
-      object YeniStokKart1: TMenuItem
-        Action = acYeniStokKarti
-      end
-    end
   end
   object ActionList1: TActionList
     Images = imgListSolMenu
@@ -1341,6 +1348,10 @@ object frmMain: TfrmMain
     object acSatisFaturasi: TAction
       Caption = 'Sat'#305#351' Faturas'#305
       OnExecute = acSatisFaturasiExecute
+    end
+    object acHizliSatis: TAction
+      Caption = 'H'#305'zl'#305' Sat'#305#351
+      OnExecute = acHizliSatisExecute
     end
   end
   object cxStyleRepository1: TcxStyleRepository

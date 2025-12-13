@@ -44,7 +44,7 @@ type
     nbitemStokGirisi: TdxNavBarItem;
     nbitemStokHarList: TdxNavBarItem;
     nbitemYeniStokKarti: TdxNavBarItem;
-    NavBarSolGroup3: TdxNavBarGroup;
+    nbgSatis: TdxNavBarGroup;
     nbgFatura: TdxNavBarGroup;
     NavBarSolGroup5: TdxNavBarGroup;
     NavBarSolGroup6: TdxNavBarGroup;
@@ -63,8 +63,6 @@ type
     MainMenu1: TMainMenu;
     ActionList1: TActionList;
     acYeniStokKarti: TAction;
-    Stoklar1: TMenuItem;
-    YeniStokKart1: TMenuItem;
     nbiTanimlar: TdxNavBarItem;
     acTanimlar: TAction;
     acTumStoklar: TAction;
@@ -92,6 +90,8 @@ type
     acCariTahsilat: TAction;
     acSatisFaturasi: TAction;
     nbiSatisFaturasi: TdxNavBarItem;
+    acHizliSatis: TAction;
+    nbiHizliSatis: TdxNavBarItem;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -108,6 +108,8 @@ type
     procedure acCariOdemeExecute(Sender: TObject);
     procedure acCariTahsilatExecute(Sender: TObject);
     procedure acSatisFaturasiExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure acHizliSatisExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -120,13 +122,7 @@ type
   tip_CARI_HAR_ISLEM_TIPI = (CH_TAHSILAT_NAKIT, CH_ODEME_NAKIT, CH_TAHSILAT_KK, CH_ODEME_KK);
   tip_FATURA_TIPI           =(FT_SATIS_FATURASI, FT_ALIS_FATURASI);
 
-const
-  APP_NAME = 'Kolay Hesap Pro';
-  VERI_YOK = 'VERI_YOK';
-  O           = 'O';   // Cariye yapýlan ödeme
-  T           = 'T';   // cariden YAPILAN tahsilat
-  SATIS_FATURASI = 'SATIS_FATURASI';
-  ALIS_FATURASI = 'ALIS_FATURASI';
+
 
 
 var
@@ -137,7 +133,8 @@ implementation
 
 uses
   YeniStokKartiFrm, TanimlarFrm, MainDM,StokListFrm, StokSecFrm, StokHareketEkleFrm, StokHarListFrm, YeniCariKartFrm,
-  CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm;
+  CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm,
+  _cons, frmHizliSatisF;
 
 {$R *.dfm}
 
@@ -413,6 +410,12 @@ begin
   CariHareketEkleFormuAc_fn(T);
 end;
 
+procedure TfrmMain.acHizliSatisExecute(Sender: TObject);
+begin
+  with TfrmHizliSatis.Create(nil) do
+    showmodal;
+end;
+
 procedure TfrmMain.acCariOdemeExecute(Sender: TObject);
 begin
   CariHareketEkleFormuAc_fn(O);
@@ -473,6 +476,11 @@ begin
     FForm.CariID := s;
     FForm.ShowModal;
   end;
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  Caption := APP_NAME;
 end;
 
 procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');

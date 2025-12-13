@@ -26,6 +26,8 @@ implementation
 
 {$R *.dfm}
 
+uses _cons;
+
 procedure TfrmFaturaEkle.FormShow(Sender: TObject);
 begin
   inherited;

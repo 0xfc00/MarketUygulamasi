@@ -87,7 +87,7 @@ implementation
 {$R *.dfm}
 
 uses
-  Main;
+  Main, _cons;
 
 procedure TfrmTanimlar.btnBirimEkleClick(Sender: TObject);
 var

@@ -24,7 +24,7 @@ implementation
 {$R *.dfm}
 
 uses
-  Main;
+  Main, _cons;
 
 procedure TfrmBase.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

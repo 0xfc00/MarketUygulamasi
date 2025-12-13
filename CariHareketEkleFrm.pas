@@ -64,6 +64,8 @@ implementation
 
 {$R *.dfm}
 
+uses _cons;
+
 procedure TfrmCariHareketEkle.btnKapatClick(Sender: TObject);
 begin
   Close;

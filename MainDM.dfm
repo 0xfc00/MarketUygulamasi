@@ -7,7 +7,7 @@ object dmMain: TdmMain
     Database = 'KHPRO'
     SpecificOptions.Strings = (
       'SQL Server.Authentication=auWindows')
-    Server = 'localhost'
+    Server = 'DESKTOP-MCB\SQLEXPRESS'
     Connected = True
     LoginPrompt = False
     Left = 72
