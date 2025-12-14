@@ -11,14 +11,14 @@ uses
   dxNavBarBase, dxNavBar, System.ImageList, Vcl.ImgList, cxImageList,
   dxNavBarStyles, Vcl.Menus, System.Actions, Vcl.ActnList, Uni, dxSkinsCore,
   dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
-  dxSkinOffice2019Colorful;
+  dxSkinOffice2019Colorful, LoginFrm, _vars;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
   procedure MesajHata(AMesaj : string);
   procedure MesajBilgi(AMesaj : string);
   Function MesajSor(AMesaj : string) : Boolean;
-  procedure qAcKapa_fn(AQry : TUniQuery);
+  procedure qAcKapa_fn(AQry : TUniQuery; AAckapa : boolean = true);
   function VeriCek_fn(ATabloAdi, AKolonAdi, AVeri, ADonusKolon: string): string;
   function VeriEkle_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
   function VeriSil_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
@@ -33,6 +33,7 @@ uses
   function CariIdKartiSil_fn( ACariId : string): Boolean;
   procedure CariKartiAc_fn(ACariID : string = '');
   procedure FaturaKartiAc_fn(AFaturaTipi : string = ''; AFaturaID : string = '');
+  procedure LoginFormAc_fn();
 
 
 
@@ -138,6 +139,22 @@ uses
 
 {$R *.dfm}
 
+procedure LoginFormAc_fn();
+begin
+  try
+    Application.CreateForm(TfrmLogin, frmLogin);
+      frmLogin.showmodal;
+  finally
+    freeandnil(frmLogin);
+  end;
+
+  if not loginSuccess then
+  begin
+    Application.Terminate;
+    frmMain.close;
+  end;
+end;
+
 procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
 begin
   try
@@ -178,10 +195,9 @@ begin
   result := Application.MessageBox(PWideChar(AMesaj), PWideChar(APP_NAME), MB_ICONQUESTION + MB_YESNO ) = IDYES;
 end;
 
-procedure qAcKapa_fn(AQry : TUniQuery);
+procedure qAcKapa_fn(AQry : TUniQuery; AAckapa : boolean = True);
 begin
-  if AQry.Active then
-    AQry.Active := False;
+  if AAckapa then  AQry.Active := False;
   AQry.Open;
 end;
 
@@ -481,6 +497,7 @@ end;
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   Caption := APP_NAME;
+
 end;
 
 procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');

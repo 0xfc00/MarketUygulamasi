@@ -1,9 +1,10 @@
-object frmCariHareketEkle: TfrmCariHareketEkle
+object frmPosTanim: TfrmPosTanim
   Left = 0
   Top = 0
-  Caption = 'frmCariHareketEkle'
-  ClientHeight = 339
-  ClientWidth = 477
+  BorderStyle = bsDialog
+  Caption = 'frmPosTanim'
+  ClientHeight = 313
+  ClientWidth = 453
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,108 +13,22 @@ object frmCariHareketEkle: TfrmCariHareketEkle
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Label7: TLabel
-    Left = 15
-    Top = 48
-    Width = 54
-    Height = 13
-    Caption = #304#351'lem Tarihi'
-    FocusControl = edtIslemTarihi
-  end
-  object lblIslemTuru: TLabel
-    Left = 15
-    Top = 70
-    Width = 50
-    Height = 13
-    Caption = #304#351'lem T'#252'r'#252
-  end
-  object Label13: TLabel
-    Left = 15
-    Top = 161
-    Width = 50
-    Height = 13
-    Caption = 'A'#231#305'klama 1'
-    FocusControl = cxDBTextEdit8
-  end
-  object Label14: TLabel
-    Left = 15
-    Top = 115
-    Width = 43
-    Height = 13
-    Caption = 'Evrak No'
-    FocusControl = cxDBTextEdit9
-  end
-  object Label16: TLabel
-    Left = 15
-    Top = 138
-    Width = 26
-    Height = 13
-    Caption = 'Tutar'
-  end
-  object Label2: TLabel
-    Left = 274
-    Top = 48
-    Width = 37
-    Height = 13
-    Caption = 'Cari Ad'#305
-    FocusControl = cxDBTextEdit2
-  end
-  object Label1: TLabel
-    Left = 274
-    Top = 70
-    Width = 46
-    Height = 13
-    Caption = 'Cari Kodu'
-    FocusControl = cxDBTextEdit1
-  end
-  object Label3: TLabel
-    Left = 274
-    Top = 91
-    Width = 21
-    Height = 13
-    Caption = 'Bor'#231
-    FocusControl = cxDBTextEdit1
-  end
-  object Label4: TLabel
-    Left = 15
-    Top = 183
-    Width = 50
-    Height = 13
-    Caption = 'A'#231#305'klama 2'
-    FocusControl = cxDBTextEdit4
-  end
-  object Label5: TLabel
-    Left = 15
-    Top = 205
-    Width = 50
-    Height = 13
-    Caption = 'A'#231#305'klama 3'
-    FocusControl = cxDBTextEdit5
-  end
-  object lblPosHesabi: TLabel
-    Left = 15
-    Top = 92
-    Width = 52
-    Height = 13
-    Caption = 'Pos Hesab'#305
-    Visible = False
-  end
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 300
-    Width = 471
+    Top = 274
+    Width = 447
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 295
+    ExplicitLeft = -18
+    ExplicitTop = 277
+    ExplicitWidth = 471
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 367
+      Left = 343
       Top = 4
       Width = 100
       Height = 28
@@ -207,6 +122,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
+      ExplicitLeft = 367
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
@@ -219,166 +135,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
-      OnClick = btnkaydetClick
     end
-  end
-  object edtIslemTarihi: TcxDBDateEdit
-    Left = 75
-    Top = 45
-    DataBinding.DataField = 'ISLEMTARIHI'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 1
-    Width = 121
-  end
-  object cxDBTextEdit8: TcxDBTextEdit
-    Left = 75
-    Top = 158
-    DataBinding.DataField = 'ACIKLAMA1'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 2
-    Width = 310
-  end
-  object cxDBTextEdit9: TcxDBTextEdit
-    Left = 75
-    Top = 112
-    DataBinding.DataField = 'EVRAKNO'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 3
-    Width = 121
-  end
-  object cxDBTextEdit2: TcxDBTextEdit
-    Left = 324
-    Top = 45
-    DataBinding.DataField = 'UNVAN'
-    DataBinding.DataSource = dsCari
-    ParentFont = False
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindowText
-    Style.Font.Height = -11
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.IsFontAssigned = True
-    TabOrder = 4
-    Width = 121
-  end
-  object cxDBTextEdit1: TcxDBTextEdit
-    Left = 324
-    Top = 67
-    DataBinding.DataField = 'CARIKODU'
-    DataBinding.DataSource = dsCari
-    ParentFont = False
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindowText
-    Style.Font.Height = -11
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.IsFontAssigned = True
-    TabOrder = 5
-    Width = 121
-  end
-  object cxDBTextEdit3: TcxDBTextEdit
-    Left = 324
-    Top = 88
-    DataBinding.DataField = 'BAKIYE'
-    DataBinding.DataSource = dsCari
-    ParentFont = False
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindowText
-    Style.Font.Height = -11
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.IsFontAssigned = True
-    TabOrder = 6
-    Width = 121
-  end
-  object cxDBTextEdit4: TcxDBTextEdit
-    Left = 75
-    Top = 180
-    DataBinding.DataField = 'ACIKLAMA2'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 7
-    Width = 310
-  end
-  object cxDBTextEdit5: TcxDBTextEdit
-    Left = 75
-    Top = 202
-    DataBinding.DataField = 'ACIKLAMA3'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 8
-    Width = 310
-  end
-  object edtTutar: TcxCalcEdit
-    Left = 75
-    Top = 135
-    EditValue = 0.000000000000000000
-    TabOrder = 9
-    Width = 121
-  end
-  object cbxIslemTuru: TcxComboBox
-    Left = 75
-    Top = 67
-    Properties.DropDownListStyle = lsFixedList
-    Properties.OnChange = cbxIslemTuruPropertiesChange
-    TabOrder = 10
-    Width = 121
-  end
-  object cbxPosHesabi: TcxDBLookupComboBox
-    Left = 75
-    Top = 89
-    DataBinding.DataField = 'POSID'
-    DataBinding.DataSource = dsCariHarEkle
-    Properties.DropDownListStyle = lsFixedList
-    Properties.KeyFieldNames = 'ID'
-    Properties.ListColumns = <
-      item
-        FieldName = 'POSADI'
-      end>
-    Properties.ListSource = dsPos
-    TabOrder = 11
-    Visible = False
-    Width = 121
-  end
-  object qryCari: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select'
-      '* FROM CARI')
-    ReadOnly = True
-    Left = 352
-    Top = 120
-  end
-  object dsCari: TDataSource
-    AutoEdit = False
-    DataSet = qryCari
-    Left = 408
-    Top = 120
-  end
-  object qryCariHarEkle: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from CARI_H where 1=0')
-    BeforePost = qryCariHarEkleBeforePost
-    Left = 352
-    Top = 168
-  end
-  object dsCariHarEkle: TDataSource
-    DataSet = qryCariHarEkle
-    Left = 416
-    Top = 176
-  end
-  object qryPos: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select'
-      '* FROM POS')
-    ReadOnly = True
-    Left = 296
-    Top = 232
-  end
-  object dsPos: TDataSource
-    AutoEdit = False
-    DataSet = qryPos
-    Left = 352
-    Top = 232
   end
 end

@@ -22,7 +22,9 @@ uses
   frmHizliSatisF in 'frmHizliSatisF.pas' {frmHizliSatis},
   _cons in '_cons.pas',
   _func in '_func.pas',
-  _vars in '_vars.pas';
+  _vars in '_vars.pas',
+  PosTanimFrm in 'PosTanimFrm.pas' {frmPosTanim},
+  LoginFrm in 'LoginFrm.pas' {frmLogin};
 
 {$R *.res}
 
@@ -30,5 +32,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TdmMain, dmMain);
   Application.Run;
 end.

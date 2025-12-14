@@ -1,9 +1,10 @@
 object frmTanimlar: TfrmTanimlar
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'frmTanimlar'
-  ClientHeight = 385
-  ClientWidth = 456
+  ClientHeight = 395
+  ClientWidth = 466
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,30 +19,29 @@ object frmTanimlar: TfrmTanimlar
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 450
+    Width = 460
     Height = 278
     Align = alTop
     TabOrder = 0
     Properties.ActivePage = shBirimler
     Properties.CustomButtons.Buttons = <>
+    ExplicitWidth = 450
     ClientRectBottom = 273
     ClientRectLeft = 2
-    ClientRectRight = 445
+    ClientRectRight = 455
     ClientRectTop = 25
     object shBirimler: TcxTabSheet
       Caption = 'Birimler'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 443
       object grdBirimler: TcxGrid
         Left = 0
         Top = 0
-        Width = 443
+        Width = 453
         Height = 207
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 443
         object viewBrimler: TcxGridDBTableView
           PopupMenu = pmGrid
           Navigator.Buttons.CustomButtons = <>
@@ -70,21 +70,23 @@ object frmTanimlar: TfrmTanimlar
       object Panel2: TPanel
         Left = 0
         Top = 207
-        Width = 443
+        Width = 453
         Height = 41
         Align = alBottom
         TabOrder = 1
+        ExplicitWidth = 443
         object edtBirimEkle: TcxTextEdit
           AlignWithMargins = True
           Left = 4
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 389
+          ExplicitWidth = 389
+          Width = 399
         end
         object btnBirimEkle: TcxButton
           AlignWithMargins = True
-          Left = 399
+          Left = 409
           Top = 4
           Width = 40
           Height = 33
@@ -98,20 +100,17 @@ object frmTanimlar: TfrmTanimlar
           Font.Style = [fsBold]
           ParentFont = False
           OnClick = btnBirimEkleClick
+          ExplicitLeft = 399
         end
       end
     end
     object shGruplar: TcxTabSheet
       Caption = 'Stok Gruplar'#305
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdStokGrup: TcxGrid
         Left = 0
         Top = 0
-        Width = 443
+        Width = 453
         Height = 207
         Align = alClient
         TabOrder = 0
@@ -143,7 +142,7 @@ object frmTanimlar: TfrmTanimlar
       object Panel1: TPanel
         Left = 0
         Top = 207
-        Width = 443
+        Width = 453
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -153,11 +152,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 389
+          Width = 399
         end
         object btnGrupEkle: TcxButton
           AlignWithMargins = True
-          Left = 399
+          Left = 409
           Top = 4
           Width = 40
           Height = 33
@@ -177,14 +176,10 @@ object frmTanimlar: TfrmTanimlar
     object shMarkalar: TcxTabSheet
       Caption = 'Markalar'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdMarkalar: TcxGrid
         Left = 0
         Top = 0
-        Width = 443
+        Width = 453
         Height = 207
         Align = alClient
         TabOrder = 0
@@ -216,7 +211,7 @@ object frmTanimlar: TfrmTanimlar
       object Panel3: TPanel
         Left = 0
         Top = 207
-        Width = 443
+        Width = 453
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -226,11 +221,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 389
+          Width = 399
         end
         object btnMarkaEkle: TcxButton
           AlignWithMargins = True
-          Left = 399
+          Left = 409
           Top = 4
           Width = 40
           Height = 33
@@ -250,14 +245,10 @@ object frmTanimlar: TfrmTanimlar
     object shReyonRaf: TcxTabSheet
       Caption = 'Reyon - Raf'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdReyonRaf: TcxGrid
         Left = 0
         Top = 0
-        Width = 443
+        Width = 453
         Height = 207
         Align = alClient
         TabOrder = 0
@@ -290,7 +281,7 @@ object frmTanimlar: TfrmTanimlar
       object Panel4: TPanel
         Left = 0
         Top = 207
-        Width = 443
+        Width = 453
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -300,11 +291,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 389
+          Width = 399
         end
         object btnReyonRafEkle: TcxButton
           AlignWithMargins = True
-          Left = 399
+          Left = 409
           Top = 4
           Width = 40
           Height = 33
@@ -324,14 +315,10 @@ object frmTanimlar: TfrmTanimlar
     object shCariGruplar: TcxTabSheet
       Caption = 'Cari Gruplar'#305
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 443
+        Width = 453
         Height = 207
         Align = alClient
         TabOrder = 0
@@ -364,7 +351,7 @@ object frmTanimlar: TfrmTanimlar
       object Panel5: TPanel
         Left = 0
         Top = 207
-        Width = 443
+        Width = 453
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -374,11 +361,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 389
+          Width = 399
         end
         object btnCariGrupEkle: TcxButton
           AlignWithMargins = True
-          Left = 399
+          Left = 409
           Top = 4
           Width = 40
           Height = 33
@@ -399,14 +386,15 @@ object frmTanimlar: TfrmTanimlar
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 346
-    Width = 450
+    Top = 356
+    Width = 460
     Height = 36
     Align = alBottom
     TabOrder = 1
+    ExplicitLeft = -2
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 360
+      Left = 370
       Top = 4
       Width = 86
       Height = 28
@@ -500,6 +488,7 @@ object frmTanimlar: TfrmTanimlar
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = cxButton1Click
+      ExplicitLeft = 360
     end
   end
   object qryBirim: TUniQuery

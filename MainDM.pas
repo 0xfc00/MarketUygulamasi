@@ -11,6 +11,7 @@ type
     UniConn: TUniConnection;
     SQLServerUniProvider1: TSQLServerUniProvider;
     qry1: TUniQuery;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,6 +25,15 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses Main;
+
 {$R *.dfm}
+
+procedure TdmMain.DataModuleCreate(Sender: TObject);
+begin
+  UniConn.close;
+  UniConn.open;
+  LoginFormAc_fn;
+end;
 
 end.

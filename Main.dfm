@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'frmMain'
-  ClientHeight = 496
+  ClientHeight = 516
   ClientWidth = 856
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object frmMain: TfrmMain
     Left = 3
     Top = 3
     Width = 262
-    Height = 490
+    Height = 510
     Align = alLeft
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -33,8 +33,6 @@ object frmMain: TfrmMain
     View = 8
     OptionsImage.LargeImages = imgListSolMenu
     OptionsImage.SmallImages = imgListSolMenu
-    ExplicitLeft = 8
-    ExplicitTop = 8
     object nbgStoklar: TdxNavBarGroup
       Caption = 'Stoklar'
       LargeImageIndex = 0

@@ -33,7 +33,7 @@ interface
 
   var
   loginSuccess : boolean = false;
-  loginUserID : string = '-111';
+  loginUserID : integer = -1;
   loginUserAdi : string;
   y : TYetki;
   a : TAyar;

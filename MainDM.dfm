@@ -1,5 +1,6 @@
 object dmMain: TdmMain
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 356
   Width = 732
   object UniConn: TUniConnection
