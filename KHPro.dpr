@@ -23,8 +23,8 @@ uses
   _cons in '_cons.pas',
   _func in '_func.pas',
   _vars in '_vars.pas',
-  PosTanimFrm in 'PosTanimFrm.pas' {frmPosTanim},
-  LoginFrm in 'LoginFrm.pas' {frmLogin};
+  LoginFrm in 'LoginFrm.pas' {frmLogin},
+  PosListFrm in 'PosListFrm.pas' {frmPosList};
 
 {$R *.res}
 
@@ -33,5 +33,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
+  Application.CreateForm(TfrmPosList, frmPosList);
   Application.Run;
 end.

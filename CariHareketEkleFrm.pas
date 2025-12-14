@@ -64,7 +64,7 @@ implementation
 
 {$R *.dfm}
 
-uses _cons;
+uses _cons, _func;
 
 procedure TfrmCariHareketEkle.btnKapatClick(Sender: TObject);
 begin
@@ -90,9 +90,7 @@ end;
 procedure TfrmCariHareketEkle.FormCreate(Sender: TObject);
 begin
   inherited;
-  qryCari.Connection        := dmMain.UniConn;
-  qryCariHarEkle.Connection := dmMain.UniConn;
-  qryPos.Connection         := dmMain.UniConn;
+  TumQuerylereConnectionAta(self);
 end;
 
 procedure TfrmCariHareketEkle.FormShow(Sender: TObject);
@@ -124,9 +122,8 @@ begin
   
 
   qryCari.SQL.Add(' where ID =' + CariID);
-  qAcKapa_fn(qryCari);
-  qAcKapa_fn(qryCariHarEkle);
-  qAcKapa_fn(qryPos);
+  TumQueryleriAc(self, true);
+
   qryCariHarEkle.Append;
   edtIslemTarihi.Text := DateToStr(Now);
 
@@ -186,6 +183,8 @@ begin
   end;
 
   DataSet.FieldByName('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
+
+  EkleyenDegistiren(DataSet);
 end;
 
 end.

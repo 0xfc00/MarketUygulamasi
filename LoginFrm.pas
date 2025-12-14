@@ -22,10 +22,11 @@ type
     UniQuery: TUniQuery;
     cxLabel2: TcxLabel;
     dxBevel1: TdxBevel;
-    cbUserName: TcxDBComboBox;
+    cbUserName: TcxComboBox;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnkaydetClick(Sender: TObject);
+    Function LoginKontrol(AKullaniciAdi, ASifre : string) : boolean;
   private
     { Private declarations }
   public
@@ -39,16 +40,25 @@ implementation
 
 {$R *.dfm}
 
-uses _vars, Main;
+uses _vars, Main, _func;
 
 procedure TfrmLogin.btnKapatClick(Sender: TObject);
 begin
   close;
 end;
 
+Function TfrmLogin.LoginKontrol(AKullaniciAdi, ASifre : string) : boolean;
+begin
+  UniQuery.ParamByName('KULLANICI').AsString := AKullaniciAdi;
+  UniQuery.ParamByName('SIFRE').AsString := ASifre;
+  qAcKapa_fn(UniQuery);
+
+  Result := UniQuery.RecordCount >0;
+end;
+
 procedure TfrmLogin.btnkaydetClick(Sender: TObject);
 begin
-  if edtPassword.text = UniQuery.FieldByName('SIFRE').AsString then
+  if LoginKontrol(cbUserName.text, edtPassword.text) then
   begin
     loginSuccess := True;
     loginUserID  := UniQuery.FieldByName('ID').asinteger;
@@ -67,7 +77,20 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   UniQuery.Connection := dmMain.UniConn;
-  UniQuery.open;
+
+  cbUserName.Properties.Items.Clear;
+
+  with yeniQuery('select * from USERS')do
+  begin
+    First;
+    while not eof  do
+    begin
+      cbUserName.Properties.Items.Add(FieldByName('KULLANICI').AsString);
+      Next;
+    end;
+    Free;
+  end;
+  cbUserName.ItemIndex := 0;
 end;
 
 end.

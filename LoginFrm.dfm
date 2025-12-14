@@ -4,8 +4,8 @@ object frmLogin: TfrmLogin
   ActiveControl = edtPassword
   BorderStyle = bsDialog
   Caption = 'Kullan'#305'c'#305' Giri'#351
-  ClientHeight = 205
-  ClientWidth = 717
+  ClientHeight = 173
+  ClientWidth = 324
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,10 +18,10 @@ object frmLogin: TfrmLogin
   PixelsPerInch = 96
   TextHeight = 13
   object dxBevel1: TdxBevel
-    Left = 162
-    Top = 66
-    Width = 119
-    Height = 17
+    Left = 160
+    Top = 62
+    Width = 150
+    Height = 6
     Shape = dxbsLineBottom
   end
   object cxImage1: TcxImage
@@ -536,15 +536,13 @@ object frmLogin: TfrmLogin
       D2B4BF5394F677E44E78800DFC7FD7BD53E972F360140000000049454E44AE42
       6082}
     TabOrder = 0
-    ExplicitLeft = 48
-    ExplicitTop = 32
-    ExplicitHeight = 100
-    Height = 163
+    ExplicitHeight = 163
+    Height = 131
     Width = 140
   end
   object edtPassword: TcxTextEdit
     Left = 160
-    Top = 122
+    Top = 94
     ParentFont = False
     Properties.PasswordChar = '*'
     Style.Font.Charset = DEFAULT_CHARSET
@@ -571,17 +569,16 @@ object frmLogin: TfrmLogin
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 166
-    Width = 711
+    Top = 134
+    Width = 318
     Height = 36
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = -110
-    ExplicitTop = 125
-    ExplicitWidth = 471
+    ExplicitTop = 166
+    ExplicitWidth = 711
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 607
+      Left = 214
       Top = 4
       Width = 100
       Height = 28
@@ -675,11 +672,11 @@ object frmLogin: TfrmLogin
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 367
+      ExplicitLeft = 607
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
-      Left = 501
+      Left = 108
       Top = 4
       Width = 100
       Height = 28
@@ -689,13 +686,12 @@ object frmLogin: TfrmLogin
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
       OnClick = btnkaydetClick
-      ExplicitLeft = 112
-      ExplicitTop = 3
+      ExplicitLeft = 501
     end
   end
   object cxLabel2: TcxLabel
-    Left = 162
-    Top = 89
+    Left = 160
+    Top = 67
     Caption = #350'ifre'
     ParentFont = False
     Style.Font.Charset = DEFAULT_CHARSET
@@ -705,12 +701,11 @@ object frmLogin: TfrmLogin
     Style.Font.Style = [fsBold]
     Style.IsFontAssigned = True
   end
-  object cbUserName: TcxDBComboBox
-    Left = 162
-    Top = 41
-    DataBinding.DataField = 'KULLANICI'
-    DataBinding.DataSource = DataSource
+  object cbUserName: TcxComboBox
+    Left = 160
+    Top = 34
     ParentFont = False
+    Properties.DropDownListStyle = lsEditFixedList
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -16
@@ -729,9 +724,22 @@ object frmLogin: TfrmLogin
   object UniQuery: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from USERS')
+      
+        'select * from USERS where KULLANICI = :KULLANICI and SIFRE = :SI' +
+        'FRE')
     ReadOnly = True
     Left = 32
     Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'KULLANICI'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'SIFRE'
+        Value = nil
+      end>
   end
 end

@@ -33,7 +33,7 @@ procedure TdmMain.DataModuleCreate(Sender: TObject);
 begin
   UniConn.close;
   UniConn.open;
-  LoginFormAc_fn;
+  //LoginFormAc_fn; //deneme
 end;
 
 end.

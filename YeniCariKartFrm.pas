@@ -9,7 +9,8 @@ uses
   cxButtons, Vcl.ExtCtrls, cxControls, cxContainer, cxEdit, Data.DB, MemDS,
   DBAccess, Uni, cxGroupBox, MainDM, cxLabel, cxMemo, cxDBEdit, cxSpinEdit,
   cxCheckBox, cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
-  cxRadioGroup, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, STRUTils, Main;
+  cxRadioGroup, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, STRUTils, Main,
+  _func;
 
 type
   TfrmYeniCariKart = class(TfrmKartBase)
@@ -114,12 +115,14 @@ type
   private
     { Private declarations }
   public
+    CariID : string;
     { Public declarations }
-    CariID : string
+
   end;
 
 var
   frmYeniCariKart: TfrmYeniCariKart;
+
 
 implementation
 
@@ -249,6 +252,8 @@ begin
   if cbMusteri.Checked          then DataSet.FieldByName('TIPI').AsInteger := Ord(CT_MUSTERI);
   if cbTedarikci.Checked        then DataSet.FieldByName('TIPI').AsInteger := Ord(CT_TEDARIKCI);
   if cbMusteriTedarikci.Checked then DataSet.FieldByName('TIPI').AsInteger := Ord(CT_MUSTERITEDARIKCI);
+
+  ekleyenDegistiren(DataSet);
 end;
 
 end.

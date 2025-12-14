@@ -178,12 +178,12 @@
         <DCCReference Include="_cons.pas"/>
         <DCCReference Include="_func.pas"/>
         <DCCReference Include="_vars.pas"/>
-        <DCCReference Include="PosTanimFrm.pas">
-            <Form>frmPosTanim</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="LoginFrm.pas">
             <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="PosListFrm.pas">
+            <Form>frmPosList</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

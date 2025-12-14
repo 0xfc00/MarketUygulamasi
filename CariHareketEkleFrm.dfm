@@ -109,8 +109,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 295
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 367

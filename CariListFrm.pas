@@ -142,14 +142,8 @@ begin
   inherited;
   pnlHeader.Caption := '   CARÝ KARTLARI';
 
-  for I := 0 to ComponentCount-1 do
-    if Components[i] is TUniQuery then
-    begin
-      TUniQuery(Components[i]).Connection := dmMain.UniConn;
-
-      if Components[i].Tag = 0 then
-        TUniQuery(Components[i]).Open;
-    end;
+  TumQuerylereConnectionAta(self);
+  TumQueryleriAc(self);
 end;
 
 end.

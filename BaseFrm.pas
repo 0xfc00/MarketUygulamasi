@@ -10,7 +10,8 @@ type
   TfrmBase = class(TForm)
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure TumQueryleriAc(AFrm : TForm);
+    procedure TumQueryleriAc(AFrm : TForm; AAcKapa : boolean = False);
+    procedure TumQuerylereConnectionAta(AFrm : TForm);
   private
     { Private declarations }
   public
@@ -37,18 +38,27 @@ begin
   caption := APP_NAME;
 end;
 
-procedure TfrmBase.TumQueryleriAc(AFrm : TForm);
+procedure TfrmBase.TumQueryleriAc(AFrm : TForm; AAcKapa : boolean = False);
 var
   i : integer;
 begin
   for I := 0 to AFrm.ComponentCount-1 do
     if AFrm.Components[i] is TUniQuery then
     begin
-      TUniQuery(AFrm.Components[i]).Connection := dmMain.UniConn;
-
       if AFrm.Components[i].Tag = 0 then
-        TUniQuery(AFrm.Components[i]).Open;
+        qAcKapa_fn(TUniQuery(AFrm.Components[i]), AAcKapa);
     end
+end;
+
+
+
+procedure TfrmBase.TumQuerylereConnectionAta(AFrm : TForm);
+var
+  i : integer;
+begin
+  for I := 0 to AFrm.ComponentCount-1 do
+    if AFrm.Components[i] is TUniQuery then
+      TUniQuery(AFrm.Components[i]).Connection := dmMain.UniConn;
 end;
 
 end.

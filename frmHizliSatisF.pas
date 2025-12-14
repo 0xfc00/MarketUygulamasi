@@ -543,7 +543,7 @@ var
 begin
   if qryTempSatis.IsEmpty then exit;
 
-  if not sor('Ekrandaki Aktif Satýþ Ýþlemleri Bekleme Listesine Alýnýp Yeni Satýþ Baþlatýlacak..') then exit;
+  if not MesajSor('Ekrandaki Aktif Satýþ Ýþlemleri Bekleme Listesine Alýnýp Yeni Satýþ Baþlatýlacak..') then exit;
 
   q := yeniQuery('select isnull(max(beklemede),0) as yenino from tmp_satis where beklemede <>0');
   if q.IsEmpty then
@@ -562,7 +562,7 @@ end;
 procedure TfrmHizliSatis.btnSatisIptalClick(Sender: TObject);
 begin
   if qryTempSatis.IsEmpty then exit;
-  if sor('Aktif Satýþ Ýþlemi Ýptal Edilip Yenisi Baþlatýlacak. Eminmisiniz?') then satisIptal;
+  if MesajSor('Aktif Satýþ Ýþlemi Ýptal Edilip Yenisi Baþlatýlacak. Eminmisiniz?') then satisIptal;
 end;
 
 procedure TfrmHizliSatis.btnVeresiye_satisClick(Sender: TObject);
@@ -675,7 +675,7 @@ procedure TfrmHizliSatis.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if qryTempSatis.RecordCount >0 then
   begin
-    if sor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
+    if Mesajsor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
     begin
       satisIptal;
       action := cafree;

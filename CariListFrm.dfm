@@ -442,6 +442,7 @@ object frmCariList: TfrmCariList
       end
       object cxGrid1DBTableView1AUTO_DISCOUNT: TcxGridDBColumn
         DataBinding.FieldName = 'AUTO_DISCOUNT'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
     end

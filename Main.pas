@@ -11,7 +11,9 @@ uses
   dxNavBarBase, dxNavBar, System.ImageList, Vcl.ImgList, cxImageList,
   dxNavBarStyles, Vcl.Menus, System.Actions, Vcl.ActnList, Uni, dxSkinsCore,
   dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
-  dxSkinOffice2019Colorful, LoginFrm, _vars;
+  dxSkinOffice2019Colorful, LoginFrm, _vars, cxContainer, cxEdit, cxImage,
+  PosListFrm, dxGDIPlusClasses, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  Vcl.ComCtrls;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -27,8 +29,10 @@ uses
   function StokBarkodVarmi_fn(ABarkod : string): Boolean;
   function StokAdiVarmi_fn(AStokAdi : string): Boolean;
   function CariAdiVarmi_fn(ACariAdi : string): Boolean;
+  function PosTanimiVarmi_fn(APosAdi : string): Boolean;
   function StokIdHareketVarmi_fn(AStokId : string): Boolean;
   function CariIdHareketVarmi_fn( ACariId : string): Boolean;
+  function PosHareketVarmi_fn( APosId : string): Boolean;
   function StokIdKartiSil_fn( AStokId : string): Boolean;
   function CariIdKartiSil_fn( ACariId : string): Boolean;
   procedure CariKartiAc_fn(ACariID : string = '');
@@ -47,8 +51,7 @@ type
     nbitemYeniStokKarti: TdxNavBarItem;
     nbgSatis: TdxNavBarGroup;
     nbgFatura: TdxNavBarGroup;
-    NavBarSolGroup5: TdxNavBarGroup;
-    NavBarSolGroup6: TdxNavBarGroup;
+    nbgKasaPos: TdxNavBarGroup;
     nbgAyarlar: TdxNavBarGroup;
     nbitemStokCikisi: TdxNavBarItem;
     nbItemTumStoklar: TdxNavBarItem;
@@ -93,6 +96,18 @@ type
     nbiSatisFaturasi: TdxNavBarItem;
     acHizliSatis: TAction;
     nbiHizliSatis: TdxNavBarItem;
+    NavBarSolGroup1: TdxNavBarGroup;
+    nbiKasaGiris: TdxNavBarItem;
+    nbiKasaCikis: TdxNavBarItem;
+    nbiPosTanim: TdxNavBarItem;
+    nbiKasaIslemListesi: TdxNavBarItem;
+    cxImage1: TcxImage;
+    acPosTanimlari: TAction;
+    Panel1: TPanel;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    StatusBar1: TStatusBar;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -111,6 +126,7 @@ type
     procedure acSatisFaturasiExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure acHizliSatisExecute(Sender: TObject);
+    procedure acPosTanimlariExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -308,6 +324,17 @@ begin
     result := True;
 end;
 
+function PosTanimiVarmi_fn(APosAdi : string): Boolean;
+var
+  s: string;
+begin
+  s := VeriCek_fn('POS', 'POSADI', APosAdi, 'ID');
+  if s = VERI_YOK then
+    result := False
+  else
+    result := True;
+end;
+
 function StokIdHareketVarmi_fn( AStokId : string): Boolean;
 begin
   result := False;
@@ -331,6 +358,20 @@ begin
      (VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
      (VeriCek_fn('POS_H',  'CARIID', ACariId, 'ID') <> VERI_YOK)  or
      (VeriCek_fn('SATIS',  'CARIID', ACariId, 'ID') <> VERI_YOK)
+     )
+  then
+    result := True;
+end;
+
+function PosHareketVarmi_fn( APosId : string): Boolean;
+begin
+  result := False;
+
+  if (
+     (VeriCek_fn('SATIS', 'POSID', APosId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('CARI_H', 'POSID', APosId, 'ID') <> VERI_YOK)  or
+     //(VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     (VeriCek_fn('POS_H',  'POSID', APosId, 'ID') <> VERI_YOK)
      )
   then
     result := True;
@@ -373,6 +414,8 @@ begin
     end;
   end;
 end;
+
+
 
 procedure CariKartiAc_fn(ACariID : string = '');
 var
@@ -429,6 +472,12 @@ end;
 procedure TfrmMain.acHizliSatisExecute(Sender: TObject);
 begin
   with TfrmHizliSatis.Create(nil) do
+    showmodal;
+end;
+
+procedure TfrmMain.acPosTanimlariExecute(Sender: TObject);
+begin
+  with TfrmPosList.Create(nil) do
     showmodal;
 end;
 

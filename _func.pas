@@ -8,8 +8,6 @@ uses
   function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
   function EncryptStr(const S :WideString; Key: Word): String;
   function DecryptStr(const S: String; Key: Word): String;
-  function sor(msg:string): Boolean;
-  procedure MesajGoster(mesaj: string);
   function Randomstring(strLen: Integer): string;
   function sqlCalistir(sql : string): Integer;
   function veriCekSQL(SQL,donusKolon: string) : string;
@@ -19,6 +17,7 @@ uses
   function lisansKontrol(): Boolean;
   procedure lisansYoksaKapat();
   procedure demoKontrol();
+  procedure EkleyenDegistiren(ADataset: TDataSet);
 
 
 implementation
@@ -292,6 +291,26 @@ begin
     Application.Terminate;
   end;
 
+end;
+
+
+procedure EkleyenDegistiren(ADataset: TDataSet);
+begin
+  if ADataset.State = dsInsert then
+  begin
+    if ADataset.FindField('USERID') <> nil then
+      ADataset.FieldByName('USERID').Asinteger := loginUserID;
+
+    if ADataset.FindField('CREATEDAT') <> nil then
+      ADataset.FieldByName('CREATEDAT').AsDateTime := now;
+  end
+  else if ADataset.State = dsEdit then
+  begin
+    if ADataset.FindField('USERIDUP') <> nil then
+      ADataset.FieldByName('USERIDUP').Asinteger := loginUserID;
+    if ADataset.FindField('UPDATEDAT') <> nil then
+      ADataset.FieldByName('UPDATEDAT').AsDateTime := now;
+  end;
 end;
 
 
