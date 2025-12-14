@@ -23,10 +23,12 @@ type
     cxLabel2: TcxLabel;
     dxBevel1: TdxBevel;
     cbUserName: TcxComboBox;
+    btnDbAyar: TcxButton;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnkaydetClick(Sender: TObject);
     Function LoginKontrol(AKullaniciAdi, ASifre : string) : boolean;
+    procedure btnDbAyarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +42,13 @@ implementation
 
 {$R *.dfm}
 
-uses _vars, Main, _func;
+uses _vars, Main, _func, DbAyarlarFrm;
+
+procedure TfrmLogin.btnDbAyarClick(Sender: TObject);
+begin
+  application.createform(TfrmDbAyarlar,frmDbAyarlar);
+  frmDbAyarlar.showmodal;
+end;
 
 procedure TfrmLogin.btnKapatClick(Sender: TObject);
 begin
@@ -76,12 +84,21 @@ end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
+  if dmMain.UniConn.Connected = false then
+    halt;
+
   UniQuery.Connection := dmMain.UniConn;
 
   cbUserName.Properties.Items.Clear;
 
   with yeniQuery('select * from USERS')do
   begin
+    if IsEmpty then
+    begin
+      sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, 1)');
+      close;
+      open;
+    end;
     First;
     while not eof  do
     begin

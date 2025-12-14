@@ -26,7 +26,8 @@ uses
   LoginFrm in 'LoginFrm.pas' {frmLogin},
   PosListFrm in 'PosListFrm.pas' {frmPosList},
   KasaHareketEkleFrm in 'KasaHareketEkleFrm.pas' {frmKasaHareketEkle},
-  KasaPosHarListFrm in 'KasaPosHarListFrm.pas' {frmKasaPosHarList};
+  KasaPosHarListFrm in 'KasaPosHarListFrm.pas' {frmKasaPosHarList},
+  DbAyarlarFrm in 'DbAyarlarFrm.pas' {frmDbAyarlar};
 
 {$R *.res}
 
@@ -35,5 +36,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
+  Application.CreateForm(TfrmDbAyarlar, frmDbAyarlar);
   Application.Run;
 end.
