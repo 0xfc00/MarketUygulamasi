@@ -184,6 +184,7 @@ object frmCariHarList: TfrmCariHarList
       end
       object cxGrid1DBTableView1PERSONEL: TcxGridDBColumn
         DataBinding.FieldName = 'PERSONEL'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
       object cxGrid1DBTableView1POSHID: TcxGridDBColumn
@@ -193,10 +194,12 @@ object frmCariHarList: TfrmCariHarList
       end
       object cxGrid1DBTableView1COMNAMETIME: TcxGridDBColumn
         DataBinding.FieldName = 'COMNAMETIME'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
       object cxGrid1DBTableView1UPDATECOUNT: TcxGridDBColumn
         DataBinding.FieldName = 'UPDATECOUNT'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
       object cxGrid1DBTableView1ZAMAN: TcxGridDBColumn

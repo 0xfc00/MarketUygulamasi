@@ -76,8 +76,6 @@ begin
 end;
 
 procedure TfrmCariHarList.FormCreate(Sender: TObject);
-var
-  i : Integer;
 begin
   inherited;
   pnlHeader.Caption := '   CARÝ HAREKETLERÝ';

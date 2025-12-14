@@ -15,40 +15,44 @@ type
     pnlAlt: TPanel;
     btnKapat: TcxButton;
     btnkaydet: TcxButton;
+    qryCari: TUniQuery;
+    dsCari: TDataSource;
+    qryCariHarEkle: TUniQuery;
+    dsCariHarEkle: TDataSource;
+    qryPos: TUniQuery;
+    dsPos: TDataSource;
+    qryPosHarEkle: TUniQuery;
     Label7: TLabel;
     lblIslemTuru: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label16: TLabel;
+    Label2: TLabel;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    lblPosHesabi: TLabel;
     edtIslemTarihi: TcxDBDateEdit;
     cxDBTextEdit8: TcxDBTextEdit;
     cxDBTextEdit9: TcxDBTextEdit;
-    qryCari: TUniQuery;
-    dsCari: TDataSource;
-    qryCariHarEkle: TUniQuery;
-    dsCariHarEkle: TDataSource;
-    Label2: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     cxDBTextEdit1: TcxDBTextEdit;
-    Label1: TLabel;
-    Label3: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
-    Label4: TLabel;
     cxDBTextEdit4: TcxDBTextEdit;
-    Label5: TLabel;
     cxDBTextEdit5: TcxDBTextEdit;
     edtTutar: TcxCalcEdit;
     cbxIslemTuru: TcxComboBox;
-    lblPosHesabi: TLabel;
     cbxPosHesabi: TcxDBLookupComboBox;
-    qryPos: TUniQuery;
-    dsPos: TDataSource;
+    qryKasaHarEkle: TUniQuery;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnkaydetClick(Sender: TObject);
     procedure qryCariHarEkleBeforePost(DataSet: TDataSet);
     procedure cbxIslemTuruPropertiesChange(Sender: TObject);
+    procedure qryPosHarEkleBeforePost(DataSet: TDataSet);
+    procedure qryKasaHarEkleBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -184,6 +188,48 @@ begin
 
   DataSet.FieldByName('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
 
+  EkleyenDegistiren(DataSet);
+
+
+  if cbxIslemTuru.ItemIndex = 0 then   // nakit ise  kasa harekete ekle
+  with qryKasaHarEkle do
+  begin
+    open;
+    append;
+
+    fieldbyname('TARIH').asdatetime     := now;
+    fieldbyname('CIKAN').AsString       := DataSet.FieldByName('BORC').AsString;
+    fieldbyname('GIREN').AsString       := DataSet.FieldByName('ALACAK').AsString;
+    fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
+
+    post;
+  end;
+
+  if cbxIslemTuru.ItemIndex = 1 then   // kredi kartý ise pos harekete ekle
+  with qryPosHarEkle do
+  begin
+    open;
+    append;
+
+    fieldbyname('POSID').AsString       := qrypos.fieldbyname('ID').asstring;
+    fieldbyname('TARIH').asdatetime     := now;
+    fieldbyname('BORC').AsString        := DataSet.FieldByName('BORC').AsString;
+    fieldbyname('ALACAK').AsString      := DataSet.FieldByName('ALACAK').AsString;
+    fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
+
+    post;
+  end;
+end;
+
+procedure TfrmCariHareketEkle.qryKasaHarEkleBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  EkleyenDegistiren(DataSet);
+end;
+
+procedure TfrmCariHareketEkle.qryPosHarEkleBeforePost(DataSet: TDataSet);
+begin
+  inherited;
   EkleyenDegistiren(DataSet);
 end;
 

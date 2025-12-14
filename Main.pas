@@ -13,7 +13,7 @@ uses
   dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
   dxSkinOffice2019Colorful, LoginFrm, _vars, cxContainer, cxEdit, cxImage,
   PosListFrm, dxGDIPlusClasses, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -108,11 +108,16 @@ type
     cxButton2: TcxButton;
     cxButton3: TcxButton;
     StatusBar1: TStatusBar;
+    btnKapat: TcxButton;
+    acKasaGiris: TAction;
+    acKasaCikis: TAction;
+    acKasaPosHarList: TAction;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
     procedure acStokGirisiExecute(Sender: TObject);
     procedure StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
+    procedure KasaGirisCikisFormuAc_fn(AGCKodu : string);
     procedure CariHareketEkleFormuAc_fn(AGCKodu : string; ACariID : string = '');
     procedure StokHarListFormuAc_fn(AStokID : string = '');
     procedure CariHarListFormuAc_fn(ACariID : string = '');
@@ -127,6 +132,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure acHizliSatisExecute(Sender: TObject);
     procedure acPosTanimlariExecute(Sender: TObject);
+    procedure btnKapatClick(Sender: TObject);
+    procedure acKasaGirisExecute(Sender: TObject);
+    procedure acKasaCikisExecute(Sender: TObject);
+    procedure acKasaPosHarListExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -171,7 +180,7 @@ begin
   end;
 end;
 
-procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
+procedure FormYarat_fn(Tformadi: TComponentClass;  var formadi: TForm; checkIfNotExist : boolean = true);
 begin
   try
     screen.cursor := crHourGlass;
@@ -475,6 +484,22 @@ begin
     showmodal;
 end;
 
+procedure TfrmMain.acKasaCikisExecute(Sender: TObject);
+begin
+  KasaGirisCikisFormuAc_fn('C');
+end;
+
+procedure TfrmMain.acKasaGirisExecute(Sender: TObject);
+begin
+  KasaGirisCikisFormuAc_fn('G');
+end;
+
+procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
+begin
+  with TfrmKasaPosHarList.Create(nil) do
+    showmodal;
+end;
+
 procedure TfrmMain.acPosTanimlariExecute(Sender: TObject);
 begin
   with TfrmPosList.Create(nil) do
@@ -547,6 +572,13 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   Caption := APP_NAME;
 
+end;
+
+procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : string);
+begin
+  Application.CreateForm(TfrmKasaHareketEkle, frmKasaHareketEkle);
+  frmKasaHareketEkle.GCKodu := AGCKodu;
+  frmKasaHareketEkle.ShowModal;
 end;
 
 procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
@@ -628,6 +660,11 @@ begin
   FForm := TfrmYeniStokKarti.Create(Application);
   FForm.StokID := '';
   FForm.ShowModal;
+end;
+
+procedure TfrmMain.btnKapatClick(Sender: TObject);
+begin
+  close;
 end;
 
 end.

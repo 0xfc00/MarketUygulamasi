@@ -7,6 +7,7 @@ const
   VERI_YOK = 'VERI_YOK';
   O           = 'O';   // Cariye yapýlan ödeme
   T           = 'T';   // cariden YAPILAN tahsilat
+
   SATIS_FATURASI = 'SATIS_FATURASI';
   ALIS_FATURASI = 'ALIS_FATURASI';
 

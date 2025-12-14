@@ -24,7 +24,9 @@ uses
   _func in '_func.pas',
   _vars in '_vars.pas',
   LoginFrm in 'LoginFrm.pas' {frmLogin},
-  PosListFrm in 'PosListFrm.pas' {frmPosList};
+  PosListFrm in 'PosListFrm.pas' {frmPosList},
+  KasaHareketEkleFrm in 'KasaHareketEkleFrm.pas' {frmKasaHareketEkle},
+  KasaPosHarListFrm in 'KasaPosHarListFrm.pas' {frmKasaPosHarList};
 
 {$R *.res}
 
@@ -33,6 +35,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
-  Application.CreateForm(TfrmPosList, frmPosList);
   Application.Run;
 end.

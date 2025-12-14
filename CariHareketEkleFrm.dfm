@@ -1,9 +1,10 @@
 object frmCariHareketEkle: TfrmCariHareketEkle
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'frmCariHareketEkle'
-  ClientHeight = 339
-  ClientWidth = 477
+  ClientHeight = 349
+  ClientWidth = 487
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -104,14 +105,14 @@ object frmCariHareketEkle: TfrmCariHareketEkle
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 300
-    Width = 471
+    Top = 310
+    Width = 481
     Height = 36
     Align = alBottom
     TabOrder = 0
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 367
+      Left = 377
       Top = 4
       Width = 100
       Height = 28
@@ -378,5 +379,23 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     DataSet = qryPos
     Left = 352
     Top = 232
+  end
+  object qryPosHarEkle: TUniQuery
+    Tag = 1
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from POS_H where 1=0')
+    BeforePost = qryPosHarEkleBeforePost
+    Left = 184
+    Top = 248
+  end
+  object qryKasaHarEkle: TUniQuery
+    Tag = 1
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from KASA_H where 1=0')
+    BeforePost = qryKasaHarEkleBeforePost
+    Left = 88
+    Top = 240
   end
 end
