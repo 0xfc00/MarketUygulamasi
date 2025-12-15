@@ -150,9 +150,9 @@ procedure yetkileriYukle();
 var
   q: TUniQuery;
 begin
-  q := yeniQuery('select * from t_kullanicilar where id='+ loginUserID.tostring);
+  q := yeniQuery('select * from USERS where ID='+ loginUserID.tostring);
 
-  y.admin          := q.FieldByName('admin').asString            = '1';
+  y.admin          := q.FieldByName('YONETICI').asString         = '1';
   y.STOKEKLE       := q.FieldByName('y_STOKEKLE').asString       = '1';
   y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').asString   = '1';
   y.STOKSIL        := q.FieldByName('y_STOKSIL').asString        = '1';

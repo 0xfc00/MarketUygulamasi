@@ -73,6 +73,8 @@ type
     procedure btnBirimEkleClick(Sender: TObject);
     procedure Sil1Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
+    procedure pcChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -172,6 +174,7 @@ var
 begin
   inherited;
   pnlHeader.Caption := '   TANIMLAR';
+  pnlHeader.color := clGreen;
   pc.ActivePageIndex := 0;
 
   for I := 0 to ComponentCount-1 do
@@ -182,6 +185,25 @@ begin
       if Components[i].Tag = 0 then
         TUniQuery(Components[i]).Open;
     end;
+end;
+
+procedure TfrmTanimlar.FormShow(Sender: TObject);
+begin
+  inherited;
+  pc.Tag := 0;
+  pcChange(sender);
+end;
+
+procedure TfrmTanimlar.pcChange(Sender: TObject);
+begin
+  inherited;
+  if pc.tag = 1 then exit;
+
+       if pc.ActivePage = shBirimler    then edtBirimEkle.SetFocus
+  else if pc.ActivePage = shGruplar     then edtGrupEkle.SetFocus
+  else if pc.ActivePage = shMarkalar    then edtMarkaEkle.SetFocus
+  else if pc.ActivePage = shReyonRaf    then edtReyonRafEkle.SetFocus
+  else if pc.ActivePage = shCariGruplar then edtCariGrupEkle.SetFocus;
 end;
 
 procedure TfrmTanimlar.Sil1Click(Sender: TObject);

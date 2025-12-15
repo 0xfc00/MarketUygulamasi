@@ -12,11 +12,11 @@ uses
   cxLabel, cxPC, Vcl.StdCtrls, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
   cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
-  DBAccess,  frxClass, frxDBSet, dxSkinsCore, dxSkinBlue,
-  dxScrollbarAnnotations, Uni, KartBaseFrm;
+  DBAccess, frxClass, frxDBSet, dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations,
+  Uni, BaseFrm, MainDM;
 
 type
-  TfrmHizliSatis = class(TfrmKartBase)
+  TfrmHizliSatis = class(TfrmBase)
     cxGroupBox1: TcxGroupBox;
     cxGroupBox3: TcxGroupBox;
     cxGroupBox4: TcxGroupBox;
@@ -127,10 +127,10 @@ type
     frxDsHsFisTitle: TfrxDBDataset;
     frxHsFis: TfrxReport;
     frxDsHsFis: TfrxDBDataset;
-    qryCari: TUniQuery;
     qryFis: TUniQuery;
     pmRaporTasarim: TPopupMenu;
     RaporTasarm1: TMenuItem;
+    qryCari: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -175,7 +175,7 @@ implementation
 
 {$R *.dfm}
 
-uses  Main, MainDM, _cons, _func, _vars;
+uses _cons, _func, _vars, Main;
 
 
 procedure TfrmHizliSatis.barkodOku(stokKodu:string);
@@ -209,19 +209,19 @@ begin
 
   if stokKodu = '' then
   begin
-    qS :=  yeniQuery('select * from t_stok where barkod= :barkod', false);
-    qS.ParamByName('barkod').AsString := edtBarkod.Text;
+    qS :=  yeniQuery('select * from STOK where BARKOD= :BARKOD', false);
+    qS.ParamByName('BARKOD').AsString := edtBarkod.Text;
   end
   else
   begin
-    qS :=  yeniQuery('select * from t_stok where stok_kodu= :stok_kodu', false);
-    qS.ParamByName('stok_kodu').AsString := stokKodu;
+    qS :=  yeniQuery('select * from STOK where STOKKODU= :STOKKODU', false);
+    qS.ParamByName('STOKKODU').AsString := stokKodu;
   end;
   qS.Open;
 
   if qS.RecordCount >0 then
   begin
-    if qS.FieldByName('tartili_urun').AsInteger = 1 then
+    if qS.FieldByName('TERAZITIP').AsInteger > 1 then
     begin
       sTartilan := InputBox('Tartýlý Ürün', 'Terazi Baðlantýsý Kurulamadý. Lütfen Ürünün Tartým Sonucunu Giriniz..','');
       dTartilan := StrToFloatDef(sTartilan,0);
@@ -230,7 +230,7 @@ begin
 
       lblTeraziBarkodu:
 
-      if sTartiBarkod = '' then
+      if sTartiBarkod = '' then                          //deneme
       begin
         dTartilanTutar := (dTartilan / qS.FieldByName('tarti_carpan').AsFloat) * qS.FieldByName('sfiyat1').AsFloat;
         dTartilan :=  dTartilan / qS.FieldByName('tarti_carpan').AsFloat;
@@ -241,35 +241,35 @@ begin
 
 
     if not qryTempSatis.Active then qryTempSatis.Open;
-    qG := yeniQuery('select * from tmp_satis where stok_Kodu= :stok_Kodu and beklemede=0', false);
-    qG.ParamByName('stok_Kodu').AsString := qS.FieldByName('stok_Kodu').AsString;
+    qG := yeniQuery('select * from TMPSATIS where STOKKODU= :STOKKODU and BEKLEMEDE=0', false);
+    qG.ParamByName('STOKKODU').AsString := qS.FieldByName('STOKKODU').AsString;
     qG.Open;
 
     if qG.RecordCount >0 then
     begin
       qG.Edit;
-      qG.FieldByName('adet').asfloat   := qG.FieldByName('adet').asfloat +  strtofloat( IfThen(dTartilan = 0 , '1', FloatTostr(dtartilan) ));
-      qG.FieldByName('fiyat').asfloat  := qS.FieldByName('sfiyat1').asfloat;
-      qG.FieldByName('toplam').asfloat := qS.FieldByName('sfiyat1').AsFloat * qG.FieldByName('adet').asfloat;
+      qG.FieldByName('ADET').asfloat   := qG.FieldByName('ADET').asfloat +  strtofloat( IfThen(dTartilan = 0 , '1', FloatTostr(dtartilan) ));
+      qG.FieldByName('FIYAT').asfloat  := qS.FieldByName('SATISFIYATI').asfloat;
+      qG.FieldByName('TOPLAM').asfloat := qS.FieldByName('SATISFIYATI').AsFloat * qG.FieldByName('ADET').asfloat;
       qG.Post;
     end
     else
     begin
       qryTempSatis.append;
-      qryTempSatis.FieldByName('stok_ID').AsString   := qS.FieldByName('id').AsString;
-      qryTempSatis.FieldByName('stok_Kodu').AsString := qS.FieldByName('stok_Kodu').AsString;
-      qryTempSatis.FieldByName('stok_adi').AsString      := qS.FieldByName('stok_adi').AsString;
+      qryTempSatis.FieldByName('STOKID').AsString   := qS.FieldByName('ID').AsString;
+      qryTempSatis.FieldByName('STOKKODU').AsString := qS.FieldByName('STOKKODU').AsString;
+      qryTempSatis.FieldByName('STOKADI').AsString      := qS.FieldByName('STOKADI').AsString;
       qryTempSatis.FieldByName('KDV').AsString      := qS.FieldByName('KDV').AsString;
 
-      qryTempSatis.FieldByName('adet').AsString     := IfThen(dTartilan = 0, '1', floattostr(dtartilan) );
-      qryTempSatis.FieldByName('fiyat').AsString    := qS.FieldByName('sfiyat1').AsString;
-      qryTempSatis.FieldByName('toplam').AsString   := ifthen(dTartilan = 0, qS.FieldByName('sfiyat1').AsString, floattostr(dTartilanTutar) );
+      qryTempSatis.FieldByName('ADET').AsString     := IfThen(dTartilan = 0, '1', floattostr(dtartilan) );
+      qryTempSatis.FieldByName('FIYAT').AsString    := qS.FieldByName('SATISFIYATI').AsString;
+      qryTempSatis.FieldByName('TOPLAM').AsString   := ifthen(dTartilan = 0, qS.FieldByName('SATISFIYATI').AsString, floattostr(dTartilanTutar) );
 
-      qryTempSatis.FieldByName('beklemede').AsInteger := 0;
+      qryTempSatis.FieldByName('BEKLEMEDE').AsInteger := 0;
       qryTempSatis.Post;
     end;
 
-    qToplam := yeniQuery('select sum(toplam) as xToplam from tmp_satis where beklemede=0');
+    qToplam := yeniQuery('select sum(TOPLAM) as xToplam from TMPSATIS where BEKLEMEDE=0');
     edtToplam.Text :=  qToplam.FieldByName('xToplam').AsString;
 
 
@@ -282,10 +282,10 @@ begin
   else
   begin
     sTartiBarkod := Copy(edtBarkod.Text,1,7);
-    q := yeniQuery('select * from t_stok where barkod='+ QuotedStr(sTartiBarkod)  );
+    q := yeniQuery('select * from STOK where BARKOD='+ QuotedStr(sTartiBarkod)  );
 
     if q.IsEmpty then                                       begin BarkodYok;exit;end;
-    if q.FieldByName('teraziBarkodu').AsString <> '1' then  begin BarkodYok;exit;end;
+    if q.FieldByName('teraziBarkodu').AsString <> '1' then  begin BarkodYok;exit;end;    //DENEME
 
     dTartilan := StrToFloatDef(Copy(edtBarkod.Text,8,5),0);
     if dTartilan = 0 then
@@ -293,7 +293,7 @@ begin
     else
     begin
       qS.Close;
-      qS.SQL.Text := 'select * from t_stok where barkod='+ QuotedStr(sTartiBarkod);
+      qS.SQL.Text := 'select * from STOK where BARKOD='+ QuotedStr(sTartiBarkod);
       qS.Open;
       goto lblTeraziBarkodu;
     end;
@@ -359,26 +359,26 @@ var
   pnlHS: TPanel;
   lblAd, lblFiyat: TcxLabel;
 begin
-  qHsGrup_ := yeniQuery('SELECT * FROM t_hs_grup order by sira asc');
+  qHsGrup_ := yeniQuery('SELECT * FROM T_HSGRUP order by SIRA asc');
   qHsGrup_.First;
   if qHsGrup_.IsEmpty then exit; ///////////////////////////////////////////////////////////////
 
 
 
-  qHsStok_ := yeniQuery('SELECT * FROM t_hs_sira where hs_grup_id= :hs_grup_id order by sira asc', false);
+  qHsStok_ := yeniQuery('SELECT * FROM T_HSSIRA where GRUPID= :GRUPID order by SIRA asc', false);
 
 
-  qStok_ := yeniQuery('SELECT * FROM t_stok where stok_kodu= :stok_kodu', false);
+  qStok_ := yeniQuery('SELECT * FROM STOK where STOKKODU= :STOKKODU', false);
 
 
   repeat
     shtHS := TcxTabSheet.Create(Self);
-    shtHS.Name      := 'shtHS' + qHsGrup_.FieldByName('id').AsString;
+    shtHS.Name      := 'shtHS' + qHsGrup_.FieldByName('ID').AsString;
     shtHS.Parent    := pcHS;
-    shtHS.Caption   := qHsGrup_.FieldByName('grup_adi').AsString;
+    shtHS.Caption   := qHsGrup_.FieldByName('GRUPADI').AsString;
 
     sboxHS          := TScrollBox.Create(Self);
-    sboxHS.Name     := 'sboxHS' + qHsGrup_.FieldByName('id').AsString;
+    sboxHS.Name     := 'sboxHS' + qHsGrup_.FieldByName('ID').AsString;
     sboxHS.Parent   := shtHS;
     sboxHS.AlignWithMargins := True;
     sboxHS.Left     := 3;
@@ -391,7 +391,7 @@ begin
     sboxHS.Color    := clWhite;
 
     fPanelHS          := TFlowPanel.Create(Self);
-    fPanelHS.Name     := 'fPanelHS' + qHsGrup_.FieldByName('id').AsString;
+    fPanelHS.Name     := 'fPanelHS' + qHsGrup_.FieldByName('ID').AsString;
     fPanelHS.Caption  := '';
     fPanelHS.Parent   := sboxHS;
     fPanelHS.AlignWithMargins := True;
@@ -407,13 +407,13 @@ begin
 
 
     qHsStok_.Close;
-    qHsStok_.ParamByName('hs_grup_id').AsString := qHsGrup_.FieldByName('id').AsString;
+    qHsStok_.ParamByName('GRUPID').AsString := qHsGrup_.FieldByName('ID').AsString;
     qHsStok_.Open;
     qHsStok_.First;
     if qHsStok_.RecordCount >0 then
     repeat
       qStok_.Close;
-      qStok_.ParamByName('stok_kodu').AsString := qHsStok_.FieldByName('stok_kodu').AsString;
+      qStok_.ParamByName('STOKKODU').AsString := qHsStok_.FieldByName('STOKKODU').AsString;
       qStok_.Open;
       if qStok_.IsEmpty then
       begin
@@ -426,7 +426,7 @@ begin
       lblAd    := TcxLabel.Create(Self);
       lblFiyat := TcxLabel.Create(Self);
 
-      pnlHS.Name        := 'pnlHS' + qHsGrup_.FieldByName('id').AsString+ '___'+ qHsStok_.FieldByName('id').AsString;
+      pnlHS.Name        := 'pnlHS' + qHsGrup_.FieldByName('ID').AsString+ '___'+ qHsStok_.FieldByName('ID').AsString;
       pnlHS.Parent      := fPanelHS;
       pnlHS.AlignWithMargins := true;
       pnlHS.Left        := 1;
@@ -441,7 +441,7 @@ begin
       pnlHS.TabOrder    := 0;
       pnlHS.Caption     := '';
 
-      lblAd.Name        := 'lblAd' + qHsGrup_.FieldByName('id').AsString+ '___'+ qHsStok_.FieldByName('id').AsString;
+      lblAd.Name        := 'lblAd' + qHsGrup_.FieldByName('ID').AsString+ '___'+ qHsStok_.FieldByName('ID').AsString;
       lblAd.Parent      := pnlHS;
       lblAd.Align       := alClient;
       lblAd.Left        := 35;
@@ -449,7 +449,7 @@ begin
       lblad.AutoSize := true;
 
       //lblAd.AlignWithMargins := True;
-      lblAd.Caption     := qStok_.FieldByName('stok_adi').AsString;
+      lblAd.Caption     := qStok_.FieldByName('STOKADI').AsString;
       lblAd.ParentFont  := False;
       lblAd.ParentColor := False;
       lblAd.Width := 114;
@@ -465,18 +465,18 @@ begin
       lblAd.Properties.Alignment.Vert := taVCenter;
       lblAd.Properties.WordWrap := True;
 
-      lblad.Hint        := qHsStok_.FieldByName('stok_kodu').AsString;
+      lblad.Hint        := qHsStok_.FieldByName('STOKKODU').AsString;
       lblAd.OnClick     := lblAdClick;
       lblAd.OnDblClick  := lblAdClick;
 
 
-      lblFiyat.Name      := 'lblFiyat' + qHsGrup_.FieldByName('id').AsString+ '___'+ qHsStok_.FieldByName('id').AsString;
+      lblFiyat.Name      := 'lblFiyat' + qHsGrup_.FieldByName('ID').AsString+ '___'+ qHsStok_.FieldByName('STOKKODU').AsString;
       lblFiyat.Parent    := pnlHS;
       lblFiyat.Align     := alBottom;
 //      lblFiyat.Left      := pnlHS.Width -58; //114;
 //      lblFiyat.Top       := pnlHS.Height -25; //154;
 
-      lblFiyat.Caption   := qStok_.FieldByName('sfiyat1').AsString+ ' TL';
+      lblFiyat.Caption   := qStok_.FieldByName('SATISFIYATI').AsString+ ' TL';
       lblFiyat.ParentColor:= False;
       lblFiyat.ParentFont:= False;
       lblFiyat.Style.Color := clRed;
@@ -486,7 +486,7 @@ begin
       lblFiyat.Style.Font.Name    := 'Tahoma';
       lblFiyat.Style.Font.Style   := [fsBold];
       lblFiyat.Properties.Alignment.Horz := taCenter;
-      lblFiyat.Hint      := qHsStok_.FieldByName('stok_kodu').AsString;
+      lblFiyat.Hint      := qHsStok_.FieldByName('STOKKODU').AsString;
       lblFiyat.OnClick   := lblAdClick;
       lblFiyat.OnDblClick:= lblAdClick;
 
@@ -545,13 +545,13 @@ begin
 
   if not MesajSor('Ekrandaki Aktif Satýþ Ýþlemleri Bekleme Listesine Alýnýp Yeni Satýþ Baþlatýlacak..') then exit;
 
-  q := yeniQuery('select isnull(max(beklemede),0) as yenino from tmp_satis where beklemede <>0');
+  q := yeniQuery('select isnull(max(BEKLEMEDE),0) as yenino from TMPSATIS where BEKLEMEDE <>0');
   if q.IsEmpty then
     yeniNo := 1
   else
     yeniNo := q.FieldByName('yenino').AsInteger + 1;
 
-  sqlCalistir('update tmp_satis set beklemede='+ inttostr(yeniNo) + ' where beklemede=0');
+  sqlCalistir('update TMPSATIS set BEKLEMEDE='+ inttostr(yeniNo) + ' where BEKLEMEDE=0');
 
   qryBekleyenSatislar.Refresh;
   satisIptal;
@@ -577,14 +577,8 @@ begin
 end;
 
 procedure TfrmHizliSatis.cbFisYazdirmaPropertiesChange(Sender: TObject);
-var
-  q : TUniQuery;
 begin
-  q := yeniQuery('select FisYazdirma from t_ayarlar');
-  q.Edit;
-  q.FieldByName('FisYazdirma').AsInteger := cbFisYazdirma.ItemIndex;
-  q.Post;
-  FreeAndNil(q);
+  sqlCalistir('update USERS set p_FISYAZDIRMA =' + cbFisYazdirma.ItemIndex.ToString + ' WHERE ID= ' + loginUserID.ToString);
 end;
 
 procedure TfrmHizliSatis.cxButton1Click(Sender: TObject);
@@ -640,8 +634,8 @@ var
   qCari : TUniQuery;
 begin
   //cari comboboxu dolduruluyor..
-  qCari := yeniQuery('select * from t_cari where 1=1 ', false);
-  if edtCariBul.Text <> '' then qCari.sql.Add(' and cari_isim like ' + QuotedStr('%'+edtCariBul.Text+'%') + ' order by cari_isim asc');
+  qCari := yeniQuery('select * from CARI where 1=1 ', false);
+  if edtCariBul.Text <> '' then qCari.sql.Add(' and UNVAN like ' + QuotedStr('%'+edtCariBul.Text+'%') + ' order by UNVAN asc');
 
   qCari.Open;
 
@@ -654,7 +648,7 @@ begin
 
   if not qCari.IsEmpty then
   repeat
-    cbCari.Properties.Items.Add(qCari.FieldByName('cari_isim').AsString);
+    cbCari.Properties.Items.Add(qCari.FieldByName('UNVAN').AsString);
     qCari.Next;
   until qCari.Eof ;
   cbCari.ItemIndex := 0;
@@ -663,10 +657,10 @@ end;
 procedure TfrmHizliSatis.edtUrunBulPropertiesChange(Sender: TObject);
 begin
   qryStokBul.Close;
-  qryStokBul.sql.Text := 'select * from t_stok';
+  qryStokBul.sql.Text := 'select * from STOK';
 
   if edtUrunBul.Text <> '' then
-  qryStokBul.SQL.Add('where stok_adi like '+ QuotedStr('%'+ edtUrunBul.Text+ '%') + ' or barkod like '+ QuotedStr('%'+ edtUrunBul.Text+ '%') );
+  qryStokBul.SQL.Add('where STOKADI like '+ QuotedStr('%'+ edtUrunBul.Text+ '%') + ' or BARKOD like '+ QuotedStr('%'+ edtUrunBul.Text+ '%') );
 
   qryStokBul.Open;
 end;
@@ -674,23 +668,15 @@ end;
 procedure TfrmHizliSatis.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if qryTempSatis.RecordCount >0 then
-  begin
-    if Mesajsor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
-    begin
-      satisIptal;
-      action := cafree;
-    end
+    if MesajSor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
+      satisIptal
     else
-    action := caNone;
-  end
-  else
-  action := cafree;
-
-
+      action := caNone;
 end;
 
 procedure TfrmHizliSatis.FormCreate(Sender: TObject);
 begin
+  TumQuerylereConnectionAta(self);
   if FileExists(RAPORLAR+ '\perakende_fis.fr3') then
   begin
     try frxHsFis.LoadFromFile(RAPORLAR+ '\perakende_fis.fr3');
@@ -707,8 +693,6 @@ begin
   if not qryStokBul.Active               then qryStokBul.Open;
   if not qryBekleyenSatislar.Active      then qryBekleyenSatislar.Open;
   if not qryBekleyenSatislarDetay.Active then qryBekleyenSatislarDetay.Open;
-
-
 end;
 
 
@@ -726,17 +710,11 @@ begin
 end;
 
 procedure TfrmHizliSatis.FormShow(Sender: TObject);
-var
-  q: TUniQuery;
 begin
   hizliSatisDoldur;
-
   tutarEditGuncelle;
   edtCariBulPropertiesChange(sender);
-
-  q := yeniQuery('select FisYazdirma from t_ayarlar');
-  cbFisYazdirma.ItemIndex :=  q.FieldByName('FisYazdirma').AsInteger;
-  FreeAndNil(q);
+  cbFisYazdirma.ItemIndex := StrToIntDef(veriCekSQL('select p_FISYAZDIRMA from USERS WHERE ID= ' + loginUserID.ToString, 'p_FISYAZDIRMA') , 0)
 end;
 
 
@@ -763,7 +741,7 @@ procedure TfrmHizliSatis.grdUrunAraDBTableView1DblClick(Sender: TObject);
 begin
   if qryStokBul.IsEmpty then exit;
 
-  barkodOku( qryStokBul.FieldByName('stok_kodu').AsString);
+  barkodOku( qryStokBul.FieldByName('STOKKODU').AsString);
   edtUrunBul.Text := '';
   edtUrunBulPropertiesChange(sender);
 end;
@@ -772,7 +750,7 @@ procedure TfrmHizliSatis.satisIptal();
 begin
   if not qryTempSatis.IsEmpty then
   begin
-    sqlCalistir('delete from tmp_satis where beklemede=0');
+    sqlCalistir('delete from TMPSATIS where BEKLEMEDE=0');
 
     qryTempSatis.Refresh;
     edtToplam.Text := '0';
@@ -790,7 +768,7 @@ var
   toplam : double;
   sPU : string;
 begin
-  qToplam :=  yeniQuery('select sum(toplam) as xToplam from tmp_Satis where beklemede=0');
+  qToplam :=  yeniQuery('select sum(TOPLAM) as xToplam from TMPSATIS where beklemede=0');
 
   if not qToplam.IsEmpty then
     edtToplam.Text := qToplam.FieldByName('xToplam').AsString;
@@ -841,132 +819,128 @@ var
   qTemp, qHar: TUniQuery;
   sIslemTuru, odemeID, cariKodu, harID, tipi, tutar : string;
 begin
-//  if islem = '' then exit;
-//  if qryTempSatis.IsEmpty then exit;
-//
-//  if islem = NAKIT      then sIslemTuru := 'Nakit';
-//  if islem = KREDIKARTI then sIslemTuru := 'Kredi Kartý';
-//  if islem = CARI       then sIslemTuru := 'Veresiye';
-//
-//  //if islem = CARI then
-//    if not sor('Ekrandaki Satýþ Ýþlemi ' + sIslemTuru +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
-//                #13#10 + 'ÖDEME ÞEKLÝ : ' + sIslemTuru)
-//    then exit;
-//
-//
-//
-//  if qryTempSatis.State in [dsedit,dsInsert] then qryTempSatis.Post;
-//
-//  if islem = NAKIT      then tipi := 'HS';
-//  if islem = KREDIKARTI then tipi := 'HSKK';
-//  if islem = CARI       then tipi := 'HSV';
-//
-//
-//
-//  qTemp := yeniQuery('select * from tmp_satis where beklemede=0');
-//  qTemp.First;
-//  if qTemp.IsEmpty then
-//  begin
-//    MesajBilgi('Satýþ Ýþlemi Yok. Lütfen Önce Ýþlem Ekleyin.');
-//    qTemp.Free;
-//    edtBarkod.SetFocus;
-//    exit;
-//  end;
-//
-//  qHar  :=  yeniQuery('select sum(toplam) as xToplam from tmp_satis where beklemede=0');
-//  tutar :=  qHar.FieldByName('xToplam').AsString;
-//
-//  qHar.Close;
-//  qHar.SQL.text := 'select * from '+ TABLO_HAR + ' where 1=2';
-//  qHar.Open;
-//  qHar.Append;
-//
-//  qHar.FieldByName('tipi'). AsString   := tipi;
-//  qHar.FieldByName('gckodu'). AsString := '-1';
-//
-//  if cbcari.text <> 'PERAKENDE' then
-//  begin
-//    cariKodu := veriCekSQL('select cari_kodu from t_cari where cari_isim='+ QuotedStr(cbcari.text), 'cari_kodu');
-//    if cariKodu <> VERI_YOK then qHar.FieldByName('cari_kodu'). AsString := cariKodu;
-//  end
-//  else
-//    qHar.FieldByName('cari_kodu'). AsString := 'PERAKENDE';
-//
-//  qHar.FieldByName('tarih').AsDateTime        := now;
-//  qHar.FieldByName('kayit_tarihi').AsDateTime := now;
-//  qHar.FieldByName('tutar').AsString          := tutar;
-//  qHar.FieldByName('kaydeden').AsString  := loginUserAdi;
-//  qHar.FieldByName('aciklama').AsString       := 'Hýzlý Satýþ ' + islem;
-//
-//
-//
-//  if islem = NAKIT      then qHar.FieldByName('odeme_nakit').AsString := tutar;
-//  if islem = KREDIKARTI then qHar.FieldByName('odeme_kk').AsString    := tutar;
-//  if islem = CARI       then qHar.FieldByName('odeme_cari').AsString  := tutar;
-//
-//  qHar.Post;
-//
-//  harID := qHar.FieldByName('id').AsString;
-//
-//  qHar.Close;
-//  qHar.SQL.Text := 'select * from ' + TABLO_HAR_DET + ' where 1=2';
-//  qhar.Open;
-//
-//  repeat
-//    qhar.Append;
-//
-//    qhar.FieldByName('har_id').AsString := harID;
-//    qhar.FieldByName('tipi').AsString :=  tipi;
-//    qhar.FieldByName('gckodu').AsString := '-1';
-//
-//    qhar.FieldByName('stok_kodu').AsString := qtemp.FieldByName('stok_kodu' ).AsString;
-//    qhar.FieldByName('stok_adi').AsString  := qtemp.FieldByName('stok_adi' ).AsString;
-//    qhar.FieldByName('adet').AsString      := qtemp.FieldByName('adet' ).AsString;
-//    qhar.FieldByName('afiyat').AsString    := veriCeksql('select afiyat1 from t_stok where stok_kodu='+ QuotedStr(qtemp.FieldByName('stok_kodu').AsString), 'afiyat1');
-//    qhar.FieldByName('sfiyat').AsString    := qtemp.FieldByName('fiyat' ).AsString;
-//    qhar.FieldByName('tutar').AsFloat     := qtemp.FieldByName('fiyat').AsFloat * qhar.FieldByName('adet').AsFloat;
-//    qhar.FieldByName('kdv').AsString       := qtemp.FieldByName('kdv' ).AsString;
-//    if qhar.FieldByName('kdv').AsString = '' then qhar.FieldByName('kdv').AsString := '18';
-//    qhar.FieldByName('iskonto').AsString   := qtemp.FieldByName('iskonto' ).AsString;
-//    qhar.FieldByName('toplam').AsString    := qtemp.FieldByName('toplam' ).AsString;
-//    qhar.FieldByName('aciklama' ).AsString := 'PERAKENDE SATIÞ - ' + islem;
-//    qhar.FieldByName('kayit_tarihi').AsDateTime := now;
-//    qhar.FieldByName('kaydeden').AsString  := loginUserAdi;
-//    qhar.FieldByName('tarih').AsDateTime   := now;
-//
-//    qhar.post;
-//
-//    qtemp.Next;
-//  until qtemp.eof;
-//
-//  with qryCari do
-//  begin
-//    close;
-//    ParamByName('cari_kodu').AsString := cariKodu;
-//    open;
-//  end;
-//
-//  with qryFis do
-//  begin
-//    close;
-//    ParamByName('har_id').AsString := harID;
-//    open;
-//  end;
-//
-//
-//  if cbFisYazdirma.ItemIndex = 1 then
-//    frxHsFis.ShowReport();
-//
-//  if cbFisYazdirma.ItemIndex = 2 then
-//  begin
-//    frxHsFis.PrepareReport;
-//    frxHsFis.PrintOptions.ShowDialog := False;
-//    frxHsFis.Print;
-//  end;
+  if islem = '' then exit;
+  if qryTempSatis.IsEmpty then exit;
+
+  if islem = NAKIT      then sIslemTuru := 'Nakit';
+  if islem = KREDIKARTI then sIslemTuru := 'Kredi Kartý';
+  if islem = CARI       then sIslemTuru := 'Veresiye';
+
+  //if islem = CARI then
+    if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + sIslemTuru +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
+                #13#10 + 'ÖDEME ÞEKLÝ : ' + sIslemTuru)
+    then exit;
 
 
 
+  if qryTempSatis.State in [dsedit,dsInsert] then qryTempSatis.Post;
 
+  if islem = NAKIT      then tipi := 'HS';
+  if islem = KREDIKARTI then tipi := 'HSKK';
+  if islem = CARI       then tipi := 'HSV';
+
+
+                                                            ASDASDASD
+  qTemp := yeniQuery('select * from tmp_satis where beklemede=0');
+  qTemp.First;
+  if qTemp.IsEmpty then
+  begin
+    MesajBilgi('Satýþ Ýþlemi Yok. Lütfen Önce Ýþlem Ekleyin.');
+    qTemp.Free;
+    edtBarkod.SetFocus;
+    exit;
+  end;
+
+  qHar  :=  yeniQuery('select sum(toplam) as xToplam from tmp_satis where beklemede=0');
+  tutar :=  qHar.FieldByName('xToplam').AsString;
+
+  qHar.Close;
+  qHar.SQL.text := 'select * from '+ 'asdasdasdasd' + ' where 1=2';
+  qHar.Open;
+  qHar.Append;
+
+  qHar.FieldByName('tipi'). AsString   := tipi;
+  qHar.FieldByName('gckodu'). AsString := '-1';
+
+  if cbcari.text <> 'PERAKENDE' then
+  begin
+    cariKodu := veriCekSQL('select cari_kodu from t_cari where cari_isim='+ QuotedStr(cbcari.text), 'cari_kodu');
+    if cariKodu <> VERI_YOK then qHar.FieldByName('cari_kodu'). AsString := cariKodu;
+  end
+  else
+    qHar.FieldByName('cari_kodu'). AsString := 'PERAKENDE';
+
+  qHar.FieldByName('tarih').AsDateTime        := now;
+  qHar.FieldByName('kayit_tarihi').AsDateTime := now;
+  qHar.FieldByName('tutar').AsString          := tutar;
+  qHar.FieldByName('kaydeden').AsString  := loginUserAdi;
+  qHar.FieldByName('aciklama').AsString       := 'Hýzlý Satýþ ' + islem;
+
+
+
+  if islem = NAKIT      then qHar.FieldByName('odeme_nakit').AsString := tutar;
+  if islem = KREDIKARTI then qHar.FieldByName('odeme_kk').AsString    := tutar;
+  if islem = CARI       then qHar.FieldByName('odeme_cari').AsString  := tutar;
+
+  qHar.Post;
+
+  harID := qHar.FieldByName('id').AsString;
+
+  qHar.Close;
+  qHar.SQL.Text := 'select * from ' + 'asdasdas' + ' where 1=2';
+  qhar.Open;
+
+  repeat
+    qhar.Append;
+
+    qhar.FieldByName('har_id').AsString := harID;
+    qhar.FieldByName('tipi').AsString :=  tipi;
+    qhar.FieldByName('gckodu').AsString := '-1';
+
+    qhar.FieldByName('stok_kodu').AsString := qtemp.FieldByName('stok_kodu' ).AsString;
+    qhar.FieldByName('stok_adi').AsString  := qtemp.FieldByName('stok_adi' ).AsString;
+    qhar.FieldByName('adet').AsString      := qtemp.FieldByName('adet' ).AsString;
+    qhar.FieldByName('afiyat').AsString    := veriCeksql('select afiyat1 from t_stok where stok_kodu='+ QuotedStr(qtemp.FieldByName('stok_kodu').AsString), 'afiyat1');
+    qhar.FieldByName('sfiyat').AsString    := qtemp.FieldByName('fiyat' ).AsString;
+    qhar.FieldByName('tutar').AsFloat     := qtemp.FieldByName('fiyat').AsFloat * qhar.FieldByName('adet').AsFloat;
+    qhar.FieldByName('kdv').AsString       := qtemp.FieldByName('kdv' ).AsString;
+    if qhar.FieldByName('kdv').AsString = '' then qhar.FieldByName('kdv').AsString := '18';
+    qhar.FieldByName('iskonto').AsString   := qtemp.FieldByName('iskonto' ).AsString;
+    qhar.FieldByName('toplam').AsString    := qtemp.FieldByName('toplam' ).AsString;
+    qhar.FieldByName('aciklama' ).AsString := 'PERAKENDE SATIÞ - ' + islem;
+    qhar.FieldByName('kayit_tarihi').AsDateTime := now;
+    qhar.FieldByName('kaydeden').AsString  := loginUserAdi;
+    qhar.FieldByName('tarih').AsDateTime   := now;
+
+    qhar.post;
+
+    qtemp.Next;
+  until qtemp.eof;
+
+  with qryCari do
+  begin
+    close;
+    ParamByName('cari_kodu').AsString := cariKodu;
+    open;
+  end;
+
+  with qryFis do
+  begin
+    close;
+    ParamByName('har_id').AsString := harID;
+    open;
+  end;
+
+
+  if cbFisYazdirma.ItemIndex = 1 then
+    frxHsFis.ShowReport();
+
+  if cbFisYazdirma.ItemIndex = 2 then
+  begin
+    frxHsFis.PrepareReport;
+    frxHsFis.PrintOptions.ShowDialog := False;
+    frxHsFis.Print;
+  end;
 
 
   //qHsFis.Refresh;

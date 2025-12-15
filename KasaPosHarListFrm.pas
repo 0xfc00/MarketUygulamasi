@@ -138,6 +138,7 @@ end;
 procedure TfrmKasaPosHarList.FormCreate(Sender: TObject);
 begin
   pnlHeader.Caption := '   KASA / POS HAREKETLERÝ';
+  pnlHeader.Color := clgreen;
   TumQuerylereConnectionAta(self);
   dtBas.date := now;
   dtbit.date := now;

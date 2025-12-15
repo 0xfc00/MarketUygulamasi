@@ -71,6 +71,7 @@ procedure TfrmStokSec.FormCreate(Sender: TObject);
 begin
   inherited;
   pnlHeader.Caption := '   STOK SEÇ';
+  pnlHeader.color :=clGreen;
 
   qryStoklar.Connection := dmMain.UniConn;
   if qryStoklar.Active = False then

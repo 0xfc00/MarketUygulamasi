@@ -678,6 +678,7 @@ object frmLogin: TfrmLogin
       Height = 28
       Align = alRight
       Caption = 'Giri'#351
+      Default = True
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
@@ -730,8 +731,6 @@ object frmLogin: TfrmLogin
         093C2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnDbAyarClick
-      ExplicitLeft = 0
-      ExplicitTop = 3
     end
   end
   object cxLabel2: TcxLabel

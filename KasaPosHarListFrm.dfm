@@ -26,8 +26,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ExplicitLeft = -8
-    ExplicitTop = 43
     ClientRectBottom = 434
     ClientRectLeft = 2
     ClientRectRight = 863
@@ -35,8 +33,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
-      ExplicitWidth = 819
-      ExplicitHeight = 410
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -45,9 +41,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 403
         Align = alClient
         TabOrder = 0
-        ExplicitTop = 95
-        ExplicitWidth = 977
-        ExplicitHeight = 437
         object cxGrid1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -69,21 +62,27 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.GroupByBox = False
           object cxGrid1DBTableView1TARIH: TcxGridDBColumn
             DataBinding.FieldName = 'TARIH'
+            DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1GIREN: TcxGridDBColumn
             DataBinding.FieldName = 'GIREN'
+            DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1CIKAN: TcxGridDBColumn
             DataBinding.FieldName = 'CIKAN'
+            DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1CARIID: TcxGridDBColumn
             DataBinding.FieldName = 'CARIID'
+            DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn
             DataBinding.FieldName = 'EVRAKNO'
+            DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1USERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
+            DataBinding.IsNullValueType = True
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -96,6 +95,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       ImageIndex = 1
       ExplicitLeft = 4
       ExplicitTop = 27
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -127,24 +128,31 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.GroupByBox = False
           object cxGridDBTableView1TARIH: TcxGridDBColumn
             DataBinding.FieldName = 'TARIH'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1POSID: TcxGridDBColumn
             DataBinding.FieldName = 'POSID'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1BORC: TcxGridDBColumn
             DataBinding.FieldName = 'BORC'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1ALACAK: TcxGridDBColumn
             DataBinding.FieldName = 'ALACAK'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1CARIID: TcxGridDBColumn
             DataBinding.FieldName = 'CARIID'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1EVRAKNO: TcxGridDBColumn
             DataBinding.FieldName = 'EVRAKNO'
+            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1USERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
+            DataBinding.IsNullValueType = True
           end
         end
         object cxGridLevel1: TcxGridLevel
@@ -161,9 +169,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Height = 36
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -151
-    ExplicitTop = 446
-    ExplicitWidth = 977
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 758
@@ -260,7 +265,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 873
     end
   end
   object Panel1: TPanel
@@ -270,7 +274,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 826
     object btnSonHafta: TcxButton
       AlignWithMargins = True
       Left = 239
@@ -282,8 +285,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Caption = 'Son Hafta'
       TabOrder = 0
       OnClick = btnSonHaftaClick
-      ExplicitLeft = 11
-      ExplicitHeight = 49
     end
     object btnDun: TcxButton
       AlignWithMargins = True
@@ -296,7 +297,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Caption = 'D'#252'n'
       TabOrder = 1
       OnClick = btnDunClick
-      ExplicitTop = 2
     end
     object btnBugun: TcxButton
       AlignWithMargins = True
@@ -309,7 +309,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Caption = 'Bug'#252'n'
       TabOrder = 2
       OnClick = btnBugunClick
-      ExplicitHeight = 49
     end
     object btnSonAy: TcxButton
       AlignWithMargins = True
@@ -322,7 +321,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Caption = 'Son Ay'
       TabOrder = 3
       OnClick = btnSonAyClick
-      ExplicitTop = 2
     end
     object Panel2: TPanel
       AlignWithMargins = True
@@ -332,8 +330,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Height = 33
       Align = alRight
       TabOrder = 4
-      ExplicitLeft = 521
-      ExplicitTop = 2
       object btnFiltrele: TcxButton
         AlignWithMargins = True
         Left = 265
@@ -344,8 +340,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Caption = 'Filtrele'
         TabOrder = 0
         OnClick = btnFiltreleClick
-        ExplicitLeft = 258
-        ExplicitTop = 6
       end
       object dtBit: TcxDateEdit
         AlignWithMargins = True
@@ -355,9 +349,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 1
-        ExplicitLeft = 120
-        ExplicitTop = 12
-        ExplicitHeight = 21
         Width = 121
       end
       object dtBas: TcxDateEdit
@@ -368,9 +359,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 2
-        ExplicitLeft = 120
-        ExplicitTop = 12
-        ExplicitHeight = 21
         Width = 121
       end
     end

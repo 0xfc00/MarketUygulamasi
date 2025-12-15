@@ -81,6 +81,7 @@ begin
   end;
 
   LoginFormAc_fn; //deneme
+  yetkileriYukle;
 end;
 
 end.

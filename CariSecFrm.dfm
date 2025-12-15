@@ -22,8 +22,6 @@ object frmCariSec: TfrmCariSec
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 195
-    ExplicitWidth = 477
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 307
@@ -120,7 +118,6 @@ object frmCariSec: TfrmCariSec
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 373
     end
     object btnSec: TcxButton
       AlignWithMargins = True
@@ -134,7 +131,6 @@ object frmCariSec: TfrmCariSec
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
       OnClick = btnSecClick
-      ExplicitTop = 0
     end
   end
   object cxGrid1: TcxGrid
@@ -145,9 +141,6 @@ object frmCariSec: TfrmCariSec
     Height = 391
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitWidth = 499
-    ExplicitHeight = 387
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways

@@ -104,6 +104,7 @@ begin
   if GCKodu = O then    // Cariye yapýlan ödeme
     begin
       pnlHeader.Caption := '   CARÝ ÖDEME';
+      pnlHeader.Color := clRed;
       with cbxIslemTuru.Properties.Items do
       begin
         Add('Nakit Ödeme');

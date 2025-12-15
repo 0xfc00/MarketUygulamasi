@@ -46,8 +46,8 @@ object frmKartBase: TfrmKartBase
       TransparentText = False
       VAlignment = vaCenter
       Version = '1.2.1.0'
-      ExplicitLeft = 0
-      ExplicitTop = 8
+      ExplicitWidth = 12
+      ExplicitHeight = 16
     end
   end
 end

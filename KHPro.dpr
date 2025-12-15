@@ -27,7 +27,9 @@ uses
   PosListFrm in 'PosListFrm.pas' {frmPosList},
   KasaHareketEkleFrm in 'KasaHareketEkleFrm.pas' {frmKasaHareketEkle},
   KasaPosHarListFrm in 'KasaPosHarListFrm.pas' {frmKasaPosHarList},
-  DbAyarlarFrm in 'DbAyarlarFrm.pas' {frmDbAyarlar};
+  DbAyarlarFrm in 'DbAyarlarFrm.pas' {frmDbAyarlar},
+  frmKullanicilarF in 'frmKullanicilarF.pas' {frmKullanicilar},
+  frmHizliSatisButonlariF in 'frmHizliSatisButonlariF.pas' {frmHizliSatisButonlari};
 
 {$R *.res}
 

@@ -13,7 +13,7 @@ uses
   dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
   dxSkinOffice2019Colorful, LoginFrm, _vars, cxContainer, cxEdit, cxImage,
   PosListFrm, dxGDIPlusClasses, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm;
+  Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -112,6 +112,10 @@ type
     acKasaGiris: TAction;
     acKasaCikis: TAction;
     acKasaPosHarList: TAction;
+    acKullaniciYonetimi: TAction;
+    nbiKullanicilar: TdxNavBarItem;
+    acHizliSatisButonlari: TAction;
+    nbiHizlisatisButonlari: TdxNavBarItem;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -136,6 +140,8 @@ type
     procedure acKasaGirisExecute(Sender: TObject);
     procedure acKasaCikisExecute(Sender: TObject);
     procedure acKasaPosHarListExecute(Sender: TObject);
+    procedure acKullaniciYonetimiExecute(Sender: TObject);
+    procedure acHizliSatisButonlariExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -160,7 +166,7 @@ implementation
 uses
   YeniStokKartiFrm, TanimlarFrm, MainDM,StokListFrm, StokSecFrm, StokHareketEkleFrm, StokHarListFrm, YeniCariKartFrm,
   CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm,
-  _cons, frmHizliSatisF;
+  _cons, frmHizliSatisF, frmKullanicilarF, _func;
 
 {$R *.dfm}
 
@@ -350,8 +356,8 @@ begin
 
   if (
      (VeriCek_fn('STOK_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('SATIS_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('FATURA_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
+     (VeriCek_fn('SATIS_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
+     //or (VeriCek_fn('FATURA_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
      )
   then
     result := True;
@@ -364,7 +370,7 @@ begin
   if (
      (VeriCek_fn('CARI_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
      (VeriCek_fn('KASA_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
+     //(VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
      (VeriCek_fn('POS_H',  'CARIID', ACariId, 'ID') <> VERI_YOK)  or
      (VeriCek_fn('SATIS',  'CARIID', ACariId, 'ID') <> VERI_YOK)
      )
@@ -478,6 +484,12 @@ begin
   CariHareketEkleFormuAc_fn(T);
 end;
 
+procedure TfrmMain.acHizliSatisButonlariExecute(Sender: TObject);
+begin
+  with TfrmHizliSatisButonlari.Create(nil) do
+    showmodal;
+end;
+
 procedure TfrmMain.acHizliSatisExecute(Sender: TObject);
 begin
   with TfrmHizliSatis.Create(nil) do
@@ -497,6 +509,12 @@ end;
 procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
 begin
   with TfrmKasaPosHarList.Create(nil) do
+    showmodal;
+end;
+
+procedure TfrmMain.acKullaniciYonetimiExecute(Sender: TObject);
+begin
+  with TfrmKullanicilar.Create(nil) do
     showmodal;
 end;
 
@@ -570,6 +588,7 @@ end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
+
   Caption := APP_NAME;
 
 end;

@@ -54,6 +54,7 @@ end;
 procedure TfrmPosList.FormCreate(Sender: TObject);
 begin
   pnlHeader.Caption := '   POS Tanýmlarý';
+  pnlHeader.color :=clGreen;
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);

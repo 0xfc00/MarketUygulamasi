@@ -96,7 +96,7 @@ begin
     begin
       if IsEmpty then
       begin
-        sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, 1)');
+        sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, '''')');
         close;
         open;
       end;

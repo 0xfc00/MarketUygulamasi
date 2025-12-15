@@ -68,6 +68,7 @@ procedure TfrmCariSec.FormCreate(Sender: TObject);
 begin
   inherited;
   pnlHeader.Caption := '   CARÝ SEÇ';
+  pnlHeader.color :=clGreen;
 
   qryCariler.Connection := dmMain.UniConn;
   if qryCariler.Active = False then

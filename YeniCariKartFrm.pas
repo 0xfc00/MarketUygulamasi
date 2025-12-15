@@ -103,6 +103,7 @@ type
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBDateEdit1: TcxDBDateEdit;
+    btnYeniCariGrup: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -112,6 +113,7 @@ type
     procedure btnKaydetVeYeniClick(Sender: TObject);
     procedure btnSilClick(Sender: TObject);
     procedure qryCariBeforePost(DataSet: TDataSet);
+    procedure btnYeniCariGrupClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -127,6 +129,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses TanimlarFrm;
 
 
 procedure TfrmYeniCariKart.YeniKayitIcinHazirla();
@@ -167,6 +171,17 @@ begin
     close;
 end;
 
+procedure TfrmYeniCariKart.btnYeniCariGrupClick(Sender: TObject);
+var
+  mForm : TfrmTanimlar;
+begin
+  inherited;
+  Application.CreateForm(TfrmTanimlar, mForm);
+  mForm.pc.ActivePageIndex := 4;
+  mForm.ShowModal;
+  qAcKapa_fn(qryCariGrupLook);
+end;
+
 procedure TfrmYeniCariKart.CariKartiGetir();
 begin
   qryCari.SQL.Text := 'select * from CARI where ID = :id';
@@ -202,6 +217,7 @@ begin
 procedure TfrmYeniCariKart.FormShow(Sender: TObject);
 begin
 inherited;
+  pnlHeader.color :=clGreen;
   if CariID = EmptyStr then
   begin
     YeniKayitIcinHazirla;

@@ -80,6 +80,7 @@ var
 begin
   inherited;
   pnlHeader.Caption := '   STOK HAREKETLERÝ';
+  pnlHeader.color :=clGreen;
 
   for I := 0 to ComponentCount-1 do
     if Components[i] is TUniQuery then

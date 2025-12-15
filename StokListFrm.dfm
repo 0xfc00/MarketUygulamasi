@@ -22,7 +22,6 @@ object frmStokList: TfrmStokList
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = -2
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 878
@@ -351,7 +350,6 @@ object frmStokList: TfrmStokList
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 6
-      ExplicitTop = 0
     end
   end
   object cxGrid1: TcxGrid
@@ -362,7 +360,6 @@ object frmStokList: TfrmStokList
     Height = 463
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -2
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>

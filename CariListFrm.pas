@@ -141,6 +141,7 @@ var
 begin
   inherited;
   pnlHeader.Caption := '   CARÝ KARTLARI';
+  pnlHeader.color :=clGreen;
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);

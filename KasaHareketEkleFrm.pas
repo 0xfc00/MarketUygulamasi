@@ -73,10 +73,15 @@ end;
 procedure TfrmKasaHareketEkle.FormShow(Sender: TObject);
 begin
   if GCKodu = 'G' then
-    pnlHeader.Caption := '   KASA GÝRÝÞ'
+  begin
+    pnlHeader.Caption := '   KASA GÝRÝÞ';
+  end
   ELSE
+  begin
   if GCKodu = 'C' then
     pnlHeader.Caption := '   KASA ÇIKIÞ';
+    pnlHeader.Color := clRed;
+  end;
 
   TumQueryleriAc(self, true);
   qryKasaHarEkle.Append;

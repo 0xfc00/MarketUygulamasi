@@ -22,7 +22,6 @@ object frmStokSec: TfrmStokSec
     Height = 409
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -2
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways

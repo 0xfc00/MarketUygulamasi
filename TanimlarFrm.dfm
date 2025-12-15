@@ -13,6 +13,7 @@ object frmTanimlar: TfrmTanimlar
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pc: TcxPageControl
@@ -25,7 +26,7 @@ object frmTanimlar: TfrmTanimlar
     TabOrder = 0
     Properties.ActivePage = shBirimler
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 450
+    OnChange = pcChange
     ClientRectBottom = 273
     ClientRectLeft = 2
     ClientRectRight = 455
@@ -33,7 +34,6 @@ object frmTanimlar: TfrmTanimlar
     object shBirimler: TcxTabSheet
       Caption = 'Birimler'
       ImageIndex = 0
-      ExplicitWidth = 443
       object grdBirimler: TcxGrid
         Left = 0
         Top = 0
@@ -41,7 +41,6 @@ object frmTanimlar: TfrmTanimlar
         Height = 207
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 443
         object viewBrimler: TcxGridDBTableView
           PopupMenu = pmGrid
           Navigator.Buttons.CustomButtons = <>
@@ -74,14 +73,12 @@ object frmTanimlar: TfrmTanimlar
         Height = 41
         Align = alBottom
         TabOrder = 1
-        ExplicitWidth = 443
         object edtBirimEkle: TcxTextEdit
           AlignWithMargins = True
           Left = 4
           Top = 4
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 389
           Width = 399
         end
         object btnBirimEkle: TcxButton
@@ -100,13 +97,16 @@ object frmTanimlar: TfrmTanimlar
           Font.Style = [fsBold]
           ParentFont = False
           OnClick = btnBirimEkleClick
-          ExplicitLeft = 399
         end
       end
     end
     object shGruplar: TcxTabSheet
       Caption = 'Stok Gruplar'#305
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdStokGrup: TcxGrid
         Left = 0
         Top = 0
@@ -176,6 +176,10 @@ object frmTanimlar: TfrmTanimlar
     object shMarkalar: TcxTabSheet
       Caption = 'Markalar'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdMarkalar: TcxGrid
         Left = 0
         Top = 0
@@ -245,6 +249,10 @@ object frmTanimlar: TfrmTanimlar
     object shReyonRaf: TcxTabSheet
       Caption = 'Reyon - Raf'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdReyonRaf: TcxGrid
         Left = 0
         Top = 0
@@ -315,6 +323,10 @@ object frmTanimlar: TfrmTanimlar
     object shCariGruplar: TcxTabSheet
       Caption = 'Cari Gruplar'#305
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -391,7 +403,6 @@ object frmTanimlar: TfrmTanimlar
     Height = 36
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -2
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 370
@@ -488,7 +499,6 @@ object frmTanimlar: TfrmTanimlar
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = cxButton1Click
-      ExplicitLeft = 360
     end
   end
   object qryBirim: TUniQuery

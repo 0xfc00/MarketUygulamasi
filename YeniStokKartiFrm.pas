@@ -68,6 +68,10 @@ type
     opFileDlg: TdxOpenFileDialog;
     pmResimSil: TPopupMenu;
     Sil1: TMenuItem;
+    btnYeniMarka: TcxButton;
+    btnYeniBirim: TcxButton;
+    btnYeniGrup: TcxButton;
+    btnYeniRafTanim: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure imgStokResimDblClick(Sender: TObject);
@@ -79,6 +83,7 @@ type
     procedure btnKaydetVeYeniClick(Sender: TObject);
     procedure qryStokBeforePost(DataSet: TDataSet);
     procedure btnSilClick(Sender: TObject);
+    procedure btnYeniMarkaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,7 +99,7 @@ implementation
 {$R *.dfm}
 
 uses
-  MainDM,Main;
+  MainDM,Main, TanimlarFrm;
 
 procedure TfrmYeniStokKarti.YeniKayitIcinHazirla();
 begin
@@ -227,6 +232,28 @@ begin
     close;
 end;
 
+procedure TfrmYeniStokKarti.btnYeniMarkaClick(Sender: TObject);
+var
+  mForm : TfrmTanimlar;
+begin
+  inherited;
+  Application.CreateForm(TfrmTanimlar, mForm);
+
+  mForm.pc.tag := 1;
+
+       if Sender = btnYeniBirim    then  mForm.pc.ActivePageIndex := 0
+  else if Sender = btnYeniGrup     then  mForm.pc.ActivePageIndex := 1
+  else if Sender = btnYeniMarka    then  mForm.pc.ActivePageIndex := 2
+  else if Sender = btnYeniRafTanim then  mForm.pc.ActivePageIndex := 3;
+
+  mForm.ShowModal;
+
+       if Sender = btnYeniBirim    then  qAcKapa_fn(qryBirimLook)
+  else if Sender = btnYeniGrup     then  qAcKapa_fn(qryGrupLook)
+  else if Sender = btnYeniMarka    then  qAcKapa_fn(qryMarkaLook)
+  else if Sender = btnYeniRafTanim then  qAcKapa_fn(qryRafLook);
+end;
+
 procedure TfrmYeniStokKarti.FormCreate(Sender: TObject);
 var
   i : integer;
@@ -248,6 +275,8 @@ end;
 procedure TfrmYeniStokKarti.FormShow(Sender: TObject);
 begin
   inherited;
+  pnlHeader.color :=clGreen;
+
   if StokID = EmptyStr then
   begin
     YeniKayitIcinHazirla;

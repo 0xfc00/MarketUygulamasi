@@ -93,8 +93,6 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
     Height = 36
     Align = alBottom
     TabOrder = 4
-    ExplicitTop = 263
-    ExplicitWidth = 471
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 325
@@ -191,7 +189,6 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 367
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True

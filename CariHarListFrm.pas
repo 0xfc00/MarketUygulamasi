@@ -79,6 +79,7 @@ procedure TfrmCariHarList.FormCreate(Sender: TObject);
 begin
   inherited;
   pnlHeader.Caption := '   CARÝ HAREKETLERÝ';
+  pnlHeader.color :=clGreen;
 
   qryCari.Connection        := dmMain.UniConn;
   qryCariHar.Connection     := dmMain.UniConn;

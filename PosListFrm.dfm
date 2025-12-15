@@ -22,9 +22,6 @@ object frmPosList: TfrmPosList
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = -292
-    ExplicitTop = 369
-    ExplicitWidth = 1061
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 533
@@ -121,7 +118,6 @@ object frmPosList: TfrmPosList
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 957
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
@@ -168,10 +164,6 @@ object frmPosList: TfrmPosList
     Height = 397
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -292
-    ExplicitTop = -52
-    ExplicitWidth = 1061
-    ExplicitHeight = 457
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -200,22 +192,27 @@ object frmPosList: TfrmPosList
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object cxGrid1DBTableView1POSADI: TcxGridDBColumn
         DataBinding.FieldName = 'POSADI'
+        DataBinding.IsNullValueType = True
         Width = 175
       end
       object cxGrid1DBTableView1HESAPKODU: TcxGridDBColumn
         DataBinding.FieldName = 'HESAPKODU'
+        DataBinding.IsNullValueType = True
         Width = 112
       end
       object cxGrid1DBTableView1TERMINALNO: TcxGridDBColumn
         DataBinding.FieldName = 'TERMINALNO'
+        DataBinding.IsNullValueType = True
         Width = 104
       end
       object cxGrid1DBTableView1BANKAADI: TcxGridDBColumn
         DataBinding.FieldName = 'BANKAADI'
+        DataBinding.IsNullValueType = True
         Width = 139
       end
       object cxGrid1DBTableView1UYEISYERINO: TcxGridDBColumn
         DataBinding.FieldName = 'UYEISYERINO'
+        DataBinding.IsNullValueType = True
         Width = 140
       end
     end
