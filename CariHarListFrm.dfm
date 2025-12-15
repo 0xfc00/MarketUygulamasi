@@ -204,6 +204,7 @@ object frmCariHarList: TfrmCariHarList
       end
       object cxGrid1DBTableView1ZAMAN: TcxGridDBColumn
         DataBinding.FieldName = 'ZAMAN'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
     end
@@ -387,7 +388,7 @@ object frmCariHarList: TfrmCariHarList
     SQL.Strings = (
       'select'
       ''
-      ' * from CARI')
+      ' * from CARI  where UNVAN <> '#39'PERAKENDE'#39)
     ReadOnly = True
     Active = True
     Left = 128
@@ -402,8 +403,7 @@ object frmCariHarList: TfrmCariHarList
   object qryCariHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI_H')
-    Active = True
+      'select * from CARI_H  where UNVAN <> '#39'PERAKENDE'#39)
     Left = 338
     Top = 64
   end

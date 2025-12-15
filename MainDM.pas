@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni, UniProvider,
-  SQLServerUniProvider, MemDS, Vcl.Dialogs, System.IniFiles;
+  SQLServerUniProvider, MemDS, Vcl.Dialogs, System.IniFiles, _cons;
 
 type
   TdmMain = class(TDataModule)
@@ -82,6 +82,9 @@ begin
 
   LoginFormAc_fn; //deneme
   yetkileriYukle;
+
+  if veriCekSQL('select ID from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE') , 'ID') = VERI_YOK then
+    sqlCalistir('insert into CARI (CARIKODU, UNVAN) values (' + QuotedStr('PERAKENDE') + ', ' + QuotedStr('PERAKENDE') + ')');
 end;
 
 end.

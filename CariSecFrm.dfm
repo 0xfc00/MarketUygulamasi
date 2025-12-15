@@ -179,7 +179,7 @@ object frmCariSec: TfrmCariSec
   object qryCariler: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI')
+      'select * from CARI where UNVAN <> '#39'PERAKENDE'#39)
     Active = True
     Left = 328
     Top = 104
