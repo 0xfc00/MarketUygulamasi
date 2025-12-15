@@ -91,21 +91,29 @@ begin
 
   cbUserName.Properties.Items.Clear;
 
-  with yeniQuery('select * from USERS')do
-  begin
-    if IsEmpty then
+  try
+    with yeniQuery('select * from USERS')do
     begin
-      sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, 1)');
-      close;
-      open;
+      if IsEmpty then
+      begin
+        sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, 1)');
+        close;
+        open;
+      end;
+      First;
+      while not eof  do
+      begin
+        cbUserName.Properties.Items.Add(FieldByName('KULLANICI').AsString);
+        Next;
+      end;
+      Free;
     end;
-    First;
-    while not eof  do
+  except
+    on E: Exception do
     begin
-      cbUserName.Properties.Items.Add(FieldByName('KULLANICI').AsString);
-      Next;
+      ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
+      halt;
     end;
-    Free;
   end;
   cbUserName.ItemIndex := 0;
 end;

@@ -3,8 +3,8 @@ object frmDbAyarlar: TfrmDbAyarlar
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Veritaban'#305' Ayarlar'#305
-  ClientHeight = 288
-  ClientWidth = 311
+  ClientHeight = 245
+  ClientWidth = 317
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -102,37 +102,36 @@ object frmDbAyarlar: TfrmDbAyarlar
   end
   object Button2: TButton
     Left = 0
-    Top = 227
-    Width = 311
+    Top = 220
+    Width = 317
     Height = 25
     Align = alBottom
     Caption = 'Tablolar'#305' Olu'#351'tur'
+    Enabled = False
     TabOrder = 12
     Visible = False
-    ExplicitLeft = -8
-    ExplicitTop = 695
-    ExplicitWidth = 749
+    OnClick = Button2Click
   end
   object Button1: TButton
     Left = 0
-    Top = 202
-    Width = 311
+    Top = 195
+    Width = 317
     Height = 25
     Align = alBottom
     Caption = 'DB Olu'#351'tur'
     TabOrder = 13
     Visible = False
-    ExplicitTop = 459
-    ExplicitWidth = 1003
+    OnClick = Button1Click
   end
-  object Memo1: TMemo
-    Left = 0
-    Top = 176
-    Width = 311
-    Height = 26
-    Align = alBottom
-    Lines.Strings = (
-      'Memo1'
+  object UniConnTest: TUniConnection
+    ProviderName = 'SQL Server'
+    LoginPrompt = False
+    Left = 48
+    Top = 136
+  end
+  object qCreateDatabase: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
       'USE master'
       'GO'
       ''
@@ -261,19 +260,12 @@ object frmDbAyarlar: TfrmDbAyarlar
       ''
       'ALTER AUTHORIZATION ON DATABASE::KHPRO TO [DESKTOP-MCB\mcb]'
       'GO')
-    ScrollBars = ssBoth
-    TabOrder = 14
-    Visible = False
-    ExplicitTop = 440
-    ExplicitWidth = 1003
+    Left = 88
+    Top = 128
   end
-  object Memo2: TMemo
-    Left = 0
-    Top = 252
-    Width = 311
-    Height = 36
-    Align = alBottom
-    Lines.Strings = (
+  object qCreateTables: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
       'USE KHPRO'
       'GO'
       ''
@@ -1312,16 +1304,12 @@ object frmDbAyarlar: TfrmDbAyarlar
       ')'
       'ON [PRIMARY]'
       'GO')
-    ScrollBars = ssBoth
-    TabOrder = 15
-    Visible = False
-    ExplicitTop = 680
-    ExplicitWidth = 1003
+    Left = 144
+    Top = 136
   end
-  object UniConnTest: TUniConnection
-    ProviderName = 'SQL Server'
-    LoginPrompt = False
-    Left = 48
+  object q: TUniQuery
+    Connection = UniConnTest
+    Left = 8
     Top = 136
   end
 end

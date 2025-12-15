@@ -8,7 +8,7 @@ uses
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
   dxSkinBlue, Vcl.Menus, Data.DB, DBAccess, Uni, cxButtons, cxMaskEdit,
   cxDropDownEdit, cxLabel, cxTextEdit,
-  System.IniFiles;
+  System.IniFiles, MemDS;
 
 type
   TfrmDbAyarlar = class(TForm)
@@ -27,8 +27,9 @@ type
     UniConnTest: TUniConnection;
     Button2: TButton;
     Button1: TButton;
-    Memo1: TMemo;
-    Memo2: TMemo;
+    qCreateDatabase: TUniQuery;
+    qCreateTables: TUniQuery;
+    q: TUniQuery;
     procedure btnKaydetClick(Sender: TObject);
     function TestConnection(AShowInfo : boolean = true): boolean;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -36,6 +37,9 @@ type
     procedure cbAuthTypePropertiesChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cxLabel1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure ExecuteSqlServerScript(const AScript: string);
   private
     { Private declarations }
   public
@@ -79,6 +83,22 @@ begin
   TestConnection;
 end;
 
+procedure TfrmDbAyarlar.Button1Click(Sender: TObject);
+begin
+  if not TestConnection then exit;
+  ExecuteSqlServerScript(qCreateDatabase.sql.text);
+  showmessage('DB oluþturuldu');
+  button2.Enabled := true;
+  edtDatabase.text := 'KHPRO';
+end;
+
+procedure TfrmDbAyarlar.Button2Click(Sender: TObject);
+begin
+  if not TestConnection then exit;
+  ExecuteSqlServerScript(qCreateTables.sql.text);
+  showmessage('Tablolar oluþturuldu');
+end;
+
 procedure TfrmDbAyarlar.cbAuthTypePropertiesChange(Sender: TObject);
 begin
   edtusername.Visible := (cbAuthType.ItemIndex = 1);
@@ -92,16 +112,11 @@ procedure TfrmDbAyarlar.cxLabel1Click(Sender: TObject);
 begin
   if dbOlusturSayac >5 then
   begin
-    Width := 1000;
-    Height := 800;
     button1.Visible := true;
     button2.Visible := true;
-    memo1.Visible := true;
-    memo2.Visible := true;
-    memo1.Height := 200;
-    memo2.Height := 200;
+    edtDatabase.text := 'master';
   end;
-  dbOlusturSayac := dbOlusturSayac +1;
+  inc(dbOlusturSayac);
 end;
 
 procedure TfrmDbAyarlar.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -190,5 +205,43 @@ begin
 
   end;
 end;
+
+procedure TfrmDbAyarlar.ExecuteSqlServerScript(const AScript: string);
+var
+  SL, Batch: TStringList;
+  i: Integer;
+begin
+  SL := TStringList.Create;
+  Batch := TStringList.Create;
+  try
+    SL.Text := AScript;
+
+    for i := 0 to SL.Count - 1 do
+    begin
+      if SameText(Trim(SL[i]), 'GO') then
+      begin
+        if Batch.Text.Trim <> '' then
+        begin
+          q.SQL.Text := Batch.Text;
+          q.ExecSQL;
+          Batch.Clear;
+        end;
+      end
+      else
+        Batch.Add(SL[i]);
+    end;
+
+    if Batch.Text.Trim <> '' then
+    begin
+      q.SQL.Text := Batch.Text;
+      q.ExecSQL;
+    end;
+
+  finally
+    SL.Free;
+    Batch.Free;
+  end;
+end;
+
 
 end.

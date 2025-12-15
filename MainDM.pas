@@ -33,6 +33,8 @@ procedure TdmMain.DataModuleCreate(Sender: TObject);
 var
   Ini: TIniFile;
 begin
+  if UniConn.Connected then
+    showmessage('UniConn açýk');
   UniConn.close;
 
   if not FileExists(ExtractFilePath(ParamStr(0)) + 'khpro.ini') then
@@ -66,6 +68,8 @@ begin
   end;
 
   try
+    if (Trim(UniConn.Server) = EmptyStr) or (Trim(UniConn.Database) = EmptyStr) then
+      raise Exception.Create('Server yada Database bilgisi yok.');
     UniConn.open;
   except
     on E: Exception do
