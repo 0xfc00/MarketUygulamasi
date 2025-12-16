@@ -46,6 +46,8 @@ type
     cxButton3: TcxButton;
     cxButton4: TcxButton;
     acStokHarList: TAction;
+    PopupMenu1: TPopupMenu;
+    E1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure acStokDuzenleExecute(Sender: TObject);
     procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;

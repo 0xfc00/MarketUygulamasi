@@ -41,6 +41,9 @@ object frmHizliSatis: TfrmHizliSatis
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 628
       Height = 74
       Width = 626
       object cxGroupBox4: TcxGroupBox
@@ -69,6 +72,10 @@ object frmHizliSatis: TfrmHizliSatis
           Style.IsFontAssigned = True
           TabOrder = 0
           OnKeyPress = edtBarkodKeyPress
+          ExplicitLeft = 5
+          ExplicitTop = 24
+          ExplicitWidth = 329
+          ExplicitHeight = 35
           Width = 327
         end
       end
@@ -102,6 +109,10 @@ object frmHizliSatis: TfrmHizliSatis
           Style.IsFontAssigned = True
           TabOrder = 0
           Text = 'Kapal'#305
+          ExplicitLeft = 5
+          ExplicitTop = 24
+          ExplicitWidth = 69
+          ExplicitHeight = 35
           Width = 67
         end
       end
@@ -149,6 +160,9 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 2
         OnClick = cxButton2Click
+        ExplicitLeft = 435
+        ExplicitTop = 5
+        ExplicitHeight = 64
       end
       object cxButton1: TcxButton
         AlignWithMargins = True
@@ -206,6 +220,9 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 3
         OnClick = cxButton1Click
+        ExplicitLeft = 496
+        ExplicitTop = 5
+        ExplicitHeight = 64
       end
       object cxButton4: TcxButton
         AlignWithMargins = True
@@ -269,6 +286,9 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 4
         OnClick = cxButton4Click
+        ExplicitLeft = 557
+        ExplicitTop = 5
+        ExplicitHeight = 64
       end
     end
     object grdHizliSatis: TcxGrid
@@ -285,6 +305,10 @@ object frmHizliSatis: TfrmHizliSatis
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitLeft = 5
+      ExplicitTop = 85
+      ExplicitWidth = 628
+      ExplicitHeight = 435
       object grdHizliSatisDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -372,6 +396,9 @@ object frmHizliSatis: TfrmHizliSatis
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
+      ExplicitLeft = 5
+      ExplicitTop = 646
+      ExplicitWidth = 628
       Height = 72
       Width = 626
       object btnSatisIptal: TcxButton
@@ -451,6 +478,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnSatisIptalClick
+        ExplicitLeft = 420
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
       object btnSatisBeklet: TcxButton
         AlignWithMargins = True
@@ -496,6 +526,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnSatisBekletClick
+        ExplicitLeft = 319
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
       object btnVeresiye_satis: TcxButton
         AlignWithMargins = True
@@ -581,6 +614,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnVeresiye_satisClick
+        ExplicitLeft = 218
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
       object btnKk_satis: TcxButton
         AlignWithMargins = True
@@ -635,6 +671,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnKk_satisClick
+        ExplicitLeft = 106
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
       object btnNakit_satis: TcxButton
         AlignWithMargins = True
@@ -721,6 +760,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnNakit_satisClick
+        ExplicitLeft = 5
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
       object cxButton3: TcxButton
         AlignWithMargins = True
@@ -750,6 +792,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
+        ExplicitLeft = 521
+        ExplicitTop = 5
+        ExplicitHeight = 62
       end
     end
     object Panel1: TPanel
@@ -759,6 +804,9 @@ object frmHizliSatis: TfrmHizliSatis
       Height = 60
       Align = alBottom
       TabOrder = 3
+      ExplicitLeft = 2
+      ExplicitTop = 523
+      ExplicitWidth = 634
       object cxGroupBox11: TcxGroupBox
         Left = 1
         Top = 1
@@ -784,6 +832,10 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Font.Style = []
           Style.IsFontAssigned = True
           TabOrder = 0
+          ExplicitLeft = 260
+          ExplicitTop = 18
+          ExplicitWidth = 352
+          ExplicitHeight = 38
           Width = 350
         end
         object edtCariBul: TcxTextEdit
@@ -803,6 +855,9 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           TabOrder = 1
+          ExplicitLeft = 2
+          ExplicitTop = 18
+          ExplicitHeight = 38
           Width = 255
         end
       end
@@ -813,6 +868,9 @@ object frmHizliSatis: TfrmHizliSatis
       Align = alBottom
       PanelStyle.Active = True
       TabOrder = 4
+      ExplicitLeft = 2
+      ExplicitTop = 583
+      ExplicitWidth = 634
       Height = 60
       Width = 632
       object edtToplam: TcxTextEdit
@@ -829,6 +887,9 @@ object frmHizliSatis: TfrmHizliSatis
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
         TabOrder = 0
+        ExplicitLeft = 334
+        ExplicitTop = 2
+        ExplicitHeight = 56
         Width = 298
       end
       object btnSatirAdetArttir: TcxButton
@@ -849,6 +910,9 @@ object frmHizliSatis: TfrmHizliSatis
           8E847E4EA9750000000049454E44AE426082}
         TabOrder = 1
         OnClick = btnSatirAdetArttirClick
+        ExplicitLeft = 5
+        ExplicitTop = 5
+        ExplicitHeight = 50
       end
       object btnSatirAdetEksilt: TcxButton
         AlignWithMargins = True
@@ -868,6 +932,9 @@ object frmHizliSatis: TfrmHizliSatis
           00000049454E44AE426082}
         TabOrder = 2
         OnClick = btnSatirAdetArttirClick
+        ExplicitLeft = 51
+        ExplicitTop = 5
+        ExplicitHeight = 50
       end
       object cxButton6: TcxButton
         AlignWithMargins = True
@@ -955,6 +1022,9 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = cxButton6Click
+        ExplicitLeft = 97
+        ExplicitTop = 5
+        ExplicitHeight = 50
       end
       object cbPos: TcxComboBox
         AlignWithMargins = True
@@ -974,10 +1044,10 @@ object frmHizliSatis: TfrmHizliSatis
         Style.Font.Style = []
         Style.IsFontAssigned = True
         TabOrder = 4
-        ExplicitLeft = 240
-        ExplicitTop = 3
-        ExplicitWidth = 91
-        ExplicitHeight = 54
+        ExplicitLeft = 211
+        ExplicitTop = 7
+        ExplicitWidth = 118
+        ExplicitHeight = 46
         Width = 114
       end
     end
@@ -1002,6 +1072,10 @@ object frmHizliSatis: TfrmHizliSatis
       Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = imgListPageControl
+      ExplicitLeft = 5
+      ExplicitTop = 5
+      ExplicitWidth = 604
+      ExplicitHeight = 491
       ClientRectBottom = 484
       ClientRectLeft = 2
       ClientRectRight = 597
@@ -1103,6 +1177,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet2: TcxTabSheet
         Caption = #220'r'#252'n Bul'
         ImageIndex = 1
+        ExplicitLeft = 4
+        ExplicitTop = 33
+        ExplicitWidth = 596
+        ExplicitHeight = 454
         object cxGroupBox7: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1113,6 +1191,7 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 0
+          ExplicitWidth = 596
           Height = 65
           Width = 589
           object edtUrunBul: TcxTextEdit
@@ -1129,6 +1208,10 @@ object frmHizliSatis: TfrmHizliSatis
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 39
             Width = 577
           end
         end
@@ -1141,6 +1224,8 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 1
+          ExplicitWidth = 590
+          ExplicitHeight = 377
           Height = 373
           Width = 589
           object grdUrunAra: TcxGrid
@@ -1151,6 +1236,10 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 343
             Align = alClient
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 351
             object grdUrunAraDBTableView1: TcxGridDBTableView
               OnDblClick = grdUrunAraDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -29014,6 +29103,9 @@ object frmHizliSatis: TfrmHizliSatis
       GradientEnd = clSilver
       GradientStart = clGray
       Layout = 'Standard'
+      ExplicitLeft = 5
+      ExplicitTop = 502
+      ExplicitWidth = 604
     end
   end
   object imgListPageControl: TcxImageList

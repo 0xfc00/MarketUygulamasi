@@ -61,7 +61,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
           object cxGrid1DBTableView1TARIH: TcxGridDBColumn
-            DataBinding.FieldName = 'TARIH'
+            DataBinding.FieldName = 'ISLEMTARIHI'
             DataBinding.IsNullValueType = True
           end
           object cxGrid1DBTableView1GIREN: TcxGridDBColumn
@@ -93,10 +93,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
-      ExplicitLeft = 4
-      ExplicitTop = 27
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -105,8 +101,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 403
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 6
-        ExplicitTop = 6
         object cxGridDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>

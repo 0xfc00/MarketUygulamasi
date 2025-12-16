@@ -21,6 +21,7 @@ object frmStokList: TfrmStokList
     Width = 982
     Height = 36
     Align = alBottom
+    PopupMenu = PopupMenu1
     TabOrder = 0
     object btnKapat: TcxButton
       AlignWithMargins = True
@@ -469,6 +470,13 @@ object frmStokList: TfrmStokList
     object acStokHarList: TAction
       Caption = 'Stok Hareketleri'
       OnExecute = acStokHarListExecute
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 280
+    Top = 264
+    object E1: TMenuItem
+      Caption = 'Excelden Aktar'
     end
   end
 end

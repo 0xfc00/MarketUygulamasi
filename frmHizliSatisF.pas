@@ -13,7 +13,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
   cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
   DBAccess, frxClass, frxDBSet, dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations,
-  Uni, BaseFrm, MainDM;
+  Uni, BaseFrm, MainDM, PosListFrm, KasaPosHarListFrm;
 
 type
   TfrmHizliSatis = class(TfrmBase)
@@ -644,15 +644,17 @@ begin
   q.First;
 
   cbCari.Properties.Items.Clear;
-  if edtCariBul.Text = '' then
-    cbCari.Properties.Items.Add('PERAKENDE');
+//  if edtCariBul.Text = '' then
+//    cbCari.Properties.Items.Add('PERAKENDE');
 
   if not q.IsEmpty then
   repeat
     cbCari.Properties.Items.Add(q.FieldByName('UNVAN').AsString);
     q.Next;
   until q.Eof ;
-  cbCari.ItemIndex := 0;
+  //cbCari.ItemIndex := 0;
+
+  cbCari.Text := 'PERAKENDE';
 
   q.sql.text := 'select POSADI from POS ';
   qackapa_fn(q);
@@ -664,6 +666,8 @@ begin
     cbPos.Properties.Items.Add(q.FieldByName('POSADI').AsString);
     q.Next;
   end;
+
+  cbPos.ItemIndex := 0;
 
   Freeandnil(q);
 end;
@@ -683,7 +687,13 @@ procedure TfrmHizliSatis.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if qryTempSatis.RecordCount >0 then
     if MesajSor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
-      satisIptal
+    begin
+      satisIptal;
+      qryTempSatis.close;
+      qryBekleyenSatislar.close;
+      qryBekleyenSatislarDetay.close;
+      qryStokBul.close;
+    end
     else
       action := caNone;
 end;
@@ -840,11 +850,22 @@ begin
   if islem = CARI       then sIslemTuru := 'Veresiye';
   if islem = KREDIKARTI then
   begin
-    sIslemTuru := 'Kredi Kartý';
     if cbPos.text = '' then
-      PosID := '0'
-    else
-      PosID := veriCekSQL('select ID from POS where POSADI = ' + cbPos.text, 'ID');
+    begin
+      if MEsajSor('Kredi kartlý satýþ için POS tanýmý olmasý gerekir. Eklemek istermisiniz?') then
+      begin
+        with TfrmPosList.Create(nil) do
+          showmodal;
+
+        edtCariBulPropertiesChange(self);
+        if cbPos.text = '' then exit;
+      end
+      else
+        exit;
+
+    end;
+    sIslemTuru := 'Kredi Kartý';
+    PosID := veriCekSQL('select ID from POS where POSADI = ' + quotedstr(cbPos.text), 'ID');
   end;
 
   //if islem = CARI then
@@ -963,6 +984,24 @@ begin
 
   qhar.post;
   //satýþ  hareket ekle bitiþ...
+
+  //kartlý satýþ ise pos hareket ekle
+  if PosID <> '' then
+  begin
+    qHar.Close;
+    qHar.SQL.Text := 'select * from ' + 'POS_H' + ' where 1=2';
+    qhar.Open;
+    qhar.Append;
+
+    qhar.FieldByName('POSID').AsString          := PosID;
+    qhar.FieldByName('SATISID').AsString        := satisID;
+    qhar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
+    qhar.FieldByName('CARIID').AsString         := CariID;
+    qhar.FieldByName('ALACAK').AsString         := qtemp.FieldByName('TOPLAM').AsString;
+
+    qhar.post;
+  end;
+  //kartlý satýþ ise pos hareket ekle bitiþ...
 
 
   with qryCari do

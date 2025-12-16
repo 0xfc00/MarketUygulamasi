@@ -207,7 +207,7 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
   object edtIslemTarihi: TcxDBDateEdit
     Left = 75
     Top = 69
-    DataBinding.DataField = 'TARIH'
+    DataBinding.DataField = 'ISLEMTARIHI'
     DataBinding.DataSource = dsKasaHarEkle
     TabOrder = 5
     Width = 121

@@ -198,7 +198,7 @@ begin
     open;
     append;
 
-    fieldbyname('TARIH').asdatetime     := now;
+    fieldbyname('ISLEMTARIHI').asdatetime     := now;
     fieldbyname('CIKAN').AsString       := DataSet.FieldByName('BORC').AsString;
     fieldbyname('GIREN').AsString       := DataSet.FieldByName('ALACAK').AsString;
     fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
@@ -213,7 +213,7 @@ begin
     append;
 
     fieldbyname('POSID').AsString       := qrypos.fieldbyname('ID').asstring;
-    fieldbyname('TARIH').asdatetime     := now;
+    fieldbyname('ISLEMTARIHI').asdatetime     := now;
     fieldbyname('BORC').AsString        := DataSet.FieldByName('BORC').AsString;
     fieldbyname('ALACAK').AsString      := DataSet.FieldByName('ALACAK').AsString;
     fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;

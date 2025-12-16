@@ -92,7 +92,7 @@ end;
 
 procedure TfrmKasaHareketEkle.qryKasaHarEkleBeforePost(DataSet: TDataSet);
 begin
-  if trim(DataSet.FieldByName('TARIH').AsString) = EmptyStr then
+  if trim(DataSet.FieldByName('ISLEMTARIHI').AsString) = EmptyStr then
   begin
     MesajHata('Ýþlem tarihi girilmemiþ..');
     edtIslemTarihi.SetFocus;

@@ -29,7 +29,8 @@ uses
   KasaPosHarListFrm in 'KasaPosHarListFrm.pas' {frmKasaPosHarList},
   DbAyarlarFrm in 'DbAyarlarFrm.pas' {frmDbAyarlar},
   frmKullanicilarF in 'frmKullanicilarF.pas' {frmKullanicilar},
-  frmHizliSatisButonlariF in 'frmHizliSatisButonlariF.pas' {frmHizliSatisButonlari};
+  frmHizliSatisButonlariF in 'frmHizliSatisButonlariF.pas' {frmHizliSatisButonlari},
+  stokAktarimFormF in 'stokAktarimFormF.pas' {stokAktarimForm};
 
 {$R *.res}
 
@@ -39,5 +40,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
+  Application.CreateForm(TstokAktarimForm, stokAktarimForm);
   Application.Run;
 end.
