@@ -1,0 +1,926 @@
+﻿USE KHPRO
+GO
+
+IF DB_NAME() <> N'KHPRO' SET NOEXEC ON
+GO
+
+--
+-- Create table [dbo].[USERS]
+--
+PRINT (N'Create table [dbo].[USERS]')
+GO
+CREATE TABLE dbo.USERS (
+  ID int IDENTITY,
+  KULLANICI nvarchar(15) NOT NULL,
+  YONETICI bit NULL,
+  SIFRE nvarchar(32) NULL,
+  ACIKLAMA varchar(500) NULL,
+  y_STOKEKLE bit NULL,
+  y_STOKGUNCELLE bit NULL,
+  y_STOKSIL bit NULL,
+  y_STOKHARSIL bit NULL,
+  y_CARIEKLE bit NULL,
+  y_CARIGUNCELLE bit NULL,
+  y_CARISIL bit NULL,
+  y_CARIHARSIL bit NULL,
+  y_KASAISLEMEKLE bit NULL,
+  y_KASAISLEMSIL bit NULL,
+  y_FATEKLE bit NULL,
+  y_FATGUNCELLE bit NULL,
+  y_FATSIL bit NULL,
+  y_BORCEKLE bit NULL,
+  y_TAHSILATGIR bit NULL,
+  y_HSSATIRDUZENLE bit NULL,
+  p_FISYAZDIRMA int NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_USERS_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_USERS_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_USERS PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT IX_USERS UNIQUE (KULLANICI)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[TMPSATIS]
+--
+PRINT (N'Create table [dbo].[TMPSATIS]')
+GO
+CREATE TABLE dbo.TMPSATIS (
+  ID int IDENTITY,
+  STOKID int NULL,
+  KDV decimal(20, 2) NULL,
+  STOKKODU varchar(50) NULL,
+  BEKLEMEDE int NULL,
+  STOKADI varchar(50) NULL,
+  BIRIMADI varchar(50) NULL,
+  ADET float NULL,
+  FIYAT decimal(20, 2) NULL,
+  ISKONTO decimal(20, 2) NULL,
+  TOPLAM decimal(20, 2) NULL,
+  CONSTRAINT PK_tmp_Satis_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_STOKGRUP]
+--
+PRINT (N'Create table [dbo].[T_STOKGRUP]')
+GO
+CREATE TABLE dbo.T_STOKGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_STOKGRUP_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_STOKGRUP_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_GRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_REYONRAF]
+--
+PRINT (N'Create table [dbo].[T_REYONRAF]')
+GO
+CREATE TABLE dbo.T_REYONRAF (
+  ID int IDENTITY,
+  REYONRAFADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_REYONRAF_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_REYONRAF_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_REYONRAF_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_MARKA]
+--
+PRINT (N'Create table [dbo].[T_MARKA]')
+GO
+CREATE TABLE dbo.T_MARKA (
+  ID int IDENTITY,
+  MARKAADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_MARKA_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_MARKA_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_MARKA_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_HSGRUP]
+--
+PRINT (N'Create table [dbo].[T_HSGRUP]')
+GO
+CREATE TABLE dbo.T_HSGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NOT NULL,
+  SIRA int NULL,
+  CONSTRAINT PK_T_HSGRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_HSSIRA]
+--
+PRINT (N'Create table [dbo].[T_HSSIRA]')
+GO
+CREATE TABLE dbo.T_HSSIRA (
+  ID int IDENTITY,
+  GRUPID int NOT NULL,
+  STOKKODU varchar(50) NOT NULL,
+  SIRA int NULL,
+  CONSTRAINT PK_T_HSSIRA_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_T_HSSIRA_GRUPID] on table [dbo].[T_HSSIRA]
+--
+PRINT (N'Create foreign key [FK_T_HSSIRA_GRUPID] on table [dbo].[T_HSSIRA]')
+GO
+ALTER TABLE dbo.T_HSSIRA
+  ADD CONSTRAINT FK_T_HSSIRA_GRUPID FOREIGN KEY (GRUPID) REFERENCES dbo.T_HSGRUP (ID)
+GO
+
+--
+-- Create table [dbo].[T_CARIGRUP]
+--
+PRINT (N'Create table [dbo].[T_CARIGRUP]')
+GO
+CREATE TABLE dbo.T_CARIGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NOT NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_CARIGRUP_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_CARIGRUP_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_CARIGRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[CARI]
+--
+PRINT (N'Create table [dbo].[CARI]')
+GO
+CREATE TABLE dbo.CARI (
+  ID int IDENTITY,
+  CARIKODU nvarchar(80) NOT NULL,
+  UNVAN nvarchar(100) NOT NULL,
+  TARIH datetime NULL,
+  GROUPID int NULL,
+  MESLEK nvarchar(20) NULL,
+  ILCE nvarchar(20) NULL,
+  SEHIR nvarchar(20) NULL,
+  POSTAKODU nvarchar(10) NULL,
+  ULKE nvarchar(20) NULL,
+  VERGIDAIRESI nvarchar(20) NULL,
+  VERGINO nvarchar(15) NULL,
+  BANKA nvarchar(20) NULL,
+  BANKAHESAPNO nvarchar(30) NULL,
+  ISTELEFONU1 nvarchar(15) NULL,
+  ISTELEFONU2 nvarchar(15) NULL,
+  FAX nvarchar(15) NULL,
+  CEPTELEFONU nvarchar(15) NULL,
+  EVTELEFONU nvarchar(15) NULL,
+  EMAIL nvarchar(50) NULL,
+  ADRES1 nvarchar(50) NULL,
+  ADRES2 nvarchar(50) NULL,
+  ADRES3 nvarchar(50) NULL,
+  ACIKLAMA1 nvarchar(100) NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  ACIKLAMA3 nvarchar(100) NULL,
+  RESIM nvarchar(150) NULL,
+  YETKILI nvarchar(30) NULL,
+  BORC float NULL,
+  ALACAK float NULL,
+  BAKIYE float NULL,
+  VERESIYE_LIMITI float NULL,
+  VERESIYE_UYAR bit NULL,
+  VERESIYE_SURESI int NULL,
+  RENK int NULL,
+  EMAIL2 nvarchar(50) NULL,
+  EMAIL3 nvarchar(50) NULL,
+  EMAIL_SEC bit NULL,
+  TIPI int NULL,
+  CARI_NOTE ntext NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_CARI_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_CARI_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_CARI PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT IX_CARI UNIQUE (CARIKODU)
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARI_GROUPID] on table [dbo].[CARI]
+--
+PRINT (N'Create index [IX_CARI_GROUPID] on table [dbo].[CARI]')
+GO
+CREATE INDEX IX_CARI_GROUPID
+  ON dbo.CARI (GROUPID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_CARI_GROUPID] on table [dbo].[CARI]
+--
+PRINT (N'Create foreign key [FK_CARI_GROUPID] on table [dbo].[CARI]')
+GO
+ALTER TABLE dbo.CARI
+  ADD CONSTRAINT FK_CARI_GROUPID FOREIGN KEY (GROUPID) REFERENCES dbo.T_CARIGRUP (ID)
+GO
+
+--
+-- Create table [dbo].[T_BIRIM]
+--
+PRINT (N'Create table [dbo].[T_BIRIM]')
+GO
+CREATE TABLE dbo.T_BIRIM (
+  ID int IDENTITY,
+  BIRIMADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_BIRIM_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_BIRIM_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_BIRIM_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[STOK]
+--
+PRINT (N'Create table [dbo].[STOK]')
+GO
+CREATE TABLE dbo.STOK (
+  ID int IDENTITY,
+  STOKKODU nvarchar(15) NOT NULL,
+  STOKADI nvarchar(255) NOT NULL,
+  BARKOD varchar(50) NULL,
+  URUNMARKASI nvarchar(20) NULL,
+  TARIH datetime NULL,
+  ACIKLAMA nvarchar(100) NULL,
+  BIRIMID int NULL,
+  GRUPID int NULL,
+  MARKAID int NULL,
+  KDV float NULL,
+  RESIM varbinary(max) NULL,
+  SATISFIYATI float NULL,
+  SATISFIYATI2 float NULL,
+  SATISFIYATI3 float NULL,
+  PLU_NO int NULL,
+  ALISFIYATI float NULL,
+  KDV_ISTISNA_KODU nvarchar(10) NULL,
+  REYONRAFID int NULL,
+  TERAZITIP smallint NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_STOK_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_STOK_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_STOKKARTI PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT KEY_STOK_STOKKODU UNIQUE (STOKKODU)
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+--
+-- Create index [IDX_STOK_BARKOD] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IDX_STOK_BARKOD] on table [dbo].[STOK]')
+GO
+CREATE INDEX IDX_STOK_BARKOD
+  ON dbo.STOK (BARKOD)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IDX_STOK_STOKADI] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IDX_STOK_STOKADI] on table [dbo].[STOK]')
+GO
+CREATE INDEX IDX_STOK_STOKADI
+  ON dbo.STOK (STOKADI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_BIRIMID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_BIRIMID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_BIRIMID
+  ON dbo.STOK (BIRIMID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_GRUPID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_GRUPID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_GRUPID
+  ON dbo.STOK (GRUPID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_MARKAID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_MARKAID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_MARKAID
+  ON dbo.STOK (MARKAID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_REYONRAFID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_REYONRAFID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_REYONRAFID
+  ON dbo.STOK (REYONRAFID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_STOK_BIRIMID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_BIRIMID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_BIRIMID FOREIGN KEY (BIRIMID) REFERENCES dbo.T_BIRIM (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_GRUPID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_GRUPID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_GRUPID FOREIGN KEY (GRUPID) REFERENCES dbo.T_STOKGRUP (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_MARKAID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_MARKAID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_MARKAID FOREIGN KEY (MARKAID) REFERENCES dbo.T_MARKA (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_REYONRAFID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_REYONRAFID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_REYONRAFID FOREIGN KEY (REYONRAFID) REFERENCES dbo.T_REYONRAF (ID)
+GO
+
+--
+-- Create table [dbo].[STOK_H]
+--
+PRINT (N'Create table [dbo].[STOK_H]')
+GO
+CREATE TABLE dbo.STOK_H (
+  ID int IDENTITY,
+  STOKID int NOT NULL,
+  ISLEMTIPI tinyint NULL,
+  ISLEMTARIHI datetime NULL,
+  MIKTAR float NULL,
+  GIREN float NULL,
+  CIKAN float NULL,
+  ACIKLAMA nvarchar(100) NULL,
+  BIRIMADI nvarchar(15) NULL,
+  CARIID int NULL,
+  SATISHID int NULL,
+  EVRAKNO nvarchar(20) NULL,
+  TUTAR float NULL,
+  FATURAID int NULL,
+  FATURA_H_ID int NULL,
+  BIRIMFIYATI float NULL,
+  IND_ORANI float NULL,
+  KDVORANI float NULL,
+  KDVTUTARI float NULL,
+  EK_GIREN float NULL,
+  EK_CIKAN float NULL,
+  EK_ALIS_FIYATI float NULL,
+  EK_SATIS_FIYATI float NULL,
+  IND_EK_SATIS_FIYATI float NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_STOK_H_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_STOK_H_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_STOK_H PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_H_CARIID] on table [dbo].[STOK_H]
+--
+PRINT (N'Create index [IX_STOK_H_CARIID] on table [dbo].[STOK_H]')
+GO
+CREATE INDEX IX_STOK_H_CARIID
+  ON dbo.STOK_H (CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_H_STOKID_TARIH] on table [dbo].[STOK_H]
+--
+PRINT (N'Create index [IX_STOK_H_STOKID_TARIH] on table [dbo].[STOK_H]')
+GO
+CREATE INDEX IX_STOK_H_STOKID_TARIH
+  ON dbo.STOK_H (STOKID, ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_STOK_H_CARIID] on table [dbo].[STOK_H]
+--
+PRINT (N'Create foreign key [FK_STOK_H_CARIID] on table [dbo].[STOK_H]')
+GO
+ALTER TABLE dbo.STOK_H
+  ADD CONSTRAINT FK_STOK_H_CARIID FOREIGN KEY (CARIID) REFERENCES dbo.CARI (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_H_STOKID] on table [dbo].[STOK_H]
+--
+PRINT (N'Create foreign key [FK_STOK_H_STOKID] on table [dbo].[STOK_H]')
+GO
+ALTER TABLE dbo.STOK_H
+  ADD CONSTRAINT FK_STOK_H_STOKID FOREIGN KEY (STOKID) REFERENCES dbo.STOK (ID)
+GO
+
+--
+-- Create table [dbo].[POS]
+--
+PRINT (N'Create table [dbo].[POS]')
+GO
+CREATE TABLE dbo.POS (
+  ID int IDENTITY,
+  POSADI nvarchar(30) NOT NULL,
+  HESAPKODU nvarchar(20) NULL,
+  TERMINALNO nvarchar(20) NULL,
+  BANKAADI nvarchar(30) NULL,
+  UYEISYERINO nvarchar(20) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_POS_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_POS_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_POSLAR PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[SATIS]
+--
+PRINT (N'Create table [dbo].[SATIS]')
+GO
+CREATE TABLE dbo.SATIS (
+  ID int IDENTITY,
+  ISLEMTARIHI datetime NULL,
+  ISLEMTIPI int NULL,
+  TUTAR float NULL,
+  CARIID int NULL,
+  ACIKLAMA nvarchar(100) NULL,
+  POSID int NULL,
+  ALISMALIYETI float NULL,
+  SATISTUTARI float NULL,
+  KAR float NULL,
+  KDVTUTARI float NULL,
+  IND_ORANI float NULL,
+  IND_TOPLAMI float NULL,
+  KDVMATRAHI float NULL,
+  FATURAID int NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_SATIS_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_SATIS_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_SATIS PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_SATIS_CARIID_TARIH] on table [dbo].[SATIS]
+--
+PRINT (N'Create index [IX_SATIS_CARIID_TARIH] on table [dbo].[SATIS]')
+GO
+CREATE INDEX IX_SATIS_CARIID_TARIH
+  ON dbo.SATIS (CARIID, ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_SATIS_POSID_TARIH] on table [dbo].[SATIS]
+--
+PRINT (N'Create index [IX_SATIS_POSID_TARIH] on table [dbo].[SATIS]')
+GO
+CREATE INDEX IX_SATIS_POSID_TARIH
+  ON dbo.SATIS (POSID, ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_SATIS_CARIID] on table [dbo].[SATIS]
+--
+PRINT (N'Create foreign key [FK_SATIS_CARIID] on table [dbo].[SATIS]')
+GO
+ALTER TABLE dbo.SATIS
+  ADD CONSTRAINT FK_SATIS_CARIID FOREIGN KEY (CARIID) REFERENCES dbo.CARI (ID)
+GO
+
+--
+-- Create foreign key [FK_SATIS_POSID] on table [dbo].[SATIS]
+--
+PRINT (N'Create foreign key [FK_SATIS_POSID] on table [dbo].[SATIS]')
+GO
+ALTER TABLE dbo.SATIS
+  ADD CONSTRAINT FK_SATIS_POSID FOREIGN KEY (POSID) REFERENCES dbo.POS (ID)
+GO
+
+--
+-- Create table [dbo].[SATIS_H]
+--
+PRINT (N'Create table [dbo].[SATIS_H]')
+GO
+CREATE TABLE dbo.SATIS_H (
+  ID int IDENTITY,
+  SATISID int NULL,
+  ISLEMTARIHI datetime NULL,
+  STOKID int NULL,
+  BIRIMFIYATI float NULL,
+  BIRIM nvarchar(15) NULL,
+  MIKTAR float NULL,
+  TUTAR float NULL,
+  ACIKLAMA nvarchar(100) NULL,
+  KDVTUTARI float NULL,
+  KDVORANI float NULL,
+  IND_ORANI float NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_SATIS_H_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_SATIS_H_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_SATISSEPETI PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_SATIS_H_SATISLISTID] on table [dbo].[SATIS_H]
+--
+PRINT (N'Create index [IX_SATIS_H_SATISLISTID] on table [dbo].[SATIS_H]')
+GO
+CREATE INDEX IX_SATIS_H_SATISLISTID
+  ON dbo.SATIS_H (SATISID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_SATIS_H_STOKID] on table [dbo].[SATIS_H]
+--
+PRINT (N'Create index [IX_SATIS_H_STOKID] on table [dbo].[SATIS_H]')
+GO
+CREATE INDEX IX_SATIS_H_STOKID
+  ON dbo.SATIS_H (STOKID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_SATIS_H_SATISID] on table [dbo].[SATIS_H]
+--
+PRINT (N'Create foreign key [FK_SATIS_H_SATISID] on table [dbo].[SATIS_H]')
+GO
+ALTER TABLE dbo.SATIS_H
+  ADD CONSTRAINT FK_SATIS_H_SATISID FOREIGN KEY (SATISID) REFERENCES dbo.SATIS (ID)
+GO
+
+--
+-- Create table [dbo].[POS_H]
+--
+PRINT (N'Create table [dbo].[POS_H]')
+GO
+CREATE TABLE dbo.POS_H (
+  ID int IDENTITY,
+  POSID int NULL,
+  ISLEMTARIHI datetime NULL,
+  ACIKLAMA1 nvarchar(100) NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  BORC float NULL,
+  ALACAK float NULL,
+  CARIID int NULL,
+  EVRAKNO nvarchar(20) NULL,
+  FATURAID int NULL,
+  SATISID int NULL,
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_POS__H_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_POSKASA PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_POS_H_CARIID] on table [dbo].[POS_H]
+--
+PRINT (N'Create index [IX_POS_H_CARIID] on table [dbo].[POS_H]')
+GO
+CREATE INDEX IX_POS_H_CARIID
+  ON dbo.POS_H (CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_POS_H_POSID_TARIH] on table [dbo].[POS_H]
+--
+PRINT (N'Create index [IX_POS_H_POSID_TARIH] on table [dbo].[POS_H]')
+GO
+CREATE INDEX IX_POS_H_POSID_TARIH
+  ON dbo.POS_H (POSID, ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_POS_H_SATISID] on table [dbo].[POS_H]
+--
+PRINT (N'Create index [IX_POS_H_SATISID] on table [dbo].[POS_H]')
+GO
+CREATE INDEX IX_POS_H_SATISID
+  ON dbo.POS_H (SATISID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_POS_H_CARIID] on table [dbo].[POS_H]
+--
+PRINT (N'Create foreign key [FK_POS_H_CARIID] on table [dbo].[POS_H]')
+GO
+ALTER TABLE dbo.POS_H
+  ADD CONSTRAINT FK_POS_H_CARIID FOREIGN KEY (CARIID) REFERENCES dbo.CARI (ID)
+GO
+
+--
+-- Create foreign key [FK_POS_H_POSID] on table [dbo].[POS_H]
+--
+PRINT (N'Create foreign key [FK_POS_H_POSID] on table [dbo].[POS_H]')
+GO
+ALTER TABLE dbo.POS_H
+  ADD CONSTRAINT FK_POS_H_POSID FOREIGN KEY (POSID) REFERENCES dbo.POS (ID)
+GO
+
+--
+-- Create foreign key [FK_POS_H_SATISID] on table [dbo].[POS_H]
+--
+PRINT (N'Create foreign key [FK_POS_H_SATISID] on table [dbo].[POS_H]')
+GO
+ALTER TABLE dbo.POS_H
+  ADD CONSTRAINT FK_POS_H_SATISID FOREIGN KEY (SATISID) REFERENCES dbo.SATIS (ID)
+GO
+
+--
+-- Create table [dbo].[KASA_H]
+--
+PRINT (N'Create table [dbo].[KASA_H]')
+GO
+CREATE TABLE dbo.KASA_H (
+  ID int IDENTITY,
+  ISLEMTARIHI datetime NULL,
+  ACIKLAMA1 nvarchar(100) NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  GIREN float NULL,
+  CIKAN float NULL,
+  CARIID int NULL,
+  EVRAKNO nvarchar(20) NULL,
+  FATURAID int NULL,
+  SATISID int NULL,
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_KASA_H_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_KASA PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_KASA_H_CARIID_TARIH] on table [dbo].[KASA_H]
+--
+PRINT (N'Create index [IX_KASA_H_CARIID_TARIH] on table [dbo].[KASA_H]')
+GO
+CREATE INDEX IX_KASA_H_CARIID_TARIH
+  ON dbo.KASA_H (CARIID, ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_KASA_H_SATISID] on table [dbo].[KASA_H]
+--
+PRINT (N'Create index [IX_KASA_H_SATISID] on table [dbo].[KASA_H]')
+GO
+CREATE INDEX IX_KASA_H_SATISID
+  ON dbo.KASA_H (SATISID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_KASA_H_CARIID] on table [dbo].[KASA_H]
+--
+PRINT (N'Create foreign key [FK_KASA_H_CARIID] on table [dbo].[KASA_H]')
+GO
+ALTER TABLE dbo.KASA_H
+  ADD CONSTRAINT FK_KASA_H_CARIID FOREIGN KEY (CARIID) REFERENCES dbo.CARI (ID)
+GO
+
+--
+-- Create foreign key [FK_KASA_H_SATISID] on table [dbo].[KASA_H]
+--
+PRINT (N'Create foreign key [FK_KASA_H_SATISID] on table [dbo].[KASA_H]')
+GO
+ALTER TABLE dbo.KASA_H
+  ADD CONSTRAINT FK_KASA_H_SATISID FOREIGN KEY (SATISID) REFERENCES dbo.SATIS (ID)
+GO
+
+--
+-- Create table [dbo].[CARI_H]
+--
+PRINT (N'Create table [dbo].[CARI_H]')
+GO
+CREATE TABLE dbo.CARI_H (
+  ID int IDENTITY,
+  CARIID int NOT NULL,
+  ISLEMTARIHI datetime NULL,
+  BORC float NULL,
+  ALACAK float NULL,
+  VADETARIHI datetime NULL,
+  EVRAKNO nvarchar(20) NULL,
+  POSID int NULL,
+  ACIKLAMA1 nvarchar(100) NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  ACIKLAMA3 nvarchar(100) NULL,
+  ISLEMTIPI int NULL,
+  SATISID int NULL,
+  FATURAID int NULL,
+  CEKSENETHID int NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_CARI_H_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_CARI_H_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_CARIHAREKET PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_CARIID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_CARIID] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_CARIID
+  ON dbo.CARI_H (CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_CEKSENET_H_ID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_CEKSENET_H_ID] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_CEKSENET_H_ID
+  ON dbo.CARI_H (CEKSENETHID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_FATURAID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_FATURAID] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_FATURAID
+  ON dbo.CARI_H (FATURAID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_ISLEMTURU] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_ISLEMTURU] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_ISLEMTURU
+  ON dbo.CARI_H (ISLEMTIPI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_KASAID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_KASAID] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_KASAID
+  ON dbo.CARI_H (POSID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARIHAREKET_SATISID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create index [IX_CARIHAREKET_SATISID] on table [dbo].[CARI_H]')
+GO
+CREATE INDEX IX_CARIHAREKET_SATISID
+  ON dbo.CARI_H (SATISID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_CARI_H_CARIID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create foreign key [FK_CARI_H_CARIID] on table [dbo].[CARI_H]')
+GO
+ALTER TABLE dbo.CARI_H
+  ADD CONSTRAINT FK_CARI_H_CARIID FOREIGN KEY (CARIID) REFERENCES dbo.CARI (ID)
+GO
+
+--
+-- Create foreign key [FK_CARI_H_POSID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create foreign key [FK_CARI_H_POSID] on table [dbo].[CARI_H]')
+GO
+ALTER TABLE dbo.CARI_H
+  ADD CONSTRAINT FK_CARI_H_POSID FOREIGN KEY (POSID) REFERENCES dbo.POS (ID)
+GO
+
+--
+-- Create foreign key [FK_CARI_H_SATISID] on table [dbo].[CARI_H]
+--
+PRINT (N'Create foreign key [FK_CARI_H_SATISID] on table [dbo].[CARI_H]')
+GO
+ALTER TABLE dbo.CARI_H
+  ADD CONSTRAINT FK_CARI_H_SATISID FOREIGN KEY (SATISID) REFERENCES dbo.SATIS (ID)
+GO

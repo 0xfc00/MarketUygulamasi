@@ -31,7 +31,8 @@ uses
   frmKullanicilarF in 'frmKullanicilarF.pas' {frmKullanicilar},
   frmHizliSatisButonlariF in 'frmHizliSatisButonlariF.pas' {frmHizliSatisButonlari},
   stokAktarimFormF in 'stokAktarimFormF.pas' {stokAktarimForm},
-  frmSqlSorguF in 'frmSqlSorguF.pas' {frmSqlSorgu};
+  frmSqlSorguF in 'frmSqlSorguF.pas' {frmSqlSorgu},
+  frmRaporlarF in 'frmRaporlarF.pas' {frmRaporlar};
 
 {$R *.res}
 
@@ -43,5 +44,6 @@ begin
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TstokAktarimForm, stokAktarimForm);
   Application.CreateForm(TfrmSqlSorgu, frmSqlSorgu);
+  Application.CreateForm(TfrmRaporlar, frmRaporlar);
   Application.Run;
 end.

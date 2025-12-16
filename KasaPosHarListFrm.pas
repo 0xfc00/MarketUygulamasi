@@ -110,7 +110,7 @@ Begin
   else
     exit;
 
-  q.sql.text := 'select * from ' + TableName + ' where CAST(TARIH AS date) >= :bastarih and CAST(TARIH AS date) <= :bittarih';
+  q.sql.text := 'select * from ' + TableName + ' where CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih';
   q.ParamByName('bastarih').AsDate := dtBas.Date;
   q.ParamByName('bittarih').AsDate := dtBit.Date;
   qAcKapa_fn(q);

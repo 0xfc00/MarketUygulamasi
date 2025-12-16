@@ -160,6 +160,15 @@ begin
 
   if StokID = EmptyStr then
   begin
+    if trim(edtStokKodu.Text) = EmptyStr then
+      if trim(edtBarkod.Text) <> EmptyStr then
+        DataSet.FieldByName('STOKKODU').AsString := edtBarkod.Text
+      else
+      begin
+        DataSet.FieldByName('BARKOD').AsString   := GenerateRandomNumbers(11);
+        DataSet.FieldByName('STOKKODU').AsString := 'ST' + DataSet.FieldByName('BARKOD').AsString;
+      end;
+
     if StokKoduVarmi_fn(trim(edtStokKodu.Text)) then
     begin
       MesajHata('Bu stok kodu zaten kayýtlý..');
@@ -187,11 +196,6 @@ begin
       Exit;
     end;
 
-    if trim(edtStokKodu.Text) = EmptyStr then
-      if trim(edtBarkod.Text) <> EmptyStr then
-        DataSet.FieldByName('STOKKODU').AsString := edtBarkod.Text
-      else
-        DataSet.FieldByName('STOKKODU').AsString := 'ST' + GenerateRandomNumbers(6);
   end;
 
 

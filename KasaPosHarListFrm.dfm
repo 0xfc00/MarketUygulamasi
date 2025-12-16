@@ -121,7 +121,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
           object cxGridDBTableView1TARIH: TcxGridDBColumn
-            DataBinding.FieldName = 'TARIH'
+            DataBinding.FieldName = 'ISLEMTARIHI'
             DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1POSID: TcxGridDBColumn
