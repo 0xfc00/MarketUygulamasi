@@ -1069,7 +1069,7 @@ object frmHizliSatis: TfrmHizliSatis
       Height = 491
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet2
+      Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Images = imgListPageControl
       ExplicitLeft = 6
@@ -1176,7 +1176,6 @@ object frmHizliSatis: TfrmHizliSatis
                     Style.Font.Style = [fsBold]
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taCenter
-                    ExplicitTop = 74
                     AnchorX = 85
                   end
                 end
@@ -1347,10 +1346,6 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 252
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 18
-            ExplicitWidth = 577
-            ExplicitHeight = 248
             object grdBekleyenSatislarDBTableView1: TcxGridDBTableView
               OnDblClick = grdBekleyenSatislarDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1425,10 +1420,6 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 138
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 18
-            ExplicitWidth = 577
-            ExplicitHeight = 130
             object grdBekleyenSatislarDetayDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -1497,23 +1488,19 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet4: TcxTabSheet
         Caption = 'Para '#220'st'#252' Hesaplama'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox2: TScrollBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 589
-          Height = 444
+          Width = 590
+          Height = 448
           Align = alClient
           TabOrder = 0
           object FlowPanel1: TFlowPanel
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 579
+            Width = 580
             Height = 395
             Align = alTop
             AutoSize = True
@@ -2603,7 +2590,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu5tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -2613,6 +2600,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu10tl: TPanel
@@ -3914,7 +3902,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu10tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -3924,6 +3912,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu20tl: TPanel
@@ -6168,7 +6157,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu20tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -6178,6 +6167,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu50tl: TPanel
@@ -8404,7 +8394,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu50tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -8414,6 +8404,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu100tl: TPanel
@@ -23073,7 +23064,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu100tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -23083,6 +23074,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu200tl: TPanel
@@ -29101,7 +29093,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu200tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -29111,6 +29103,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
           end
@@ -30213,6 +30206,325 @@ object frmHizliSatis: TfrmHizliSatis
         DataType = ftUnknown
         Name = 'cari_kodu'
         Value = Null
+      end>
+  end
+  object qrySatisBitir: TUniQuery
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'DECLARE'
+      '    @CariID          int,'
+      
+        '    @Islem           tinyint,           -- 1=NAKIT, 2=KREDIKARTI' +
+        ', 3=CARI'
+      
+        '    @IslemTipi       int,               -- SATIS.ISLEMTIPI ve CA' +
+        'RI_H.ISLEMTIPI'
+      '    @StokIslemTipi   tinyint,            -- STOK_H.ISLEMTIPI'
+      
+        '    @PosID           int       = NULL,  -- sadece @Islem=2 iken ' +
+        'gerekli'
+      '    @IslemTarihi     datetime  = NULL,    '
+      '    @Aciklama        nvarchar(100)= NULL,'
+      '    @UserID          int       = NULL,'
+      '    @TmpSil          bit       = 1'
+      ''
+      'SET @CariID         = :CariID'
+      'set @Islem          = :Islem'
+      'set @IslemTipi      = :IslemTip'
+      'set @StokIslemTipi  = :StokIslemTipi'
+      'set @PosID          = :PosID'
+      ''
+      ''
+      ''
+      '    SET NOCOUNT ON;'
+      '    SET XACT_ABORT ON;'
+      ''
+      '    IF @IslemTarihi IS NULL SET @IslemTarihi = GETDATE();'
+      ''
+      '    IF @Islem = 2 AND (ISNULL(@PosID,0) = 0)'
+      
+        '        THROW 50001, N'#39'Kredi kart'#305' i'#351'leminde @PosID zorunludur.'#39 +
+        ', 1;'
+      ''
+      '    IF OBJECT_ID('#39'tempdb..#Tmp'#39') IS NOT NULL DROP TABLE #Tmp;'
+      ''
+      '    SELECT'
+      '        t.ID            AS TmpID,'
+      '        t.STOKID,'
+      '        t.BIRIMADI,'
+      '        t.ADET,'
+      '        t.FIYAT,'
+      '        t.ISKONTO,'
+      '        t.KDV,'
+      '        t.TOPLAM'
+      '    INTO #Tmp'
+      '    FROM dbo.TMPSATIS t'
+      '    WHERE ISNULL(t.BEKLEMEDE,0) = 0;'
+      ''
+      '    IF NOT EXISTS (SELECT 1 FROM #Tmp)'
+      
+        '        THROW 50002, N'#39'Sat'#305#351' kalemi yok (TMPSATIS.BEKLEMEDE=0 bo' +
+        #351').'#39', 1;'
+      ''
+      '    DECLARE'
+      
+        '        @Toplam    float = (SELECT ISNULL(SUM(CAST(TOPLAM  AS fl' +
+        'oat)),0) FROM #Tmp),'
+      
+        '        @ToplamKdv float = (SELECT ISNULL(SUM(CAST(KDV     AS fl' +
+        'oat)),0) FROM #Tmp),'
+      
+        '        @Iskonto   float = (SELECT ISNULL(SUM(CAST(ISKONTO AS fl' +
+        'oat)),0) FROM #Tmp),'
+      '        @Matrah    float = 0;'
+      ''
+      '    SET @Matrah = @Toplam - @ToplamKdv;'
+      ''
+      '    BEGIN TRY'
+      '        BEGIN TRAN;'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        -- 1) SATIS'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        INSERT INTO dbo.SATIS'
+      '        ('
+      
+        '            ISLEMTARIHI, ISLEMTIPI, TUTAR, CARIID, ACIKLAMA, POS' +
+        'ID,'
+      
+        '            SATISTUTARI, KDVTUTARI, IND_TOPLAMI, KDVMATRAHI, FAT' +
+        'URAID,'
+      '            USERID'
+      '        )'
+      '        VALUES'
+      '        ('
+      
+        '            @IslemTarihi, @IslemTipi, @Toplam, @CariID, @Aciklam' +
+        'a,'
+      '            CASE WHEN @Islem = 2 THEN @PosID ELSE NULL END,'
+      '            @Toplam, @ToplamKdv, @Iskonto, @Matrah, 0,'
+      '            @UserID'
+      '        );'
+      ''
+      '        DECLARE @SatisID int = SCOPE_IDENTITY();'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      
+        '        -- 2) SATIS_H + mapping (TmpID -> SatishID)  [D'#220'ZELT'#304'LD'#304 +
+        ']'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      
+        '        IF OBJECT_ID('#39'tempdb..#MapSatish'#39') IS NOT NULL DROP TABL' +
+        'E #MapSatish;'
+      '        CREATE TABLE #MapSatish'
+      '        ('
+      '            TmpID    int NOT NULL PRIMARY KEY,'
+      '            SatishID int NOT NULL'
+      '        );'
+      ''
+      '        ;WITH src AS'
+      '        ('
+      '            SELECT'
+      '                TmpID,'
+      '                STOKID,'
+      '                BIRIMADI,'
+      '                ADET,'
+      '                FIYAT,'
+      '                KDV,'
+      '                TOPLAM'
+      '            FROM #Tmp'
+      '        )'
+      '        MERGE dbo.SATIS_H AS tgt'
+      '        USING src'
+      '            ON 1 = 0'
+      '        WHEN NOT MATCHED THEN'
+      '            INSERT'
+      '            ('
+      
+        '                SATISID, ISLEMTARIHI, STOKID, BIRIMFIYATI, BIRIM' +
+        ','
+      '                MIKTAR, TUTAR, ACIKLAMA, KDVTUTARI,'
+      '                USERID'
+      '            )'
+      '            VALUES'
+      '            ('
+      '                @SatisID,'
+      '                @IslemTarihi,'
+      '                ISNULL(src.STOKID,0),'
+      '                CAST(ISNULL(src.FIYAT,0) AS float),'
+      '                CAST(src.BIRIMADI AS nvarchar(15)),'
+      '                CAST(ISNULL(src.ADET,0) AS float),'
+      '                CAST(ISNULL(src.TOPLAM,0) AS float),'
+      '                @Aciklama,'
+      '                CAST(ISNULL(src.KDV,0) AS float),'
+      '                @UserID'
+      '            )'
+      '        OUTPUT src.TmpID, inserted.ID'
+      '            INTO #MapSatish(TmpID, SatishID);'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        -- 3) STOK_H  (STOK_H.SATISHID = SATIS_H.ID)'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        INSERT INTO dbo.STOK_H'
+      '        ('
+      '            STOKID, ISLEMTIPI, ISLEMTARIHI, MIKTAR, CIKAN,'
+      '            BIRIMADI, CARIID, SATISHID,  TUTAR,'
+      '            FATURAID, BIRIMFIYATI, KDVTUTARI,'
+      '            USERID'
+      '        )'
+      '        SELECT'
+      '            ISNULL(t.STOKID,0),'
+      '            @StokIslemTipi,'
+      '            @IslemTarihi,'
+      '            CAST(ISNULL(t.ADET,0) AS float),'
+      '            CAST(ISNULL(t.ADET,0) AS float),'
+      '            CAST(t.BIRIMADI AS nvarchar(15)),'
+      '            @CariID,'
+      '            m.SatishID,'
+      '            '
+      '            CAST(ISNULL(t.TOPLAM,0) AS float),'
+      '            0,'
+      '            CAST(ISNULL(t.FIYAT,0) AS float),'
+      '            CAST(ISNULL(t.KDV,0) AS float),'
+      '            @UserID'
+      '        FROM #Tmp t'
+      '        INNER JOIN #MapSatish m ON m.TmpID = t.TmpID;'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        -- 4) CARI_H  (CARI_H.SATISID = SATIS.ID)'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        INSERT INTO dbo.CARI_H'
+      '        ('
+      '            CARIID, ISLEMTARIHI, BORC, ALACAK, VADETARIHI, '
+      '            POSID, ACIKLAMA1, ISLEMTIPI, SATISID, FATURAID,'
+      '            USERID'
+      '        )'
+      '        VALUES'
+      '        ('
+      '            @CariID,'
+      '            @IslemTarihi,'
+      '            0,'
+      '            CASE WHEN @Islem = 3 THEN @Toplam ELSE 0 END,'
+      '            NULL,'
+      '            '
+      '            CASE WHEN @Islem = 2 THEN @PosID ELSE 0 END,'
+      '            @Aciklama,'
+      '            @IslemTipi,'
+      '            @SatisID,'
+      '            0,'
+      '            @UserID'
+      '        );'
+      ''
+      '        DECLARE @CariHarID int = SCOPE_IDENTITY();'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        -- 5) POS_H veya KASA_H (SATISID ba'#287'lan'#305'r)'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        IF @Islem = 2'
+      '        BEGIN'
+      '            INSERT INTO dbo.POS_H'
+      '            ('
+      
+        '                POSID, ISLEMTARIHI, ACIKLAMA1, BORC, ALACAK, CAR' +
+        'IID,'
+      '                 FATURAID, SATISID, USERID'
+      '            )'
+      '            VALUES'
+      '            ('
+      '                @PosID, @IslemTarihi, @Aciklama,'
+      '                0, @Toplam, @CariID,'
+      '                 0, @SatisID, @UserID'
+      '            );'
+      '        END'
+      '        ELSE'
+      '        BEGIN'
+      '            INSERT INTO dbo.KASA_H'
+      '            ('
+      '                ISLEMTARIHI, ACIKLAMA1, GIREN, CIKAN, CARIID,'
+      '                 FATURAID, SATISID, USERID'
+      '            )'
+      '            VALUES'
+      '            ('
+      '                @IslemTarihi, @Aciklama,'
+      '                @Toplam, 0, @CariID,'
+      '                0, @SatisID, @UserID'
+      '            );'
+      '        END'
+      ''
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        -- 6) TMPSATIS temizle'
+      
+        '        --------------------------------------------------------' +
+        '-------------'
+      '        IF @TmpSil = 1'
+      '        BEGIN'
+      '            DELETE FROM dbo.TMPSATIS'
+      '            WHERE ISNULL(BEKLEMEDE,0) = 0;'
+      '        END'
+      ''
+      '        COMMIT;'
+      ''
+      '        SELECT'
+      '            @SatisID   AS SatisID,'
+      '            @CariHarID AS CariHarID,'
+      '            @Toplam    AS Toplam,'
+      '            @ToplamKdv AS ToplamKdv,'
+      '            @Iskonto   AS Iskonto;'
+      '    END TRY'
+      '    BEGIN CATCH'
+      '        IF @@TRANCOUNT > 0 ROLLBACK;'
+      '        DECLARE @Err nvarchar(4000) = ERROR_MESSAGE();'
+      '        THROW 50099, @Err, 1;'
+      '    END CATCH')
+    Left = 107
+    Top = 203
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CariID'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Islem'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'IslemTip'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'StokIslemTipi'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PosID'
+        Value = nil
       end>
   end
 end

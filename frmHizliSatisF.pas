@@ -132,6 +132,7 @@ type
     RaporTasarm1: TMenuItem;
     qryCari: TUniQuery;
     cbPos: TcxComboBox;
+    qrySatisBitir: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -749,7 +750,7 @@ begin
     exit;
   end;
 
-  sqlCalistir('update tmp_satis set beklemede= 0 where beklemede='+qryBekleyenSatislar.FieldByName('beklemede').AsString);
+  sqlCalistir('update TMPSATIS set BEKLEMEDE= 0 where BEKLEMEDE='+qryBekleyenSatislar.FieldByName('BEKLEMEDE').AsString);
 
   qryBekleyenSatislar.Refresh;
   qryTempSatis.Refresh;
@@ -837,10 +838,16 @@ end;
 procedure TfrmHizliSatis.satisTamamla(islem:string);
 var
   qTemp, qHar: TUniQuery;
-  sIslemTuru, odemeID, cariID, cariHarID, satisID, tutar, PosID : string;
+  sIslemTuru,  cariHarID,   PosID : string;
 begin
   if islem = '' then exit;
   if qryTempSatis.IsEmpty then exit;
+
+  if (islem = CARI) and (cbcari.text = 'PERAKENDE') then
+  begin
+    MesajBilgi('Veresiye satýþ için cari seçilmelidir.');
+    exit;
+  end;
 
   if islem = NAKIT      then sIslemTuru := 'Nakit';
   if islem = CARI       then sIslemTuru := 'Veresiye';
@@ -864,7 +871,6 @@ begin
     PosID := veriCekSQL('select ID from POS where POSADI = ' + quotedstr(cbPos.text), 'ID');
   end;
 
-  //if islem = CARI then
   if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + sIslemTuru +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
               #13#10 + 'ÖDEME ÞEKLÝ : ' + sIslemTuru)
   then exit;
@@ -881,158 +887,170 @@ begin
     exit;
   end;
 
-  qHar  :=  yeniQuery('select sum(TOPLAM) as xToplam from TMPSATIS where BEKLEMEDE=0');
-  tutar :=  qHar.FieldByName('xToplam').AsString;
+  if islem = NAKIT      then begin qrySatisBitir.ParamByName('Islem').AsInteger := 1; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_NAKIT); end;
+  if islem = KREDIKARTI then begin qrySatisBitir.ParamByName('Islem').AsInteger := 2; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_KK); end;
+  if islem = CARI       then begin qrySatisBitir.ParamByName('Islem').AsInteger := 3; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_CARI);end;
 
-  //cari hareket ekle
-  qHar.Close;
-  qHar.SQL.text := 'select * from '+ 'CARI_H' + ' where 1=2';
-  qHar.Open;
-  qHar.Append;
+  qrySatisBitir.ParamByName('StokIslemTipi').AsString  := qrySatisBitir.ParamByName('IslemTip').AsString;
+  qrySatisBitir.ParamByName('CariID').AsString         := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
+  qrySatisBitir.ParamByName('PosID').AsString          := PosID;
 
-  cariID := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
-
-  qHar.FieldByName('CARIID'). AsString        := cariID;
-  qHar.FieldByName('FATURAID'). ASinteger     := 0;
-  qHar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
-
-  if islem = NAKIT      then qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_NAKIT);
-  if islem = KREDIKARTI then qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_KK);
-  if islem = CARI       then
-                        begin
-                          qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_CARI);
-                          qHar.FieldByName('ALACAK').AsString    := tutar;
-                        end;
-  qHar.Post;
-  Ekleyendegistiren(qHar);
-  //cari hareket ekle bitiþ...
-
-  cariHarID := qHar.FieldByName('ID').AsString;
+  qrySatisBitir.Execute;
 
 
 
-
-  //stok hareket ekle
-  qHar.Close;
-  qHar.SQL.Text := 'select * from ' + 'STOK_H' + ' where 1=2';
-  qhar.Open;
-
-  qtemp.first;
-
-  repeat
-    qhar.Append;
-
-    qhar.FieldByName('STOKID').AsString                 := qtemp.FieldByName('STOKID' ).AsString;
-    qhar.FieldByName('ISLEMTARIHI').AsDateTime          := now;
-    qhar.FieldByName('MIKTAR').AsString                 := qtemp.FieldByName('ADET' ).AsString;
-    qhar.FieldByName('CIKAN').AsString                  := qtemp.FieldByName('ADET' ).AsString;
-    qhar.FieldByName('BIRIMADI').AsString               := qtemp.FieldByName('BIRIMADI' ).AsString;
-    qhar.FieldByName('CARIID').AsString                 := cariID;
-    qhar.FieldByName('TUTAR').AsString                  := qtemp.FieldByName('TOPLAM' ).AsString;
-    qhar.FieldByName('BIRIMFIYATI').AsString            := qtemp.FieldByName('FIYAT' ).AsString;
-    qhar.FieldByName('KDVTUTARI').AsString              := qtemp.FieldByName('KDV' ).AsString;
-    qhar.FieldByName('ISLEMTIPI').asinteger             := ord(SH_KASIYER_SATIS);
-    // deneme , ,IND_ORANI ,KDVORANI ,
-    qhar.post;
-
-    qtemp.Next;
-  until qtemp.eof;
-  //stok hareket ekle bitiþ...
-
-
-  //satýþ  ekle
-  qHar.Close;
-  qHar.SQL.Text := 'select * from ' + 'SATIS' + ' where 1=2';
-  qhar.Open;
-  qhar.Append;
-
-  if islem = NAKIT      then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_NAKIT);
-  if islem = KREDIKARTI then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_KK);
-  if islem = CARI       then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_CARI);
-
-  qhar.FieldByName('ISLEMTARIHI').AsDateTime       := now;
-  qhar.FieldByName('TUTAR').AsString               := qtemp.FieldByName('TOPLAM' ).AsString;
-  qhar.FieldByName('TUTAR').AsString               := cariID;
-  qhar.FieldByName('POSID').AsString               := PosID;
-  qHar.FieldByName('FATURAID'). ASinteger          := 0;
-  qhar.FieldByName('SATISTUTARI').AsString         := qtemp.FieldByName('TOPLAM' ).AsString;
-  qhar.FieldByName('KDVTUTARI').AsString           := qtemp.FieldByName('KDV').AsString;
-  qhar.FieldByName('IND_TOPLAMI').AsString         := qtemp.FieldByName('ISKONTO' ).AsString;
-  // deneme ,ALISMALIYETI , ,KAR ,     ,IND_ORANI , ,KDVMATRAHI ,
-  qhar.post;
-
-  satisID := qhar.FieldByName('ID').asstring;
-  //satýþ  ekle bitiþ...
-
-  sqlCalistir('update CARI_H set SATISID=' + satisID + ' where ID = ' + cariHarID + ' and CARIID = ' + cariID);
-
-  //satýþ  hareket ekle
-  qHar.Close;
-  qHar.SQL.Text := 'select * from ' + 'SATIS_H' + ' where 1=2';
-  qhar.Open;
-  qhar.Append;
-
-  qhar.FieldByName('SATISID').AsString               := satisID;
-  qhar.FieldByName('ISLEMTARIHI').AsDateTime         := now;
-  qhar.FieldByName('STOKID').AsString                := qtemp.FieldByName('STOKID' ).AsString;
-  qhar.FieldByName('BIRIMFIYATI').AsString           := qtemp.FieldByName('FIYAT' ).AsString;
-  qhar.FieldByName('BIRIM').AsString                 := qtemp.FieldByName('BIRIMADI' ).AsString;
-  qhar.FieldByName('MIKTAR').AsString                := qtemp.FieldByName('ADET').AsString;
-  qhar.FieldByName('TUTAR').AsString                 := qtemp.FieldByName('TOPLAM').AsString;
-  qhar.FieldByName('KDVTUTARI').AsString             := qtemp.FieldByName('KDV').AsString;
-  //deneme ,KDVORANI ,IND_ORANI
-
-  qhar.post;
-  //satýþ  hareket ekle bitiþ...
-
-  //kartlý satýþ ise pos hareket ekle
-  if PosID <> '' then
-  begin
-    qHar.Close;
-    qHar.SQL.Text := 'select * from ' + 'POS_H' + ' where 1=2';
-    qhar.Open;
-    qhar.Append;
-
-    qhar.FieldByName('POSID').AsString          := PosID;
-    qhar.FieldByName('SATISID').AsString        := satisID;
-    qhar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
-    qhar.FieldByName('CARIID').AsString         := CariID;
-    qhar.FieldByName('ALACAK').AsString         := qtemp.FieldByName('TOPLAM').AsString;
-
-    qhar.post;
-  end
-  //kartlý satýþ ise pos hareket ekle bitiþ...
-  else
-  begin
-    //nakit satýþ ise kasa  hareket ekle
-
-    qHar.Close;
-    qHar.SQL.Text := 'select * from ' + 'KASA_H' + ' where 1=2';
-    qhar.Open;
-    qhar.Append;
-
-    qhar.FieldByName('SATISID').AsString        := satisID;
-    qhar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
-    qhar.FieldByName('CARIID').AsString         := CariID;
-    qhar.FieldByName('GIREN').AsString         := qtemp.FieldByName('TOPLAM').AsString;
-
-    qhar.post;
-    //nakit satýþ ise kasa hareket ekle bitiþ...
-  end;
+//  qHar  :=  yeniQuery('select sum(TOPLAM) as xToplam from TMPSATIS where BEKLEMEDE=0');
+//  tutar :=  qHar.FieldByName('xToplam').AsString;
+//
+//  //cari hareket ekle
+//  qHar.Close;
+//  qHar.SQL.text := 'select * from '+ 'CARI_H' + ' where 1=2';
+//  qHar.Open;
+//  qHar.Append;
+//
+//  cariID := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
+//
+//  qHar.FieldByName('CARIID'). AsString        := cariID;
+//  qHar.FieldByName('FATURAID'). ASinteger     := 0;
+//  qHar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
+//
+//  if islem = NAKIT      then qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_NAKIT);
+//  if islem = KREDIKARTI then qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_KK);
+//  if islem = CARI       then
+//                        begin
+//                          qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_CARI);
+//                          qHar.FieldByName('ALACAK').AsString    := tutar;
+//                        end;
+//  qHar.Post;
+//  Ekleyendegistiren(qHar);
+//  //cari hareket ekle bitiþ...
+//
+//  cariHarID := qHar.FieldByName('ID').AsString;
+//
+//
+//
+//
+//  //stok hareket ekle
+//  qHar.Close;
+//  qHar.SQL.Text := 'select * from ' + 'STOK_H' + ' where 1=2';
+//  qhar.Open;
+//
+//  qtemp.first;
+//
+//  repeat
+//    qhar.Append;
+//
+//    qhar.FieldByName('STOKID').AsString                 := qtemp.FieldByName('STOKID' ).AsString;
+//    qhar.FieldByName('ISLEMTARIHI').AsDateTime          := now;
+//    qhar.FieldByName('MIKTAR').AsString                 := qtemp.FieldByName('ADET' ).AsString;
+//    qhar.FieldByName('CIKAN').AsString                  := qtemp.FieldByName('ADET' ).AsString;
+//    qhar.FieldByName('BIRIMADI').AsString               := qtemp.FieldByName('BIRIMADI' ).AsString;
+//    qhar.FieldByName('CARIID').AsString                 := cariID;
+//    qhar.FieldByName('TUTAR').AsString                  := qtemp.FieldByName('TOPLAM' ).AsString;
+//    qhar.FieldByName('BIRIMFIYATI').AsString            := qtemp.FieldByName('FIYAT' ).AsString;
+//    qhar.FieldByName('KDVTUTARI').AsString              := qtemp.FieldByName('KDV' ).AsString;
+//    qhar.FieldByName('ISLEMTIPI').asinteger             := ord(SH_KASIYER_SATIS);
+//    // deneme , ,IND_ORANI ,KDVORANI ,
+//    qhar.post;
+//
+//    qtemp.Next;
+//  until qtemp.eof;
+//  //stok hareket ekle bitiþ...
+//
+//
+//  //satýþ  ekle
+//  qHar.Close;
+//  qHar.SQL.Text := 'select * from ' + 'SATIS' + ' where 1=2';
+//  qhar.Open;
+//  qhar.Append;
+//
+//  if islem = NAKIT      then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_NAKIT);
+//  if islem = KREDIKARTI then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_KK);
+//  if islem = CARI       then  qHar.FieldByName('ISLEMTIPI').asinteger := ord(CH_SATIS_CARI);
+//
+//  qhar.FieldByName('ISLEMTARIHI').AsDateTime       := now;
+//  qhar.FieldByName('TUTAR').AsString               := qtemp.FieldByName('TOPLAM' ).AsString;
+//  qhar.FieldByName('TUTAR').AsString               := cariID;
+//  qhar.FieldByName('POSID').AsString               := PosID;
+//  qHar.FieldByName('FATURAID'). ASinteger          := 0;
+//  qhar.FieldByName('SATISTUTARI').AsString         := qtemp.FieldByName('TOPLAM' ).AsString;
+//  qhar.FieldByName('KDVTUTARI').AsString           := qtemp.FieldByName('KDV').AsString;
+//  qhar.FieldByName('IND_TOPLAMI').AsString         := qtemp.FieldByName('ISKONTO' ).AsString;
+//  // deneme ,ALISMALIYETI , ,KAR ,     ,IND_ORANI , ,KDVMATRAHI ,
+//  qhar.post;
+//
+//  satisID := qhar.FieldByName('ID').asstring;
+//  //satýþ  ekle bitiþ...
+//
+//  sqlCalistir('update CARI_H set SATISID=' + satisID + ' where ID = ' + cariHarID + ' and CARIID = ' + cariID);
+//
+//  //satýþ  hareket ekle
+//  qHar.Close;
+//  qHar.SQL.Text := 'select * from ' + 'SATIS_H' + ' where 1=2';
+//  qhar.Open;
+//  qhar.Append;
+//
+//  qhar.FieldByName('SATISID').AsString               := satisID;
+//  qhar.FieldByName('ISLEMTARIHI').AsDateTime         := now;
+//  qhar.FieldByName('STOKID').AsString                := qtemp.FieldByName('STOKID' ).AsString;
+//  qhar.FieldByName('BIRIMFIYATI').AsString           := qtemp.FieldByName('FIYAT' ).AsString;
+//  qhar.FieldByName('BIRIM').AsString                 := qtemp.FieldByName('BIRIMADI' ).AsString;
+//  qhar.FieldByName('MIKTAR').AsString                := qtemp.FieldByName('ADET').AsString;
+//  qhar.FieldByName('TUTAR').AsString                 := qtemp.FieldByName('TOPLAM').AsString;
+//  qhar.FieldByName('KDVTUTARI').AsString             := qtemp.FieldByName('KDV').AsString;
+//  //deneme ,KDVORANI ,IND_ORANI
+//
+//  qhar.post;
+//  //satýþ  hareket ekle bitiþ...
+//
+//  //kartlý satýþ ise pos hareket ekle
+//  if PosID <> '' then
+//  begin
+//    qHar.Close;
+//    qHar.SQL.Text := 'select * from ' + 'POS_H' + ' where 1=2';
+//    qhar.Open;
+//    qhar.Append;
+//
+//    qhar.FieldByName('POSID').AsString          := PosID;
+//    qhar.FieldByName('SATISID').AsString        := satisID;
+//    qhar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
+//    qhar.FieldByName('CARIID').AsString         := CariID;
+//    qhar.FieldByName('ALACAK').AsString         := qtemp.FieldByName('TOPLAM').AsString;
+//
+//    qhar.post;
+//  end
+//  //kartlý satýþ ise pos hareket ekle bitiþ...
+//  else
+//  begin
+//    //nakit satýþ ise kasa  hareket ekle
+//
+//    qHar.Close;
+//    qHar.SQL.Text := 'select * from ' + 'KASA_H' + ' where 1=2';
+//    qhar.Open;
+//    qhar.Append;
+//
+//    qhar.FieldByName('SATISID').AsString        := satisID;
+//    qhar.FieldByName('ISLEMTARIHI').AsDateTime  := now;
+//    qhar.FieldByName('CARIID').AsString         := CariID;
+//    qhar.FieldByName('GIREN').AsString         := qtemp.FieldByName('TOPLAM').AsString;
+//
+//    qhar.post;
+//    //nakit satýþ ise kasa hareket ekle bitiþ...
+//  end;
 
 
 
   with qryCari do
   begin
     close;
-    ParamByName('cari_kodu').AsString := cariID;
+    //ParamByName('cari_kodu').AsString := cariID;
     //open;
   end;
 
   with qryFis do
   begin
     close;
-    ParamByName('har_id').AsString := harID;
+    //ParamByName('har_id').AsString := harID;
     //open;
   end;
 
@@ -1050,6 +1068,7 @@ begin
   satisIptal;
   FreeAndNil(qTemp);
   FreeAndNil(qHar);
+  edtCariBulPropertiesChange(self);
 end;
 
 
