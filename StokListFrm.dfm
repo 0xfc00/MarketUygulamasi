@@ -361,105 +361,120 @@ object frmStokList: TfrmStokList
     Height = 463
     Align = alClient
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    ExplicitLeft = 8
+    object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
+      FindPanel.DisplayMode = fpdmAlways
+      FindPanel.InfoText = 'Arama...'
+      FindPanel.Layout = fplCompact
       ScrollbarAnnotations.CustomAnnotations = <>
-      OnCellDblClick = cxGrid1DBTableView1CellDblClick
+      OnCellDblClick = vwStoklarCellDblClick
       DataController.DataSource = dsStoklar
       DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skCount
+          Column = vwStoklarSTOKADI
+        end
+        item
+          Kind = skSum
+          Column = vwStoklarColumn1
+        end
+        item
+          Kind = skSum
+          Column = vwStoklarColumn2
+        end
+        item
+          Kind = skSum
+          Column = vwStoklarColumn3
+        end>
       DataController.Summary.SummaryGroups = <>
       OptionsData.Deleting = False
       OptionsData.DeletingConfirmation = False
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
+      OptionsView.Footer = True
       OptionsView.GroupByBox = False
-      Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
-      object cxGrid1DBTableView1STOKKODU: TcxGridDBColumn
+      object vwStoklarSTOKKODU: TcxGridDBColumn
+        Caption = 'Stok Kodu'
         DataBinding.FieldName = 'STOKKODU'
-        DataBinding.IsNullValueType = True
         Width = 81
       end
-      object cxGrid1DBTableView1STOKADI: TcxGridDBColumn
+      object vwStoklarSTOKADI: TcxGridDBColumn
+        Caption = 'Stok Ad'#305
         DataBinding.FieldName = 'STOKADI'
-        DataBinding.IsNullValueType = True
         Width = 200
       end
-      object cxGrid1DBTableView1BARKOD: TcxGridDBColumn
+      object vwStoklarBARKOD: TcxGridDBColumn
+        Caption = 'Barkod'
         DataBinding.FieldName = 'BARKOD'
-        DataBinding.IsNullValueType = True
         Width = 90
       end
-      object cxGrid1DBTableView1URUNMARKASI: TcxGridDBColumn
-        DataBinding.FieldName = 'URUNMARKASI'
-        DataBinding.IsNullValueType = True
+      object vwStoklarColumn1: TcxGridDBColumn
+        Caption = 'Giren'
+        DataBinding.FieldName = 'TOPLAM_GIREN'
+      end
+      object vwStoklarColumn2: TcxGridDBColumn
+        Caption = #199#305'kan'
+        DataBinding.FieldName = 'TOPLAM_CIKAN'
+      end
+      object vwStoklarColumn3: TcxGridDBColumn
+        Caption = 'Stok Adet'
+        DataBinding.FieldName = 'MEVCUT'
+      end
+      object vwStoklarURUNMARKASI: TcxGridDBColumn
+        Caption = 'Marka'
+        DataBinding.FieldName = 'MARKAADI'
         Width = 90
       end
-      object cxGrid1DBTableView1TARIH: TcxGridDBColumn
-        DataBinding.FieldName = 'TARIH'
-        DataBinding.IsNullValueType = True
-        Width = 90
-      end
-      object cxGrid1DBTableView1BIRIMID: TcxGridDBColumn
-        DataBinding.FieldName = 'BIRIMID'
-        DataBinding.IsNullValueType = True
+      object vwStoklarBIRIMID: TcxGridDBColumn
+        Caption = 'Birim'
+        DataBinding.FieldName = 'BIRIMADI'
         Width = 80
       end
-      object cxGrid1DBTableView1GRUPID: TcxGridDBColumn
-        DataBinding.FieldName = 'GRUPID'
-        DataBinding.IsNullValueType = True
+      object vwStoklarGRUPID: TcxGridDBColumn
+        Caption = 'Stok Grup'
+        DataBinding.FieldName = 'GRUPADI'
         Width = 80
       end
-      object cxGrid1DBTableView1MARKAID: TcxGridDBColumn
-        DataBinding.FieldName = 'MARKAID'
-        DataBinding.IsNullValueType = True
-        Width = 80
-      end
-      object cxGrid1DBTableView1KDV: TcxGridDBColumn
+      object vwStoklarKDV: TcxGridDBColumn
         DataBinding.FieldName = 'KDV'
-        DataBinding.IsNullValueType = True
         Width = 50
       end
-      object cxGrid1DBTableView1SATISFIYATI: TcxGridDBColumn
+      object vwStoklarSATISFIYATI: TcxGridDBColumn
+        Caption = 'Sat'#305#351' Fiyat'#305
         DataBinding.FieldName = 'SATISFIYATI'
-        DataBinding.IsNullValueType = True
         Width = 80
       end
-      object cxGrid1DBTableView1SATISFIYATI2: TcxGridDBColumn
-        DataBinding.FieldName = 'SATISFIYATI2'
-        DataBinding.IsNullValueType = True
-        Width = 80
-      end
-      object cxGrid1DBTableView1SATISFIYATI3: TcxGridDBColumn
-        DataBinding.FieldName = 'SATISFIYATI3'
-        DataBinding.IsNullValueType = True
-        Width = 80
-      end
-      object cxGrid1DBTableView1ALISFIYATI: TcxGridDBColumn
+      object vwStoklarSONALISFIYATI: TcxGridDBColumn
+        Caption = 'Al'#305#351' Fiyat'#305
         DataBinding.FieldName = 'ALISFIYATI'
-        DataBinding.IsNullValueType = True
         Width = 80
       end
-      object cxGrid1DBTableView1SONALISFIYATI: TcxGridDBColumn
-        DataBinding.FieldName = 'SONALISFIYATI'
-        DataBinding.IsNullValueType = True
-        Width = 80
-      end
-      object cxGrid1DBTableView1REYONRAFID: TcxGridDBColumn
-        DataBinding.FieldName = 'REYONRAFID'
-        DataBinding.IsNullValueType = True
+      object vwStoklarREYONRAFID: TcxGridDBColumn
+        Caption = 'Reyon Raf Ad'#305
+        DataBinding.FieldName = 'REYONRAFADI'
         Width = 80
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vwStoklar
     end
   end
   object qryStoklar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from STOK')
+      'select * '
+      ''
+      ''
+      'from STOK S'
+      'LEFT JOIN T_MARKA M ON S.MARKAID = M.ID'
+      'LEFT JOIN T_BIRIM ON S.BIRIMID = T_BIRIM.ID'
+      'LEFT JOIN T_STOKGRUP ON S.GRUPID = T_STOKGRUP.ID'
+      'LEFT JOIN T_MARKA ON S.MARKAID = T_MARKA.ID'
+      'LEFT JOIN T_REYONRAF ON S.REYONRAFID = T_REYONRAF.ID')
+    Active = True
     Left = 323
     Top = 104
   end

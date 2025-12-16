@@ -10,7 +10,7 @@ uses
   cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, MemDS,
   DBAccess, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, System.Actions, Vcl.ActnList,
-  dxSkinsCore, dxSkinBlue, dxCore, dxSkinsForm, stokAktarimFormF;
+  dxSkinsCore, dxSkinBlue, dxCore, dxSkinsForm, stokAktarimFormF, CariListFrm;
 
 type
   TfrmStokList = class(TfrmListBase)
@@ -18,26 +18,21 @@ type
     btnKapat: TcxButton;
     btnKaydetVeYeni: TcxButton;
     btnSil: TcxButton;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vwStoklar: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
     qryStoklar: TUniQuery;
     dsStoklar: TDataSource;
-    cxGrid1DBTableView1STOKKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1STOKADI: TcxGridDBColumn;
-    cxGrid1DBTableView1BARKOD: TcxGridDBColumn;
-    cxGrid1DBTableView1URUNMARKASI: TcxGridDBColumn;
-    cxGrid1DBTableView1TARIH: TcxGridDBColumn;
-    cxGrid1DBTableView1BIRIMID: TcxGridDBColumn;
-    cxGrid1DBTableView1GRUPID: TcxGridDBColumn;
-    cxGrid1DBTableView1MARKAID: TcxGridDBColumn;
-    cxGrid1DBTableView1KDV: TcxGridDBColumn;
-    cxGrid1DBTableView1SONALISFIYATI: TcxGridDBColumn;
-    cxGrid1DBTableView1SATISFIYATI: TcxGridDBColumn;
-    cxGrid1DBTableView1SATISFIYATI2: TcxGridDBColumn;
-    cxGrid1DBTableView1SATISFIYATI3: TcxGridDBColumn;
-    cxGrid1DBTableView1ALISFIYATI: TcxGridDBColumn;
-    cxGrid1DBTableView1REYONRAFID: TcxGridDBColumn;
+    vwStoklarSTOKKODU: TcxGridDBColumn;
+    vwStoklarSTOKADI: TcxGridDBColumn;
+    vwStoklarBARKOD: TcxGridDBColumn;
+    vwStoklarURUNMARKASI: TcxGridDBColumn;
+    vwStoklarBIRIMID: TcxGridDBColumn;
+    vwStoklarGRUPID: TcxGridDBColumn;
+    vwStoklarKDV: TcxGridDBColumn;
+    vwStoklarSONALISFIYATI: TcxGridDBColumn;
+    vwStoklarSATISFIYATI: TcxGridDBColumn;
+    vwStoklarREYONRAFID: TcxGridDBColumn;
     ActionList1: TActionList;
     acStokDuzenle: TAction;
     btnStokDuzenle: TcxButton;
@@ -48,9 +43,12 @@ type
     acStokHarList: TAction;
     PopupMenu1: TPopupMenu;
     E1: TMenuItem;
+    vwStoklarColumn1: TcxGridDBColumn;
+    vwStoklarColumn2: TcxGridDBColumn;
+    vwStoklarColumn3: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure acStokDuzenleExecute(Sender: TObject);
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+    procedure vwStoklarCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure acStokKartSilExecute(Sender: TObject);
@@ -142,7 +140,7 @@ begin
   frmMain.StokGirisCikisFormuAc_fn('C', qryStoklar.FieldByName('ID').AsString);
 end;
 
-procedure TfrmStokList.cxGrid1DBTableView1CellDblClick(
+procedure TfrmStokList.vwStoklarCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -158,21 +156,17 @@ begin
 end;
 
 procedure TfrmStokList.FormCreate(Sender: TObject);
-var
-  i : Integer;
 begin
   inherited;
+  TumQuerylereConnectionAta(self);
+  TumQueryleriAc(self);
+
   pnlHeader.Caption := '   STOK KARTLARI';
   pnlHeader.color :=clGreen;
 
-  for I := 0 to ComponentCount-1 do
-    if Components[i] is TUniQuery then
-    begin
-      TUniQuery(Components[i]).Connection := dmMain.UniConn;
 
-      if Components[i].Tag = 0 then
-        TUniQuery(Components[i]).Open;
-    end;
+
+  vwStoklar.ApplyBestFit(nil);
 end;
 
 end.

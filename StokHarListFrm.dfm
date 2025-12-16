@@ -361,7 +361,7 @@ object frmStokHarList: TfrmStokHarList
     Height = 340
     Align = alClient
     TabOrder = 2
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
       DataController.DataSource = dsStokHar
@@ -374,44 +374,44 @@ object frmStokHarList: TfrmStokHarList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      object cxGrid1DBTableView1ISLEMTIPI: TcxGridDBColumn
+      object vwISLEMTIPI: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTIPI'
       end
-      object cxGrid1DBTableView1ISLEMTARIHI: TcxGridDBColumn
+      object vwISLEMTARIHI: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTARIHI'
         Width = 99
       end
-      object cxGrid1DBTableView1MIKTAR: TcxGridDBColumn
+      object vwMIKTAR: TcxGridDBColumn
         DataBinding.FieldName = 'MIKTAR'
       end
-      object cxGrid1DBTableView1GIREN: TcxGridDBColumn
+      object vwGIREN: TcxGridDBColumn
         DataBinding.FieldName = 'GIREN'
       end
-      object cxGrid1DBTableView1CIKAN: TcxGridDBColumn
+      object vwCIKAN: TcxGridDBColumn
         DataBinding.FieldName = 'CIKAN'
       end
-      object cxGrid1DBTableView1ACIKLAMA: TcxGridDBColumn
+      object vwACIKLAMA: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA'
         Width = 174
       end
-      object cxGrid1DBTableView1BIRIMADI: TcxGridDBColumn
+      object vwBIRIMADI: TcxGridDBColumn
         DataBinding.FieldName = 'BIRIMADI'
       end
-      object cxGrid1DBTableView1CARIID: TcxGridDBColumn
+      object vwCARIID: TcxGridDBColumn
         DataBinding.FieldName = 'CARIID'
       end
-      object cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn
+      object vwEVRAKNO: TcxGridDBColumn
         DataBinding.FieldName = 'EVRAKNO'
       end
-      object cxGrid1DBTableView1TUTAR: TcxGridDBColumn
+      object vwTUTAR: TcxGridDBColumn
         DataBinding.FieldName = 'TUTAR'
       end
-      object cxGrid1DBTableView1BIRIMFIYATI: TcxGridDBColumn
+      object vwBIRIMFIYATI: TcxGridDBColumn
         DataBinding.FieldName = 'BIRIMFIYATI'
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vw
     end
   end
   object qryStok: TUniQuery

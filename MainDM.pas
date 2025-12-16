@@ -34,7 +34,7 @@ var
   Ini: TIniFile;
 begin
   if UniConn.Connected then
-    showmessage('UniConn açýk');
+    //showmessage('UniConn açýk');  //deneme
   UniConn.close;
 
   if not FileExists(ExtractFilePath(ParamStr(0)) + 'khpro.ini') then

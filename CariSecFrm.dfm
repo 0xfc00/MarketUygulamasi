@@ -141,7 +141,7 @@ object frmCariSec: TfrmCariSec
     Height = 391
     Align = alClient
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vmCariler: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
       FindPanel.InfoText = 'Ara..'
@@ -151,7 +151,7 @@ object frmCariSec: TfrmCariSec
       FindPanel.ShowNextButton = False
       FindPanel.ShowPreviousButton = False
       ScrollbarAnnotations.CustomAnnotations = <>
-      OnCellDblClick = cxGrid1DBTableView1CellDblClick
+      OnCellDblClick = vmCarilerCellDblClick
       DataController.DataSource = dsCariler
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -163,17 +163,17 @@ object frmCariSec: TfrmCariSec
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
-      object cxGrid1DBTableView1STOKKODU: TcxGridDBColumn
+      object vmCarilerSTOKKODU: TcxGridDBColumn
         DataBinding.FieldName = 'CARIKODU'
         Width = 81
       end
-      object cxGrid1DBTableView1STOKADI: TcxGridDBColumn
+      object vmCarilerSTOKADI: TcxGridDBColumn
         DataBinding.FieldName = 'UNVAN'
         Width = 307
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vmCariler
     end
   end
   object qryCariler: TUniQuery

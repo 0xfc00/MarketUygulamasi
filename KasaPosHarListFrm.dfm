@@ -41,7 +41,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 403
         Align = alClient
         TabOrder = 0
-        object cxGrid1DBTableView1: TcxGridDBTableView
+        object vw: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = dsKasaHar
@@ -49,7 +49,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           DataController.Summary.FooterSummaryItems = <
             item
               Kind = skCount
-              Column = cxGrid1DBTableView1TARIH
+              Column = vwTARIH
             end>
           DataController.Summary.SummaryGroups = <>
           OptionsData.Deleting = False
@@ -60,39 +60,43 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          object cxGrid1DBTableView1TARIH: TcxGridDBColumn
+          object vwTARIH: TcxGridDBColumn
             DataBinding.FieldName = 'ISLEMTARIHI'
             DataBinding.IsNullValueType = True
           end
-          object cxGrid1DBTableView1GIREN: TcxGridDBColumn
+          object vwGIREN: TcxGridDBColumn
             DataBinding.FieldName = 'GIREN'
             DataBinding.IsNullValueType = True
           end
-          object cxGrid1DBTableView1CIKAN: TcxGridDBColumn
+          object vwCIKAN: TcxGridDBColumn
             DataBinding.FieldName = 'CIKAN'
             DataBinding.IsNullValueType = True
           end
-          object cxGrid1DBTableView1CARIID: TcxGridDBColumn
+          object vwCARIID: TcxGridDBColumn
             DataBinding.FieldName = 'CARIID'
             DataBinding.IsNullValueType = True
           end
-          object cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn
+          object vwEVRAKNO: TcxGridDBColumn
             DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
           end
-          object cxGrid1DBTableView1USERID: TcxGridDBColumn
+          object vwUSERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
             DataBinding.IsNullValueType = True
           end
         end
         object cxGrid1Level1: TcxGridLevel
-          GridView = cxGrid1DBTableView1
+          GridView = vw
         end
       end
     end
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3

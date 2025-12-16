@@ -123,7 +123,7 @@ object frmCariHarList: TfrmCariHarList
     Height = 437
     Align = alClient
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vwCariHarlist: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
       DataController.DataSource = dsCariHar
@@ -136,80 +136,89 @@ object frmCariHarList: TfrmCariHarList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      object cxGrid1DBTableView1TARIH: TcxGridDBColumn
+      object vwCariHarlistTARIH: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTARIHI'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1BORC: TcxGridDBColumn
+      object vwCariHarlistBORC: TcxGridDBColumn
         DataBinding.FieldName = 'BORC'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ALACAK: TcxGridDBColumn
+      object vwCariHarlistALACAK: TcxGridDBColumn
         DataBinding.FieldName = 'ALACAK'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1VADETARIHI: TcxGridDBColumn
+      object vwCariHarlistVADETARIHI: TcxGridDBColumn
         DataBinding.FieldName = 'VADETARIHI'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn
+      object vwCariHarlistEVRAKNO: TcxGridDBColumn
         DataBinding.FieldName = 'EVRAKNO'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1KASAHID: TcxGridDBColumn
+      object vwCariHarlistKASAHID: TcxGridDBColumn
         DataBinding.FieldName = 'KASAHID'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ACIKLAMA1: TcxGridDBColumn
+      object vwCariHarlistACIKLAMA1: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA1'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ACIKLAMA2: TcxGridDBColumn
+      object vwCariHarlistACIKLAMA2: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA2'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ACIKLAMA3: TcxGridDBColumn
+      object vwCariHarlistACIKLAMA3: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA3'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ISLEMTURU: TcxGridDBColumn
+      object vwCariHarlistISLEMTURU: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTURU'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1FATURAID: TcxGridDBColumn
+      object vwCariHarlistFATURAID: TcxGridDBColumn
         DataBinding.FieldName = 'FATURAID'
+        DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1PERSONEL: TcxGridDBColumn
+      object vwCariHarlistPERSONEL: TcxGridDBColumn
         DataBinding.FieldName = 'PERSONEL'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1POSHID: TcxGridDBColumn
+      object vwCariHarlistPOSHID: TcxGridDBColumn
         DataBinding.FieldName = 'POSHID'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1COMNAMETIME: TcxGridDBColumn
+      object vwCariHarlistCOMNAMETIME: TcxGridDBColumn
         DataBinding.FieldName = 'COMNAMETIME'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1UPDATECOUNT: TcxGridDBColumn
+      object vwCariHarlistUPDATECOUNT: TcxGridDBColumn
         DataBinding.FieldName = 'UPDATECOUNT'
         DataBinding.IsNullValueType = True
         Width = 100
       end
-      object cxGrid1DBTableView1ZAMAN: TcxGridDBColumn
+      object vwCariHarlistZAMAN: TcxGridDBColumn
         DataBinding.FieldName = 'ZAMAN'
         DataBinding.IsNullValueType = True
         Width = 100
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vwCariHarlist
     end
   end
   object pnlAlt: TPanel
@@ -403,7 +412,7 @@ object frmCariHarList: TfrmCariHarList
   object qryCariHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI_H  where UNVAN <> '#39'PERAKENDE'#39)
+      'select * from CARI_H  ')
     Left = 338
     Top = 64
   end

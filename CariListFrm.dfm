@@ -285,169 +285,105 @@ object frmCariList: TfrmCariList
     Height = 457
     Align = alClient
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vwCariList: TcxGridDBTableView
+      PopupMenu = pmGrid
       Navigator.Buttons.CustomButtons = <>
+      FindPanel.DisplayMode = fpdmAlways
+      FindPanel.InfoText = 'Arama...'
+      FindPanel.Layout = fplCompact
       ScrollbarAnnotations.CustomAnnotations = <>
-      OnCellDblClick = cxGrid1DBTableView1CellDblClick
+      OnCellDblClick = vwCariListCellDblClick
       DataController.DataSource = dsCariler
       DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skCount
+          Column = vwCariListUNVAN
+        end
+        item
+          Kind = skSum
+          Column = vwCariListBORC
+        end
+        item
+          Kind = skSum
+          Column = vwCariListALACAK
+        end
+        item
+          Kind = skSum
+          Column = vwCariListBAKIYE
+        end>
       DataController.Summary.SummaryGroups = <>
       OptionsData.Deleting = False
       OptionsData.DeletingConfirmation = False
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
+      OptionsView.Footer = True
       OptionsView.GroupByBox = False
-      Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
-      object cxGrid1DBTableView1CARIKODU: TcxGridDBColumn
+      object vwCariListCARIKODU: TcxGridDBColumn
+        Caption = 'Cari Kodu'
         DataBinding.FieldName = 'CARIKODU'
-        Width = 150
+        Options.Editing = False
+        Width = 59
       end
-      object cxGrid1DBTableView1UNVAN: TcxGridDBColumn
+      object vwCariListUNVAN: TcxGridDBColumn
+        Caption = #220'nvan'
         DataBinding.FieldName = 'UNVAN'
         Width = 150
       end
-      object cxGrid1DBTableView1BORC: TcxGridDBColumn
-        DataBinding.FieldName = 'BORC'
+      object vwCariListBORC: TcxGridDBColumn
+        Caption = 'Toplam Bor'#231
+        DataBinding.FieldName = 'TOPLAM_BORC'
+        Options.Editing = False
         Width = 150
       end
-      object cxGrid1DBTableView1ALACAK: TcxGridDBColumn
-        DataBinding.FieldName = 'ALACAK'
+      object vwCariListALACAK: TcxGridDBColumn
+        Caption = 'Toplam Alacak'
+        DataBinding.FieldName = 'TOPLAM_ALACAK'
+        Options.Editing = False
         Width = 150
       end
-      object cxGrid1DBTableView1BAKIYE: TcxGridDBColumn
+      object vwCariListBAKIYE: TcxGridDBColumn
+        Caption = 'Bakiye'
         DataBinding.FieldName = 'BAKIYE'
+        Options.Editing = False
         Width = 150
       end
-      object cxGrid1DBTableView1TARIH: TcxGridDBColumn
-        DataBinding.FieldName = 'TARIH'
+      object vwCariListTIPI: TcxGridDBColumn
+        Caption = 'Cari Tipi'
+        DataBinding.FieldName = 'tipistr'
+        Options.Editing = False
         Width = 150
       end
-      object cxGrid1DBTableView1GROUPID: TcxGridDBColumn
-        DataBinding.FieldName = 'GROUPID'
+      object vwCariListGROUPID: TcxGridDBColumn
+        Caption = 'Cari Grup'
+        DataBinding.FieldName = 'GRUPSTR'
+        Options.Editing = False
         Width = 150
       end
-      object cxGrid1DBTableView1ILCE: TcxGridDBColumn
-        DataBinding.FieldName = 'ILCE'
-        Width = 150
-      end
-      object cxGrid1DBTableView1SEHIR: TcxGridDBColumn
-        DataBinding.FieldName = 'SEHIR'
-        Width = 150
-      end
-      object cxGrid1DBTableView1POSTAKODU: TcxGridDBColumn
-        DataBinding.FieldName = 'POSTAKODU'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ULKE: TcxGridDBColumn
-        DataBinding.FieldName = 'ULKE'
-        Width = 150
-      end
-      object cxGrid1DBTableView1VERGIDAIRESI: TcxGridDBColumn
-        DataBinding.FieldName = 'VERGIDAIRESI'
-        Width = 150
-      end
-      object cxGrid1DBTableView1VERGINO: TcxGridDBColumn
-        DataBinding.FieldName = 'VERGINO'
-        Width = 150
-      end
-      object cxGrid1DBTableView1BANKA: TcxGridDBColumn
-        DataBinding.FieldName = 'BANKA'
-        Width = 150
-      end
-      object cxGrid1DBTableView1BANKAHESAPNO: TcxGridDBColumn
-        DataBinding.FieldName = 'BANKAHESAPNO'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ISTELEFONU1: TcxGridDBColumn
+      object vwCariListISTELEFONU1: TcxGridDBColumn
+        Caption = #304#351' Telefonu 1'
         DataBinding.FieldName = 'ISTELEFONU1'
         Width = 150
       end
-      object cxGrid1DBTableView1ISTELEFONU2: TcxGridDBColumn
-        DataBinding.FieldName = 'ISTELEFONU2'
-        Width = 150
-      end
-      object cxGrid1DBTableView1FAX: TcxGridDBColumn
-        DataBinding.FieldName = 'FAX'
-        Width = 150
-      end
-      object cxGrid1DBTableView1CEPTELEFONU: TcxGridDBColumn
+      object vwCariListCEPTELEFONU: TcxGridDBColumn
+        Caption = 'Cep Telefonu'
         DataBinding.FieldName = 'CEPTELEFONU'
         Width = 150
       end
-      object cxGrid1DBTableView1EVTELEFONU: TcxGridDBColumn
-        DataBinding.FieldName = 'EVTELEFONU'
-        Width = 150
-      end
-      object cxGrid1DBTableView1EMAIL: TcxGridDBColumn
+      object vwCariListEMAIL: TcxGridDBColumn
+        Caption = 'E-Posta'
         DataBinding.FieldName = 'EMAIL'
         Width = 150
       end
-      object cxGrid1DBTableView1ADRES1: TcxGridDBColumn
-        DataBinding.FieldName = 'ADRES1'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ADRES2: TcxGridDBColumn
-        DataBinding.FieldName = 'ADRES2'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ADRES3: TcxGridDBColumn
-        DataBinding.FieldName = 'ADRES3'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ACIKLAMA1: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA1'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ACIKLAMA2: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA2'
-        Width = 150
-      end
-      object cxGrid1DBTableView1ACIKLAMA3: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA3'
-        Width = 150
-      end
-      object cxGrid1DBTableView1VERESIYE_LIMITI: TcxGridDBColumn
+      object vwCariListVERESIYE_LIMITI: TcxGridDBColumn
+        Caption = 'Veresiye Limiti'
         DataBinding.FieldName = 'VERESIYE_LIMITI'
-        Width = 150
-      end
-      object cxGrid1DBTableView1VERESIYE_UYAR: TcxGridDBColumn
-        DataBinding.FieldName = 'VERESIYE_UYAR'
-        Width = 150
-      end
-      object cxGrid1DBTableView1VERESIYE_SURESI: TcxGridDBColumn
-        DataBinding.FieldName = 'VERESIYE_SURESI'
-        Width = 150
-      end
-      object cxGrid1DBTableView1RENK: TcxGridDBColumn
-        DataBinding.FieldName = 'RENK'
-        Width = 150
-      end
-      object cxGrid1DBTableView1EMAIL2: TcxGridDBColumn
-        DataBinding.FieldName = 'EMAIL2'
-        Width = 150
-      end
-      object cxGrid1DBTableView1EMAIL3: TcxGridDBColumn
-        DataBinding.FieldName = 'EMAIL3'
-        Width = 150
-      end
-      object cxGrid1DBTableView1EMAIL_SEC: TcxGridDBColumn
-        DataBinding.FieldName = 'EMAIL_SEC'
-        Width = 150
-      end
-      object cxGrid1DBTableView1TIPI: TcxGridDBColumn
-        DataBinding.FieldName = 'TIPI'
-        Width = 150
-      end
-      object cxGrid1DBTableView1AUTO_DISCOUNT: TcxGridDBColumn
-        DataBinding.FieldName = 'AUTO_DISCOUNT'
-        DataBinding.IsNullValueType = True
         Width = 150
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vwCariList
     end
   end
   object ActionList1: TActionList
@@ -469,7 +405,21 @@ object frmCariList: TfrmCariList
   object qryCariler: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI  where UNVAN <> '#39'PERAKENDE'#39)
+      'SELECT'
+      '  *'
+      ' ,CASE'
+      '    WHEN TIPI = 0 THEN '#39'M'#252#351'teri'#39
+      '    WHEN TIPI = 1 THEN '#39'Tedarik'#231'i'#39
+      '    WHEN TIPI = 2 THEN '#39'M'#252#351'teri / Tedarik'#231'i'#39
+      '  END AS tipistr,'
+      '  CG.GRUPADI AS GRUPSTR'
+      ''
+      ''
+      ''
+      ''
+      'FROM CARI C'
+      'LEFT JOIN T_CARIGRUP CG ON C.GROUPID = CG.ID'
+      'WHERE UNVAN <> '#39'PERAKENDE'#39)
     Active = True
     Left = 333
     Top = 104
@@ -479,5 +429,26 @@ object frmCariList: TfrmCariList
     DataSet = qryCariler
     Left = 405
     Top = 104
+  end
+  object qryGrupLookup: TUniQuery
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from T_CARIGRUP')
+    Left = 544
+    Top = 232
+  end
+  object dsGrupLookup: TDataSource
+    AutoEdit = False
+    DataSet = qryGrupLookup
+    Left = 592
+    Top = 232
+  end
+  object pmGrid: TPopupMenu
+    Left = 456
+    Top = 184
+    object S1: TMenuItem
+      Caption = 'Sat'#305'r D'#252'zenleme'
+      OnClick = S1Click
+    end
   end
 end

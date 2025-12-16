@@ -15,11 +15,11 @@ uses
 type
   TfrmStokSec = class(TfrmKartBase)
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBTableView1STOKKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1STOKADI: TcxGridDBColumn;
-    cxGrid1DBTableView1BARKOD: TcxGridDBColumn;
-    cxGrid1DBTableView1SATISFIYATI: TcxGridDBColumn;
+    vwStoklar: TcxGridDBTableView;
+    vwStoklarSTOKKODU: TcxGridDBColumn;
+    vwStoklarSTOKADI: TcxGridDBColumn;
+    vwStoklarBARKOD: TcxGridDBColumn;
+    vwStoklarSATISFIYATI: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     qryStoklar: TUniQuery;
     dsStoklar: TDataSource;
@@ -29,7 +29,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure btnSecClick(Sender: TObject);
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+    procedure vwStoklarCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
   private
@@ -60,7 +60,7 @@ begin
   end;
 end;
 
-procedure TfrmStokSec.cxGrid1DBTableView1CellDblClick(
+procedure TfrmStokSec.vwStoklarCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -76,6 +76,8 @@ begin
   qryStoklar.Connection := dmMain.UniConn;
   if qryStoklar.Active = False then
     qryStoklar.Open;
+
+  vwStoklar.ApplyBestFit(nil);
 end;
 
 end.

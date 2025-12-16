@@ -10,7 +10,8 @@ uses
   cxControls, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, MemDS, DBAccess,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, YeniCariKartFrm;
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, YeniCariKartFrm,
+  cxDBExtLookupComboBox;
 
 type
   TfrmCariList = class(TfrmListBase)
@@ -25,55 +26,35 @@ type
     acCariHarList: TAction;
     cxButton1: TcxButton;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vwCariList: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     qryCariler: TUniQuery;
     dsCariler: TDataSource;
-    cxGrid1DBTableView1CARIKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1UNVAN: TcxGridDBColumn;
-    cxGrid1DBTableView1TARIH: TcxGridDBColumn;
-    cxGrid1DBTableView1GROUPID: TcxGridDBColumn;
-    cxGrid1DBTableView1ILCE: TcxGridDBColumn;
-    cxGrid1DBTableView1SEHIR: TcxGridDBColumn;
-    cxGrid1DBTableView1POSTAKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1ULKE: TcxGridDBColumn;
-    cxGrid1DBTableView1VERGIDAIRESI: TcxGridDBColumn;
-    cxGrid1DBTableView1VERGINO: TcxGridDBColumn;
-    cxGrid1DBTableView1BANKA: TcxGridDBColumn;
-    cxGrid1DBTableView1BANKAHESAPNO: TcxGridDBColumn;
-    cxGrid1DBTableView1ISTELEFONU1: TcxGridDBColumn;
-    cxGrid1DBTableView1ISTELEFONU2: TcxGridDBColumn;
-    cxGrid1DBTableView1FAX: TcxGridDBColumn;
-    cxGrid1DBTableView1CEPTELEFONU: TcxGridDBColumn;
-    cxGrid1DBTableView1EVTELEFONU: TcxGridDBColumn;
-    cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
-    cxGrid1DBTableView1ADRES1: TcxGridDBColumn;
-    cxGrid1DBTableView1ADRES2: TcxGridDBColumn;
-    cxGrid1DBTableView1ADRES3: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA1: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA2: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA3: TcxGridDBColumn;
-    cxGrid1DBTableView1BORC: TcxGridDBColumn;
-    cxGrid1DBTableView1ALACAK: TcxGridDBColumn;
-    cxGrid1DBTableView1BAKIYE: TcxGridDBColumn;
-    cxGrid1DBTableView1VERESIYE_LIMITI: TcxGridDBColumn;
-    cxGrid1DBTableView1VERESIYE_UYAR: TcxGridDBColumn;
-    cxGrid1DBTableView1VERESIYE_SURESI: TcxGridDBColumn;
-    cxGrid1DBTableView1RENK: TcxGridDBColumn;
-    cxGrid1DBTableView1EMAIL2: TcxGridDBColumn;
-    cxGrid1DBTableView1EMAIL3: TcxGridDBColumn;
-    cxGrid1DBTableView1EMAIL_SEC: TcxGridDBColumn;
-    cxGrid1DBTableView1TIPI: TcxGridDBColumn;
-    cxGrid1DBTableView1AUTO_DISCOUNT: TcxGridDBColumn;
+    vwCariListCARIKODU: TcxGridDBColumn;
+    vwCariListUNVAN: TcxGridDBColumn;
+    vwCariListGROUPID: TcxGridDBColumn;
+    vwCariListISTELEFONU1: TcxGridDBColumn;
+    vwCariListCEPTELEFONU: TcxGridDBColumn;
+    vwCariListEMAIL: TcxGridDBColumn;
+    vwCariListBORC: TcxGridDBColumn;
+    vwCariListALACAK: TcxGridDBColumn;
+    vwCariListBAKIYE: TcxGridDBColumn;
+    vwCariListVERESIYE_LIMITI: TcxGridDBColumn;
+    vwCariListTIPI: TcxGridDBColumn;
+    qryGrupLookup: TUniQuery;
+    dsGrupLookup: TDataSource;
+    pmGrid: TPopupMenu;
+    S1: TMenuItem;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure acCariDuzenleExecute(Sender: TObject);
     procedure acCariKartSilExecute(Sender: TObject);
     procedure acCariHarListExecute(Sender: TObject);
     procedure btnKaydetVeYeniClick(Sender: TObject);
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+    procedure vwCariListCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure S1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -127,7 +108,7 @@ begin
   qAcKapa_fn(qryCariler);
 end;
 
-procedure TfrmCariList.cxGrid1DBTableView1CellDblClick(
+procedure TfrmCariList.vwCariListCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -145,6 +126,14 @@ begin
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);
+  vwCariList.ApplyBestFit(nil);
+end;
+
+procedure TfrmCariList.S1Click(Sender: TObject);
+begin
+  inherited;
+  S1.Checked := not s1.Checked;
+  vwCariList.OptionsData.Editing := S1.Checked;
 end;
 
 end.

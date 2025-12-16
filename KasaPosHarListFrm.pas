@@ -29,14 +29,14 @@ type
     qryKasaHar: TUniQuery;
     dsKasaHar: TDataSource;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vw: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    cxGrid1DBTableView1TARIH: TcxGridDBColumn;
-    cxGrid1DBTableView1GIREN: TcxGridDBColumn;
-    cxGrid1DBTableView1CIKAN: TcxGridDBColumn;
-    cxGrid1DBTableView1CARIID: TcxGridDBColumn;
-    cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn;
-    cxGrid1DBTableView1USERID: TcxGridDBColumn;
+    vwTARIH: TcxGridDBColumn;
+    vwGIREN: TcxGridDBColumn;
+    vwCIKAN: TcxGridDBColumn;
+    vwCARIID: TcxGridDBColumn;
+    vwEVRAKNO: TcxGridDBColumn;
+    vwUSERID: TcxGridDBColumn;
     cxGrid2: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
@@ -114,6 +114,7 @@ Begin
   q.ParamByName('bastarih').AsDate := dtBas.Date;
   q.ParamByName('bittarih').AsDate := dtBit.Date;
   qAcKapa_fn(q);
+  vw.ApplyBestFit(nil);
 end;
 
 procedure TfrmKasaPosHarList.btnKapatClick(Sender: TObject);

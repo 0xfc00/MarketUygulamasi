@@ -20,14 +20,14 @@ type
     btnKapat: TcxButton;
     btnSec: TcxButton;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBTableView1STOKKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1STOKADI: TcxGridDBColumn;
+    vmCariler: TcxGridDBTableView;
+    vmCarilerSTOKKODU: TcxGridDBColumn;
+    vmCarilerSTOKADI: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure btnSecClick(Sender: TObject);
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+    procedure vmCarilerCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
   private
@@ -57,7 +57,7 @@ begin
   end;
 end;
 
-procedure TfrmCariSec.cxGrid1DBTableView1CellDblClick(
+procedure TfrmCariSec.vmCarilerCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -73,6 +73,8 @@ begin
   qryCariler.Connection := dmMain.UniConn;
   if qryCariler.Active = False then
     qryCariler.Open;
+
+  vmCariler.ApplyBestFit(nil);
 end;
 
 end.

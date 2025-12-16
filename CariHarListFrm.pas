@@ -26,7 +26,7 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     cxDBTextEdit3: TcxDBTextEdit;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vwCariHarlist: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     qryCari: TUniQuery;
     dsCari: TDataSource;
@@ -35,22 +35,22 @@ type
     pnlAlt: TPanel;
     btnKapat: TcxButton;
     btnSil: TcxButton;
-    cxGrid1DBTableView1TARIH: TcxGridDBColumn;
-    cxGrid1DBTableView1BORC: TcxGridDBColumn;
-    cxGrid1DBTableView1ALACAK: TcxGridDBColumn;
-    cxGrid1DBTableView1VADETARIHI: TcxGridDBColumn;
-    cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn;
-    cxGrid1DBTableView1KASAHID: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA1: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA2: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA3: TcxGridDBColumn;
-    cxGrid1DBTableView1ISLEMTURU: TcxGridDBColumn;
-    cxGrid1DBTableView1FATURAID: TcxGridDBColumn;
-    cxGrid1DBTableView1PERSONEL: TcxGridDBColumn;
-    cxGrid1DBTableView1POSHID: TcxGridDBColumn;
-    cxGrid1DBTableView1COMNAMETIME: TcxGridDBColumn;
-    cxGrid1DBTableView1UPDATECOUNT: TcxGridDBColumn;
-    cxGrid1DBTableView1ZAMAN: TcxGridDBColumn;
+    vwCariHarlistTARIH: TcxGridDBColumn;
+    vwCariHarlistBORC: TcxGridDBColumn;
+    vwCariHarlistALACAK: TcxGridDBColumn;
+    vwCariHarlistVADETARIHI: TcxGridDBColumn;
+    vwCariHarlistEVRAKNO: TcxGridDBColumn;
+    vwCariHarlistKASAHID: TcxGridDBColumn;
+    vwCariHarlistACIKLAMA1: TcxGridDBColumn;
+    vwCariHarlistACIKLAMA2: TcxGridDBColumn;
+    vwCariHarlistACIKLAMA3: TcxGridDBColumn;
+    vwCariHarlistISLEMTURU: TcxGridDBColumn;
+    vwCariHarlistFATURAID: TcxGridDBColumn;
+    vwCariHarlistPERSONEL: TcxGridDBColumn;
+    vwCariHarlistPOSHID: TcxGridDBColumn;
+    vwCariHarlistCOMNAMETIME: TcxGridDBColumn;
+    vwCariHarlistUPDATECOUNT: TcxGridDBColumn;
+    vwCariHarlistZAMAN: TcxGridDBColumn;
     Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -81,22 +81,18 @@ begin
   pnlHeader.Caption := '   CARÝ HAREKETLERÝ';
   pnlHeader.color :=clGreen;
 
-  qryCari.Connection        := dmMain.UniConn;
-  qryCariHar.Connection     := dmMain.UniConn;
-
-//  if not qryCari.Active     then qryCari.Open;
-//  if not qryCariHar.Active  then qryCariHar.Open;
+  TumQuerylereConnectionAta(self);
 end;
 
 procedure TfrmCariHarList.FormShow(Sender: TObject);
 begin
   inherited;
-  qryCari.SQL.Add(' where ID =' + CariID);
+  qryCari.SQL.Add(' and ID =' + CariID);
   qryCariHar.SQL.Add(' where CARIID =' + CariID);
 
-  qAcKapa_fn(qryCariHar);
+  TumQueryleriAc(self, true);
 
-  qAcKapa_fn(qryCari);
+  vwCariHarlist.ApplyBestFit(nil);
 end;
 
 end.

@@ -38,19 +38,19 @@ type
     qryStokHar: TUniQuery;
     dsStokHar: TDataSource;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vw: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    cxGrid1DBTableView1ISLEMTIPI: TcxGridDBColumn;
-    cxGrid1DBTableView1ISLEMTARIHI: TcxGridDBColumn;
-    cxGrid1DBTableView1MIKTAR: TcxGridDBColumn;
-    cxGrid1DBTableView1GIREN: TcxGridDBColumn;
-    cxGrid1DBTableView1CIKAN: TcxGridDBColumn;
-    cxGrid1DBTableView1ACIKLAMA: TcxGridDBColumn;
-    cxGrid1DBTableView1BIRIMADI: TcxGridDBColumn;
-    cxGrid1DBTableView1CARIID: TcxGridDBColumn;
-    cxGrid1DBTableView1EVRAKNO: TcxGridDBColumn;
-    cxGrid1DBTableView1TUTAR: TcxGridDBColumn;
-    cxGrid1DBTableView1BIRIMFIYATI: TcxGridDBColumn;
+    vwISLEMTIPI: TcxGridDBColumn;
+    vwISLEMTARIHI: TcxGridDBColumn;
+    vwMIKTAR: TcxGridDBColumn;
+    vwGIREN: TcxGridDBColumn;
+    vwCIKAN: TcxGridDBColumn;
+    vwACIKLAMA: TcxGridDBColumn;
+    vwBIRIMADI: TcxGridDBColumn;
+    vwCARIID: TcxGridDBColumn;
+    vwEVRAKNO: TcxGridDBColumn;
+    vwTUTAR: TcxGridDBColumn;
+    vwBIRIMFIYATI: TcxGridDBColumn;
     Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
@@ -75,21 +75,14 @@ begin
 end;
 
 procedure TfrmStokHarList.FormCreate(Sender: TObject);
-var
-  i : Integer;
+
 begin
   inherited;
   pnlHeader.Caption := '   STOK HAREKETLERÝ';
   pnlHeader.color :=clGreen;
 
-  for I := 0 to ComponentCount-1 do
-    if Components[i] is TUniQuery then
-    begin
-      TUniQuery(Components[i]).Connection := dmMain.UniConn;
+  TumQuerylereConnectionAta(self);
 
-      if Components[i].Tag = 0 then
-        TUniQuery(Components[i]).Open;
-    end;
 
 end;
 
@@ -98,8 +91,9 @@ begin
   qryStok.SQL.Add(' where ID =' + StokID);
   qryStokHar.SQL.Add(' where STOKID =' + StokID);
 
-  qAcKapa_fn(qryStok);
-  qAcKapa_fn(qryStokHar);
+  TumQueryleriAc(self,true);
+  vw.ApplyBestFit(nil);
+
 end;
 
 end.

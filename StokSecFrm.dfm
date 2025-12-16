@@ -22,7 +22,7 @@ object frmStokSec: TfrmStokSec
     Height = 409
     Align = alClient
     TabOrder = 0
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
       FindPanel.InfoText = 'Ara..'
@@ -32,7 +32,7 @@ object frmStokSec: TfrmStokSec
       FindPanel.ShowNextButton = False
       FindPanel.ShowPreviousButton = False
       ScrollbarAnnotations.CustomAnnotations = <>
-      OnCellDblClick = cxGrid1DBTableView1CellDblClick
+      OnCellDblClick = vwStoklarCellDblClick
       DataController.DataSource = dsStoklar
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -44,29 +44,29 @@ object frmStokSec: TfrmStokSec
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
-      object cxGrid1DBTableView1STOKKODU: TcxGridDBColumn
+      object vwStoklarSTOKKODU: TcxGridDBColumn
         DataBinding.FieldName = 'STOKKODU'
         DataBinding.IsNullValueType = True
         Width = 81
       end
-      object cxGrid1DBTableView1STOKADI: TcxGridDBColumn
+      object vwStoklarSTOKADI: TcxGridDBColumn
         DataBinding.FieldName = 'STOKADI'
         DataBinding.IsNullValueType = True
         Width = 200
       end
-      object cxGrid1DBTableView1BARKOD: TcxGridDBColumn
+      object vwStoklarBARKOD: TcxGridDBColumn
         DataBinding.FieldName = 'BARKOD'
         DataBinding.IsNullValueType = True
         Width = 90
       end
-      object cxGrid1DBTableView1SATISFIYATI: TcxGridDBColumn
+      object vwStoklarSATISFIYATI: TcxGridDBColumn
         DataBinding.FieldName = 'SATISFIYATI'
         DataBinding.IsNullValueType = True
         Width = 80
       end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vwStoklar
     end
   end
   object pnlAlt: TPanel
