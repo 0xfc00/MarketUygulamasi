@@ -149,6 +149,7 @@ begin
 
   if not MesajSor('Devam ederseniz ekrandaki stok kartlarý eklenecek/güncellenecek. Eminmisiniz?') then exit;
 
+  //sqlCalistir('ALTER INDEX ALL ON dbo.STOK DISABLE;');
 
   startOfset := StrToIntDef(edtBaslangicSatir.Text ,1);
   if startOfset <= 0 then startOfset := 1;
@@ -161,7 +162,7 @@ begin
   alýsFiyatKolon  := StrToIntDef((cbAlisFiyatKolon.Text),0)-1;
   kdvKolon        := StrToIntDef((cbKdvKolon.Text),0)-1;
 
-  q := yeniQuery('select * from STOK where STOKKODU= :STOKKODU', false);
+  q := yeniQuery('select * from STOK where STOKKODU= :STOKKODU OR STOKADI = :STOKADI OR BARKOD= :BARKOD ', false);
 
   intBasariliIslem := 0;
   inthataliIslem   := 0;
@@ -175,6 +176,8 @@ begin
     try
       q.Close;
       q.ParamByName('STOKKODU').AsString := sGrd.Cells[stokKodKolon,i] ;
+      q.ParamByName('STOKADI').AsString := sGrd.Cells[stokAdiKolon,i] ;
+      q.ParamByName('BARKOD').AsString := sGrd.Cells[barkodKolon,i] ;
       q.Open;
       if q.IsEmpty then
         q.Append
@@ -214,6 +217,7 @@ begin
   gbUst.Enabled := true;
 
   self.Caption := 'Stok Ýçeri Aktarým';
+  //sqlCalistir('ALTER INDEX ALL ON dbo.STOK REBUILD;');
 end;
 
 procedure TstokAktarimForm.btnDosyaAcClick(Sender: TObject);

@@ -27,6 +27,7 @@ type
     cxGrid1DBTableView1TERMINALNO: TcxGridDBColumn;
     cxGrid1DBTableView1BANKAADI: TcxGridDBColumn;
     cxGrid1DBTableView1UYEISYERINO: TcxGridDBColumn;
+    cxGrid1DBTableView1Column1: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure qryPoslarBeforePost(DataSet: TDataSet);
@@ -79,12 +80,13 @@ begin
     Exit;
   end;
 
-  if PosTanimiVarmi_fn(trim(DataSet.fieldbyname('POSADI').asstring)) then
-  begin
-    MesajHata('Bu POS adý zaten kayýtlý..');
-    Abort;
-    Exit;
-  end;
+  if DataSet.State in  [dsInsert] then
+    if PosTanimiVarmi_fn(trim(DataSet.fieldbyname('POSADI').asstring)) then
+    begin
+      MesajHata('Bu POS adý zaten kayýtlý..');
+      Abort;
+      Exit;
+    end;
 
   ekleyenDegistiren(DataSet);
 end;

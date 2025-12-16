@@ -9,7 +9,6 @@ object dmMain: TdmMain
     SpecificOptions.Strings = (
       'SQL Server.Authentication=auWindows')
     Server = 'DESKTOP-MCB\SQLEXPRESS'
-    Connected = True
     LoginPrompt = False
     Left = 72
     Top = 40

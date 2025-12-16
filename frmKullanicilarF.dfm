@@ -28,10 +28,10 @@ object frmKullanicilar: TfrmKullanicilar
     Width = 230
     object cxGrid1: TcxGrid
       AlignWithMargins = True
-      Left = 5
-      Top = 21
-      Width = 220
-      Height = 367
+      Left = 6
+      Top = 18
+      Width = 218
+      Height = 363
       Align = alClient
       TabOrder = 0
       object cxGrid1DBTableView1: TcxGridDBTableView
@@ -78,9 +78,9 @@ object frmKullanicilar: TfrmKullanicilar
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 5
-      Top = 394
-      Width = 220
+      Left = 6
+      Top = 387
+      Width = 218
       Height = 35
       Align = alBottom
       Caption = 'Ekle'
@@ -109,9 +109,9 @@ object frmKullanicilar: TfrmKullanicilar
     end
     object cxButton2: TcxButton
       AlignWithMargins = True
-      Left = 5
-      Top = 435
-      Width = 220
+      Left = 6
+      Top = 428
+      Width = 218
       Height = 35
       Align = alBottom
       Caption = 'Sil'
@@ -146,35 +146,35 @@ object frmKullanicilar: TfrmKullanicilar
     Width = 566
     object cxGroupBox24: TcxGroupBox
       AlignWithMargins = True
-      Left = 275
-      Top = 183
+      Left = 276
+      Top = 180
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 0
-      Height = 287
+      Height = 283
       Width = 264
       object cxGroupBox23: TcxGroupBox
-        Left = 2
-        Top = 2
+        Left = 3
+        Top = 3
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 0
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel20: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Kasa '#304#351'lem Giri'#351
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox20: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_KASAISLEMEKLE'
           DataBinding.DataSource = dsKullanicilar
@@ -183,31 +183,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox22: TcxGroupBox
-        Left = 2
-        Top = 35
+        Left = 3
+        Top = 36
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 1
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel19: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Kasa '#304#351'lem Silme'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox19: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_KASAISLEMSIL'
           DataBinding.DataSource = dsKullanicilar
@@ -216,31 +216,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox21: TcxGroupBox
-        Left = 2
-        Top = 167
+        Left = 3
+        Top = 168
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 2
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel18: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Bor'#231' Ekle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox18: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_BORCEKLE'
           DataBinding.DataSource = dsKullanicilar
@@ -249,31 +249,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox20: TcxGroupBox
-        Left = 2
-        Top = 200
+        Left = 3
+        Top = 201
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 3
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel17: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Tahsilat Gir'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox17: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_TAHSILATGIR'
           DataBinding.DataSource = dsKullanicilar
@@ -282,31 +282,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox18: TcxGroupBox
-        Left = 2
-        Top = 233
+        Left = 3
+        Top = 234
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 4
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel15: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'H'#305'zl'#305' Sat'#305#351' Sat'#305'r D'#252'zenleme'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox15: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_HSSATIRDUZENLE'
           DataBinding.DataSource = dsKullanicilar
@@ -315,31 +315,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox17: TcxGroupBox
-        Left = 2
-        Top = 68
+        Left = 3
+        Top = 69
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 5
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel13: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Fatura Ekle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox13: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_FATEKLE'
           DataBinding.DataSource = dsKullanicilar
@@ -348,31 +348,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox16: TcxGroupBox
-        Left = 2
-        Top = 101
+        Left = 3
+        Top = 102
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 6
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel12: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Fatura D'#252'zeltme'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox12: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_FATGUNCELLE'
           DataBinding.DataSource = dsKullanicilar
@@ -381,31 +381,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox15: TcxGroupBox
-        Left = 2
-        Top = 134
+        Left = 3
+        Top = 135
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 7
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel11: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Fatura Sil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox11: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_FATSIL'
           DataBinding.DataSource = dsKullanicilar
@@ -414,41 +414,41 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
     end
     object cxGroupBox8: TcxGroupBox
       AlignWithMargins = True
-      Left = 5
-      Top = 183
+      Left = 6
+      Top = 180
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 1
-      Height = 287
+      Height = 283
       Width = 264
       object cxGroupBox9: TcxGroupBox
-        Left = 2
-        Top = 2
+        Left = 3
+        Top = 3
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 0
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel5: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Stok Kart'#305' Ekle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox5: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_STOKEKLE'
           DataBinding.DataSource = dsKullanicilar
@@ -457,31 +457,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox10: TcxGroupBox
-        Left = 2
-        Top = 35
+        Left = 3
+        Top = 36
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 1
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel6: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Stok Kart'#305' G'#252'ncelle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox6: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_STOKGUNCELLE'
           DataBinding.DataSource = dsKullanicilar
@@ -490,31 +490,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox11: TcxGroupBox
-        Left = 2
-        Top = 68
+        Left = 3
+        Top = 69
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 2
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel7: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Stok Kart'#305' Sil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox7: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_STOKSIL'
           DataBinding.DataSource = dsKullanicilar
@@ -523,31 +523,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox12: TcxGroupBox
-        Left = 2
-        Top = 134
+        Left = 3
+        Top = 135
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 3
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel8: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Kart'#305' Ekle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox8: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_CARIEKLE'
           DataBinding.DataSource = dsKullanicilar
@@ -556,31 +556,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox14: TcxGroupBox
-        Left = 2
-        Top = 167
+        Left = 3
+        Top = 168
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 4
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel10: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Kart'#305' G'#252'ncelle'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox10: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_CARIGUNCELLE'
           DataBinding.DataSource = dsKullanicilar
@@ -589,31 +589,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox25: TcxGroupBox
-        Left = 2
-        Top = 200
+        Left = 3
+        Top = 201
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 5
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel14: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Kart'#305' Sil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox14: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_CARISIL'
           DataBinding.DataSource = dsKullanicilar
@@ -622,31 +622,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox7: TcxGroupBox
-        Left = 2
-        Top = 101
+        Left = 3
+        Top = 102
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 6
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel4: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Stok Hareket Sil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox4: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_STOKHARSIL'
           DataBinding.DataSource = dsKullanicilar
@@ -655,31 +655,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
       object cxGroupBox6: TcxGroupBox
-        Left = 2
-        Top = 233
+        Left = 3
+        Top = 234
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 7
         Height = 33
-        Width = 260
+        Width = 258
         object cxLabel3: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alClient
           Caption = 'Cari Hareket Sil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 123
+          ExplicitWidth = 119
           AnchorY = 17
         end
         object cxDBCheckBox3: TcxDBCheckBox
           AlignWithMargins = True
           Left = 238
-          Top = 5
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'y_CARIHARSIL'
           DataBinding.DataSource = dsKullanicilar
@@ -688,31 +688,31 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = 'False'
           Properties.ValueUnchecked = '0'
           TabOrder = 1
-          ExplicitLeft = 134
+          ExplicitLeft = 131
         end
       end
     end
     object cxGroupBox26: TcxGroupBox
       AlignWithMargins = True
-      Left = 5
-      Top = 21
+      Left = 6
+      Top = 18
       Align = alTop
       PanelStyle.Active = True
       TabOrder = 2
       Height = 156
-      Width = 556
+      Width = 554
       object cxGroupBox27: TcxGroupBox
-        Left = 2
-        Top = 68
+        Left = 3
+        Top = 69
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 2
         Height = 33
-        Width = 552
+        Width = 548
         object cxLabel21: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alLeft
           Caption = 'A'#231#305'klama :'
           Properties.Alignment.Vert = taVCenter
@@ -720,8 +720,8 @@ object frmKullanicilar: TfrmKullanicilar
         end
         object cxDBTextEdit1: TcxDBTextEdit
           AlignWithMargins = True
-          Left = 97
-          Top = 5
+          Left = 92
+          Top = 6
           Align = alRight
           DataBinding.DataSource = dsKullanicilar
           TabOrder = 1
@@ -729,17 +729,17 @@ object frmKullanicilar: TfrmKullanicilar
         end
       end
       object cxGroupBox28: TcxGroupBox
-        Left = 2
-        Top = 35
+        Left = 3
+        Top = 36
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 0
         Height = 33
-        Width = 552
+        Width = 548
         object cxLabel22: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alLeft
           Caption = #350'ifre :'
           Properties.Alignment.Vert = taVCenter
@@ -747,8 +747,8 @@ object frmKullanicilar: TfrmKullanicilar
         end
         object cxDBTextEdit2: TcxDBTextEdit
           AlignWithMargins = True
-          Left = 97
-          Top = 5
+          Left = 92
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'SIFRE'
           DataBinding.DataSource = dsKullanicilar
@@ -757,26 +757,27 @@ object frmKullanicilar: TfrmKullanicilar
         end
       end
       object cxGroupBox29: TcxGroupBox
-        Left = 2
-        Top = 2
+        Left = 3
+        Top = 3
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 1
         Height = 33
-        Width = 552
+        Width = 548
         object cxLabel23: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alLeft
           Caption = 'Kullan'#305'c'#305' Ad'#305' : '
           Properties.Alignment.Vert = taVCenter
+          OnClick = cxLabel23Click
           AnchorY = 17
         end
         object cxDBTextEdit3: TcxDBTextEdit
           AlignWithMargins = True
-          Left = 97
-          Top = 5
+          Left = 92
+          Top = 6
           Align = alRight
           DataBinding.DataField = 'KULLANICI'
           DataBinding.DataSource = dsKullanicilar
@@ -785,28 +786,28 @@ object frmKullanicilar: TfrmKullanicilar
         end
       end
       object cxGroupBox30: TcxGroupBox
-        Left = 2
-        Top = 101
+        Left = 3
+        Top = 102
         Align = alTop
         PanelStyle.Active = True
         TabOrder = 3
         Height = 33
-        Width = 552
+        Width = 548
         object cxLabel24: TcxLabel
           AlignWithMargins = True
-          Left = 103
-          Top = 5
+          Left = 105
+          Top = 6
           Margins.Left = 50
           Align = alLeft
           Caption = 'Admin'
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 211
+          ExplicitLeft = 212
           AnchorY = 17
         end
         object cxDBCheckBox21: TcxDBCheckBox
           AlignWithMargins = True
-          Left = 142
-          Top = 5
+          Left = 144
+          Top = 6
           Align = alLeft
           DataBinding.DataField = 'YONETICI'
           DataBinding.DataSource = dsKullanicilar
@@ -815,12 +816,12 @@ object frmKullanicilar: TfrmKullanicilar
           Properties.ValueGrayed = '0'
           Properties.ValueUnchecked = 'False'
           TabOrder = 1
-          ExplicitLeft = 250
+          ExplicitLeft = 251
         end
         object cxLabel1: TcxLabel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
+          Left = 6
+          Top = 6
           Align = alLeft
           Caption = 'Aktif'
           Properties.Alignment.Vert = taVCenter
@@ -828,8 +829,8 @@ object frmKullanicilar: TfrmKullanicilar
         end
         object cxDBCheckBox1: TcxDBCheckBox
           AlignWithMargins = True
-          Left = 37
-          Top = 5
+          Left = 38
+          Top = 6
           Align = alLeft
           DataBinding.DataField = 'AKTIF'
           DataBinding.DataSource = dsKullanicilar
@@ -854,10 +855,10 @@ object frmKullanicilar: TfrmKullanicilar
     Width = 802
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 656
-      Top = 5
+      Left = 655
+      Top = 6
       Width = 141
-      Height = 41
+      Height = 39
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -880,10 +881,10 @@ object frmKullanicilar: TfrmKullanicilar
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 533
-      Top = 5
+      Left = 532
+      Top = 6
       Width = 117
-      Height = 41
+      Height = 39
       Align = alRight
       Caption = 'Kaydet'
       OptionsImage.Glyph.SourceDPI = 96

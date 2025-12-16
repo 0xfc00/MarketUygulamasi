@@ -10,7 +10,7 @@ uses
   cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, MemDS,
   DBAccess, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, System.Actions, Vcl.ActnList,
-  dxSkinsCore, dxSkinBlue, dxCore, dxSkinsForm;
+  dxSkinsCore, dxSkinBlue, dxCore, dxSkinsForm, stokAktarimFormF;
 
 type
   TfrmStokList = class(TfrmListBase)
@@ -59,6 +59,7 @@ type
     procedure cxButton1Click(Sender: TObject);
     procedure cxButton3Click(Sender: TObject);
     procedure acStokHarListExecute(Sender: TObject);
+    procedure E1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -147,6 +148,13 @@ procedure TfrmStokList.cxGrid1DBTableView1CellDblClick(
 begin
   inherited;
   acStokDuzenleExecute(Self);
+end;
+
+procedure TfrmStokList.E1Click(Sender: TObject);
+begin
+  inherited;
+  with TstokAktarimForm.create(nil) do
+    showmodal;
 end;
 
 procedure TfrmStokList.FormCreate(Sender: TObject);

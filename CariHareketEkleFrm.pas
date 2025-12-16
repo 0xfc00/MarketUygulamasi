@@ -87,8 +87,11 @@ end;
 procedure TfrmCariHareketEkle.cbxIslemTuruPropertiesChange(Sender: TObject);
 begin
   inherited;
-  lblPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
-  cbxPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
+  if GCKodu = T then
+  begin
+    lblPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
+    cbxPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
+  end;
 end;
 
 procedure TfrmCariHareketEkle.FormCreate(Sender: TObject);
@@ -156,7 +159,7 @@ begin
     exit;
   end;
 
-  if (cbxIslemTuru.ItemIndex = 1) and (Trim(DataSet.FieldByName('POSID').AsString) = EmptyStr) then
+  if (cbxIslemTuru.ItemIndex = 1) and (Trim(DataSet.FieldByName('POSID').AsString) = EmptyStr) and (GCKodu = T) then
   begin
     MesajHata('Lütfen Pos hesabý seçiniz..');
     cbxPosHesabi.SetFocus;

@@ -215,6 +215,10 @@ object frmPosList: TfrmPosList
         DataBinding.IsNullValueType = True
         Width = 140
       end
+      object cxGrid1DBTableView1Column1: TcxGridDBColumn
+        DataBinding.FieldName = 'AKTIF'
+        DataBinding.IsNullValueType = True
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1

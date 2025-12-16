@@ -378,54 +378,67 @@ object frmStokList: TfrmStokList
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object cxGrid1DBTableView1STOKKODU: TcxGridDBColumn
         DataBinding.FieldName = 'STOKKODU'
+        DataBinding.IsNullValueType = True
         Width = 81
       end
       object cxGrid1DBTableView1STOKADI: TcxGridDBColumn
         DataBinding.FieldName = 'STOKADI'
+        DataBinding.IsNullValueType = True
         Width = 200
       end
       object cxGrid1DBTableView1BARKOD: TcxGridDBColumn
         DataBinding.FieldName = 'BARKOD'
+        DataBinding.IsNullValueType = True
         Width = 90
       end
       object cxGrid1DBTableView1URUNMARKASI: TcxGridDBColumn
         DataBinding.FieldName = 'URUNMARKASI'
+        DataBinding.IsNullValueType = True
         Width = 90
       end
       object cxGrid1DBTableView1TARIH: TcxGridDBColumn
         DataBinding.FieldName = 'TARIH'
+        DataBinding.IsNullValueType = True
         Width = 90
       end
       object cxGrid1DBTableView1BIRIMID: TcxGridDBColumn
         DataBinding.FieldName = 'BIRIMID'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1GRUPID: TcxGridDBColumn
         DataBinding.FieldName = 'GRUPID'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1MARKAID: TcxGridDBColumn
         DataBinding.FieldName = 'MARKAID'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1KDV: TcxGridDBColumn
         DataBinding.FieldName = 'KDV'
+        DataBinding.IsNullValueType = True
         Width = 50
       end
       object cxGrid1DBTableView1SATISFIYATI: TcxGridDBColumn
         DataBinding.FieldName = 'SATISFIYATI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1SATISFIYATI2: TcxGridDBColumn
         DataBinding.FieldName = 'SATISFIYATI2'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1SATISFIYATI3: TcxGridDBColumn
         DataBinding.FieldName = 'SATISFIYATI3'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1ALISFIYATI: TcxGridDBColumn
         DataBinding.FieldName = 'ALISFIYATI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object cxGrid1DBTableView1SONALISFIYATI: TcxGridDBColumn
@@ -435,6 +448,7 @@ object frmStokList: TfrmStokList
       end
       object cxGrid1DBTableView1REYONRAFID: TcxGridDBColumn
         DataBinding.FieldName = 'REYONRAFID'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
     end
@@ -446,7 +460,6 @@ object frmStokList: TfrmStokList
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from STOK')
-    Active = True
     Left = 323
     Top = 104
   end
@@ -477,6 +490,7 @@ object frmStokList: TfrmStokList
     Top = 264
     object E1: TMenuItem
       Caption = 'Excelden Aktar'
+      OnClick = E1Click
     end
   end
 end

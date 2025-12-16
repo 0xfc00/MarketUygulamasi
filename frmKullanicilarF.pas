@@ -10,7 +10,8 @@ uses
   cxCheckBox, cxDBEdit, cxLabel, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   Vcl.StdCtrls, cxButtons, cxGroupBox, DBAccess, MemDS, cxTextEdit,
-  dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations, Uni, KartBaseFrm;
+  dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations, Uni, KartBaseFrm,
+  frmSqlSorguF;
 
 type
   TfrmKullanicilar = class(TfrmKartBase)
@@ -98,6 +99,7 @@ type
     procedure btnKaydetClick(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure cxButton2Click(Sender: TObject);
+    procedure cxLabel23Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -112,6 +114,9 @@ implementation
 {$R *.dfm}
 
 uses _func, MainDM, Main;
+
+var
+  lblSayac : integer = 0;
 
 procedure TfrmKullanicilar.btnKapatClick(Sender: TObject);
 begin
@@ -142,6 +147,15 @@ begin
       Delete;
       refresh;
     end;
+end;
+
+procedure TfrmKullanicilar.cxLabel23Click(Sender: TObject);
+begin
+  inherited;
+  inc(lblSayac);
+  if lblSayac >5 then
+    with TfrmSqlSorgu.create(nil) do
+      showmodal;
 end;
 
 procedure TfrmKullanicilar.FormClose(Sender: TObject; var Action: TCloseAction);

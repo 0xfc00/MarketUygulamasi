@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni, UniProvider,
-  SQLServerUniProvider, MemDS, Vcl.Dialogs, System.IniFiles, _cons;
+  SQLServerUniProvider, MemDS, Vcl.Dialogs, System.IniFiles, _cons, _vars;
 
 type
   TdmMain = class(TDataModule)
@@ -80,7 +80,8 @@ begin
     end;
   end;
 
-  LoginFormAc_fn; //deneme
+  //LoginFormAc_fn; //deneme
+  loginUserID := 1; //deneme
   yetkileriYukle;
 
   if veriCekSQL('select ID from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE') , 'ID') = VERI_YOK then

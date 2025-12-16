@@ -369,7 +369,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select'
-      '* FROM POS')
+      '* FROM POS where AKTIF = 1')
     ReadOnly = True
     Left = 296
     Top = 232
