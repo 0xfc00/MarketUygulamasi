@@ -118,15 +118,17 @@ object frmPosList: TfrmPosList
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
+      ExplicitLeft = 579
+      ExplicitTop = 0
     end
-    object cxButton1: TcxButton
+    object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 125
+      Width = 100
       Height = 28
       Align = alLeft
-      Caption = 'Pos Hareketleri'
+      Caption = 'Yeni POS Tan'#305'm'#305
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
@@ -153,7 +155,62 @@ object frmPosList: TfrmPosList
         33312E362C322C33312C327A204D33302C3136682D385638683320202623393B
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
+      OptionsImage.ImageIndex = 0
       TabOrder = 1
+      OnClick = btnKaydetVeYeniClick
+    end
+    object btnSil: TcxButton
+      AlignWithMargins = True
+      Left = 110
+      Top = 4
+      Width = 100
+      Height = 28
+      Align = alLeft
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.SourceHeight = 16
+      OptionsImage.Glyph.SourceWidth = 16
+      OptionsImage.Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+        31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+        4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+        3732373237323B7D262331333B262331303B2623393B2E426C75657B66696C6C
+        3A233131373744373B7D262331333B262331303B2623393B2E57686974657B66
+        696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+        6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D262331333B262331303B2623393B
+        2E7374337B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A3C672F
+        3E0D0A3C672069643D2244656C6574655F315F223E0D0A09093C706174682063
+        6C6173733D2259656C6C6F772220643D224D342C3130563663302D322E322C34
+        2E352D342C31302D347331302C312E382C31302C34763463302C322E322D342E
+        352C342D31302C3453342C31322E322C342C31307A204D31342C323063302E37
+        2C302C312E342C302C322D302E3120202623393B2623393B63302D302E352C30
+        2E322D312C302E362D312E336C322D324331392C31362E322C31392E352C3136
+        2C32302C313673312C302E322C312E342C302E366C312E332C312E3363302E38
+        2D302E362C312E322D312E322C312E322D312E39762D3463302C322E322D342E
+        352C342D31302C3453342C31342E322C342C3132763420202623393B2623393B
+        43342C31382E322C382E352C32302C31342C32307A204D31392E322C32344C31
+        372C32312E384331362C32312E392C31352C32322C31342C3232632D352E352C
+        302D31302D312E382D31302D34763463302C322E322C342E352C342C31302C34
+        63312E322C302C322E332D302E312C332E342D302E324C31392E322C32342020
+        2623393B2623393B7A222F3E0D0A09093C706F6C79676F6E20636C6173733D22
+        5265642220706F696E74733D2233302C32302032382C31382032342C32322032
+        302C31382031382C32302032322C32342031382C32382032302C33302032342C
+        32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
+        2F673E0D0A3C2F7376673E0D0A}
+      TabOrder = 2
+      OnClick = btnSilClick
+      ExplicitLeft = 772
     end
   end
   object cxGrid1: TcxGrid
@@ -164,7 +221,7 @@ object frmPosList: TfrmPosList
     Height = 397
     Align = alClient
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
       Navigator.Buttons.PriorPage.Visible = False
@@ -190,38 +247,62 @@ object frmPosList: TfrmPosList
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
-      object cxGrid1DBTableView1POSADI: TcxGridDBColumn
+      object vwPOSADI: TcxGridDBColumn
+        Caption = 'POS Ad'#305
         DataBinding.FieldName = 'POSADI'
         DataBinding.IsNullValueType = True
         Width = 175
       end
-      object cxGrid1DBTableView1HESAPKODU: TcxGridDBColumn
+      object vwHESAPKODU: TcxGridDBColumn
+        Caption = 'Hesap Kodu'
         DataBinding.FieldName = 'HESAPKODU'
         DataBinding.IsNullValueType = True
         Width = 112
       end
-      object cxGrid1DBTableView1TERMINALNO: TcxGridDBColumn
+      object vwTERMINALNO: TcxGridDBColumn
+        Caption = 'Terminal No'
         DataBinding.FieldName = 'TERMINALNO'
         DataBinding.IsNullValueType = True
         Width = 104
       end
-      object cxGrid1DBTableView1BANKAADI: TcxGridDBColumn
+      object vwBANKAADI: TcxGridDBColumn
+        Caption = 'Banka Ad'#305
         DataBinding.FieldName = 'BANKAADI'
         DataBinding.IsNullValueType = True
         Width = 139
       end
-      object cxGrid1DBTableView1UYEISYERINO: TcxGridDBColumn
+      object vwUYEISYERINO: TcxGridDBColumn
+        Caption = #220'ye '#304#351'yeri No'
         DataBinding.FieldName = 'UYEISYERINO'
         DataBinding.IsNullValueType = True
         Width = 140
       end
-      object cxGrid1DBTableView1Column1: TcxGridDBColumn
+      object vwColumn1: TcxGridDBColumn
+        Caption = 'Aktif'
         DataBinding.FieldName = 'AKTIF'
         DataBinding.IsNullValueType = True
       end
+      object vwColumn2: TcxGridDBColumn
+        Caption = 'Bor'#231
+        DataBinding.FieldName = 'TOPLAM_BORC'
+        DataBinding.IsNullValueType = True
+        Options.Editing = False
+      end
+      object vwColumn3: TcxGridDBColumn
+        Caption = 'Alacak'
+        DataBinding.FieldName = 'TOPLAM_ALACAK'
+        DataBinding.IsNullValueType = True
+        Options.Editing = False
+      end
+      object vwColumn4: TcxGridDBColumn
+        Caption = 'Bakiye'
+        DataBinding.FieldName = 'BAKIYE'
+        DataBinding.IsNullValueType = True
+        Options.Editing = False
+      end
     end
     object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      GridView = vw
     end
   end
   object qryPoslar: TUniQuery
@@ -230,6 +311,7 @@ object frmPosList: TfrmPosList
       'select * from POS')
     BeforePost = qryPoslarBeforePost
     BeforeDelete = qryPoslarBeforeDelete
+    OnNewRecord = qryPoslarNewRecord
     Left = 277
     Top = 96
   end

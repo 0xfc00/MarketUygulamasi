@@ -16,22 +16,29 @@ type
   TfrmPosList = class(TfrmListBase)
     pnlAlt: TPanel;
     btnKapat: TcxButton;
-    cxButton1: TcxButton;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vw: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     qryPoslar: TUniQuery;
     dsPoslar: TDataSource;
-    cxGrid1DBTableView1POSADI: TcxGridDBColumn;
-    cxGrid1DBTableView1HESAPKODU: TcxGridDBColumn;
-    cxGrid1DBTableView1TERMINALNO: TcxGridDBColumn;
-    cxGrid1DBTableView1BANKAADI: TcxGridDBColumn;
-    cxGrid1DBTableView1UYEISYERINO: TcxGridDBColumn;
-    cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    vwPOSADI: TcxGridDBColumn;
+    vwHESAPKODU: TcxGridDBColumn;
+    vwTERMINALNO: TcxGridDBColumn;
+    vwBANKAADI: TcxGridDBColumn;
+    vwUYEISYERINO: TcxGridDBColumn;
+    vwColumn1: TcxGridDBColumn;
+    btnKaydetVeYeni: TcxButton;
+    btnSil: TcxButton;
+    vwColumn2: TcxGridDBColumn;
+    vwColumn3: TcxGridDBColumn;
+    vwColumn4: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure qryPoslarBeforePost(DataSet: TDataSet);
     procedure qryPoslarBeforeDelete(DataSet: TDataSet);
+    procedure qryPoslarNewRecord(DataSet: TDataSet);
+    procedure btnSilClick(Sender: TObject);
+    procedure btnKaydetVeYeniClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,6 +59,21 @@ begin
   close;
 end;
 
+procedure TfrmPosList.btnKaydetVeYeniClick(Sender: TObject);
+begin
+  inherited;
+  if qryPoslar.State in dsEditModes then qryPoslar.post;
+
+  qryPoslar.Append;
+end;
+
+procedure TfrmPosList.btnSilClick(Sender: TObject);
+begin
+  inherited;
+  if qryPoslar.IsEmpty then exit;
+  qryPoslar.delete;
+end;
+
 procedure TfrmPosList.FormCreate(Sender: TObject);
 begin
   pnlHeader.Caption := '   POS Tanýmlarý';
@@ -59,6 +81,7 @@ begin
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);
+  vw.ApplyBestFit(nil);
 end;
 
 procedure TfrmPosList.qryPoslarBeforeDelete(DataSet: TDataSet);
@@ -89,6 +112,13 @@ begin
     end;
 
   ekleyenDegistiren(DataSet);
+end;
+
+procedure TfrmPosList.qryPoslarNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  DataSet.fieldbyname('TOPLAM_BORC').AsFloat := 0;
+  DataSet.fieldbyname('TOPLAM_ALACAK').AsFloat := 0;
 end;
 
 end.
