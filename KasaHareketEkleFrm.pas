@@ -36,7 +36,7 @@ type
   private
     { Private declarations }
   public
-    GCKodu : string;
+    GCKodu : integer;
     { Public declarations }
   end;
 
@@ -72,7 +72,7 @@ end;
 
 procedure TfrmKasaHareketEkle.FormShow(Sender: TObject);
 begin
-  if GCKodu = 'G' then
+  if GCKodu = 'G' asd then
   begin
     pnlHeader.Caption := '   KASA GÝRÝÞ';
   end
@@ -108,16 +108,18 @@ begin
     exit;
   end;
 
-  if GCKodu = 'G 'then       //kasaya giren
+  if GCKodu = HIT_KASA_GIRIS then       //kasaya giren
     DataSet.FieldByName('GIREN').AsString        := edtTutar.Text
   else
-  if GCKodu = 'C' then            //kasadan çýkan
+  if GCKodu = HIT_KASA_CIKIS then            //kasadan çýkan
     DataSet.FieldByName('CIKAN').AsString      := edtTutar.Text
   else
   if GCKodu = EmptyStr then
   begin
     abort;
   end;
+
+  DataSet.FieldByName('TUTAR').AsString        := edtTutar.Text;
 
   EkleyenDegistiren(DataSet);
 end;

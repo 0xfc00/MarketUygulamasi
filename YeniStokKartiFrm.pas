@@ -115,7 +115,7 @@ end;
 
 procedure TfrmYeniStokKarti.StokKartiGetir();
 begin
-  qryStok.SQL.Text := 'select * from stok where ID = :id';
+  qryStok.SQL.Text := 'select * from STOK where ID = :id';
   qryStok.ParamByName('id').AsString := StokID;
 
   edtStokKodu.Enabled     := False;

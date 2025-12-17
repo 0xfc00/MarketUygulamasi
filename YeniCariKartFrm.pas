@@ -10,7 +10,7 @@ uses
   DBAccess, Uni, cxGroupBox, MainDM, cxLabel, cxMemo, cxDBEdit, cxSpinEdit,
   cxCheckBox, cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
   cxRadioGroup, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, STRUTils, Main,
-  _func;
+  _func, _cons;
 
 type
   TfrmYeniCariKart = class(TfrmKartBase)

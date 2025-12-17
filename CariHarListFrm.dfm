@@ -138,22 +138,14 @@ object frmCariHarList: TfrmCariHarList
       OptionsView.GroupByBox = False
       object vwCariHarlistTARIH: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTARIHI'
-        DataBinding.IsNullValueType = True
         Width = 100
       end
       object vwCariHarlistBORC: TcxGridDBColumn
-        DataBinding.FieldName = 'BORC'
-        DataBinding.IsNullValueType = True
+        DataBinding.FieldName = 'GIREN'
         Width = 100
       end
       object vwCariHarlistALACAK: TcxGridDBColumn
-        DataBinding.FieldName = 'ALACAK'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
-      object vwCariHarlistVADETARIHI: TcxGridDBColumn
-        DataBinding.FieldName = 'VADETARIHI'
-        DataBinding.IsNullValueType = True
+        DataBinding.FieldName = 'CIKAN'
         Width = 100
       end
       object vwCariHarlistEVRAKNO: TcxGridDBColumn
@@ -168,12 +160,10 @@ object frmCariHarList: TfrmCariHarList
       end
       object vwCariHarlistACIKLAMA1: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA1'
-        DataBinding.IsNullValueType = True
         Width = 100
       end
       object vwCariHarlistACIKLAMA2: TcxGridDBColumn
         DataBinding.FieldName = 'ACIKLAMA2'
-        DataBinding.IsNullValueType = True
         Width = 100
       end
       object vwCariHarlistACIKLAMA3: TcxGridDBColumn
@@ -183,7 +173,6 @@ object frmCariHarList: TfrmCariHarList
       end
       object vwCariHarlistISLEMTURU: TcxGridDBColumn
         DataBinding.FieldName = 'ISLEMTURU'
-        DataBinding.IsNullValueType = True
         Width = 100
       end
       object vwCariHarlistFATURAID: TcxGridDBColumn
@@ -412,14 +401,15 @@ object frmCariHarList: TfrmCariHarList
   object qryCariHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI_H  ')
-    Left = 338
-    Top = 64
+      'select * from ISLEM_H where ISLEMTURU in (4,5,6)')
+    Active = True
+    Left = 346
+    Top = 16
   end
   object dsCariHar: TDataSource
     AutoEdit = False
     DataSet = qryCariHar
-    Left = 410
-    Top = 64
+    Left = 434
+    Top = 24
   end
 end

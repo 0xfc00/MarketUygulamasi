@@ -38,7 +38,6 @@ type
     vwCariHarlistTARIH: TcxGridDBColumn;
     vwCariHarlistBORC: TcxGridDBColumn;
     vwCariHarlistALACAK: TcxGridDBColumn;
-    vwCariHarlistVADETARIHI: TcxGridDBColumn;
     vwCariHarlistEVRAKNO: TcxGridDBColumn;
     vwCariHarlistKASAHID: TcxGridDBColumn;
     vwCariHarlistACIKLAMA1: TcxGridDBColumn;

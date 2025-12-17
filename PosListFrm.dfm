@@ -118,8 +118,6 @@ object frmPosList: TfrmPosList
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 579
-      ExplicitTop = 0
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -210,7 +208,6 @@ object frmPosList: TfrmPosList
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnSilClick
-      ExplicitLeft = 772
     end
   end
   object cxGrid1: TcxGrid
@@ -284,13 +281,13 @@ object frmPosList: TfrmPosList
       end
       object vwColumn2: TcxGridDBColumn
         Caption = 'Bor'#231
-        DataBinding.FieldName = 'TOPLAM_BORC'
+        DataBinding.FieldName = 'TOPLAM_GIREN'
         DataBinding.IsNullValueType = True
         Options.Editing = False
       end
       object vwColumn3: TcxGridDBColumn
         Caption = 'Alacak'
-        DataBinding.FieldName = 'TOPLAM_ALACAK'
+        DataBinding.FieldName = 'TOPLAM_CIKAN'
         DataBinding.IsNullValueType = True
         Options.Editing = False
       end

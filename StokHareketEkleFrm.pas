@@ -9,7 +9,7 @@ uses
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,  cxControls, cxGeometry,
   dxFramedControl, Data.DB, MemDS, DBAccess, Uni, dxPanel, cxContainer, cxEdit,
   cxMaskEdit, cxDropDownEdit, cxCalc, cxDBEdit, cxTextEdit, Vcl.Mask,
-  Vcl.DBCtrls, cxCalendar;
+  Vcl.DBCtrls, cxCalendar, _cons;
 
 type
   TfrmStokHareketEkle = class(TfrmKartBase)
@@ -231,16 +231,17 @@ begin
   if GCKodu = 'G' then
   begin
     DataSet.FieldByName('GIREN').AsString       := DataSet.FieldByName('MIKTAR').AsString;
-    DataSet.FieldByName('ISLEMTIPI').AsInteger  := Ord(SH_GIRIS);
+    DataSet.FieldByName('ISLEMTURU').AsInteger  := Ord(HIT_STOK_GIRIS);
   end
   else
   begin
     DataSet.FieldByName('GIREN').AsString     := DataSet.FieldByName('MIKTAR').AsString;
-    DataSet.FieldByName('CIKAN').AsInteger    := Ord(SH_CIKIS);
+    DataSet.FieldByName('CIKAN').AsInteger    := Ord(HIT_STOK_CIKIS);
   end;
 
   DataSet.FieldByName('STOKID').AsString      := qryStok.FieldByName('ID').AsString;
-  DataSet.FieldByName('BIRIMADI').AsString    := qryStok.FieldByName('birimAdi').AsString;
+  DataSet.FieldByName('BIRIMID').AsString     := qryStok.FieldByName('BIRIMID').AsString;
+  DataSet.FieldByName('BIRIMADI').AsString    := qryStok.FieldByName('BIRIMADI').AsString;
   DataSet.FieldByName('KDVORANI').AsString    := qryStok.FieldByName('KDV').AsString;
   DataSet.FieldByName('KDVTUTARI').AsFloat    := StrToFloatDef(edtFiyatKdvDahil.Text,0) - StrToFloatDef(edtFiyatKdvHaric.Text,0);
 

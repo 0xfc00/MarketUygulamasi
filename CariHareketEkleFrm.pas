@@ -21,7 +21,6 @@ type
     dsCariHarEkle: TDataSource;
     qryPos: TUniQuery;
     dsPos: TDataSource;
-    qryPosHarEkle: TUniQuery;
     Label7: TLabel;
     lblIslemTuru: TLabel;
     Label13: TLabel;
@@ -31,7 +30,6 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     lblPosHesabi: TLabel;
     edtIslemTarihi: TcxDBDateEdit;
     cxDBTextEdit8: TcxDBTextEdit;
@@ -40,11 +38,9 @@ type
     cxDBTextEdit1: TcxDBTextEdit;
     cxDBTextEdit3: TcxDBTextEdit;
     cxDBTextEdit4: TcxDBTextEdit;
-    cxDBTextEdit5: TcxDBTextEdit;
     edtTutar: TcxCalcEdit;
     cbxIslemTuru: TcxComboBox;
     cbxPosHesabi: TcxDBLookupComboBox;
-    qryKasaHarEkle: TUniQuery;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -58,7 +54,7 @@ type
   public
     { Public declarations }
     CariID : string;
-    GCKodu : string;
+    GCKodu : integer;
   end;
 
 var
@@ -87,7 +83,7 @@ end;
 procedure TfrmCariHareketEkle.cbxIslemTuruPropertiesChange(Sender: TObject);
 begin
   inherited;
-  if GCKodu = T then
+  if GCKodu = ord(HIT_CARIDEN_TAHSILAT) then
   begin
     lblPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
     cbxPosHesabi.Visible := cbxIslemTuru.ItemIndex = 1;
@@ -104,7 +100,7 @@ procedure TfrmCariHareketEkle.FormShow(Sender: TObject);
 begin
   cbxIslemTuru.Properties.Items.Clear;
 
-  if GCKodu = O then    // Cariye yapýlan ödeme
+  if GCKodu = ord(HIT_CARIYE_ODEME) then    // Cariye yapýlan ödeme
     begin
       pnlHeader.Caption := '   CARÝ ÖDEME';
       pnlHeader.Color := clRed;
@@ -115,7 +111,7 @@ begin
       end;
     end
   ELSE
-  if GCKodu = T then    // cariden YAPILAN tahsilat
+  if GCKodu = ord(HIT_CARIDEN_TAHSILAT) then    // cariden YAPILAN tahsilat
   begin
     pnlHeader.Caption := '   CARÝ TAHSÝLAT';
     with cbxIslemTuru.Properties.Items do
@@ -159,7 +155,7 @@ begin
     exit;
   end;
 
-  if (cbxIslemTuru.ItemIndex = 1) and (Trim(DataSet.FieldByName('POSID').AsString) = EmptyStr) and (GCKodu = T) then
+  if (cbxIslemTuru.ItemIndex = 1) and (Trim(DataSet.FieldByName('POSID').AsString) = EmptyStr) and (GCKodu = ord(HIT_CARIDEN_TAHSILAT)) then
   begin
     MesajHata('Lütfen Pos hesabý seçiniz..');
     cbxPosHesabi.SetFocus;
@@ -167,25 +163,15 @@ begin
     exit;
   end;
 
-  if GCKodu = O then       //cariye yapýlan ödeme
-  begin
-    DataSet.FieldByName('BORC').AsString        := edtTutar.Text;
-    case cbxIslemTuru.ItemIndex of
-      0 : DataSet.FieldByName('ISLEMTIPI').AsInteger  := Ord(CH_ODEME_NAKIT);
-      1 : DataSet.FieldByName('ISLEMTIPI').AsInteger  := Ord(CH_ODEME_KK);
-    end;
-  end
+  DataSet.FieldByName('ISLEMTURU').AsInteger  := Ord(GCKodu);
+
+  if GCKodu = ord(HIT_CARIYE_ODEME) then       //cariye yapýlan ödeme
+    DataSet.FieldByName('CIKAN').AsString        := edtTutar.Text
   else
-  if GCKodu = T then            //cariden yapýlan tahsilat
-  begin
-    DataSet.FieldByName('ALACAK').AsString      := edtTutar.Text;
-    case cbxIslemTuru.ItemIndex of
-      0 : DataSet.FieldByName('ISLEMTIPI').AsInteger  := Ord(CH_TAHSILAT_NAKIT);
-      1 : DataSet.FieldByName('ISLEMTIPI').AsInteger  := Ord(CH_TAHSILAT_KK);
-    end;
-  end
+  if GCKodu = ord(HIT_CARIDEN_TAHSILAT) then            //cariden yapýlan tahsilat
+    DataSet.FieldByName('GIREN').AsString      := edtTutar.Text
   else
-  if GCKodu = EmptyStr then
+  if GCKodu = 0 then
   begin
     //deneme
   end;
@@ -194,35 +180,6 @@ begin
 
   EkleyenDegistiren(DataSet);
 
-
-  if cbxIslemTuru.ItemIndex = 0 then   // nakit ise  kasa harekete ekle
-  with qryKasaHarEkle do
-  begin
-    open;
-    append;
-
-    fieldbyname('ISLEMTARIHI').asdatetime     := now;
-    fieldbyname('CIKAN').AsString       := DataSet.FieldByName('BORC').AsString;
-    fieldbyname('GIREN').AsString       := DataSet.FieldByName('ALACAK').AsString;
-    fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
-
-    post;
-  end;
-
-  if cbxIslemTuru.ItemIndex = 1 then   // kredi kartý ise pos harekete ekle
-  with qryPosHarEkle do
-  begin
-    open;
-    append;
-
-    fieldbyname('POSID').AsString       := qrypos.fieldbyname('ID').asstring;
-    fieldbyname('ISLEMTARIHI').asdatetime     := now;
-    fieldbyname('BORC').AsString        := DataSet.FieldByName('BORC').AsString;
-    fieldbyname('ALACAK').AsString      := DataSet.FieldByName('ALACAK').AsString;
-    fieldbyname('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
-
-    post;
-  end;
 end;
 
 procedure TfrmCariHareketEkle.qryKasaHarEkleBeforePost(DataSet: TDataSet);

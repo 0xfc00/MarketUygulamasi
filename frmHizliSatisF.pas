@@ -837,7 +837,7 @@ end;
 
 procedure TfrmHizliSatis.satisTamamla(islem:string);
 var
-  qTemp, qHar: TUniQuery;
+  qTemp, qHar: TUniQuery;                                        asdasd
   sIslemTuru,  cariHarID,   PosID : string;
 begin
   if islem = '' then exit;

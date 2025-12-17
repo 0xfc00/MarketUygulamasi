@@ -527,7 +527,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
   object qryStokHarEkle: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from stok_h where 1=0')
+      'select * from ISLEM_H where 1=0')
     BeforePost = qryStokHarEkleBeforePost
     Left = 184
     Top = 72

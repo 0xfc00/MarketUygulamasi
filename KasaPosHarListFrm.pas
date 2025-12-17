@@ -98,19 +98,19 @@ var
 Begin
   if pcAna.ActivePage = shtKasa then
   begin
-    TableName := 'KASA_H';
+    TableName := 'select * from ISLEM_H where ISLEMTURU in (7,8) and ODEMETURU = 1';
     q := qryKasaHar;
   end
   else
   if pcAna.ActivePage = shtPos then
   begin
-    TableName := 'POS_H';
+    TableName := 'select * from ISLEM_H where ODEMETURU = 3';
     q:= qryPosHar
   end
   else
     exit;
 
-  q.sql.text := 'select * from ' + TableName + ' where CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih';
+  q.sql.text := 'and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih';
   q.ParamByName('bastarih').AsDate := dtBas.Date;
   q.ParamByName('bittarih').AsDate := dtBit.Date;
   qAcKapa_fn(q);
@@ -141,6 +141,7 @@ begin
   pnlHeader.Caption := '   KASA / POS HAREKETLERÝ';
   pnlHeader.Color := clgreen;
   TumQuerylereConnectionAta(self);
+
   dtBas.date := now;
   dtbit.date := now;
   pcAna.ActivePageIndex := 0;

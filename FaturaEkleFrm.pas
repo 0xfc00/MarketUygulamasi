@@ -31,8 +31,8 @@ uses _cons;
 procedure TfrmFaturaEkle.FormShow(Sender: TObject);
 begin
   inherited;
-  if FaturaTipi = SATIS_FATURASI then pnlHeader.Caption := '   SATIÞ FATURASI';
-  if FaturaTipi = ALIS_FATURASI  then pnlHeader.Caption := '   ALIÞ FATURASI';
+//  if FaturaTipi = SATIS_FATURASI then pnlHeader.Caption := '   SATIÞ FATURASI';
+//  if FaturaTipi = ALIS_FATURASI  then pnlHeader.Caption := '   ALIÞ FATURASI';
 
 
   if FaturaID = EmptyStr then

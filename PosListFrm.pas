@@ -117,8 +117,8 @@ end;
 procedure TfrmPosList.qryPoslarNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  DataSet.fieldbyname('TOPLAM_BORC').AsFloat := 0;
-  DataSet.fieldbyname('TOPLAM_ALACAK').AsFloat := 0;
+  DataSet.fieldbyname('TOPLAM_GIREN').AsFloat := 0;
+  DataSet.fieldbyname('TOPLAM_CIKAN').AsFloat := 0;
 end;
 
 end.

@@ -26,21 +26,27 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ClientRectBottom = 434
-    ClientRectLeft = 2
-    ClientRectRight = 863
-    ClientRectTop = 25
+    ClientRectBottom = 435
+    ClientRectLeft = 4
+    ClientRectRight = 864
+    ClientRectTop = 24
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
+      ExplicitLeft = 2
+      ExplicitTop = 25
+      ExplicitWidth = 861
+      ExplicitHeight = 409
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 855
-        Height = 403
+        Width = 854
+        Height = 405
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 855
+        ExplicitHeight = 403
         object vw: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -62,19 +68,15 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.GroupByBox = False
           object vwTARIH: TcxGridDBColumn
             DataBinding.FieldName = 'ISLEMTARIHI'
-            DataBinding.IsNullValueType = True
           end
           object vwGIREN: TcxGridDBColumn
             DataBinding.FieldName = 'GIREN'
-            DataBinding.IsNullValueType = True
           end
           object vwCIKAN: TcxGridDBColumn
             DataBinding.FieldName = 'CIKAN'
-            DataBinding.IsNullValueType = True
           end
           object vwCARIID: TcxGridDBColumn
             DataBinding.FieldName = 'CARIID'
-            DataBinding.IsNullValueType = True
           end
           object vwEVRAKNO: TcxGridDBColumn
             DataBinding.FieldName = 'EVRAKNO'
@@ -82,7 +84,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           end
           object vwUSERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
-            DataBinding.IsNullValueType = True
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -93,16 +94,12 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 855
-        Height = 403
+        Width = 854
+        Height = 405
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -125,24 +122,20 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
           object cxGridDBTableView1TARIH: TcxGridDBColumn
+            Caption = #304#351'lem Tarihi'
             DataBinding.FieldName = 'ISLEMTARIHI'
-            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1POSID: TcxGridDBColumn
             DataBinding.FieldName = 'POSID'
-            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1BORC: TcxGridDBColumn
-            DataBinding.FieldName = 'BORC'
-            DataBinding.IsNullValueType = True
+            DataBinding.FieldName = 'GIREN'
           end
           object cxGridDBTableView1ALACAK: TcxGridDBColumn
-            DataBinding.FieldName = 'ALACAK'
-            DataBinding.IsNullValueType = True
+            DataBinding.FieldName = 'CIKAN'
           end
           object cxGridDBTableView1CARIID: TcxGridDBColumn
             DataBinding.FieldName = 'CARIID'
-            DataBinding.IsNullValueType = True
           end
           object cxGridDBTableView1EVRAKNO: TcxGridDBColumn
             DataBinding.FieldName = 'EVRAKNO'
@@ -150,7 +143,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           end
           object cxGridDBTableView1USERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
-            DataBinding.IsNullValueType = True
           end
         end
         object cxGridLevel1: TcxGridLevel
@@ -364,7 +356,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   object qryKasaHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from KASA_H')
+      'select * from ISLEM_H where ISLEMTURU in (7,8) and ODEMETURU = 1')
+    Active = True
     Left = 338
     Top = 120
   end
@@ -377,7 +370,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   object qryPosHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from POS_H')
+      'select * from ISLEM_H where ODEMETURU = 3')
+    Active = True
     Left = 346
     Top = 200
   end

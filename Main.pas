@@ -90,8 +90,8 @@ type
     acYeniCariKarti: TAction;
     acCariHarList: TAction;
     acTumCariler: TAction;
-    acCariOdeme: TAction;
-    acCariTahsilat: TAction;
+    acCariyeOdeme: TAction;
+    acCaridenTahsilat: TAction;
     acSatisFaturasi: TAction;
     nbiSatisFaturasi: TdxNavBarItem;
     acHizliSatis: TAction;
@@ -121,8 +121,8 @@ type
     procedure acTumStoklarExecute(Sender: TObject);
     procedure acStokGirisiExecute(Sender: TObject);
     procedure StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
-    procedure KasaGirisCikisFormuAc_fn(AGCKodu : string);
-    procedure CariHareketEkleFormuAc_fn(AGCKodu : string; ACariID : string = '');
+    procedure KasaGirisCikisFormuAc_fn(AGCKodu : integer);
+    procedure CariHareketEkleFormuAc_fn(AGCKodu : integer; ACariID : string = '');
     procedure StokHarListFormuAc_fn(AStokID : string = '');
     procedure CariHarListFormuAc_fn(ACariID : string = '');
     procedure acStokCikisiExecute(Sender: TObject);
@@ -130,8 +130,8 @@ type
     procedure acYeniCariKartiExecute(Sender: TObject);
     procedure acCariHarListExecute(Sender: TObject);
     procedure acTumCarilerExecute(Sender: TObject);
-    procedure acCariOdemeExecute(Sender: TObject);
-    procedure acCariTahsilatExecute(Sender: TObject);
+    procedure acCariyeOdemeExecute(Sender: TObject);
+    procedure acCaridenTahsilatExecute(Sender: TObject);
     procedure acSatisFaturasiExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure acHizliSatisExecute(Sender: TObject);
@@ -351,9 +351,7 @@ begin
   result := False;
 
   if (
-     (VeriCek_fn('STOK_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('SATIS_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
-     //or (VeriCek_fn('FATURA_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
+     (VeriCek_fn('ISLEM_H', 'STOKID', AStokId, 'ID') <> VERI_YOK)
      )
   then
     result := True;
@@ -364,11 +362,7 @@ begin
   result := False;
 
   if (
-     (VeriCek_fn('CARI_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('KASA_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     //(VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('POS_H',  'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('SATIS',  'CARIID', ACariId, 'ID') <> VERI_YOK)
+     (VeriCek_fn('ISLEM_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)
      )
   then
     result := True;
@@ -379,10 +373,7 @@ begin
   result := False;
 
   if (
-     (VeriCek_fn('SATIS', 'POSID', APosId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('CARI_H', 'POSID', APosId, 'ID') <> VERI_YOK)  or
-     //(VeriCek_fn('FATURA', 'CARIID', ACariId, 'ID') <> VERI_YOK)  or
-     (VeriCek_fn('POS_H',  'POSID', APosId, 'ID') <> VERI_YOK)
+     (VeriCek_fn('ISLEM_H', 'POSID', APosId, 'ID') <> VERI_YOK)
      )
   then
     result := True;
@@ -390,7 +381,7 @@ end;
 
 function StokIdKartiSil_fn( AStokId : string): Boolean;
 begin
-  Result := False;
+  Result := False;              asd
   if trim(AStokId) <> EmptyStr then
   begin
     if StokIdHareketVarmi_fn(trim(AStokId)) then
@@ -475,9 +466,9 @@ begin
     Result := CariSec_CariID;
 end;
 
-procedure TfrmMain.acCariTahsilatExecute(Sender: TObject);
+procedure TfrmMain.acCaridenTahsilatExecute(Sender: TObject);
 begin
-  CariHareketEkleFormuAc_fn(T);
+  CariHareketEkleFormuAc_fn(HIT_CARIDEN_TAHSILAT);
 end;
 
 procedure TfrmMain.acHizliSatisButonlariExecute(Sender: TObject);
@@ -494,12 +485,12 @@ end;
 
 procedure TfrmMain.acKasaCikisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn('C');
+  KasaGirisCikisFormuAc_fn(HIT_KASA_CIKIS);
 end;
 
 procedure TfrmMain.acKasaGirisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn('G');
+  KasaGirisCikisFormuAc_fn(HIT_KASA_GIRIS);
 end;
 
 procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
@@ -520,9 +511,9 @@ begin
     showmodal;
 end;
 
-procedure TfrmMain.acCariOdemeExecute(Sender: TObject);
+procedure TfrmMain.acCariyeOdemeExecute(Sender: TObject);
 begin
-  CariHareketEkleFormuAc_fn(O);
+  CariHareketEkleFormuAc_fn(HIT_CARIYE_ODEME);
 end;
 
 procedure TfrmMain.acCariHarListExecute(Sender: TObject);
@@ -589,14 +580,14 @@ begin
 
 end;
 
-procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : string);
+procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : integer);
 begin
   Application.CreateForm(TfrmKasaHareketEkle, frmKasaHareketEkle);
   frmKasaHareketEkle.GCKodu := AGCKodu;
   frmKasaHareketEkle.ShowModal;
 end;
 
-procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
+procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : integer; AStokID : string = '');
 var
   FForm : TfrmStokHareketEkle;
   s : string;
@@ -615,7 +606,7 @@ begin
   end;
 end;
 
-procedure TfrmMain.CariHareketEkleFormuAc_fn(AGCKodu : string; ACariID : string = '');
+procedure TfrmMain.CariHareketEkleFormuAc_fn(AGCKodu : int; ACariID : string = '');
 var
   FForm : TfrmCariHareketEkle;
   s : string;

@@ -1070,6 +1070,7 @@ object frmHizliSatis: TfrmHizliSatis
                     Properties.Alignment.Horz = taCenter
                     Properties.Alignment.Vert = taVCenter
                     Properties.WordWrap = True
+                    ExplicitHeight = 64
                     Width = 162
                     AnchorX = 85
                     AnchorY = 35
@@ -1088,6 +1089,7 @@ object frmHizliSatis: TfrmHizliSatis
                     Style.Font.Style = [fsBold]
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taCenter
+                    ExplicitTop = 74
                     AnchorX = 85
                   end
                 end
@@ -1099,6 +1101,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet2: TcxTabSheet
         Caption = #220'r'#252'n Bul'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGroupBox7: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1125,6 +1131,7 @@ object frmHizliSatis: TfrmHizliSatis
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
+            ExplicitHeight = 21
             Width = 577
           end
         end
@@ -1218,6 +1225,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet3: TcxTabSheet
         Caption = 'Bekleyen Sat'#305#351'lar'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGroupBox9: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1378,6 +1389,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet4: TcxTabSheet
         Caption = 'Para '#220'st'#252' Hesaplama'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ScrollBox2: TScrollBox
           AlignWithMargins = True
           Left = 3
@@ -2480,7 +2495,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu5tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -2490,7 +2505,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu10tl: TPanel
@@ -3792,7 +3806,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu10tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -3802,7 +3816,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu20tl: TPanel
@@ -6047,7 +6060,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu20tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -6057,7 +6070,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu50tl: TPanel
@@ -8284,7 +8296,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu50tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -8294,7 +8306,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu100tl: TPanel
@@ -22954,7 +22965,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu100tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -22964,7 +22975,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu200tl: TPanel
@@ -28983,7 +28993,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu200tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -28993,7 +29003,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
           end

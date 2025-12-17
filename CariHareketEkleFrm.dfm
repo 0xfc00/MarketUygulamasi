@@ -3,7 +3,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
   Top = 0
   BorderStyle = bsDialog
   Caption = 'frmCariHareketEkle'
-  ClientHeight = 349
+  ClientHeight = 322
   ClientWidth = 487
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -86,14 +86,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Caption = 'A'#231#305'klama 2'
     FocusControl = cxDBTextEdit4
   end
-  object Label5: TLabel
-    Left = 15
-    Top = 205
-    Width = 50
-    Height = 13
-    Caption = 'A'#231#305'klama 3'
-    FocusControl = cxDBTextEdit5
-  end
   object lblPosHesabi: TLabel
     Left = 15
     Top = 92
@@ -105,7 +97,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 310
+    Top = 283
     Width = 481
     Height = 36
     Align = alBottom
@@ -298,19 +290,11 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     TabOrder = 7
     Width = 310
   end
-  object cxDBTextEdit5: TcxDBTextEdit
-    Left = 75
-    Top = 202
-    DataBinding.DataField = 'ACIKLAMA3'
-    DataBinding.DataSource = dsCariHarEkle
-    TabOrder = 8
-    Width = 310
-  end
   object edtTutar: TcxCalcEdit
     Left = 75
     Top = 135
     EditValue = 0.000000000000000000
-    TabOrder = 9
+    TabOrder = 8
     Width = 121
   end
   object cbxIslemTuru: TcxComboBox
@@ -318,7 +302,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Top = 67
     Properties.DropDownListStyle = lsFixedList
     Properties.OnChange = cbxIslemTuruPropertiesChange
-    TabOrder = 10
+    TabOrder = 9
     Width = 121
   end
   object cbxPosHesabi: TcxDBLookupComboBox
@@ -333,7 +317,7 @@ object frmCariHareketEkle: TfrmCariHareketEkle
         FieldName = 'POSADI'
       end>
     Properties.ListSource = dsPos
-    TabOrder = 11
+    TabOrder = 10
     Visible = False
     Width = 121
   end
@@ -355,7 +339,8 @@ object frmCariHareketEkle: TfrmCariHareketEkle
   object qryCariHarEkle: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI_H where 1=0')
+      'select * from ISLEM_BASLIK where 1=0')
+    Active = True
     BeforePost = qryCariHarEkleBeforePost
     Left = 352
     Top = 168
@@ -379,23 +364,5 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     DataSet = qryPos
     Left = 352
     Top = 232
-  end
-  object qryPosHarEkle: TUniQuery
-    Tag = 1
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from POS_H where 1=0')
-    BeforePost = qryPosHarEkleBeforePost
-    Left = 184
-    Top = 248
-  end
-  object qryKasaHarEkle: TUniQuery
-    Tag = 1
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from KASA_H where 1=0')
-    BeforePost = qryKasaHarEkleBeforePost
-    Left = 88
-    Top = 240
   end
 end
