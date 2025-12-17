@@ -1,0 +1,1315 @@
+object frmDbAyarlar: TfrmDbAyarlar
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Veritaban'#305' Ayarlar'#305
+  ClientHeight = 245
+  ClientWidth = 317
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object edtServer: TcxTextEdit
+    Left = 75
+    Top = 10
+    TabOrder = 0
+    Width = 197
+  end
+  object cxLabel1: TcxLabel
+    Left = 12
+    Top = 11
+    Caption = 'Server :'
+    OnClick = cxLabel1Click
+  end
+  object edtDatabase: TcxTextEdit
+    Left = 75
+    Top = 34
+    TabOrder = 2
+    Width = 197
+  end
+  object cxLabel2: TcxLabel
+    Left = 12
+    Top = 35
+    Caption = 'Database'
+  end
+  object edtusername: TcxTextEdit
+    Left = 75
+    Top = 83
+    TabOrder = 4
+    Visible = False
+    Width = 197
+  end
+  object cxLabel3: TcxLabel
+    Left = 12
+    Top = 84
+    Caption = 'Username'
+    Visible = False
+  end
+  object edtPassword: TcxTextEdit
+    Left = 75
+    Top = 107
+    TabOrder = 6
+    Visible = False
+    Width = 197
+  end
+  object cxLabel4: TcxLabel
+    Left = 12
+    Top = 108
+    Caption = 'Password'
+    Visible = False
+  end
+  object cxLabel5: TcxLabel
+    Left = 12
+    Top = 62
+    Caption = 'Auth Type'
+  end
+  object cbAuthType: TcxComboBox
+    Left = 75
+    Top = 61
+    Properties.Items.Strings = (
+      'Windows Auth'
+      'SQL')
+    Properties.OnChange = cbAuthTypePropertiesChange
+    TabOrder = 9
+    Text = 'Windows Auth'
+    Width = 197
+  end
+  object btnTest: TcxButton
+    Left = 197
+    Top = 134
+    Width = 75
+    Height = 25
+    Caption = 'Test'
+    TabOrder = 10
+    OnClick = btnTestClick
+  end
+  object btnKaydet: TcxButton
+    Left = 197
+    Top = 165
+    Width = 75
+    Height = 25
+    Caption = 'Kaydet'
+    TabOrder = 11
+    OnClick = btnKaydetClick
+  end
+  object Button2: TButton
+    Left = 0
+    Top = 220
+    Width = 317
+    Height = 25
+    Align = alBottom
+    Caption = 'Tablolar'#305' Olu'#351'tur'
+    Enabled = False
+    TabOrder = 12
+    Visible = False
+    OnClick = Button2Click
+  end
+  object Button1: TButton
+    Left = 0
+    Top = 195
+    Width = 317
+    Height = 25
+    Align = alBottom
+    Caption = 'DB Olu'#351'tur'
+    TabOrder = 13
+    Visible = False
+    OnClick = Button1Click
+  end
+  object UniConnTest: TUniConnection
+    ProviderName = 'SQL Server'
+    LoginPrompt = False
+    Left = 48
+    Top = 136
+  end
+  object qCreateDatabase: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'USE master'
+      'GO'
+      ''
+      'CREATE DATABASE KHPRO'
+      'ON PRIMARY ('
+      'NAME = N'#39'KHPRO'#39','
+      
+        'FILENAME = N'#39'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEX' +
+        'PRESS\MSSQL\DATA\KHPRO.mdf'#39','
+      'SIZE = 9408 KB,'
+      'MAXSIZE = UNLIMITED,'
+      'FILEGROWTH = 1024 KB'
+      ')'
+      'LOG ON ('
+      'NAME = N'#39'KHPRO_log'#39','
+      
+        'FILENAME = N'#39'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEX' +
+        'PRESS\MSSQL\DATA\KHPRO_log.ldf'#39','
+      'SIZE = 7552 KB,'
+      'MAXSIZE = UNLIMITED,'
+      'FILEGROWTH = 10 %'
+      ')'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'SET'
+      'ANSI_NULL_DEFAULT OFF,'
+      'ANSI_NULLS OFF,'
+      'ANSI_PADDING OFF,'
+      'ANSI_WARNINGS OFF,'
+      'ARITHABORT OFF,'
+      'AUTO_CLOSE OFF,'
+      'AUTO_CREATE_STATISTICS ON,'
+      'AUTO_SHRINK OFF,'
+      'AUTO_UPDATE_STATISTICS ON,'
+      'AUTO_UPDATE_STATISTICS_ASYNC OFF,'
+      'COMPATIBILITY_LEVEL = 120,'
+      'CONCAT_NULL_YIELDS_NULL OFF,'
+      'CURSOR_CLOSE_ON_COMMIT OFF,'
+      'CURSOR_DEFAULT GLOBAL,'
+      'DATE_CORRELATION_OPTIMIZATION OFF,'
+      'DB_CHAINING OFF,'
+      'HONOR_BROKER_PRIORITY OFF,'
+      'MULTI_USER,'
+      'NUMERIC_ROUNDABORT OFF,'
+      'PAGE_VERIFY CHECKSUM,'
+      'PARAMETERIZATION SIMPLE,'
+      'QUOTED_IDENTIFIER OFF,'
+      'READ_COMMITTED_SNAPSHOT OFF,'
+      'RECOVERY FULL,'
+      'RECURSIVE_TRIGGERS OFF,'
+      'TRANSFORM_NOISE_WORDS = OFF,'
+      'TRUSTWORTHY OFF'
+      'WITH ROLLBACK IMMEDIATE'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'COLLATE Turkish_CI_AS'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'SET DISABLE_BROKER'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'SET ALLOW_SNAPSHOT_ISOLATION OFF'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'SET FILESTREAM (NON_TRANSACTED_ACCESS = OFF)'
+      'GO'
+      ''
+      'EXECUTE sp_configure '#39'show advanced options'#39
+      '                    ,1;'
+      'GO'
+      'RECONFIGURE;'
+      'GO'
+      'EXECUTE sp_configure '#39'nested triggers'#39
+      '                    ,1;'
+      'GO'
+      'RECONFIGURE;'
+      'GO'
+      ''
+      'ALTER DATABASE KHPRO'
+      'SET QUERY_STORE = OFF'
+      'GO'
+      ''
+      'USE KHPRO'
+      'GO'
+      ''
+      'ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = P' +
+        'RIMARY;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIM' +
+        'ATION = OFF;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CAR' +
+        'DINALITY_ESTIMATION = PRIMARY;'
+      'GO'
+      ''
+      'ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_' +
+        'SNIFFING = PRIMARY;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES' +
+        ' = OFF;'
+      'GO'
+      ''
+      
+        'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTI' +
+        'MIZER_HOTFIXES = PRIMARY;'
+      'GO'
+      ''
+      'ALTER AUTHORIZATION ON DATABASE::KHPRO TO [DESKTOP-MCB\mcb]'
+      'GO')
+    Left = 88
+    Top = 128
+  end
+  object qCreateTables: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'USE KHPRO'
+      'GO'
+      ''
+      'IF DB_NAME() <> N'#39'KHPRO'#39' SET NOEXEC ON'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[USERS]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[USERS]'#39')'
+      'GO'
+      'CREATE TABLE dbo.USERS ('
+      '  ID int IDENTITY,'
+      '  KULLANICI nvarchar(15) NOT NULL,'
+      '  YONETICI bit NULL DEFAULT (0),'
+      '  SIFRE nvarchar(32) NOT NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_USERS_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_USERS_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_USERS_CREATEDAT ' +
+        'DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT IX_USERS UNIQUE (KULLANICI)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[T_STOKGRUP]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[T_STOKGRUP]'#39')'
+      'GO'
+      'CREATE TABLE dbo.T_STOKGRUP ('
+      '  ID int IDENTITY,'
+      '  GRUPADI varchar(50) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_T_STOKGRUP_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_T_STOKGRUP_DELETED DEFAULT ' +
+        '(0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_STOKGRUP_CREAT' +
+        'EDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_T_GRUP_ID PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[T_REYONRAF]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[T_REYONRAF]'#39')'
+      'GO'
+      'CREATE TABLE dbo.T_REYONRAF ('
+      '  ID int IDENTITY,'
+      '  REYONRAFADI varchar(50) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_T_REYONRAF_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_T_REYONRAF_DELETED DEFAULT ' +
+        '(0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_REYONRAF_CREAT' +
+        'EDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_T_REYONRAF_ID PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[T_MARKA]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[T_MARKA]'#39')'
+      'GO'
+      'CREATE TABLE dbo.T_MARKA ('
+      '  ID int IDENTITY,'
+      '  MARKAADI varchar(50) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_T_MARKA_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_T_MARKA_DELETED DEFAULT (0)' +
+        ','
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_MARKA_CREATEDA' +
+        'T DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_T_MARKA_ID PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[T_CARIGRUP]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[T_CARIGRUP]'#39')'
+      'GO'
+      'CREATE TABLE dbo.T_CARIGRUP ('
+      '  ID int IDENTITY,'
+      '  GRUPADI varchar(50) NOT NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_T_CARIGRUP_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_T_CARIGRUP_DELETED DEFAULT ' +
+        '(0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_CARIGRUP_CREAT' +
+        'EDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_T_CARIGRUP_ID PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[T_BIRIM]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[T_BIRIM]'#39')'
+      'GO'
+      'CREATE TABLE dbo.T_BIRIM ('
+      '  ID int IDENTITY,'
+      '  BIRIMADI varchar(50) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_T_BIRIM_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_T_BIRIM_DELETED DEFAULT (0)' +
+        ','
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_BIRIM_CREATEDA' +
+        'T DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_T_BIRIM_ID PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[STOK]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[STOK]'#39')'
+      'GO'
+      'CREATE TABLE dbo.STOK ('
+      '  ID int IDENTITY,'
+      '  STOKKODU nvarchar(15) NOT NULL,'
+      '  STOKADI nvarchar(255) NOT NULL,'
+      '  BARKOD varchar(50) NULL,'
+      '  URUNMARKASI nvarchar(20) NULL,'
+      '  TARIH datetime NULL,'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      '  BIRIMID int NULL,'
+      '  GRUPID int NULL,'
+      '  MARKAID int NULL,'
+      '  KDV float NULL CONSTRAINT DF_STOKKARTI_KDV DEFAULT (0),'
+      '  RESIM varbinary(max) NULL,'
+      
+        '  SATISFIYATI float NULL CONSTRAINT DF_STOKKARTI_SATISFIYATI DEF' +
+        'AULT (0),'
+      
+        '  SATISFIYATI2 float NULL CONSTRAINT DF_STOKKARTI_SATISFIYATI2 D' +
+        'EFAULT (0),'
+      
+        '  SATISFIYATI3 float NULL CONSTRAINT DF_STOKKARTI_SATISFIYATI3 D' +
+        'EFAULT (0),'
+      '  PLU_NO int NULL CONSTRAINT DF_STOKKARTI_PLU_NO DEFAULT (0),'
+      
+        '  ALISFIYATI float NULL CONSTRAINT DF_STOKKARTI_ALISFIYATI DEFAU' +
+        'LT (0),'
+      '  KDV_ISTISNA_KODU nvarchar(10) NULL,'
+      '  REYONRAFID int NULL,'
+      '  TERAZITIP smallint NULL DEFAULT (0),'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_STOK_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_STOK_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_STOK_CREATEDAT D' +
+        'EFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_STOKKARTI PRIMARY KEY CLUSTERED (ID),'
+      '  CONSTRAINT KEY_STOK_STOKADI UNIQUE (STOKADI),'
+      '  CONSTRAINT KEY_STOK_STOKKODU UNIQUE (STOKKODU)'
+      ')'
+      'ON [PRIMARY]'
+      'TEXTIMAGE_ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_STOK_BIRIMID] on table [dbo].[STOK]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_STOK_BIRIMID] on table [dbo].[ST' +
+        'OK]'#39')'
+      'GO'
+      'ALTER TABLE dbo.STOK'
+      
+        '  ADD CONSTRAINT FK_STOK_BIRIMID FOREIGN KEY (BIRIMID) REFERENCE' +
+        'S dbo.T_BIRIM (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_STOK_GRUPID] on table [dbo].[STOK]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_STOK_GRUPID] on table [dbo].[STO' +
+        'K]'#39')'
+      'GO'
+      'ALTER TABLE dbo.STOK'
+      
+        '  ADD CONSTRAINT FK_STOK_GRUPID FOREIGN KEY (GRUPID) REFERENCES ' +
+        'dbo.T_STOKGRUP (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_STOK_MARKAID] on table [dbo].[STOK]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_STOK_MARKAID] on table [dbo].[ST' +
+        'OK]'#39')'
+      'GO'
+      'ALTER TABLE dbo.STOK'
+      
+        '  ADD CONSTRAINT FK_STOK_MARKAID FOREIGN KEY (MARKAID) REFERENCE' +
+        'S dbo.T_MARKA (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_STOK_REYONRAFID] on table [dbo].[STOK]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_STOK_REYONRAFID] on table [dbo].' +
+        '[STOK]'#39')'
+      'GO'
+      'ALTER TABLE dbo.STOK'
+      
+        '  ADD CONSTRAINT FK_STOK_REYONRAFID FOREIGN KEY (REYONRAFID) REF' +
+        'ERENCES dbo.T_REYONRAF (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[STOK_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[STOK_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.STOK_H ('
+      '  ID int IDENTITY,'
+      
+        '  STOKID int NOT NULL CONSTRAINT DF_STOKHAREKETLERI_STOKID DEFAU' +
+        'LT (0),'
+      '  ISLEMTIPI tinyint NULL,'
+      '  ISLEMTARIHI datetime NULL,'
+      
+        '  MIKTAR float NULL CONSTRAINT DF_STOKHAREKETLERI_MIKTAR DEFAULT' +
+        ' (0),'
+      
+        '  GIREN float NULL CONSTRAINT DF_STOKHAREKETLERI_GIREN DEFAULT (' +
+        '0),'
+      
+        '  CIKAN float NULL CONSTRAINT DF_STOKHAREKETLERI_CIKAN DEFAULT (' +
+        '0),'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      '  BIRIMADI nvarchar(15) NULL,'
+      
+        '  CARIID int NULL CONSTRAINT DF_STOKHAREKETLERI_CARIID DEFAULT (' +
+        '0),'
+      '  EVRAKNO nvarchar(20) NULL,'
+      
+        '  TUTAR float NULL CONSTRAINT DF_STOKHAREKETLERI_TOPLAMMALIYET D' +
+        'EFAULT (0),'
+      
+        '  FATURAID int NULL CONSTRAINT DF_STOKHAREKETLERI_FATURAID DEFAU' +
+        'LT (0),'
+      
+        '  FATURA_H_ID int NULL CONSTRAINT DF_STOKHAREKETLERI_FATURASEPET' +
+        'IID DEFAULT (0),'
+      
+        '  BIRIMFIYATI float NULL CONSTRAINT DF_STOKHAREKETLERI_BIRIMFIYA' +
+        'TI DEFAULT (0),'
+      
+        '  IND_ORANI float NULL CONSTRAINT DF_STOKHAREKETLERI_IND_ORANI D' +
+        'EFAULT (0),'
+      
+        '  KDVORANI float NULL CONSTRAINT DF_STOKHAREKETLERI_KDVORANI DEF' +
+        'AULT (0),'
+      
+        '  KDVTUTARI float NULL CONSTRAINT DF_STOKHAREKETLERI_KDVTUTARI D' +
+        'EFAULT (0),'
+      
+        '  EK_GIREN float NULL CONSTRAINT DF_STOKHAREKETLERI_EK_GIREN DEF' +
+        'AULT (0),'
+      
+        '  EK_CIKAN float NULL CONSTRAINT DF_STOKHAREKETLERI_EK_CIKAN DEF' +
+        'AULT (0),'
+      
+        '  EK_ALIS_FIYATI float NULL CONSTRAINT DF_STOKHAREKETLERI_EK_ALI' +
+        'S_FIYATI DEFAULT (0),'
+      
+        '  EK_SATIS_FIYATI float NULL CONSTRAINT DF_STOKHAREKETLERI_EK_SA' +
+        'TIS_FIYATI DEFAULT (0),'
+      
+        '  IND_EK_SATIS_FIYATI float NULL CONSTRAINT DF_STOKHAREKETLERI_I' +
+        'ND_EK_SATIS_FIYATI DEFAULT (0),'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_STOK_H_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_STOK_H_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_STOK_H_CREATEDAT' +
+        ' DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_STOK_H_STOKID] on table [dbo].[STOK_H]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_STOK_H_STOKID] on table [dbo].[S' +
+        'TOK_H]'#39')'
+      'GO'
+      'ALTER TABLE dbo.STOK_H'
+      
+        '  ADD CONSTRAINT FK_STOK_H_STOKID FOREIGN KEY (STOKID) REFERENCE' +
+        'S dbo.STOK (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[SATIS_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[SATIS_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.SATIS_H ('
+      '  ID int IDENTITY,'
+      
+        '  SATISID int NULL CONSTRAINT DF_SATISSEPETI_SATISLISTESIID DEFA' +
+        'ULT (0),'
+      '  TARIH datetime NULL,'
+      '  STOKID int NULL CONSTRAINT DF_SATISSEPETI_STOKID DEFAULT (0),'
+      
+        '  BIRIMFIYATI float NULL CONSTRAINT DF_SATISSEPETI_FIYAT DEFAULT' +
+        ' (0),'
+      '  BIRIM nvarchar(15) NULL,'
+      '  MIKTAR float NULL CONSTRAINT DF_SATISSEPETI_ADET DEFAULT (0),'
+      '  TUTAR float NULL CONSTRAINT DF_SATISSEPETI_TUTAR DEFAULT (0),'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      
+        '  KDVTUTARI float NULL CONSTRAINT DF_SATISSEPETI_KDVTUTARI DEFAU' +
+        'LT (0),'
+      
+        '  KDVORANI float NULL CONSTRAINT DF_SATISSEPETI_KDVORANI DEFAULT' +
+        ' (0),'
+      
+        '  IND_ORANI float NULL CONSTRAINT DF_SATISSEPETI_IND_ORANI DEFAU' +
+        'LT (0),'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_SATIS_H_AKTIF DEFAULT (1),'
+      
+        '  DELETED bit NULL CONSTRAINT DF_dbo_SATIS_H_DELETED DEFAULT (0)' +
+        ','
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_SATIS_H_CREATEDA' +
+        'T DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_SATISSEPETI PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_SATIS_H_SATISLISTID] on table [dbo].[SATIS_H' +
+        ']'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_SATIS_H_SATISLISTID] on table [dbo].[S' +
+        'ATIS_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_SATIS_H_SATISLISTID'
+      '  ON dbo.SATIS_H (SATISID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[POS_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[POS_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.POS_H ('
+      '  ID int IDENTITY,'
+      '  POSID int NULL CONSTRAINT DF_POSKASA_POSID DEFAULT (0),'
+      '  TARIH datetime NULL,'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  BORC float NULL CONSTRAINT DF_POSKASA_BORC DEFAULT (0),'
+      '  ALACAK float NULL CONSTRAINT DF_POSKASA_ALACAK DEFAULT (0),'
+      '  CARIID int NULL CONSTRAINT DF_POSKASA_CARIID DEFAULT (0),'
+      '  EVRAKNO nvarchar(20) NULL,'
+      '  FATURAID int NULL CONSTRAINT DF_POS__H_FATURAID DEFAULT (0),'
+      '  SATISID int NULL CONSTRAINT DF_POS__H_SATISLISTID DEFAULT (0),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_POS__H_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_POS__H_CREATEDAT' +
+        ' DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_POSKASA PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[POS]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[POS]'#39')'
+      'GO'
+      'CREATE TABLE dbo.POS ('
+      '  ID int IDENTITY,'
+      '  POSADI nvarchar(30) NOT NULL,'
+      '  HESAPKODU nvarchar(20) NULL,'
+      '  TERMINALNO nvarchar(20) NULL,'
+      '  BANKAADI nvarchar(30) NULL,'
+      '  UYEISYERINO nvarchar(20) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_POS_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_POS_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_POS_CREATEDAT DE' +
+        'FAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_POSLAR PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[KASA_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[KASA_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.KASA_H ('
+      '  ID int IDENTITY,'
+      '  TARIH datetime NULL,'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  GIREN float NULL CONSTRAINT DF_KASA_BORC DEFAULT (0),'
+      '  CIKAN float NULL CONSTRAINT DF_KASA_ALACAK DEFAULT (0),'
+      '  CARIID int NULL CONSTRAINT DF_KASA_CARIID DEFAULT (0),'
+      '  EVRAKNO nvarchar(20) NULL,'
+      '  FATURAID int NULL CONSTRAINT DF_KASA_FATURAID DEFAULT (0),'
+      '  SATISID int NULL CONSTRAINT DF_KASA_SATISLISTID DEFAULT (0),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_KASA_H_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_KASA_H_CREATEDAT' +
+        ' DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_KASA PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[CARI_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[CARI_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.CARI_H ('
+      '  ID int IDENTITY,'
+      
+        '  CARIID int NOT NULL CONSTRAINT DF_CARIHAREKET_CARIID DEFAULT (' +
+        '0),'
+      '  ISLEMTARIHI datetime NULL,'
+      '  BORC float NULL CONSTRAINT DF_CARIHAREKET_BORC DEFAULT (0),'
+      
+        '  ALACAK float NULL CONSTRAINT DF_CARIHAREKET_ALACAK DEFAULT (0)' +
+        ','
+      '  VADETARIHI datetime NULL,'
+      '  EVRAKNO nvarchar(20) NULL,'
+      '  POSID int NULL CONSTRAINT DF_CARIHAREKET_KASAID DEFAULT (0),'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  ACIKLAMA3 nvarchar(100) NULL,'
+      '  ISLEMTIPI int NULL,'
+      '  ODEMETIPI int NULL DEFAULT (0),'
+      
+        '  FATURAID int NULL CONSTRAINT DF_CARIHAREKET_FATURAID DEFAULT (' +
+        '0),'
+      
+        '  ZAMAN datetime NULL CONSTRAINT DF_CARIHAREKET_ZAMAN DEFAULT (g' +
+        'etdate()),'
+      
+        '  CEKSENETHID int NULL CONSTRAINT DF_CARIHAREKET_CEKSENET_H_ID D' +
+        'EFAULT (0),'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_CARI_H_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_CARI_H_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_CARI_H_CREATEDAT' +
+        ' DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_CARIHAREKET PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create index [IX_CARIHAREKET_CARIID] on table [dbo].[CARI_H]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_CARIHAREKET_CARIID] on table [dbo].[CA' +
+        'RI_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_CARIHAREKET_CARIID'
+      '  ON dbo.CARI_H (CARIID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_CARIHAREKET_CEKSENET_H_ID] on table [dbo].[C' +
+        'ARI_H]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_CARIHAREKET_CEKSENET_H_ID] on table [d' +
+        'bo].[CARI_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_CARIHAREKET_CEKSENET_H_ID'
+      '  ON dbo.CARI_H (CEKSENETHID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_CARIHAREKET_FATURAID] on table [dbo].[CARI_H' +
+        ']'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_CARIHAREKET_FATURAID] on table [dbo].[' +
+        'CARI_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_CARIHAREKET_FATURAID'
+      '  ON dbo.CARI_H (FATURAID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_CARIHAREKET_ISLEMTURU] on table [dbo].[CARI_' +
+        'H]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_CARIHAREKET_ISLEMTURU] on table [dbo].' +
+        '[CARI_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_CARIHAREKET_ISLEMTURU'
+      '  ON dbo.CARI_H (ISLEMTIPI)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create index [IX_CARIHAREKET_KASAID] on table [dbo].[CARI_H]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_CARIHAREKET_KASAID] on table [dbo].[CA' +
+        'RI_H]'#39')'
+      'GO'
+      'CREATE INDEX IX_CARIHAREKET_KASAID'
+      '  ON dbo.CARI_H (POSID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[CARI]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[CARI]'#39')'
+      'GO'
+      'CREATE TABLE dbo.CARI ('
+      '  ID int IDENTITY,'
+      '  CARIKODU nvarchar(80) NOT NULL,'
+      '  UNVAN nvarchar(100) NOT NULL,'
+      '  TARIH datetime NULL,'
+      '  GROUPID int NULL,'
+      '  MESLEK nvarchar(20) NULL,'
+      '  ILCE nvarchar(20) NULL,'
+      '  SEHIR nvarchar(20) NULL,'
+      '  POSTAKODU nvarchar(10) NULL,'
+      '  ULKE nvarchar(20) NULL,'
+      '  VERGIDAIRESI nvarchar(20) NULL,'
+      '  VERGINO nvarchar(15) NULL,'
+      '  BANKA nvarchar(20) NULL,'
+      '  BANKAHESAPNO nvarchar(30) NULL,'
+      '  ISTELEFONU1 nvarchar(15) NULL,'
+      '  ISTELEFONU2 nvarchar(15) NULL,'
+      '  FAX nvarchar(15) NULL,'
+      '  CEPTELEFONU nvarchar(15) NULL,'
+      '  EVTELEFONU nvarchar(15) NULL,'
+      '  EMAIL nvarchar(50) NULL,'
+      '  ADRES1 nvarchar(50) NULL,'
+      '  ADRES2 nvarchar(50) NULL,'
+      '  ADRES3 nvarchar(50) NULL,'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  ACIKLAMA3 nvarchar(100) NULL,'
+      '  RESIM nvarchar(150) NULL,'
+      '  YETKILI nvarchar(30) NULL,'
+      '  BORC float NULL CONSTRAINT DF_CARI_BORC DEFAULT (0),'
+      '  ALACAK float NULL CONSTRAINT DF_CARI_ALACAK DEFAULT (0),'
+      '  BAKIYE float NULL CONSTRAINT DF_CARI_BAKYE DEFAULT (0),'
+      
+        '  VERESIYE_LIMITI float NULL CONSTRAINT DF_CARI_VERESIYE_LIMITI ' +
+        'DEFAULT (0),'
+      
+        '  VERESIYE_UYAR bit NULL CONSTRAINT DF_CARI_VERESIYE_UYAR DEFAUL' +
+        'T (0),'
+      
+        '  VERESIYE_SURESI int NULL CONSTRAINT DF_CARI_VERESIYE_SURESI DE' +
+        'FAULT (0),'
+      '  RENK int NULL,'
+      '  EMAIL2 nvarchar(50) NULL,'
+      '  EMAIL3 nvarchar(50) NULL,'
+      '  EMAIL_SEC bit NULL CONSTRAINT DF_CARI_EMAIL_SEC DEFAULT (0),'
+      '  TIPI int NULL CONSTRAINT DF_CARI_CK_TYPE DEFAULT (0),'
+      '  CARI_NOTE ntext NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_CARI_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_CARI_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_CARI_CREATEDAT D' +
+        'EFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_CARI PRIMARY KEY CLUSTERED (ID),'
+      '  CONSTRAINT IX_CARI UNIQUE (CARIKODU)'
+      ')'
+      'ON [PRIMARY]'
+      'TEXTIMAGE_ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[____FATURA]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[____FATURA]'#39')'
+      'GO'
+      'CREATE TABLE dbo.____FATURA ('
+      '  ID int IDENTITY,'
+      '  TARIH datetime NULL,'
+      '  ISLEMTURU nvarchar(20) NULL,'
+      '  TUTAR float NULL CONSTRAINT DF_FATURA_TUTAR DEFAULT (0),'
+      '  EVRAKNO nvarchar(80) NULL,'
+      '  CARIID int NULL CONSTRAINT DF_FATURA_CARIID DEFAULT (0),'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      '  PERSONEL nvarchar(20) NULL,'
+      '  COMNAMETIME nvarchar(80) NULL,'
+      
+        '  UPDATECOUNT int NULL CONSTRAINT DF_FATURA_UPDATECOUNT DEFAULT ' +
+        '(0),'
+      
+        '  IND_ORANI float NULL CONSTRAINT DF_FATURA_IND_ORANI DEFAULT (0' +
+        '),'
+      
+        '  IND_ORANI2 float NULL CONSTRAINT DF_FATURA_IND_ORANI2 DEFAULT ' +
+        '(0),'
+      
+        '  IND_TOPLAMI float NULL CONSTRAINT DF_FATURA_IND_TOPLAMI DEFAUL' +
+        'T (0),'
+      
+        '  IND_TUTARI float NULL CONSTRAINT DF_FATURA_IND_TUTARI DEFAULT ' +
+        '(0),'
+      
+        '  KDVMATRAHI float NULL CONSTRAINT DF_FATURA_KDVMATRAHI DEFAULT ' +
+        '(0),'
+      
+        '  KDVTUTARI float NULL CONSTRAINT DF_FATURA_KDVTUTARI DEFAULT (0' +
+        '),'
+      '  FATURATIPI nvarchar(20) NULL,'
+      '  SAAT datetime NULL,'
+      '  SEVKTARIHI datetime NULL,'
+      '  IRSALIYENO nvarchar(20) NULL,'
+      '  PRINTED bit NULL CONSTRAINT DF_FATURA_PRINTED DEFAULT (0),'
+      '  SATISID int NULL CONSTRAINT DF_FATURA_SATISLISTID DEFAULT (0),'
+      '  VADE_TARIHI datetime NULL,'
+      
+        '  AKTIF bit NOT NULL CONSTRAINT DF_dbo_____FATURA_AKTIF DEFAULT ' +
+        '(1),'
+      
+        '  DELETED bit NOT NULL CONSTRAINT DF_dbo_____FATURA_DELETED DEFA' +
+        'ULT (0),'
+      
+        '  CREATEDAT datetime2(0) NOT NULL CONSTRAINT DF_dbo_____FATURA_C' +
+        'REATEDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_FATURA PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_FATURA_COMNAMETIME] on table [dbo].[____FATU' +
+        'RA]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_FATURA_COMNAMETIME] on table [dbo].[__' +
+        '__FATURA]'#39')'
+      'GO'
+      'CREATE INDEX IX_FATURA_COMNAMETIME'
+      '  ON dbo.____FATURA (COMNAMETIME)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create index [IX_FATURA_SATISLISTID] on table [dbo].[____FATU' +
+        'RA]'
+      '--'
+      
+        'PRINT (N'#39'Create index [IX_FATURA_SATISLISTID] on table [dbo].[__' +
+        '__FATURA]'#39')'
+      'GO'
+      'CREATE INDEX IX_FATURA_SATISLISTID'
+      '  ON dbo.____FATURA (SATISID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create foreign key [FK_FATURA_CARIID] on table [dbo].[____FAT' +
+        'URA]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_FATURA_CARIID] on table [dbo].[_' +
+        '___FATURA]'#39')'
+      'GO'
+      'ALTER TABLE dbo.____FATURA'
+      
+        '  ADD CONSTRAINT FK_FATURA_CARIID FOREIGN KEY (CARIID) REFERENCE' +
+        'S dbo.CARI (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[SATIS]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[SATIS]'#39')'
+      'GO'
+      'CREATE TABLE dbo.SATIS ('
+      '  ID int IDENTITY,'
+      '  TARIH datetime NULL,'
+      '  SAAT datetime NULL,'
+      '  ISLEMTURU nvarchar(20) NULL,'
+      '  SATISTURU nvarchar(20) NULL,'
+      '  TUTAR float NULL CONSTRAINT DF_SATISLISTESI_TUTAR DEFAULT (0),'
+      '  CARIID int NULL CONSTRAINT DF_SATISLISTESI_CARIID DEFAULT (0),'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      '  POSID int NULL,'
+      
+        '  ALISMALIYETI float NULL CONSTRAINT DF_SATISLISTESI_ALISMALIYET' +
+        'I DEFAULT (0),'
+      
+        '  SATISTUTARI float NULL CONSTRAINT DF_SATISLISTESI_SATISTUTARI ' +
+        'DEFAULT (0),'
+      '  KAR float NULL CONSTRAINT DF_SATISLISTESI_KAR DEFAULT (0),'
+      
+        '  KDVTUTARI float NULL CONSTRAINT DF_SATISLISTESI_KDVTUTARI DEFA' +
+        'ULT (0),'
+      
+        '  IND_ORANI float NULL CONSTRAINT DF_SATISLISTESI_IND_ORANI DEFA' +
+        'ULT (0),'
+      
+        '  IND_TOPLAMI float NULL CONSTRAINT DF_SATISLISTESI_IND_TOPLAMI ' +
+        'DEFAULT (0),'
+      
+        '  KDVMATRAHI float NULL CONSTRAINT DF_SATISLISTESI_KDV_MATRAHI D' +
+        'EFAULT (0),'
+      
+        '  FATURAID int NULL CONSTRAINT DF_SATISLISTESI_FATURAID DEFAULT ' +
+        '(0),'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  AKTIF bit NULL CONSTRAINT DF_dbo_SATIS_AKTIF DEFAULT (1),'
+      '  DELETED bit NULL CONSTRAINT DF_dbo_SATIS_DELETED DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_SATIS_CREATEDAT ' +
+        'DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create index [KEY_SATIS_ID] on table [dbo].[SATIS]'
+      '--'
+      'PRINT (N'#39'Create index [KEY_SATIS_ID] on table [dbo].[SATIS]'#39')'
+      'GO'
+      'CREATE UNIQUE INDEX KEY_SATIS_ID'
+      '  ON dbo.SATIS (ID)'
+      '  ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_SATIS_CARIID] on table [dbo].[SATIS]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_SATIS_CARIID] on table [dbo].[SA' +
+        'TIS]'#39')'
+      'GO'
+      'ALTER TABLE dbo.SATIS'
+      
+        '  ADD CONSTRAINT FK_SATIS_CARIID FOREIGN KEY (CARIID) REFERENCES' +
+        ' dbo.CARI (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create foreign key [FK_SATIS_FATURAID] on table [dbo].[SATIS]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_SATIS_FATURAID] on table [dbo].[' +
+        'SATIS]'#39')'
+      'GO'
+      'ALTER TABLE dbo.SATIS'
+      
+        '  ADD CONSTRAINT FK_SATIS_FATURAID FOREIGN KEY (FATURAID) REFERE' +
+        'NCES dbo.____FATURA (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[____FATURA_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[____FATURA_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.____FATURA_H ('
+      '  ID int IDENTITY,'
+      '  TARIH datetime NULL,'
+      
+        '  FATURAID int NULL CONSTRAINT DF_FATURASEPETI_FATURAID DEFAULT ' +
+        '(0),'
+      '  STOKID int NULL CONSTRAINT DF_FATURASEPETI_STOKID DEFAULT (0),'
+      
+        '  BIRIMFIYATI float NULL CONSTRAINT DF_FATURASEPETI_FIYAT DEFAUL' +
+        'T (0),'
+      
+        '  MIKTAR float NULL CONSTRAINT DF_FATURASEPETI_MIKTAR DEFAULT (0' +
+        '),'
+      '  BIRIM nvarchar(15) NULL,'
+      '  TUTAR float NULL CONSTRAINT DF_FATURASEPETI_TUTAR DEFAULT (0),'
+      '  ACIKLAMA nvarchar(100) NULL,'
+      '  COMNAMETIME nvarchar(80) NULL,'
+      
+        '  KDVORANI int NULL CONSTRAINT DF_FATURASEPETI_KDVORANI DEFAULT ' +
+        '(0),'
+      
+        '  KDVTUTARI float NULL CONSTRAINT DF_FATURASEPETI_KDVTUTARI DEFA' +
+        'ULT (0),'
+      
+        '  IND_ORANI float NULL CONSTRAINT DF_FATURASEPETI_IND_ORANI DEFA' +
+        'ULT (0),'
+      
+        '  IND_ORANI2 float NULL CONSTRAINT DF_FATURASEPETI_IND_ORANI2 DE' +
+        'FAULT (0),'
+      
+        '  IND_TUTARI float NULL CONSTRAINT DF_FATURASEPETI_IND_TUTARI DE' +
+        'FAULT (0),'
+      
+        '  AKTIF bit NOT NULL CONSTRAINT DF_dbo_____FATURA_H_AKTIF DEFAUL' +
+        'T (1),'
+      
+        '  DELETED bit NOT NULL CONSTRAINT DF_dbo_____FATURA_H_DELETED DE' +
+        'FAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NOT NULL CONSTRAINT DF_dbo_____FATURA_H' +
+        '_CREATEDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_FATURASEPETI PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create foreign key [FK_FATURA_H_FATURAID] on table [dbo].[___' +
+        '_FATURA_H]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_FATURA_H_FATURAID] on table [dbo' +
+        '].[____FATURA_H]'#39')'
+      'GO'
+      'ALTER TABLE dbo.____FATURA_H'
+      
+        '  ADD CONSTRAINT FK_FATURA_H_FATURAID FOREIGN KEY (FATURAID) REF' +
+        'ERENCES dbo.____FATURA (ID)'
+      'GO'
+      ''
+      '--'
+      
+        '-- Create foreign key [FK_FATURA_H_STOKID] on table [dbo].[____F' +
+        'ATURA_H]'
+      '--'
+      
+        'PRINT (N'#39'Create foreign key [FK_FATURA_H_STOKID] on table [dbo].' +
+        '[____FATURA_H]'#39')'
+      'GO'
+      'ALTER TABLE dbo.____FATURA_H'
+      
+        '  ADD CONSTRAINT FK_FATURA_H_STOKID FOREIGN KEY (STOKID) REFEREN' +
+        'CES dbo.STOK (ID)'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[____CEKSENET_H]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[____CEKSENET_H]'#39')'
+      'GO'
+      'CREATE TABLE dbo.____CEKSENET_H ('
+      '  ID int NOT NULL,'
+      
+        '  CEKSENETID int NULL CONSTRAINT DF_CEKSENET_H_CEKSENET_ID DEFAU' +
+        'LT (0),'
+      
+        '  TYPE_CEKSENET_H int NULL CONSTRAINT DF_CEKSENET_H_TYPE_CEKSENE' +
+        'T_H DEFAULT (0),'
+      
+        '  ISLEMTARIHI datetime NULL CONSTRAINT DF_CEKSENET_H_ISLEMTARIHI' +
+        ' DEFAULT (getdate()),'
+      '  CARIID int NULL CONSTRAINT DF_CEKSENET_H_CARIID DEFAULT (0),'
+      '  PERSONEL nvarchar(20) NULL,'
+      '  TUTAR float NULL CONSTRAINT DF_CEKSENET_H_TUTAR DEFAULT (0),'
+      '  BANKA nvarchar(50) NULL,'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      
+        '  UPDATECOUNT int NULL CONSTRAINT DF_CEKSENET_H_UPDATECOUNT DEFA' +
+        'ULT (0),'
+      
+        '  AKTIF bit NOT NULL CONSTRAINT DF_dbo_____CEKSENET_H_AKTIF DEFA' +
+        'ULT (1),'
+      
+        '  DELETED bit NOT NULL CONSTRAINT DF_dbo_____CEKSENET_H_DELETED ' +
+        'DEFAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NOT NULL CONSTRAINT DF_dbo_____CEKSENET' +
+        '_H_CREATEDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_CEKSENET_H PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO'
+      ''
+      '--'
+      '-- Create table [dbo].[____CEKSENET]'
+      '--'
+      'PRINT (N'#39'Create table [dbo].[____CEKSENET]'#39')'
+      'GO'
+      'CREATE TABLE dbo.____CEKSENET ('
+      '  ID int NOT NULL,'
+      
+        '  CEKORSENET bit NULL CONSTRAINT DF_CEKSENET_CEKORSENET DEFAULT ' +
+        '(0),'
+      
+        '  KENDIORMUSTERI bit NULL CONSTRAINT DF_CEKSENET_KENDIORMUSTERI ' +
+        'DEFAULT (0),'
+      '  TAKIPNO nvarchar(15) NULL,'
+      '  SERINO nvarchar(20) NULL,'
+      
+        '  TARIH datetime NULL CONSTRAINT DF_CEKSENET_TARIH DEFAULT (getd' +
+        'ate()),'
+      '  VADE datetime NULL,'
+      '  BANKA nvarchar(50) NULL,'
+      '  SUBE nvarchar(50) NULL,'
+      '  HESAPNO nvarchar(50) NULL,'
+      '  TUTAR float NULL CONSTRAINT DF_CEKSENET_TUTAR DEFAULT (0),'
+      '  MUHABIRSUBE nvarchar(50) NULL,'
+      '  ODEMEYERI nvarchar(50) NULL,'
+      
+        '  MUSTERICIROLADI bit NULL CONSTRAINT DF_CEKSENET_MUSTERICIROLAD' +
+        'I DEFAULT (0),'
+      '  KESIDECI nvarchar(50) NULL,'
+      '  GRUP nvarchar(20) NULL,'
+      '  ACIKLAMA1 nvarchar(100) NULL,'
+      '  ACIKLAMA2 nvarchar(100) NULL,'
+      '  KEFIL_ID int NULL CONSTRAINT DF_CEKSENET_KEFIL_ID DEFAULT (0),'
+      
+        '  UPDATECOUNT int NULL CONSTRAINT DF_CEKSENET_UPDATECOUNT DEFAUL' +
+        'T (0),'
+      '  PERSONEL nvarchar(20) NULL,'
+      
+        '  AKTIF bit NOT NULL CONSTRAINT DF_dbo_____CEKSENET_AKTIF DEFAUL' +
+        'T (1),'
+      
+        '  DELETED bit NOT NULL CONSTRAINT DF_dbo_____CEKSENET_DELETED DE' +
+        'FAULT (0),'
+      
+        '  CREATEDAT datetime2(0) NOT NULL CONSTRAINT DF_dbo_____CEKSENET' +
+        '_CREATEDAT DEFAULT (sysdatetime()),'
+      '  UPDATEDAT datetime2(0) NULL,'
+      '  DELETEDAT datetime2(0) NULL,'
+      '  USERID int NULL,'
+      '  USERIDUP int NULL,'
+      '  CONSTRAINT PK_CEKSENET PRIMARY KEY CLUSTERED (ID)'
+      ')'
+      'ON [PRIMARY]'
+      'GO')
+    Left = 144
+    Top = 136
+  end
+  object q: TUniQuery
+    Connection = UniConnTest
+    Left = 8
+    Top = 136
+  end
+end
