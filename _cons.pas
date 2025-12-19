@@ -24,9 +24,15 @@ type
 const
   APP_NAME = 'Kolay Hesap Pro';
   VERI_YOK = 'VERI_YOK';
+  G = 'G';
+  C = 'C';
 //  O           = 'O';   // Cariye yapýlan ödeme
 //  T           = 'T';   // cariden YAPILAN tahsilat
   RAPORLAR =  'Raporlar';
+
+  NAKIT = 'Nakit';
+  CARI  = 'Cari';
+  KREDIKARTI = 'Kredi Kartý';
 
 implementation
 

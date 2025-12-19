@@ -132,6 +132,7 @@ type
     RaporTasarm1: TMenuItem;
     qryCari: TUniQuery;
     cbPos: TcxComboBox;
+    qrySatisBitir__yedek: TUniQuery;
     qrySatisBitir: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
@@ -156,7 +157,7 @@ type
     procedure btnSatirAdetArttirClick(Sender: TObject);
     procedure cxButton6Click(Sender: TObject);
     procedure edtCariBulPropertiesChange(Sender: TObject);
-    procedure satisTamamla(islem:string);
+    procedure satisTamamla(Aislem:string);
     procedure btnNakit_satisClick(Sender: TObject);
     procedure btnKk_satisClick(Sender: TObject);
     procedure btnVeresiye_satisClick(Sender: TObject);
@@ -835,23 +836,23 @@ begin
 end;
 
 
-procedure TfrmHizliSatis.satisTamamla(islem:string);
+procedure TfrmHizliSatis.satisTamamla(Aislem:string);
 var
-  qTemp, qHar: TUniQuery;                                        asdasd
-  sIslemTuru,  cariHarID,   PosID : string;
+  qTemp, qHar: TUniQuery;
+  PosID : string;
 begin
-  if islem = '' then exit;
+  if Aislem = '' then exit;
   if qryTempSatis.IsEmpty then exit;
 
-  if (islem = CARI) and (cbcari.text = 'PERAKENDE') then
+  if (Aislem = CARI) and (cbcari.text = 'PERAKENDE') then
   begin
     MesajBilgi('Veresiye satýþ için cari seçilmelidir.');
     exit;
   end;
 
-  if islem = NAKIT      then sIslemTuru := 'Nakit';
-  if islem = CARI       then sIslemTuru := 'Veresiye';
-  if islem = KREDIKARTI then
+//  if islem = NAKIT      then sIslemTuru := 'Nakit';
+//  if islem = CARI       then sIslemTuru := 'Veresiye';
+  if Aislem = KREDIKARTI then
   begin
     if cbPos.text = '' then
     begin
@@ -865,14 +866,12 @@ begin
       end
       else
         exit;
-
     end;
-    sIslemTuru := 'Kredi Kartý';
     PosID := veriCekSQL('select ID from POS where POSADI = ' + quotedstr(cbPos.text), 'ID');
   end;
 
-  if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + sIslemTuru +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
-              #13#10 + 'ÖDEME ÞEKLÝ : ' + sIslemTuru)
+  if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + Aislem +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
+              #13#10 + 'ÖDEME ÞEKLÝ : ' + Aislem)
   then exit;
 
   if qryTempSatis.State in [dsedit,dsInsert] then qryTempSatis.Post;
@@ -887,17 +886,17 @@ begin
     exit;
   end;
 
-  if islem = NAKIT      then begin qrySatisBitir.ParamByName('Islem').AsInteger := 1; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_NAKIT); end;
-  if islem = KREDIKARTI then begin qrySatisBitir.ParamByName('Islem').AsInteger := 2; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_KK); end;
-  if islem = CARI       then begin qrySatisBitir.ParamByName('Islem').AsInteger := 3; qrySatisBitir.ParamByName('IslemTip').AsInteger := ord(CH_SATIS_CARI);end;
 
-  qrySatisBitir.ParamByName('StokIslemTipi').AsString  := qrySatisBitir.ParamByName('IslemTip').AsString;
-  qrySatisBitir.ParamByName('CariID').AsString         := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
-  qrySatisBitir.ParamByName('PosID').AsString          := PosID;
+  qrySatisBitir.ParamByName('PosID').AsString      := PosID;
+  qrySatisBitir.ParamByName('UserID').AsInteger    := loginUserID;
+  qrySatisBitir.ParamByName('CariID').AsString     := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
+  qrySatisBitir.ParamByName('ISLEMTURU').AsInteger := ord(HIT_KASIYER_SATIS);
+
+  if Aislem = NAKIT           then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_NAKIT)
+  else if Aislem = KREDIKARTI then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_KREDIKARTI)
+  else if Aislem = CARI       then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_CARI);
 
   qrySatisBitir.Execute;
-
-
 
 //  qHar  :=  yeniQuery('select sum(TOPLAM) as xToplam from TMPSATIS where BEKLEMEDE=0');
 //  tutar :=  qHar.FieldByName('xToplam').AsString;

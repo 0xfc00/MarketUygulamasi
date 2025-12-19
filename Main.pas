@@ -121,7 +121,7 @@ type
     procedure acTumStoklarExecute(Sender: TObject);
     procedure acStokGirisiExecute(Sender: TObject);
     procedure StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
-    procedure KasaGirisCikisFormuAc_fn(AGCKodu : integer);
+    procedure KasaGirisCikisFormuAc_fn(AGCKodu : string);
     procedure CariHareketEkleFormuAc_fn(AGCKodu : integer; ACariID : string = '');
     procedure StokHarListFormuAc_fn(AStokID : string = '');
     procedure CariHarListFormuAc_fn(ACariID : string = '');
@@ -381,7 +381,7 @@ end;
 
 function StokIdKartiSil_fn( AStokId : string): Boolean;
 begin
-  Result := False;              asd
+  Result := False;
   if trim(AStokId) <> EmptyStr then
   begin
     if StokIdHareketVarmi_fn(trim(AStokId)) then
@@ -468,7 +468,7 @@ end;
 
 procedure TfrmMain.acCaridenTahsilatExecute(Sender: TObject);
 begin
-  CariHareketEkleFormuAc_fn(HIT_CARIDEN_TAHSILAT);
+  CariHareketEkleFormuAc_fn(ord(HIT_CARIDEN_TAHSILAT));
 end;
 
 procedure TfrmMain.acHizliSatisButonlariExecute(Sender: TObject);
@@ -485,12 +485,12 @@ end;
 
 procedure TfrmMain.acKasaCikisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn(HIT_KASA_CIKIS);
+  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_CIKIS).ToString);
 end;
 
 procedure TfrmMain.acKasaGirisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn(HIT_KASA_GIRIS);
+  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_GIRIS).ToString);
 end;
 
 procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
@@ -513,7 +513,7 @@ end;
 
 procedure TfrmMain.acCariyeOdemeExecute(Sender: TObject);
 begin
-  CariHareketEkleFormuAc_fn(HIT_CARIYE_ODEME);
+  CariHareketEkleFormuAc_fn(ord(HIT_CARIYE_ODEME));
 end;
 
 procedure TfrmMain.acCariHarListExecute(Sender: TObject);
@@ -523,12 +523,12 @@ end;
 
 procedure TfrmMain.acStokCikisiExecute(Sender: TObject);
 begin
-  StokGirisCikisFormuAc_fn('C');
+  StokGirisCikisFormuAc_fn(C);
 end;
 
 procedure TfrmMain.acStokGirisiExecute(Sender: TObject);
 begin
-  StokGirisCikisFormuAc_fn('G');
+  StokGirisCikisFormuAc_fn(G);
 end;
 
 procedure TfrmMain.acStokHarListExecute(Sender: TObject);
@@ -580,14 +580,14 @@ begin
 
 end;
 
-procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : integer);
+procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : string);
 begin
   Application.CreateForm(TfrmKasaHareketEkle, frmKasaHareketEkle);
   frmKasaHareketEkle.GCKodu := AGCKodu;
   frmKasaHareketEkle.ShowModal;
 end;
 
-procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : integer; AStokID : string = '');
+procedure TfrmMain.StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
 var
   FForm : TfrmStokHareketEkle;
   s : string;
@@ -606,7 +606,7 @@ begin
   end;
 end;
 
-procedure TfrmMain.CariHareketEkleFormuAc_fn(AGCKodu : int; ACariID : string = '');
+procedure TfrmMain.CariHareketEkleFormuAc_fn(AGCKodu : integer; ACariID : string = '');
 var
   FForm : TfrmCariHareketEkle;
   s : string;
@@ -635,7 +635,7 @@ end;
 
 procedure TfrmMain.acSatisFaturasiExecute(Sender: TObject);
 begin
-  FaturaKartiAc_fn(SATIS_FATURASI);
+  //FaturaKartiAc_fn(SATIS_FATURASI);
 end;
 
 procedure TfrmMain.acTumCarilerExecute(Sender: TObject);
