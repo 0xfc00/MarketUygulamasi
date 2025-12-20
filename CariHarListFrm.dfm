@@ -150,7 +150,6 @@ object frmCariHarList: TfrmCariHarList
       end
       object vwCariHarlistEVRAKNO: TcxGridDBColumn
         DataBinding.FieldName = 'EVRAKNO'
-        DataBinding.IsNullValueType = True
         Width = 100
       end
       object vwCariHarlistKASAHID: TcxGridDBColumn

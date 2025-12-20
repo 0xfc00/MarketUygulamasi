@@ -253,7 +253,7 @@ begin
   end;
 
 
-  DataSet.FieldByName('ODEMETURU').AsInteger  := Ord(HIT_STOK_CIKIS);
+  DataSet.FieldByName('ODEMETURU').AsInteger  := Ord(HOT_YOK);
 
   DataSet.FieldByName('STOKID').AsString      := qryStok.FieldByName('ID').AsString;
   DataSet.FieldByName('BIRIMID').AsString     := qryStok.FieldByName('BIRIMID').AsString;

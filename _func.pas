@@ -18,11 +18,12 @@ uses
   procedure lisansYoksaKapat();
   procedure demoKontrol();
   procedure EkleyenDegistiren(ADataset: TDataSet);
+  function yetkiYok(): boolean;
 
 
 implementation
 
-uses  _cons, _vars, MainDM;
+uses  _cons, _vars, MainDM, Main;
 
 const
   CKEY1 = 53761;
@@ -96,10 +97,7 @@ begin
     Result := false;
 end;
 
-procedure MesajGoster(mesaj: string);
-begin
-  Application.MessageBox(pchar(mesaj),'KolayHesapPro',MB_OK+MB_ICONINFORMATION);
-end;
+
 
 function Randomstring(strLen: Integer): string;
 var
@@ -152,23 +150,23 @@ var
 begin
   q := yeniQuery('select * from USERS where ID='+ loginUserID.tostring);
 
-  y.admin          := q.FieldByName('YONETICI').asString         = '1';
-  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').asString       = '1';
-  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').asString   = '1';
-  y.STOKSIL        := q.FieldByName('y_STOKSIL').asString        = '1';
-  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').asString       = '1';
-  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').asString   = '1';
-  y.CARISIL        := q.FieldByName('y_CARISIL').asString        = '1';
-  y.FATEKLE        := q.FieldByName('y_FATEKLE').asString        = '1';
-  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').asString    = '1';
-  y.FATSIL         := q.FieldByName('y_FATSIL').asString         = '1';
-  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').asString       = '1';
-  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').asString    = '1';
-  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').asString = '1';
-  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').asString     = '1';
-  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').asString     = '1';
-  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').asString  = '1';
-  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').asString   = '1';
+  y.admin          := q.FieldByName('YONETICI').AsBoolean         = true;
+  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').AsBoolean       = true;
+  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').AsBoolean   = true;
+  y.STOKSIL        := q.FieldByName('y_STOKSIL').AsBoolean        = true;
+  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').AsBoolean       = true;
+  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').AsBoolean   = true;
+  y.CARISIL        := q.FieldByName('y_CARISIL').AsBoolean        = true;
+  y.FATEKLE        := q.FieldByName('y_FATEKLE').AsBoolean        = true;
+  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').AsBoolean    = true;
+  y.FATSIL         := q.FieldByName('y_FATSIL').AsBoolean         = true;
+  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').AsBoolean       = true;
+  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').AsBoolean    = true;
+  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').AsBoolean = true;
+  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').AsBoolean     = true;
+  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').AsBoolean     = true;
+  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').AsBoolean  = true;
+  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').AsBoolean   = true;
 
   FreeAndNil(q);
 end;
@@ -278,7 +276,7 @@ procedure lisansYoksaKapat();
 begin
   if (lisans = 0) and (demo = false) then
   begin
-    MesajGoster('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
+    MesajBilgi('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
     Application.Terminate;
   end;
 end;
@@ -287,7 +285,7 @@ procedure demoKontrol();
 begin
   if demo then
   begin
-    MesajGoster('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
+    MesajBilgi('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
     Application.Terminate;
   end;
 
@@ -311,6 +309,20 @@ begin
     if ADataset.FindField('UPDATEDAT') <> nil then
       ADataset.FieldByName('UPDATEDAT').AsDateTime := now;
   end;
+end;
+
+function yetkiYok(): boolean;
+begin
+  result := false;
+
+  if y.admin then
+  begin
+    result := true;
+    exit;
+  end;
+
+  MesajHata(rstr_YETKI_YOK);
+  abort;
 end;
 
 

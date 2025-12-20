@@ -1,4 +1,4 @@
-unit Main;
+ï»¿unit Main;
 
 interface
 
@@ -13,7 +13,8 @@ uses
   dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
   dxSkinOffice2019Colorful, LoginFrm, _vars, cxContainer, cxEdit, cxImage,
   PosListFrm, dxGDIPlusClasses, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF;
+  Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF,
+  Data.DB, MemDS, DBAccess;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -35,9 +36,13 @@ uses
   function PosHareketVarmi_fn( APosId : string): Boolean;
   function StokIdKartiSil_fn( AStokId : string): Boolean;
   function CariIdKartiSil_fn( ACariId : string): Boolean;
+  function StokHareketSil_fn( AStokHarID : string): Boolean;
   procedure CariKartiAc_fn(ACariID : string = '');
   procedure FaturaKartiAc_fn(AFaturaTipi : string = ''; AFaturaID : string = '');
   procedure LoginFormAc_fn();
+
+
+
 
 
 
@@ -170,6 +175,9 @@ uses
 
 {$R *.dfm}
 
+
+
+
 procedure LoginFormAc_fn();
 begin
   try
@@ -261,7 +269,7 @@ begin
       Execute;
       Result := 'OK';
     except on E: Exception do
-      Result := 'HATA. Hata mesajý : ' + E.Message;
+      Result := 'HATA. Hata mesajÄ± : ' + E.Message;
     end;
     Close;
   end;
@@ -390,13 +398,33 @@ begin
   begin
     if StokIdHareketVarmi_fn(trim(AStokId)) then
     begin
-      MesajHata('Bu stok kartýna ait hareket var. Silinemez..');
+      MesajHata('Bu stok kartÄ±na ait hareket var. Silinemez..');
       exit;
     end
     else
-    if MesajSor('Seçili stok kartý silinecek. Eminmisiniz?') then
+    if MesajSor('SeÃ§ili stok kartÄ± silinecek. Eminmisiniz?') then
     begin
       if VeriSil_fn('STOK','ID', AStokId) = 'OK' then
+         Result := True;
+    end;
+  end;
+end;
+
+function StokHareketSil_fn( AStokHarID : string): Boolean;
+begin
+  Result := False;
+  if not y.STOKHARSIL then yetkiYok;
+  if trim(AStokHarID) <> EmptyStr then
+  begin
+    if MesajSor(rstr_KAYIT_SILME_ONAY) then
+    begin
+      if veriCekSQL('SELECT ID FROM ISLEM_BASLIK WHERE ISLEMTURU > 0 AND ODEMETURU > 0 AND ID in (SELECT ISLEMID FROM ISLEM_H WHERE ID = ' + AStokHarID + ')', 'ID') <> VERI_YOK then
+      begin
+        MesajHata('Bu iÅŸlem kasiyer satÄ±ÅŸ yada faturaya ait. Bu ekrandan silinemez');
+        abort;
+      end;
+
+      if VeriSil_fn('ISLEM_H','ID', AStokHarID) = 'OK' then
          Result := True;
     end;
   end;
@@ -409,11 +437,11 @@ begin
   begin
     if CariIdHareketVarmi_fn(trim(ACariId)) then
     begin
-      MesajHata('Bu cari kartýna ait hareket var. Silinemez..');
+      MesajHata('Bu cari kartÄ±na ait hareket var. Silinemez..');
       exit;
     end
     else
-    if MesajSor('Seçili cari kartý silinecek. Eminmisiniz?') then
+    if MesajSor('SeÃ§ili cari kartÄ± silinecek. Eminmisiniz?') then
     begin
       if VeriSil_fn('CARI','ID', ACariId) = 'OK' then
          Result := True;

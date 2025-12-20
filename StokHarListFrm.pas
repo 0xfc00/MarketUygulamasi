@@ -11,7 +11,7 @@ uses
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
   dxDateRanges, dxScrollbarAnnotations, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid;
+  cxGridCustomView, cxGrid, _func, _cons;
 
 type
   TfrmStokHarList = class(TfrmListBase)
@@ -40,21 +40,22 @@ type
     cxGrid1: TcxGrid;
     vw: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    vwISLEMTIPI: TcxGridDBColumn;
     vwISLEMTARIHI: TcxGridDBColumn;
-    vwMIKTAR: TcxGridDBColumn;
     vwGIREN: TcxGridDBColumn;
     vwCIKAN: TcxGridDBColumn;
     vwACIKLAMA: TcxGridDBColumn;
     vwBIRIMADI: TcxGridDBColumn;
     vwCARIID: TcxGridDBColumn;
-    vwEVRAKNO: TcxGridDBColumn;
     vwTUTAR: TcxGridDBColumn;
     vwBIRIMFIYATI: TcxGridDBColumn;
-    Label7: TLabel;
+    cxDBTextEdit8: TcxDBTextEdit;
+    Label9: TLabel;
+    vwColumn1: TcxGridDBColumn;
+    vwColumn2: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnSilClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,9 +70,18 @@ implementation
 
 {$R *.dfm}
 
+uses _vars;
+
 procedure TfrmStokHarList.btnKapatClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmStokHarList.btnSilClick(Sender: TObject);
+begin
+  inherited;
+  if qryStokHar.RecordCount > 0 then
+    if StokHareketSil_fn(qryStokHar.FieldByName('ID').AsString) then qryStokHar.Refresh;
 end;
 
 procedure TfrmStokHarList.FormCreate(Sender: TObject);
@@ -82,18 +92,15 @@ begin
   pnlHeader.color :=clGreen;
 
   TumQuerylereConnectionAta(self);
-
-
 end;
 
 procedure TfrmStokHarList.FormShow(Sender: TObject);
 begin
   qryStok.SQL.Add(' where ID =' + StokID);
-  qryStokHar.SQL.Add(' where STOKID =' + StokID);
+  qryStokHar.SQL.Add(' and STOKID =' + StokID);
 
   TumQueryleriAc(self,true);
-  vw.ApplyBestFit(nil);
-
+  //vw.ApplyBestFit(nil);
 end;
 
 end.

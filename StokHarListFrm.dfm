@@ -23,19 +23,6 @@ object frmStokHarList: TfrmStokHarList
     Height = 36
     Align = alBottom
     TabOrder = 0
-    object Label7: TLabel
-      Left = 176
-      Top = 0
-      Width = 526
-      Height = 35
-      Caption = 'Ba'#351'ka tablolardan hareketlerde eklenecek'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -29
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 845
@@ -140,7 +127,7 @@ object frmStokHarList: TfrmStokHarList
       Width = 100
       Height = 28
       Align = alRight
-      Caption = 'Sil asdasdasd'
+      Caption = 'Sil '
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
@@ -184,6 +171,7 @@ object frmStokHarList: TfrmStokHarList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      OnClick = btnSilClick
     end
   end
   object dxPanel1: TdxPanel
@@ -246,6 +234,13 @@ object frmStokHarList: TfrmStokHarList
       Width = 19
       Height = 13
       Caption = 'KDV'
+    end
+    object Label9: TLabel
+      Left = 224
+      Top = 74
+      Width = 31
+      Height = 13
+      Caption = 'Bakiye'
     end
     object cxDBTextEdit1: TcxDBTextEdit
       Left = 63
@@ -352,6 +347,21 @@ object frmStokHarList: TfrmStokHarList
       TabOrder = 6
       Width = 56
     end
+    object cxDBTextEdit8: TcxDBTextEdit
+      Left = 292
+      Top = 71
+      DataBinding.DataField = 'BAKIYE'
+      DataBinding.DataSource = dsStok
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 121
+    end
   end
   object cxGrid1: TcxGrid
     AlignWithMargins = True
@@ -374,40 +384,53 @@ object frmStokHarList: TfrmStokHarList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      object vwISLEMTIPI: TcxGridDBColumn
-        DataBinding.FieldName = 'ISLEMTIPI'
-      end
       object vwISLEMTARIHI: TcxGridDBColumn
+        Caption = #304#351'lem Tarihi'
         DataBinding.FieldName = 'ISLEMTARIHI'
-        Width = 99
-      end
-      object vwMIKTAR: TcxGridDBColumn
-        DataBinding.FieldName = 'MIKTAR'
+        Width = 126
       end
       object vwGIREN: TcxGridDBColumn
+        Caption = 'Giren'
         DataBinding.FieldName = 'GIREN'
+        Width = 85
       end
       object vwCIKAN: TcxGridDBColumn
+        Caption = #199#305'kan'
         DataBinding.FieldName = 'CIKAN'
-      end
-      object vwACIKLAMA: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA'
-        Width = 174
+        Width = 85
       end
       object vwBIRIMADI: TcxGridDBColumn
+        Caption = 'Birim'
         DataBinding.FieldName = 'BIRIMADI'
-      end
-      object vwCARIID: TcxGridDBColumn
-        DataBinding.FieldName = 'CARIID'
-      end
-      object vwEVRAKNO: TcxGridDBColumn
-        DataBinding.FieldName = 'EVRAKNO'
-      end
-      object vwTUTAR: TcxGridDBColumn
-        DataBinding.FieldName = 'TUTAR'
+        Width = 61
       end
       object vwBIRIMFIYATI: TcxGridDBColumn
-        DataBinding.FieldName = 'BIRIMFIYATI'
+        Caption = 'Birim Fiyat'
+        DataBinding.FieldName = 'BIRIMFIYAT'
+        Width = 85
+      end
+      object vwTUTAR: TcxGridDBColumn
+        Caption = 'Tutar'
+        DataBinding.FieldName = 'TUTAR'
+        Width = 85
+      end
+      object vwCARIID: TcxGridDBColumn
+        Caption = 'Cari'
+        DataBinding.FieldName = 'cariadi'
+        Width = 151
+      end
+      object vwACIKLAMA: TcxGridDBColumn
+        Caption = 'A'#231#305'klama'
+        DataBinding.FieldName = 'ACIKLAMA1'
+        Width = 85
+      end
+      object vwColumn1: TcxGridDBColumn
+        Caption = #304#351'lem'
+        DataBinding.FieldName = 'strislemTuru'
+      end
+      object vwColumn2: TcxGridDBColumn
+        Caption = #214'deme T'#252'r'#252
+        DataBinding.FieldName = 'strOdemeTuru'
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -423,28 +446,44 @@ object frmStokHarList: TfrmStokHarList
         'IRIMADI,'
       ' * from stok')
     ReadOnly = True
-    Active = True
     Left = 144
     Top = 8
   end
   object dsStok: TDataSource
     AutoEdit = False
     DataSet = qryStok
-    Left = 200
+    Left = 184
     Top = 8
   end
   object qryStokHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from STOK_H')
-    Active = True
-    Left = 338
-    Top = 64
+      'select *,'
+      ''
+      'CASE '
+      #9'WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39
+      '  WHEN ISLEMTURU = 2 THEN '#39'Stok Giri'#351#39
+      '  WHEN ISLEMTURU = 3 THEN '#39'Stok '#199#305'k'#305#351#39
+      '  WHEN ISLEMTURU = 4 THEN '#39'Cari Sat'#305#351#39
+      'END AS strislemTuru,'
+      ''
+      'CASE '
+      #9'WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '  WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '  WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      ''
+      'END as strOdemeTuru,'
+      ''
+      ''
+      '(select UNVAN FROM CARI WHERE ID = ISLEM_H.CARIID) AS cariadi'
+      ' from ISLEM_H where ISLEMTURU in (1,2,3,4)')
+    Left = 538
+    Top = 40
   end
   object dsStokHar: TDataSource
     AutoEdit = False
     DataSet = qryStokHar
-    Left = 410
-    Top = 64
+    Left = 610
+    Top = 40
   end
 end

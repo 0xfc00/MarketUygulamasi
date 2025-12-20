@@ -123,7 +123,7 @@ object frmPosList: TfrmPosList
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 100
+      Width = 117
       Height = 28
       Align = alLeft
       Caption = 'Yeni POS Tan'#305'm'#305
@@ -159,7 +159,7 @@ object frmPosList: TfrmPosList
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 110
+      Left = 127
       Top = 4
       Width = 100
       Height = 28
@@ -208,6 +208,7 @@ object frmPosList: TfrmPosList
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnSilClick
+      ExplicitLeft = 110
     end
   end
   object cxGrid1: TcxGrid
@@ -243,7 +244,6 @@ object frmPosList: TfrmPosList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object vwPOSADI: TcxGridDBColumn
         Caption = 'POS Ad'#305
         DataBinding.FieldName = 'POSADI'
@@ -280,13 +280,13 @@ object frmPosList: TfrmPosList
         DataBinding.IsNullValueType = True
       end
       object vwColumn2: TcxGridDBColumn
-        Caption = 'Bor'#231
+        Caption = 'Giren'
         DataBinding.FieldName = 'TOPLAM_GIREN'
         DataBinding.IsNullValueType = True
         Options.Editing = False
       end
       object vwColumn3: TcxGridDBColumn
-        Caption = 'Alacak'
+        Caption = #199#305'kan'
         DataBinding.FieldName = 'TOPLAM_CIKAN'
         DataBinding.IsNullValueType = True
         Options.Editing = False

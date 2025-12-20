@@ -1,4 +1,4 @@
-﻿USE KHPRO
+USE KHPRO
 GO
 
 IF DB_NAME() <> N'KHPRO' SET NOEXEC ON
@@ -469,6 +469,7 @@ CREATE TABLE dbo.ISLEM_H (
   ISLEMTURU tinyint NOT NULL,
   ODEMETURU tinyint NOT NULL,
   ISLEMTARIHI datetime NULL,
+  EVRAKNO nvarchar(50) NULL,
   CARIID int NULL,
   STOKID int NULL,
   POSID int NULL,
@@ -483,7 +484,6 @@ CREATE TABLE dbo.ISLEM_H (
   KDVTUTARI decimal(18, 2) NULL,
   ISKONTO_ORANI decimal(5, 2) NULL,
   ISKONTO_TUTARI decimal(18, 2) NULL,
-  EVRAKNO nvarchar(50) NULL,
   ACIKLAMA1 nvarchar(150) NULL,
   ACIKLAMA2 nvarchar(150) NULL,
   CREATEDAT datetime2(0) NULL DEFAULT (sysdatetime()),
