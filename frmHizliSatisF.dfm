@@ -30423,7 +30423,8 @@ object frmHizliSatis: TfrmHizliSatis
       '  @CariID          INT = 0,    '
       '  @ODEMETURU       INT,     '
       '  @PosID           int   = 0,     '
-      '  @UserID          int   = NULL'
+      '  @UserID          int   = NULL,'
+      '  @EVRAKNO         nvarchar(50)'
       ''
       '  SET NOCOUNT ON;'
       '  SET XACT_ABORT ON;'
@@ -30433,6 +30434,7 @@ object frmHizliSatis: TfrmHizliSatis
       'set @ODEMETURU      = :ODEMETURU'
       'set @PosID          = :PosID'
       'set @UserID         = :UserID'
+      'set @EVRAKNO        = :EVRAKNO'
       '  '
       '  IF @ISLEMTARIHI IS NULL SET @ISLEMTARIHI = GETDATE();    '
       '  '
@@ -30475,15 +30477,15 @@ object frmHizliSatis: TfrmHizliSatis
       #9#9#9'INSERT INTO dbo.ISLEM_BASLIK'
       #9#9#9'('
       
-        #9#9#9#9'ISLEMTURU ,ODEMETURU ,ISLEMTARIHI ,CARIID ,POSID ,GIREN ,TUT' +
-        'AR'
+        #9#9#9#9'ISLEMTURU ,ODEMETURU ,ISLEMTARIHI, EVRAKNO,CARIID ,POSID ,GI' +
+        'REN ,TUTAR'
       #9#9#9#9',KDVTUTARI,ISKONTO_TUTARI ,USERID'
       #9#9#9')'
       #9#9#9'VALUES'
       #9#9#9'('
       
-        #9#9#9#9'@ISLEMTURU, @ODEMETURU, @ISLEMTARIHI, @CariID, @PosID, @Topl' +
-        'am, @Toplam,'
+        #9#9#9#9'@ISLEMTURU, @ODEMETURU, @ISLEMTARIHI, @EVRAKNO, @CariID, @Po' +
+        'sID, @Toplam, @Toplam,'
       #9#9#9#9'@ToplamKdv, @Iskonto, @UserID'#9#9#9
       #9#9#9');'
       #9#9#9
@@ -30526,8 +30528,8 @@ object frmHizliSatis: TfrmHizliSatis
       '            INSERT'
       '            ('
       
-        '      '#9#9#9#9'ISLEMID ,ISLEMTURU ,ODEMETURU ,ISLEMTARIHI ,CARIID ,ST' +
-        'OKID ,POSID ,'
+        '      '#9#9#9#9'ISLEMID ,ISLEMTURU ,ODEMETURU ,ISLEMTARIHI, EVRAKNO,CA' +
+        'RIID ,STOKID ,POSID ,'
       '      '#9#9#9#9'MIKTAR ,'
       '      '#9#9#9#9'GIREN  ,TUTAR ,'
       '      '#9#9#9#9'BIRIMFIYAT ,BIRIMID'
@@ -30538,8 +30540,8 @@ object frmHizliSatis: TfrmHizliSatis
       '            VALUES'
       '            ('
       
-        '              @SatisID,@ISLEMTURU,@ODEMETURU,@ISLEMTARIHI, @Cari' +
-        'ID,ISNULL(src.STOKID,0),@PosID,'
+        '              @SatisID,@ISLEMTURU,@ODEMETURU,@ISLEMTARIHI, @EVRA' +
+        'KNO, @CariID,ISNULL(src.STOKID,0),@PosID,'
       '              CAST(ISNULL(src.ADET,0) AS float),'
       
         '              CAST(ISNULL(src.TOPLAM,0) AS float),CAST(ISNULL(sr' +
@@ -30608,6 +30610,11 @@ object frmHizliSatis: TfrmHizliSatis
       item
         DataType = ftUnknown
         Name = 'UserID'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'EVRAKNO'
         Value = nil
       end>
   end

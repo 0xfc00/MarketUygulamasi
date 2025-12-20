@@ -104,7 +104,6 @@ type
     cxImage1: TcxImage;
     acPosTanimlari: TAction;
     Panel1: TPanel;
-    cxButton1: TcxButton;
     cxButton2: TcxButton;
     cxButton3: TcxButton;
     StatusBar1: TStatusBar;
@@ -116,12 +115,17 @@ type
     nbiKullanicilar: TdxNavBarItem;
     acHizliSatisButonlari: TAction;
     nbiHizlisatisButonlari: TdxNavBarItem;
+    cxButton5: TcxButton;
+    cxButton6: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
     procedure acStokGirisiExecute(Sender: TObject);
     procedure StokGirisCikisFormuAc_fn(AGCKodu : string; AStokID : string = '');
-    procedure KasaGirisCikisFormuAc_fn(AGCKodu : string);
+    procedure KasaGirisCikisFormuAc_fn(AGCKodu : integer);
     procedure CariHareketEkleFormuAc_fn(AGCKodu : integer; ACariID : string = '');
     procedure StokHarListFormuAc_fn(AStokID : string = '');
     procedure CariHarListFormuAc_fn(ACariID : string = '');
@@ -485,12 +489,12 @@ end;
 
 procedure TfrmMain.acKasaCikisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_CIKIS).ToString);
+  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_CIKIS));
 end;
 
 procedure TfrmMain.acKasaGirisExecute(Sender: TObject);
 begin
-  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_GIRIS).ToString);
+  KasaGirisCikisFormuAc_fn(ord(HIT_KASA_GIRIS));
 end;
 
 procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
@@ -580,7 +584,7 @@ begin
 
 end;
 
-procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : string);
+procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : integer);
 begin
   Application.CreateForm(TfrmKasaHareketEkle, frmKasaHareketEkle);
   frmKasaHareketEkle.GCKodu := AGCKodu;

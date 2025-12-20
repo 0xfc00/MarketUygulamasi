@@ -215,7 +215,7 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
   object qryKasaHarEkle: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from ISLEM where 1=0')
+      'select * from ISLEM_BASLIK where 1=0')
     BeforePost = qryKasaHarEkleBeforePost
     Left = 224
     Top = 48

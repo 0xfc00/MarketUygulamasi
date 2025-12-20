@@ -14,7 +14,7 @@ type
                        HIT_KASA_GIRIS,          // 7
                        HIT_KASA_CIKIS);         // 8
 
-  tip_HAR_ODEME_TURU = (HOT_deneme,      //0
+  tip_HAR_ODEME_TURU = (HOT_YOK,      //0
                         HOT_NAKIT,       //1
                         HOT_KREDIKARTI,  //2
                         HOT_CARI);       //3
@@ -33,6 +33,14 @@ const
   NAKIT = 'Nakit';
   CARI  = 'Cari';
   KREDIKARTI = 'Kredi Kartý';
+
+  EVRAKNO_KASIYERSAYIS = 'Kasiyer Satýþ';
+  EVRAKNO_STOKGIRIS    = 'Stok Giriþ';
+  EVRAKNO_STOKCIKIS    = 'Stok Çýkýþ';
+  EVRAKNO_KASAGIRIS    = 'Kasa Giriþ';
+  EVRAKNO_KASACIKIS    = 'Kasa Çýkýþ';
+  EVRAKNO_CARIDENTAHSILAT = 'Cariden Tahsilat';
+  EVRAKNO_CARIYEODEME  = 'Cariye Ödeme';
 
 implementation
 

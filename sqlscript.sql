@@ -1,0 +1,577 @@
+﻿USE KHPRO
+GO
+
+IF DB_NAME() <> N'KHPRO' SET NOEXEC ON
+GO
+
+--
+-- Create table [dbo].[USERS]
+--
+PRINT (N'Create table [dbo].[USERS]')
+GO
+CREATE TABLE dbo.USERS (
+  ID int IDENTITY,
+  KULLANICI nvarchar(15) NOT NULL,
+  YONETICI bit NULL,
+  SIFRE nvarchar(32) NULL,
+  ACIKLAMA varchar(500) NULL,
+  y_STOKEKLE bit NULL,
+  y_STOKGUNCELLE bit NULL,
+  y_STOKSIL bit NULL,
+  y_STOKHARSIL bit NULL,
+  y_CARIEKLE bit NULL,
+  y_CARIGUNCELLE bit NULL,
+  y_CARISIL bit NULL,
+  y_CARIHARSIL bit NULL,
+  y_KASAISLEMEKLE bit NULL,
+  y_KASAISLEMSIL bit NULL,
+  y_FATEKLE bit NULL,
+  y_FATGUNCELLE bit NULL,
+  y_FATSIL bit NULL,
+  y_BORCEKLE bit NULL,
+  y_TAHSILATGIR bit NULL,
+  y_HSSATIRDUZENLE bit NULL,
+  p_FISYAZDIRMA int NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_USERS_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_USERS_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_USERS PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT IX_USERS UNIQUE (KULLANICI)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[TMPSATIS]
+--
+PRINT (N'Create table [dbo].[TMPSATIS]')
+GO
+CREATE TABLE dbo.TMPSATIS (
+  ID int IDENTITY,
+  STOKID int NULL,
+  KDV decimal(20, 2) NULL,
+  STOKKODU varchar(50) NULL,
+  BEKLEMEDE int NULL,
+  STOKADI varchar(50) NULL,
+  BIRIMADI varchar(50) NULL,
+  ADET float NULL,
+  FIYAT decimal(20, 2) NULL,
+  ISKONTO decimal(20, 2) NULL,
+  TOPLAM decimal(20, 2) NULL,
+  CONSTRAINT PK_tmp_Satis_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_STOKGRUP]
+--
+PRINT (N'Create table [dbo].[T_STOKGRUP]')
+GO
+CREATE TABLE dbo.T_STOKGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_STOKGRUP_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_STOKGRUP_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_GRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_REYONRAF]
+--
+PRINT (N'Create table [dbo].[T_REYONRAF]')
+GO
+CREATE TABLE dbo.T_REYONRAF (
+  ID int IDENTITY,
+  REYONRAFADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_REYONRAF_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_REYONRAF_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_REYONRAF_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_MARKA]
+--
+PRINT (N'Create table [dbo].[T_MARKA]')
+GO
+CREATE TABLE dbo.T_MARKA (
+  ID int IDENTITY,
+  MARKAADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_MARKA_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_MARKA_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_MARKA_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_HSGRUP]
+--
+PRINT (N'Create table [dbo].[T_HSGRUP]')
+GO
+CREATE TABLE dbo.T_HSGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NOT NULL,
+  SIRA int NULL,
+  CONSTRAINT PK_T_HSGRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[T_HSSIRA]
+--
+PRINT (N'Create table [dbo].[T_HSSIRA]')
+GO
+CREATE TABLE dbo.T_HSSIRA (
+  ID int IDENTITY,
+  GRUPID int NOT NULL,
+  STOKKODU varchar(50) NOT NULL,
+  SIRA int NULL,
+  CONSTRAINT PK_T_HSSIRA_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_T_HSSIRA_GRUPID] on table [dbo].[T_HSSIRA]
+--
+PRINT (N'Create foreign key [FK_T_HSSIRA_GRUPID] on table [dbo].[T_HSSIRA]')
+GO
+ALTER TABLE dbo.T_HSSIRA
+  ADD CONSTRAINT FK_T_HSSIRA_GRUPID FOREIGN KEY (GRUPID) REFERENCES dbo.T_HSGRUP (ID) ON DELETE CASCADE ON UPDATE CASCADE
+GO
+
+--
+-- Create table [dbo].[T_CARIGRUP]
+--
+PRINT (N'Create table [dbo].[T_CARIGRUP]')
+GO
+CREATE TABLE dbo.T_CARIGRUP (
+  ID int IDENTITY,
+  GRUPADI varchar(50) NOT NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_CARIGRUP_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_CARIGRUP_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_CARIGRUP_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+--
+-- Create table [dbo].[CARI]
+--
+PRINT (N'Create table [dbo].[CARI]')
+GO
+CREATE TABLE dbo.CARI (
+  ID int IDENTITY,
+  CARIKODU nvarchar(80) NOT NULL,
+  UNVAN nvarchar(100) NOT NULL,
+  TARIH datetime NULL,
+  GROUPID int NULL,
+  MESLEK nvarchar(20) NULL,
+  ILCE nvarchar(20) NULL,
+  SEHIR nvarchar(20) NULL,
+  POSTAKODU nvarchar(10) NULL,
+  ULKE nvarchar(20) NULL,
+  VERGIDAIRESI nvarchar(20) NULL,
+  VERGINO nvarchar(15) NULL,
+  BANKA nvarchar(20) NULL,
+  BANKAHESAPNO nvarchar(30) NULL,
+  ISTELEFONU1 nvarchar(15) NULL,
+  ISTELEFONU2 nvarchar(15) NULL,
+  FAX nvarchar(15) NULL,
+  CEPTELEFONU nvarchar(15) NULL,
+  EVTELEFONU nvarchar(15) NULL,
+  EMAIL nvarchar(50) NULL,
+  ADRES1 nvarchar(50) NULL,
+  ADRES2 nvarchar(50) NULL,
+  ADRES3 nvarchar(50) NULL,
+  ACIKLAMA1 nvarchar(100) NULL,
+  ACIKLAMA2 nvarchar(100) NULL,
+  ACIKLAMA3 nvarchar(100) NULL,
+  RESIM nvarchar(150) NULL,
+  YETKILI nvarchar(100) NULL,
+  VERESIYE_LIMITI float NULL,
+  VERESIYE_UYAR bit NULL,
+  VERESIYE_SURESI int NULL,
+  EMAIL2 nvarchar(50) NULL,
+  EMAIL3 nvarchar(50) NULL,
+  TIPI int NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_CARI_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_CARI_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  TOPLAM_GIREN decimal(18, 4) NOT NULL CONSTRAINT DF_CARI_TOPLAM_GIREN DEFAULT (0),
+  TOPLAM_CIKAN decimal(18, 4) NOT NULL CONSTRAINT DF_CARI_TOPLAM_CIKAN DEFAULT (0),
+  BAKIYE AS ([TOPLAM_GIREN]-[TOPLAM_CIKAN]) PERSISTED NOT NULL,
+  CONSTRAINT PK_CARI PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT IX_CARI UNIQUE (CARIKODU)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_CARI_GROUPID] on table [dbo].[CARI]
+--
+PRINT (N'Create index [IX_CARI_GROUPID] on table [dbo].[CARI]')
+GO
+CREATE INDEX IX_CARI_GROUPID
+  ON dbo.CARI (GROUPID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_CARI_GROUPID] on table [dbo].[CARI]
+--
+PRINT (N'Create foreign key [FK_CARI_GROUPID] on table [dbo].[CARI]')
+GO
+ALTER TABLE dbo.CARI
+  ADD CONSTRAINT FK_CARI_GROUPID FOREIGN KEY (GROUPID) REFERENCES dbo.T_CARIGRUP (ID)
+GO
+
+--
+-- Create table [dbo].[T_BIRIM]
+--
+PRINT (N'Create table [dbo].[T_BIRIM]')
+GO
+CREATE TABLE dbo.T_BIRIM (
+  ID int IDENTITY,
+  BIRIMADI varchar(50) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_T_BIRIM_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_T_BIRIM_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  CONSTRAINT PK_T_BIRIM_ID PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[STOK]
+--
+PRINT (N'Create table [dbo].[STOK]')
+GO
+CREATE TABLE dbo.STOK (
+  ID int IDENTITY,
+  STOKKODU nvarchar(15) NOT NULL,
+  STOKADI nvarchar(255) NOT NULL,
+  BARKOD varchar(50) NULL,
+  TARIH datetime NULL,
+  ACIKLAMA nvarchar(100) NULL,
+  BIRIMID int NULL,
+  GRUPID int NULL,
+  MARKAID int NULL,
+  KDV float NULL,
+  RESIM varbinary(max) NULL,
+  SATISFIYATI float NULL,
+  SATISFIYATI2 float NULL,
+  SATISFIYATI3 float NULL,
+  PLU_NO int NULL,
+  ALISFIYATI float NULL,
+  KDV_ISTISNA_KODU nvarchar(10) NULL,
+  REYONRAFID int NULL,
+  TERAZITIP smallint NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_STOK_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_STOK_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  TOPLAM_GIREN decimal(18, 4) NOT NULL CONSTRAINT DF_STOK_TOPLAM_GIREN DEFAULT (0),
+  TOPLAM_CIKAN decimal(18, 4) NOT NULL CONSTRAINT DF_STOK_TOPLAM_CIKAN DEFAULT (0),
+  BAKIYE AS ([TOPLAM_GIREN]-[TOPLAM_CIKAN]) PERSISTED NOT NULL,
+  CONSTRAINT PK_STOKKARTI PRIMARY KEY CLUSTERED (ID),
+  CONSTRAINT KEY_STOK_STOKKODU UNIQUE (STOKKODU)
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+--
+-- Create index [IDX_STOK_BARKOD] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IDX_STOK_BARKOD] on table [dbo].[STOK]')
+GO
+CREATE INDEX IDX_STOK_BARKOD
+  ON dbo.STOK (BARKOD)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IDX_STOK_STOKADI] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IDX_STOK_STOKADI] on table [dbo].[STOK]')
+GO
+CREATE INDEX IDX_STOK_STOKADI
+  ON dbo.STOK (STOKADI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_BIRIMID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_BIRIMID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_BIRIMID
+  ON dbo.STOK (BIRIMID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_GRUPID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_GRUPID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_GRUPID
+  ON dbo.STOK (GRUPID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_MARKAID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_MARKAID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_MARKAID
+  ON dbo.STOK (MARKAID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_STOK_REYONRAFID] on table [dbo].[STOK]
+--
+PRINT (N'Create index [IX_STOK_REYONRAFID] on table [dbo].[STOK]')
+GO
+CREATE INDEX IX_STOK_REYONRAFID
+  ON dbo.STOK (REYONRAFID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_STOK_BIRIMID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_BIRIMID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_BIRIMID FOREIGN KEY (BIRIMID) REFERENCES dbo.T_BIRIM (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_GRUPID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_GRUPID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_GRUPID FOREIGN KEY (GRUPID) REFERENCES dbo.T_STOKGRUP (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_MARKAID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_MARKAID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_MARKAID FOREIGN KEY (MARKAID) REFERENCES dbo.T_MARKA (ID)
+GO
+
+--
+-- Create foreign key [FK_STOK_REYONRAFID] on table [dbo].[STOK]
+--
+PRINT (N'Create foreign key [FK_STOK_REYONRAFID] on table [dbo].[STOK]')
+GO
+ALTER TABLE dbo.STOK
+  ADD CONSTRAINT FK_STOK_REYONRAFID FOREIGN KEY (REYONRAFID) REFERENCES dbo.T_REYONRAF (ID)
+GO
+
+--
+-- Create table [dbo].[POS]
+--
+PRINT (N'Create table [dbo].[POS]')
+GO
+CREATE TABLE dbo.POS (
+  ID int IDENTITY,
+  POSADI nvarchar(30) NOT NULL,
+  HESAPKODU nvarchar(20) NULL,
+  TERMINALNO nvarchar(20) NULL,
+  BANKAADI nvarchar(30) NULL,
+  UYEISYERINO nvarchar(20) NULL,
+  AKTIF bit NULL CONSTRAINT DF_dbo_POS_AKTIF DEFAULT (1),
+  DELETED bit NULL,
+  CREATEDAT datetime2(0) NULL CONSTRAINT DF_dbo_POS_CREATEDAT DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  DELETEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  TOPLAM_GIREN decimal(18, 4) NOT NULL DEFAULT (0),
+  TOPLAM_CIKAN decimal(18, 4) NOT NULL DEFAULT (0),
+  BAKIYE AS ([TOPLAM_GIREN]-[TOPLAM_CIKAN]) PERSISTED NOT NULL,
+  CONSTRAINT PK_POSLAR PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [UK_POS_POSADI] on table [dbo].[POS]
+--
+PRINT (N'Create index [UK_POS_POSADI] on table [dbo].[POS]')
+GO
+CREATE UNIQUE INDEX UK_POS_POSADI
+  ON dbo.POS (POSADI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[ISLEM_H]
+--
+PRINT (N'Create table [dbo].[ISLEM_H]')
+GO
+CREATE TABLE dbo.ISLEM_H (
+  ID int IDENTITY,
+  ISLEMID int NOT NULL,
+  ISLEMTURU tinyint NOT NULL,
+  ODEMETURU tinyint NOT NULL,
+  ISLEMTARIHI datetime NULL,
+  CARIID int NULL,
+  STOKID int NULL,
+  POSID int NULL,
+  MIKTAR decimal(18, 4) NULL,
+  BIRIMFIYAT decimal(18, 4) NULL,
+  GIREN decimal(18, 4) NULL DEFAULT (0),
+  CIKAN decimal(18, 4) NULL DEFAULT (0),
+  TUTAR decimal(18, 2) NULL,
+  BIRIMID int NULL,
+  BIRIMADI varchar(50) NULL,
+  KDVORANI decimal(5, 2) NULL,
+  KDVTUTARI decimal(18, 2) NULL,
+  ISKONTO_ORANI decimal(5, 2) NULL,
+  ISKONTO_TUTARI decimal(18, 2) NULL,
+  EVRAKNO nvarchar(50) NULL,
+  ACIKLAMA1 nvarchar(150) NULL,
+  ACIKLAMA2 nvarchar(150) NULL,
+  CREATEDAT datetime2(0) NULL DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_ISLEMID
+  ON dbo.ISLEM_H (ISLEMID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_TARIH
+  ON dbo.ISLEM_H (ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_TIP_HESAP
+  ON dbo.ISLEM_H (ISLEMTURU, CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[ISLEM_BASLIK]
+--
+PRINT (N'Create table [dbo].[ISLEM_BASLIK]')
+GO
+CREATE TABLE dbo.ISLEM_BASLIK (
+  ID int IDENTITY,
+  ISLEMTURU tinyint NOT NULL,
+  ODEMETURU varchar(50) NULL,
+  ISLEMTARIHI datetime NOT NULL,
+  EVRAKNO nvarchar(20) NULL,
+  CARIID int NULL,
+  POSID int NULL,
+  GIREN decimal(18, 4) NULL DEFAULT (0),
+  CIKAN decimal(18, 4) NULL DEFAULT (0),
+  TUTAR decimal(18, 2) NULL,
+  KDVORANI decimal(5, 2) NULL,
+  KDVTUTARI decimal(18, 2) NULL,
+  ISKONTO_ORANI decimal(5, 2) NULL,
+  ISKONTO_TUTARI decimal(18, 2) NULL,
+  ACIKLAMA1 nvarchar(150) NULL,
+  ACIKLAMA2 nvarchar(150) NULL,
+  CREATEDAT datetime2(0) NULL DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_BASLIK_CARI] on table [dbo].[ISLEM_BASLIK]
+--
+PRINT (N'Create index [IX_ISLEM_BASLIK_CARI] on table [dbo].[ISLEM_BASLIK]')
+GO
+CREATE INDEX IX_ISLEM_BASLIK_CARI
+  ON dbo.ISLEM_BASLIK (CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_BASLIK_TARIH] on table [dbo].[ISLEM_BASLIK]
+--
+PRINT (N'Create index [IX_ISLEM_BASLIK_TARIH] on table [dbo].[ISLEM_BASLIK]')
+GO
+CREATE INDEX IX_ISLEM_BASLIK_TARIH
+  ON dbo.ISLEM_BASLIK (ISLEMTARIHI)
+  ON [PRIMARY]
+GO

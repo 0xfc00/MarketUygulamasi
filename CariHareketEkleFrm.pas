@@ -164,19 +164,31 @@ begin
   end;
 
   DataSet.FieldByName('ISLEMTURU').AsInteger  := Ord(GCKodu);
+  case cbxIslemTuru.ItemIndex  of
+    0 : DataSet.FieldByName('ODEMETURU').AsInteger := ord(HOT_NAKIT);
+    1 : DataSet.FieldByName('ODEMETURU').AsInteger := ord(HOT_KREDIKARTI);
+  end;
 
   if GCKodu = ord(HIT_CARIYE_ODEME) then       //cariye yapýlan ödeme
-    DataSet.FieldByName('CIKAN').AsString        := edtTutar.Text
+  begin
+    DataSet.FieldByName('CIKAN').AsString   := edtTutar.Text;
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString := EVRAKNO_CARIYEODEME;
+  end
   else
   if GCKodu = ord(HIT_CARIDEN_TAHSILAT) then            //cariden yapýlan tahsilat
-    DataSet.FieldByName('GIREN').AsString      := edtTutar.Text
+  begin
+    DataSet.FieldByName('GIREN').AsString   := edtTutar.Text;
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString := EVRAKNO_CARIDENTAHSILAT;
+  end
   else
   if GCKodu = 0 then
   begin
     //deneme
   end;
 
-  DataSet.FieldByName('CARIID').AsString      := qryCari.FieldByName('ID').AsString;
+  DataSet.FieldByName('TUTAR').AsString      := edtTutar.Text;
+
+
 
   EkleyenDegistiren(DataSet);
 

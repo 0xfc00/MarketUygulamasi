@@ -24,6 +24,7 @@ type
     vmCarilerSTOKKODU: TcxGridDBColumn;
     vmCarilerSTOKADI: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    vmCarilerColumn1: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure btnSecClick(Sender: TObject);

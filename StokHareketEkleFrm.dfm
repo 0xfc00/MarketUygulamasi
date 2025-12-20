@@ -23,15 +23,6 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     Caption = #304#351'lem Tarihi'
     FocusControl = edtIslemTarihi
   end
-  object Label9: TLabel
-    Left = 165
-    Top = 300
-    Width = 49
-    Height = 13
-    Caption = 'ISLEMTIPI'
-    FocusControl = DBEdit1
-    Visible = False
-  end
   object Label10: TLabel
     Left = 47
     Top = 174
@@ -72,7 +63,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     Width = 43
     Height = 13
     Caption = 'Evrak No'
-    FocusControl = cxDBTextEdit9
+    FocusControl = edtEvrakNo
   end
   object Label15: TLabel
     Left = 47
@@ -306,6 +297,13 @@ object frmStokHareketEkle: TfrmStokHareketEkle
       Height = 13
       Caption = 'KDV'
     end
+    object Label20: TLabel
+      Left = 224
+      Top = 74
+      Width = 31
+      Height = 13
+      Caption = 'Bakiye'
+    end
     object cxDBTextEdit1: TcxDBTextEdit
       Left = 63
       Top = 27
@@ -411,6 +409,21 @@ object frmStokHareketEkle: TfrmStokHareketEkle
       TabOrder = 6
       Width = 56
     end
+    object cxDBTextEdit10: TcxDBTextEdit
+      Left = 292
+      Top = 71
+      DataBinding.DataField = 'BAKIYE'
+      DataBinding.DataSource = dsStok
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 121
+    end
   end
   object edtIslemTarihi: TcxDBDateEdit
     Left = 107
@@ -421,16 +434,6 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     OnExit = edtIslemTarihiExit
     OnKeyPress = edtMiktarKeyPress
     Width = 121
-  end
-  object DBEdit1: TDBEdit
-    Left = 165
-    Top = 316
-    Width = 134
-    Height = 21
-    DataField = 'ISLEMTIPI'
-    DataSource = dsStokHarEkle
-    TabOrder = 9
-    Visible = False
   end
   object edtMiktar: TcxDBCalcEdit
     Left = 107
@@ -447,7 +450,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     Top = 319
     DataBinding.DataField = 'GIREN'
     DataBinding.DataSource = dsStokHarEkle
-    TabOrder = 10
+    TabOrder = 9
     Visible = False
     Width = 121
   end
@@ -456,20 +459,20 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     Top = 319
     DataBinding.DataField = 'CIKAN'
     DataBinding.DataSource = dsStokHarEkle
-    TabOrder = 11
+    TabOrder = 10
     Visible = False
     Width = 121
   end
   object cxDBTextEdit8: TcxDBTextEdit
     Left = 107
     Top = 281
-    DataBinding.DataField = 'ACIKLAMA'
+    DataBinding.DataField = 'ACIKLAMA1'
     DataBinding.DataSource = dsStokHarEkle
     TabOrder = 7
     OnKeyPress = edtMiktarKeyPress
     Width = 310
   end
-  object cxDBTextEdit9: TcxDBTextEdit
+  object edtEvrakNo: TcxDBTextEdit
     Left = 107
     Top = 259
     DataBinding.DataField = 'EVRAKNO'
@@ -481,7 +484,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
   object edtFiyatKdvHaric: TcxDBCalcEdit
     Left = 107
     Top = 193
-    DataBinding.DataField = 'BIRIMFIYATI'
+    DataBinding.DataField = 'BIRIMFIYAT'
     DataBinding.DataSource = dsStokHarEkle
     Properties.OnChange = edtMiktarPropertiesChange
     TabOrder = 3
@@ -529,12 +532,12 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     SQL.Strings = (
       'select * from ISLEM_H where 1=0')
     BeforePost = qryStokHarEkleBeforePost
-    Left = 184
-    Top = 72
+    Left = 168
+    Top = 104
   end
   object dsStokHarEkle: TDataSource
     DataSet = qryStokHarEkle
-    Left = 264
-    Top = 80
+    Left = 280
+    Top = 128
   end
 end

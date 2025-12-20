@@ -45,21 +45,25 @@ object frmStokSec: TfrmStokSec
       OptionsView.GroupByBox = False
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object vwStoklarSTOKKODU: TcxGridDBColumn
+        Caption = 'Kod'
         DataBinding.FieldName = 'STOKKODU'
         DataBinding.IsNullValueType = True
         Width = 81
       end
       object vwStoklarSTOKADI: TcxGridDBColumn
+        Caption = 'Stok Ad'#305
         DataBinding.FieldName = 'STOKADI'
         DataBinding.IsNullValueType = True
         Width = 200
       end
       object vwStoklarBARKOD: TcxGridDBColumn
+        Caption = 'Barkod'
         DataBinding.FieldName = 'BARKOD'
         DataBinding.IsNullValueType = True
         Width = 90
       end
       object vwStoklarSATISFIYATI: TcxGridDBColumn
+        Caption = 'Sat'#305#351' Fiyat'#305
         DataBinding.FieldName = 'SATISFIYATI'
         DataBinding.IsNullValueType = True
         Width = 80
@@ -186,6 +190,7 @@ object frmStokSec: TfrmStokSec
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
       OnClick = btnSecClick
+      ExplicitTop = 0
     end
   end
   object qryStoklar: TUniQuery

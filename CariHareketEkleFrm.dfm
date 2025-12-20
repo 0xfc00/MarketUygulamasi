@@ -340,7 +340,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from ISLEM_BASLIK where 1=0')
-    Active = True
     BeforePost = qryCariHarEkleBeforePost
     Left = 352
     Top = 168

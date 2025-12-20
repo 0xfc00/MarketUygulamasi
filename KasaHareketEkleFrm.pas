@@ -36,7 +36,7 @@ type
   private
     { Private declarations }
   public
-    GCKodu : string;
+    GCKodu : integer;
     { Public declarations }
   end;
 
@@ -72,13 +72,13 @@ end;
 
 procedure TfrmKasaHareketEkle.FormShow(Sender: TObject);
 begin
-  if GCKodu = G  then
+  if GCKodu = ord(HIT_KASA_GIRIS)  then
   begin
     pnlHeader.Caption := '   KASA GÝRÝÞ';
   end
   ELSE
   begin
-  if GCKodu = C  then
+  if GCKodu = ord(HIT_KASA_CIKIS)  then
     pnlHeader.Caption := '   KASA ÇIKIÞ';
     pnlHeader.Color := clRed;
   end;
@@ -108,18 +108,27 @@ begin
     exit;
   end;
 
-  if GCKodu = ord(HIT_KASA_GIRIS).ToString then       //kasaya giren
-    DataSet.FieldByName('GIREN').AsString        := edtTutar.Text
+  if GCKodu = ord(HIT_KASA_GIRIS) then       //kasaya giren
+  begin
+    DataSet.FieldByName('ISLEMTURU').asinteger := ord(HIT_KASA_GIRIS);
+    DataSet.FieldByName('GIREN').AsString      := edtTutar.Text;
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString    := EVRAKNO_KASAGIRIS;
+  end
   else
-  if GCKodu = ord(HIT_KASA_CIKIS).ToString then            //kasadan çýkan
-    DataSet.FieldByName('CIKAN').AsString      := edtTutar.Text
+  if GCKodu = ord(HIT_KASA_CIKIS) then            //kasadan çýkan
+  begin
+    DataSet.FieldByName('ISLEMTURU').asinteger := ord(HIT_KASA_CIKIS);
+    DataSet.FieldByName('CIKAN').AsString      := edtTutar.Text;
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString    := EVRAKNO_KASACIKIS;
+  end
   else
-  if GCKodu = EmptyStr then
+  if GCKodu = 0 then
   begin
     abort;
   end;
 
-  DataSet.FieldByName('TUTAR').AsString        := edtTutar.Text;
+  DataSet.FieldByName('ODEMETURU').asinteger := ord(HOT_NAKIT);
+  DataSet.FieldByName('TUTAR').AsString      := edtTutar.Text;
 
   EkleyenDegistiren(DataSet);
 end;

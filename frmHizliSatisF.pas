@@ -891,6 +891,7 @@ begin
   qrySatisBitir.ParamByName('UserID').AsInteger    := loginUserID;
   qrySatisBitir.ParamByName('CariID').AsString     := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
   qrySatisBitir.ParamByName('ISLEMTURU').AsInteger := ord(HIT_KASIYER_SATIS);
+  qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS;
 
   if Aislem = NAKIT           then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_NAKIT)
   else if Aislem = KREDIKARTI then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_KREDIKARTI)

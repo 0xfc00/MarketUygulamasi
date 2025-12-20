@@ -11,6 +11,8 @@ type
     UniConn: TUniConnection;
     SQLServerUniProvider1: TSQLServerUniProvider;
     qry1: TUniQuery;
+    qrySabitSatirlarKontrol: TUniQuery;
+    procedure SabitSatirlarKontrol();
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -28,6 +30,11 @@ implementation
 uses Main, DbAyarlarFrm, _func;
 
 {$R *.dfm}
+
+procedure TdmMain.SabitSatirlarKontrol();
+begin
+  qrySabitSatirlarKontrol.Execute;
+end;
 
 procedure TdmMain.DataModuleCreate(Sender: TObject);
 var
@@ -84,6 +91,7 @@ begin
   loginUserID := 1; //deneme
   yetkileriYukle;
 
+  SabitSatirlarKontrol;
   if veriCekSQL('select ID from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE') , 'ID') = VERI_YOK then
     sqlCalistir('insert into CARI ( CARIKODU, UNVAN) values (' + QuotedStr('PERAKENDE') + ', ' + QuotedStr('PERAKENDE') + ')');
 end;

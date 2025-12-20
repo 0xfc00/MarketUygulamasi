@@ -141,6 +141,7 @@ object frmCariSec: TfrmCariSec
     Height = 391
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = -2
     object vmCariler: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -164,12 +165,18 @@ object frmCariSec: TfrmCariSec
       OptionsView.GroupByBox = False
       Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object vmCarilerSTOKKODU: TcxGridDBColumn
+        Caption = 'Kod'
         DataBinding.FieldName = 'CARIKODU'
         Width = 81
       end
       object vmCarilerSTOKADI: TcxGridDBColumn
+        Caption = #220'nvan'
         DataBinding.FieldName = 'UNVAN'
-        Width = 307
+        Width = 212
+      end
+      object vmCarilerColumn1: TcxGridDBColumn
+        Caption = 'Bakiye'
+        DataBinding.FieldName = 'BAKIYE'
       end
     end
     object cxGrid1Level1: TcxGridLevel

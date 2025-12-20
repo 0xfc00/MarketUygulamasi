@@ -9,7 +9,7 @@ uses
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,  cxControls, cxGeometry,
   dxFramedControl, Data.DB, MemDS, DBAccess, Uni, dxPanel, cxContainer, cxEdit,
   cxMaskEdit, cxDropDownEdit, cxCalc, cxDBEdit, cxTextEdit, Vcl.Mask,
-  Vcl.DBCtrls, cxCalendar, _cons;
+  Vcl.DBCtrls, cxCalendar, _cons, _func;
 
 type
   TfrmStokHareketEkle = class(TfrmKartBase)
@@ -37,8 +37,6 @@ type
     dsStokHarEkle: TDataSource;
     Label7: TLabel;
     edtIslemTarihi: TcxDBDateEdit;
-    Label9: TLabel;
-    DBEdit1: TDBEdit;
     Label10: TLabel;
     edtMiktar: TcxDBCalcEdit;
     Label11: TLabel;
@@ -48,7 +46,7 @@ type
     Label13: TLabel;
     cxDBTextEdit8: TcxDBTextEdit;
     Label14: TLabel;
-    cxDBTextEdit9: TcxDBTextEdit;
+    edtEvrakNo: TcxDBTextEdit;
     Label15: TLabel;
     edtFiyatKdvHaric: TcxDBCalcEdit;
     Label16: TLabel;
@@ -57,6 +55,8 @@ type
     Label17: TLabel;
     Label18: TLabel;
     Label19: TLabel;
+    cxDBTextEdit10: TcxDBTextEdit;
+    Label20: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
@@ -121,7 +121,7 @@ begin
       FiyatKdvli            := StrToFloatDef(edtFiyatKdvDahil.Text, 0);
       FiyatKdvsiz           := FiyatKdvli / ( (100 + Kdv) / 100);
 //      edtFiyatKdvHaric.Text := FormatFloat('0.00', FiyatKdvsiz); //FloatToStr(FiyatKdvsiz);   //
-      qryStokHarEkle.FieldByName('BIRIMFIYATI').AsString := FormatFloat('0.00', FiyatKdvsiz);;
+      qryStokHarEkle.FieldByName('BIRIMFIYAT').AsString := FormatFloat('0.00', FiyatKdvsiz);;
     end;
   except
     FiyatEditHesapOn := false;
@@ -203,6 +203,8 @@ begin
 end;
 
 procedure TfrmStokHareketEkle.qryStokHarEkleBeforePost(DataSet: TDataSet);
+var
+  HarID : string;
 begin
   if trim(DataSet.FieldByName('ISLEMTARIHI').AsString) = EmptyStr then
   begin
@@ -220,7 +222,7 @@ begin
     exit;
   end;
 
-  if trim(DataSet.FieldByName('BIRIMFIYATI').AsString) = EmptyStr then
+  if trim(DataSet.FieldByName('BIRIMFIYAT').AsString) = EmptyStr then
   begin
     MesajHata('Fiyat bilgisi girilmemiþ..');
     edtFiyatKdvHaric.SetFocus;
@@ -228,16 +230,30 @@ begin
     exit;
   end;
 
-  if GCKodu = 'G' then
+  HarID := veriCekSQL('SELECT ID FROM ISLEM_BASLIK WHERE ISLEMTURU = 0 AND ODEMETURU = 0 AND EVRAKNO = ''STOKHARSABIT''', 'ID');
+  if HarID <> VERI_YOK then
+    DataSet.FieldByName('ISLEMID').AsString := HarID
+  else
+  begin
+    MesajHata('STOKHARSABIT verisi yok');
+    abort;
+  end;
+
+  if GCKodu = G then
   begin
     DataSet.FieldByName('GIREN').AsString       := DataSet.FieldByName('MIKTAR').AsString;
     DataSet.FieldByName('ISLEMTURU').AsInteger  := Ord(HIT_STOK_GIRIS);
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString     := EVRAKNO_STOKGIRIS;
   end
   else
   begin
-    DataSet.FieldByName('GIREN').AsString     := DataSet.FieldByName('MIKTAR').AsString;
-    DataSet.FieldByName('CIKAN').AsInteger    := Ord(HIT_STOK_CIKIS);
+    DataSet.FieldByName('GIREN').AsString      := DataSet.FieldByName('MIKTAR').AsString;
+    DataSet.FieldByName('ISLEMTURU').AsInteger := Ord(HIT_STOK_CIKIS);
+    if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString    := EVRAKNO_STOKCIKIS;
   end;
+
+
+  DataSet.FieldByName('ODEMETURU').AsInteger  := Ord(HIT_STOK_CIKIS);
 
   DataSet.FieldByName('STOKID').AsString      := qryStok.FieldByName('ID').AsString;
   DataSet.FieldByName('BIRIMID').AsString     := qryStok.FieldByName('BIRIMID').AsString;
