@@ -31,8 +31,8 @@ object dmMain: TdmMain
       'BEGIN'
       
         '    INSERT INTO ISLEM_BASLIK (ISLEMTURU, ODEMETURU, ISLEMTARIHI,' +
-        ' EVRAKNO)'
-      '    VALUES (0, 0, GETDATE(), '#39'STOKHARSABIT'#39')'
+        ' EVRAKNO,CARIID,POSID)'
+      '    VALUES (0, 0, GETDATE(), '#39'STOKHARSABIT'#39',0,0)'
       'END')
     Left = 312
     Top = 24

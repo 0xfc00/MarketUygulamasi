@@ -51,16 +51,16 @@ object frmCariHarList: TfrmCariHarList
     object Label4: TLabel
       Left = 224
       Top = 8
-      Width = 69
+      Width = 62
       Height = 13
-      Caption = 'Toplam Verilen'
+      Caption = 'Toplam Giren'
     end
     object Label5: TLabel
       Left = 224
       Top = 30
-      Width = 66
+      Width = 63
       Height = 13
-      Caption = 'Toplam Al'#305'nan'
+      Caption = 'Toplam '#199#305'kan'
     end
     object Label8: TLabel
       Left = 224
@@ -75,6 +75,7 @@ object frmCariHarList: TfrmCariHarList
       DataBinding.DataField = 'CARIKODU'
       DataBinding.DataSource = dsCari
       ParentFont = False
+      Properties.ReadOnly = True
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -90,6 +91,7 @@ object frmCariHarList: TfrmCariHarList
       DataBinding.DataField = 'UNVAN'
       DataBinding.DataSource = dsCari
       ParentFont = False
+      Properties.ReadOnly = True
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -105,6 +107,7 @@ object frmCariHarList: TfrmCariHarList
       DataBinding.DataField = 'ISTELEFONU1'
       DataBinding.DataSource = dsCari
       ParentFont = False
+      Properties.ReadOnly = True
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -112,6 +115,54 @@ object frmCariHarList: TfrmCariHarList
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 2
+      Width = 121
+    end
+    object cxDBTextEdit4: TcxDBTextEdit
+      Left = 311
+      Top = 5
+      DataBinding.DataField = 'TOPLAM_GIREN'
+      DataBinding.DataSource = dsCari
+      ParentFont = False
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 3
+      Width = 121
+    end
+    object cxDBTextEdit5: TcxDBTextEdit
+      Left = 311
+      Top = 27
+      DataBinding.DataField = 'TOPLAM_CIKAN'
+      DataBinding.DataSource = dsCari
+      ParentFont = False
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Width = 121
+    end
+    object cxDBTextEdit6: TcxDBTextEdit
+      Left = 311
+      Top = 49
+      DataBinding.DataField = 'BAKIYE'
+      DataBinding.DataSource = dsCari
+      ParentFont = False
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
   end
@@ -137,71 +188,42 @@ object frmCariHarList: TfrmCariHarList
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
       object vwCariHarlistTARIH: TcxGridDBColumn
+        Caption = #304#351'lem Tarihi'
         DataBinding.FieldName = 'ISLEMTARIHI'
-        Width = 100
+        Width = 132
       end
       object vwCariHarlistBORC: TcxGridDBColumn
+        Caption = 'Giren'
         DataBinding.FieldName = 'GIREN'
         Width = 100
       end
       object vwCariHarlistALACAK: TcxGridDBColumn
+        Caption = #199#305'kan'
         DataBinding.FieldName = 'CIKAN'
         Width = 100
       end
       object vwCariHarlistEVRAKNO: TcxGridDBColumn
+        Caption = 'Evrak No'
         DataBinding.FieldName = 'EVRAKNO'
         Width = 100
       end
-      object vwCariHarlistKASAHID: TcxGridDBColumn
-        DataBinding.FieldName = 'KASAHID'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
       object vwCariHarlistACIKLAMA1: TcxGridDBColumn
+        Caption = 'A'#231#305'klama'
         DataBinding.FieldName = 'ACIKLAMA1'
         Width = 100
       end
-      object vwCariHarlistACIKLAMA2: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA2'
-        Width = 100
-      end
-      object vwCariHarlistACIKLAMA3: TcxGridDBColumn
-        DataBinding.FieldName = 'ACIKLAMA3'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
       object vwCariHarlistISLEMTURU: TcxGridDBColumn
-        DataBinding.FieldName = 'ISLEMTURU'
+        Caption = #304#351'lem'
+        DataBinding.FieldName = 'strislemTuru'
         Width = 100
       end
-      object vwCariHarlistFATURAID: TcxGridDBColumn
-        DataBinding.FieldName = 'FATURAID'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
-      object vwCariHarlistPERSONEL: TcxGridDBColumn
-        DataBinding.FieldName = 'PERSONEL'
-        DataBinding.IsNullValueType = True
-        Width = 100
+      object vwCariHarlistColumn1: TcxGridDBColumn
+        Caption = #214'deme T'#252'r'#252
+        DataBinding.FieldName = 'strOdemeTuru'
       end
       object vwCariHarlistPOSHID: TcxGridDBColumn
-        DataBinding.FieldName = 'POSHID'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
-      object vwCariHarlistCOMNAMETIME: TcxGridDBColumn
-        DataBinding.FieldName = 'COMNAMETIME'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
-      object vwCariHarlistUPDATECOUNT: TcxGridDBColumn
-        DataBinding.FieldName = 'UPDATECOUNT'
-        DataBinding.IsNullValueType = True
-        Width = 100
-      end
-      object vwCariHarlistZAMAN: TcxGridDBColumn
-        DataBinding.FieldName = 'ZAMAN'
-        DataBinding.IsNullValueType = True
+        Caption = 'POS Ad'#305
+        DataBinding.FieldName = 'posadi'
         Width = 100
       end
     end
@@ -217,19 +239,6 @@ object frmCariHarList: TfrmCariHarList
     Height = 36
     Align = alBottom
     TabOrder = 2
-    object Label7: TLabel
-      Left = 176
-      Top = 0
-      Width = 526
-      Height = 35
-      Caption = 'Ba'#351'ka tablolardan hareketlerde eklenecek'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -29
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 873
@@ -334,7 +343,7 @@ object frmCariHarList: TfrmCariHarList
       Width = 100
       Height = 28
       Align = alRight
-      Caption = 'Sil asdasdasd'
+      Caption = 'Sil '
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
@@ -378,6 +387,7 @@ object frmCariHarList: TfrmCariHarList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      OnClick = btnSilClick
     end
   end
   object qryCari: TUniQuery
@@ -400,15 +410,36 @@ object frmCariHarList: TfrmCariHarList
   object qryCariHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from ISLEM_H where ISLEMTURU in (4,5,6)')
+      'select *,'
+      ''
+      ''
+      'CASE '
+      #9'WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39
+      '  WHEN ISLEMTURU = 4 THEN '#39'Cari Sat'#305#351#39
+      '  WHEN ISLEMTURU = 5 THEN '#39'Cariden Tahsilat'#39
+      '  WHEN ISLEMTURU = 6 THEN '#39'Cariye '#214'deme'#39
+      'END AS strislemTuru,'
+      ''
+      'CASE '
+      #9'WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '  WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '  WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      ''
+      'END as strOdemeTuru,'
+      '(SELECT POSADI FROM POS WHERE ID = ISLEM_BASLIK.POSID) AS posadi'
+      ''
+      ''
+      ''
+      ''
+      ' from ISLEM_BASLIK where ISLEMTURU in (1,4,5,6)')
     Active = True
-    Left = 346
+    Left = 618
     Top = 16
   end
   object dsCariHar: TDataSource
     AutoEdit = False
     DataSet = qryCariHar
-    Left = 434
-    Top = 24
+    Left = 418
+    Top = 32
   end
 end

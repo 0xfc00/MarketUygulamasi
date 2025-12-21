@@ -13,6 +13,7 @@ object frmHizliSatis: TfrmHizliSatis
   OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
@@ -1023,6 +1024,9 @@ object frmHizliSatis: TfrmHizliSatis
             Caption = 'shtHS_deneme'
             ImageIndex = 0
             TabVisible = False
+            ExplicitLeft = 4
+            ExplicitTop = 4
+            ExplicitHeight = 440
             object ScrollBox1: TScrollBox
               AlignWithMargins = True
               Left = 3
@@ -1033,6 +1037,7 @@ object frmHizliSatis: TfrmHizliSatis
               Color = clGradientInactiveCaption
               ParentColor = False
               TabOrder = 0
+              ExplicitHeight = 434
               object fPanelHS: TFlowPanel
                 AlignWithMargins = True
                 Left = 3
@@ -1070,6 +1075,7 @@ object frmHizliSatis: TfrmHizliSatis
                     Properties.Alignment.Horz = taCenter
                     Properties.Alignment.Vert = taVCenter
                     Properties.WordWrap = True
+                    ExplicitHeight = 64
                     Width = 162
                     AnchorX = 85
                     AnchorY = 35
@@ -1088,6 +1094,7 @@ object frmHizliSatis: TfrmHizliSatis
                     Style.Font.Style = [fsBold]
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taCenter
+                    ExplicitTop = 74
                     AnchorX = 85
                   end
                 end
@@ -1099,6 +1106,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet2: TcxTabSheet
         Caption = #220'r'#252'n Bul'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGroupBox7: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1125,6 +1136,10 @@ object frmHizliSatis: TfrmHizliSatis
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 21
             Width = 577
           end
         end
@@ -1137,6 +1152,8 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 1
+          ExplicitWidth = 590
+          ExplicitHeight = 377
           Height = 373
           Width = 589
           object grdUrunAra: TcxGrid
@@ -1147,6 +1164,10 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 343
             Align = alClient
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 351
             object grdUrunAraDBTableView1: TcxGridDBTableView
               OnDblClick = grdUrunAraDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1218,6 +1239,10 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet3: TcxTabSheet
         Caption = 'Bekleyen Sat'#305#351'lar'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGroupBox9: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1238,6 +1263,10 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 248
             Align = alClient
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 252
             object grdBekleyenSatislarDBTableView1: TcxGridDBTableView
               OnDblClick = grdBekleyenSatislarDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1300,6 +1329,8 @@ object frmHizliSatis: TfrmHizliSatis
           Align = alClient
           Caption = 'Bekleyen Sat'#305#351' Detaylar'#305
           TabOrder = 1
+          ExplicitWidth = 590
+          ExplicitHeight = 164
           Height = 160
           Width = 589
           object grdBekleyenSatislarDetay: TcxGrid
@@ -1310,6 +1341,10 @@ object frmHizliSatis: TfrmHizliSatis
             Height = 130
             Align = alClient
             TabOrder = 0
+            ExplicitLeft = 5
+            ExplicitTop = 21
+            ExplicitWidth = 580
+            ExplicitHeight = 138
             object grdBekleyenSatislarDetayDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -1378,19 +1413,23 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet4: TcxTabSheet
         Caption = 'Para '#220'st'#252' Hesaplama'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ScrollBox2: TScrollBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 589
-          Height = 444
+          Width = 590
+          Height = 448
           Align = alClient
           TabOrder = 0
           object FlowPanel1: TFlowPanel
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 579
+            Width = 580
             Height = 395
             Align = alTop
             AutoSize = True
@@ -2480,7 +2519,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu5tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -2490,7 +2529,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu10tl: TPanel
@@ -3792,7 +3830,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu10tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -3802,7 +3840,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu20tl: TPanel
@@ -6047,7 +6084,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu20tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -6057,7 +6094,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu50tl: TPanel
@@ -8284,7 +8320,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu50tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -8294,7 +8330,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu100tl: TPanel
@@ -22954,7 +22989,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu100tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -22964,7 +22999,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
             object pnlParaUstu200tl: TPanel
@@ -28983,7 +29017,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu200tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 230
+                Width = 4
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -28993,7 +29027,6 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                ExplicitWidth = 4
               end
             end
           end

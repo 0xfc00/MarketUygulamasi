@@ -42,8 +42,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
-  Application.CreateForm(TstokAktarimForm, stokAktarimForm);
-  Application.CreateForm(TfrmSqlSorgu, frmSqlSorgu);
-  Application.CreateForm(TfrmRaporlar, frmRaporlar);
   Application.Run;
 end.

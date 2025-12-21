@@ -26,28 +26,30 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ClientRectBottom = 435
-    ClientRectLeft = 4
-    ClientRectRight = 864
-    ClientRectTop = 24
+    ExplicitLeft = 8
+    ExplicitTop = 42
+    ClientRectBottom = 434
+    ClientRectLeft = 2
+    ClientRectRight = 863
+    ClientRectTop = 25
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
-      ExplicitLeft = 2
-      ExplicitTop = 25
-      ExplicitWidth = 861
-      ExplicitHeight = 409
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 860
+      ExplicitHeight = 411
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 854
-        Height = 405
+        Width = 855
+        Height = 403
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 855
-        ExplicitHeight = 403
-        object vw: TcxGridDBTableView
+        ExplicitWidth = 854
+        ExplicitHeight = 405
+        object vwKasa: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = dsKasaHar
@@ -55,7 +57,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           DataController.Summary.FooterSummaryItems = <
             item
               Kind = skCount
-              Column = vwTARIH
+              FieldName = 'ISLEMTARIHI'
+              Column = vwKasaTARIH
             end>
           DataController.Summary.SummaryGroups = <>
           OptionsData.Deleting = False
@@ -66,43 +69,64 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          object vwTARIH: TcxGridDBColumn
+          object vwKasaTARIH: TcxGridDBColumn
+            Caption = #304#351'lem Tarihi'
             DataBinding.FieldName = 'ISLEMTARIHI'
+            DataBinding.IsNullValueType = True
           end
-          object vwGIREN: TcxGridDBColumn
+          object vwKasaGIREN: TcxGridDBColumn
+            Caption = 'Giren'
             DataBinding.FieldName = 'GIREN'
+            DataBinding.IsNullValueType = True
           end
-          object vwCIKAN: TcxGridDBColumn
+          object vwKasaCIKAN: TcxGridDBColumn
+            Caption = #199#305'kan'
             DataBinding.FieldName = 'CIKAN'
+            DataBinding.IsNullValueType = True
           end
-          object vwCARIID: TcxGridDBColumn
-            DataBinding.FieldName = 'CARIID'
+          object vwKasaCARIID: TcxGridDBColumn
+            Caption = 'Cari '#220'nvan'
+            DataBinding.FieldName = 'cariadi'
+            DataBinding.IsNullValueType = True
           end
-          object vwEVRAKNO: TcxGridDBColumn
+          object vwKasaEVRAKNO: TcxGridDBColumn
+            Caption = 'Evrak No'
             DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
           end
-          object vwUSERID: TcxGridDBColumn
+          object vwKasaColumn1: TcxGridDBColumn
+            Caption = #304#351'lem'
+            DataBinding.FieldName = 'strislemTuru'
+            DataBinding.IsNullValueType = True
+          end
+          object vwKasaUSERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
+            DataBinding.IsNullValueType = True
           end
         end
         object cxGrid1Level1: TcxGridLevel
-          GridView = vw
+          GridView = vwKasa
         end
       end
     end
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 860
+      ExplicitHeight = 411
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 854
-        Height = 405
+        Width = 855
+        Height = 403
         Align = alClient
         TabOrder = 0
-        object cxGridDBTableView1: TcxGridDBTableView
+        ExplicitWidth = 854
+        ExplicitHeight = 405
+        object vwPos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = dsPosHar
@@ -110,7 +134,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           DataController.Summary.FooterSummaryItems = <
             item
               Kind = skCount
-              Column = cxGridDBTableView1TARIH
+              Column = vwPosTARIH
             end>
           DataController.Summary.SummaryGroups = <>
           OptionsData.Deleting = False
@@ -121,32 +145,55 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
-          object cxGridDBTableView1TARIH: TcxGridDBColumn
+          object vwPosTARIH: TcxGridDBColumn
             Caption = #304#351'lem Tarihi'
             DataBinding.FieldName = 'ISLEMTARIHI'
+            DataBinding.IsNullValueType = True
+            Width = 68
           end
-          object cxGridDBTableView1POSID: TcxGridDBColumn
-            DataBinding.FieldName = 'POSID'
-          end
-          object cxGridDBTableView1BORC: TcxGridDBColumn
+          object vwPosBORC: TcxGridDBColumn
+            Caption = 'Giren'
             DataBinding.FieldName = 'GIREN'
+            DataBinding.IsNullValueType = True
+            Width = 40
           end
-          object cxGridDBTableView1ALACAK: TcxGridDBColumn
+          object vwPosALACAK: TcxGridDBColumn
+            Caption = #199#305'kan'
             DataBinding.FieldName = 'CIKAN'
+            DataBinding.IsNullValueType = True
+            Width = 39
           end
-          object cxGridDBTableView1CARIID: TcxGridDBColumn
-            DataBinding.FieldName = 'CARIID'
+          object vwPosPOSID: TcxGridDBColumn
+            Caption = 'POS Ad'#305
+            DataBinding.FieldName = 'posadi'
+            DataBinding.IsNullValueType = True
+            Width = 112
           end
-          object cxGridDBTableView1EVRAKNO: TcxGridDBColumn
+          object vwPosCARIID: TcxGridDBColumn
+            Caption = 'Cari '#220'nvan'
+            DataBinding.FieldName = 'cariadi'
+            DataBinding.IsNullValueType = True
+            Width = 215
+          end
+          object vwPosEVRAKNO: TcxGridDBColumn
+            Caption = 'Evrak No'
             DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
+            Width = 313
           end
-          object cxGridDBTableView1USERID: TcxGridDBColumn
+          object vwPosColumn1: TcxGridDBColumn
+            Caption = #304#351'lem'
+            DataBinding.FieldName = 'strislemTuru'
+            DataBinding.IsNullValueType = True
+          end
+          object vwPosUSERID: TcxGridDBColumn
             DataBinding.FieldName = 'USERID'
+            DataBinding.IsNullValueType = True
+            Width = 66
           end
         end
         object cxGridLevel1: TcxGridLevel
-          GridView = cxGridDBTableView1
+          GridView = vwPos
         end
       end
     end
@@ -256,6 +303,59 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       TabOrder = 0
       OnClick = btnKapatClick
     end
+    object btnSil: TcxButton
+      AlignWithMargins = True
+      Left = 652
+      Top = 4
+      Width = 100
+      Height = 28
+      Align = alRight
+      Caption = 'Sil'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.SourceHeight = 16
+      OptionsImage.Glyph.SourceWidth = 16
+      OptionsImage.Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+        31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+        4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+        3732373237323B7D262331333B262331303B2623393B2E426C75657B66696C6C
+        3A233131373744373B7D262331333B262331303B2623393B2E57686974657B66
+        696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+        6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D262331333B262331303B2623393B
+        2E7374337B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A3C672F
+        3E0D0A3C672069643D2244656C6574655F315F223E0D0A09093C706174682063
+        6C6173733D2259656C6C6F772220643D224D342C3130563663302D322E322C34
+        2E352D342C31302D347331302C312E382C31302C34763463302C322E322D342E
+        352C342D31302C3453342C31322E322C342C31307A204D31342C323063302E37
+        2C302C312E342C302C322D302E3120202623393B2623393B63302D302E352C30
+        2E322D312C302E362D312E336C322D324331392C31362E322C31392E352C3136
+        2C32302C313673312C302E322C312E342C302E366C312E332C312E3363302E38
+        2D302E362C312E322D312E322C312E322D312E39762D3463302C322E322D342E
+        352C342D31302C3453342C31342E322C342C3132763420202623393B2623393B
+        43342C31382E322C382E352C32302C31342C32307A204D31392E322C32344C31
+        372C32312E384331362C32312E392C31352C32322C31342C3232632D352E352C
+        302D31302D312E382D31302D34763463302C322E322C342E352C342C31302C34
+        63312E322C302C322E332D302E312C332E342D302E324C31392E322C32342020
+        2623393B2623393B7A222F3E0D0A09093C706F6C79676F6E20636C6173733D22
+        5265642220706F696E74733D2233302C32302032382C31382032342C32322032
+        302C31382031382C32302032322C32342031382C32382032302C33302032342C
+        32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
+        2F673E0D0A3C2F7376673E0D0A}
+      TabOrder = 1
+      OnClick = btnSilClick
+    end
   end
   object Panel1: TPanel
     Left = 0
@@ -356,8 +456,20 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   object qryKasaHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from ISLEM_H where ISLEMTURU in (7,8) and ODEMETURU = 1')
-    Active = True
+      'select *,'
+      
+        '(select UNVAN FROM CARI WHERE ID = ISLEM_BASLIK.CARIID) AS caria' +
+        'di,'
+      'CASE '
+      '  WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39'  '
+      '  WHEN ISLEMTURU = 5 THEN '#39'Cariden Tahsilat'#39'  '
+      '  WHEN ISLEMTURU = 6 THEN '#39'Cariye '#214'deme'#39
+      'WHEN ISLEMTURU = 7 THEN '#39'Kasa Giri'#351#39
+      'WHEN ISLEMTURU = 8 THEN '#39'Kasa '#199#305'k'#305#351#39
+      'END AS strislemTuru'
+      
+        ' from ISLEM_BASLIK where ISLEMTURU in (1,5,6,7,8) and ODEMETURU ' +
+        '= 1')
     Left = 338
     Top = 120
   end
@@ -370,8 +482,24 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   object qryPosHar: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from ISLEM_H where ODEMETURU = 3')
-    Active = True
+      'select *,'
+      
+        '(SELECT POSADI FROM POS WHERE ID = ISLEM_BASLIK.POSID) AS posadi' +
+        ','
+      
+        '(select UNVAN FROM CARI WHERE ID = ISLEM_BASLIK.CARIID) AS caria' +
+        'di,'
+      ''
+      'CASE '
+      '  WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39'  '
+      '  WHEN ISLEMTURU = 5 THEN '#39'Cariden Tahsilat'#39'  '
+      '  WHEN ISLEMTURU = 6 THEN '#39'Cariye '#214'deme'#39
+      'WHEN ISLEMTURU = 7 THEN '#39'Kasa Giri'#351#39
+      'WHEN ISLEMTURU = 8 THEN '#39'Kasa '#199#305'k'#305#351#39
+      'END AS strislemTuru'
+      
+        ' from ISLEM_BASLIK where ISLEMTURU in (1,5,6,7,8) and ODEMETURU ' +
+        '= 2')
     Left = 346
     Top = 200
   end

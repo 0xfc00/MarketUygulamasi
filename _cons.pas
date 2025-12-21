@@ -42,6 +42,8 @@ const
   EVRAKNO_CARIDENTAHSILAT = 'Cariden Tahsilat';
   EVRAKNO_CARIYEODEME  = 'Cariye Ödeme';
 
+
+
 resourcestring
   rstr_KAYIT_SILME_ONAY = 'Seçili kaydý silmek istediðinizden eminmisiniz';
   rstr_YETKI_YOK = 'Bu iþlem için yetkiniz yoktur.';

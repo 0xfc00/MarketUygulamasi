@@ -29,30 +29,33 @@ type
     qryKasaHar: TUniQuery;
     dsKasaHar: TDataSource;
     cxGrid1: TcxGrid;
-    vw: TcxGridDBTableView;
+    vwKasa: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    vwTARIH: TcxGridDBColumn;
-    vwGIREN: TcxGridDBColumn;
-    vwCIKAN: TcxGridDBColumn;
-    vwCARIID: TcxGridDBColumn;
-    vwEVRAKNO: TcxGridDBColumn;
-    vwUSERID: TcxGridDBColumn;
+    vwKasaTARIH: TcxGridDBColumn;
+    vwKasaGIREN: TcxGridDBColumn;
+    vwKasaCIKAN: TcxGridDBColumn;
+    vwKasaCARIID: TcxGridDBColumn;
+    vwKasaEVRAKNO: TcxGridDBColumn;
+    vwKasaUSERID: TcxGridDBColumn;
     cxGrid2: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
+    vwPos: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
     qryPosHar: TUniQuery;
     dsPosHar: TDataSource;
-    cxGridDBTableView1POSID: TcxGridDBColumn;
-    cxGridDBTableView1TARIH: TcxGridDBColumn;
-    cxGridDBTableView1BORC: TcxGridDBColumn;
-    cxGridDBTableView1ALACAK: TcxGridDBColumn;
-    cxGridDBTableView1CARIID: TcxGridDBColumn;
-    cxGridDBTableView1EVRAKNO: TcxGridDBColumn;
-    cxGridDBTableView1USERID: TcxGridDBColumn;
+    vwPosPOSID: TcxGridDBColumn;
+    vwPosTARIH: TcxGridDBColumn;
+    vwPosBORC: TcxGridDBColumn;
+    vwPosALACAK: TcxGridDBColumn;
+    vwPosCARIID: TcxGridDBColumn;
+    vwPosEVRAKNO: TcxGridDBColumn;
+    vwPosUSERID: TcxGridDBColumn;
     Panel2: TPanel;
     btnFiltrele: TcxButton;
     dtBit: TcxDateEdit;
     dtBas: TcxDateEdit;
+    btnSil: TcxButton;
+    vwKasaColumn1: TcxGridDBColumn;
+    vwPosColumn1: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -62,6 +65,7 @@ type
     procedure btnSonAyClick(Sender: TObject);
     procedure btnFiltreleClick(Sender: TObject);
     procedure pcAnaChange(Sender: TObject);
+    procedure btnSilClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,11 +75,15 @@ type
 var
   frmKasaPosHarList: TfrmKasaPosHarList;
 
+
 implementation
 
 {$R *.dfm}
 
-uses Main;
+uses Main, _cons;
+
+var
+  qryKasaHarSQL,qryPosHarSQL : string;
 
 procedure TfrmKasaPosHarList.btnBugunClick(Sender: TObject);
 begin
@@ -93,33 +101,57 @@ end;
 
 procedure TfrmKasaPosHarList.btnFiltreleClick(Sender: TObject);
 var
-  TableName : string;
+  sql : string;
   q : TUniQuery;
 Begin
   if pcAna.ActivePage = shtKasa then
   begin
-    TableName := 'select * from ISLEM_H where ISLEMTURU in (7,8) and ODEMETURU = 1';
+    sql := qryKasaHarSQL;
     q := qryKasaHar;
   end
   else
   if pcAna.ActivePage = shtPos then
   begin
-    TableName := 'select * from ISLEM_H where ODEMETURU = 3';
+    sql := qryPosHarSQL;
     q:= qryPosHar
   end
   else
     exit;
 
-  q.sql.text := 'and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih';
+  q.sql.text := sql;
+  q.sql.add(' and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih');
   q.ParamByName('bastarih').AsDate := dtBas.Date;
   q.ParamByName('bittarih').AsDate := dtBit.Date;
   qAcKapa_fn(q);
-  vw.ApplyBestFit(nil);
+
+  if pcAna.ActivePage = shtKasa then
+    vwKasa.ApplyBestFit(nil)
+  else
+  if pcAna.ActivePage = shtPos then
+    vwPos.ApplyBestFit(nil);
 end;
 
 procedure TfrmKasaPosHarList.btnKapatClick(Sender: TObject);
 begin
   CLOSE;
+end;
+
+procedure TfrmKasaPosHarList.btnSilClick(Sender: TObject);
+begin
+  inherited;
+  if pcAna.ActivePage = shtKasa then
+  begin
+    if not qryKasaHar.IsEmpty then
+      if KasaHareketSil_fn(qryKasaHar.FieldByName('ID').asstring) then qryKasaHar.refresh;
+  end
+  else
+  if pcAna.ActivePage = shtPos then
+  begin
+    if not qryPosHar.IsEmpty then
+      MesajHata('Bu iþlem kasiyer satýþ yada faturaya ait. Bu ekrandan silinemez');
+  end
+  else
+    exit;
 end;
 
 procedure TfrmKasaPosHarList.btnSonAyClick(Sender: TObject);
@@ -138,6 +170,9 @@ end;
 
 procedure TfrmKasaPosHarList.FormCreate(Sender: TObject);
 begin
+  qryKasaHarSQL := qryKasaHar.SQL.text;
+  qryPosHarSQL  := qryPosHar.SQL.text;
+
   pnlHeader.Caption := '   KASA / POS HAREKETLERÝ';
   pnlHeader.Color := clgreen;
   TumQuerylereConnectionAta(self);
@@ -154,6 +189,7 @@ end;
 
 procedure TfrmKasaPosHarList.pcAnaChange(Sender: TObject);
 begin
+  btnSil.Enabled := pcAna.ActivePage = shtKasa;
   btnFiltreleClick(sender);
 end;
 

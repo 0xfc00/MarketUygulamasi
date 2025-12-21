@@ -17,13 +17,6 @@ uses
 
 type
   TfrmRaporlar = class(TfrmListBase)
-    cxGroupBox11: TcxGroupBox;
-    Label9: TLabel;
-    Label11: TLabel;
-    cxImage9: TcxImage;
-    dtTarih2: TcxDateEdit;
-    btnListele: TcxButton;
-    dtTarih1: TcxDateEdit;
     cxGroupBox2: TcxGroupBox;
     btnKapat: TcxButton;
     pg: TcxPageControl;
@@ -222,6 +215,15 @@ type
     frxDesigner1: TfrxDesigner;
     pmRaporTasarim: TPopupMenu;
     RaporTasarm1: TMenuItem;
+    Panel1: TPanel;
+    btnSonHafta: TcxButton;
+    btnDun: TcxButton;
+    btnBugun: TcxButton;
+    btnSonAy: TcxButton;
+    Panel2: TPanel;
+    btnFiltrele: TcxButton;
+    dtBit: TcxDateEdit;
+    dtBas: TcxDateEdit;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnListeleClick(Sender: TObject);

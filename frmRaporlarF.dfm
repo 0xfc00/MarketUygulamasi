@@ -15,120 +15,6 @@ object frmRaporlar: TfrmRaporlar
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object cxGroupBox11: TcxGroupBox
-    AlignWithMargins = True
-    Left = 3
-    Top = 3
-    Align = alTop
-    PanelStyle.Active = True
-    TabOrder = 0
-    Height = 33
-    Width = 960
-    object Label9: TLabel
-      AlignWithMargins = True
-      Left = 32
-      Top = 6
-      Width = 27
-      Height = 21
-      Align = alLeft
-      Caption = 'Tarih'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      Layout = tlCenter
-      ExplicitLeft = 152
-      ExplicitHeight = 14
-    end
-    object Label11: TLabel
-      AlignWithMargins = True
-      Left = 290
-      Top = 6
-      Width = 16
-      Height = 21
-      Align = alLeft
-      Caption = '  /  '
-      Layout = tlCenter
-      ExplicitLeft = 410
-      ExplicitHeight = 13
-    end
-    object cxImage9: TcxImage
-      AlignWithMargins = True
-      Left = 6
-      Top = 6
-      Align = alLeft
-      AutoSize = True
-      Picture.Data = {
-        0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
-        0000001008060000001FF3FF610000001974455874536F667477617265004164
-        6F626520496D616765526561647971C9653C00000014744558745469746C6500
-        446174653B43616C656E6461723BDF38D8A6000001D149444154785E8553316E
-        5341107D9B7C5120C325C0465434544E1C51240484284002F9021C818A2E4A68
-        728470015A448111343608104D2863B80305C2B2FEDFDDC9BC99FD76EC26238F
-        DF9BD99DB733BBFA1580A0BEA9BE81A505ACDA7A5ED4B37AAC583C7EF6F8B32A
-        ECE49C91B38028EA89313D391762F23D758C93E1F79FBB265005ECDC7EF21010
-        2FD60A20298F1192C813525454CF91EB11DFDE7D1AB0D646C822B671FEE7CC05
-        929FCA9C903B2EF866E71ACFA2858A206CBBAE917862B4F61553C1568CF9926B
-        14252F04C2AFA787E80FEFE06A9DFD9AD89112515C31F17969EFDF9E023FEEBA
-        40E4A95E4737A384FF4A24C130247F8BA621412B10EDB4AC3EFAFADBAAF6B6BA
-        F8A89CF9FDED2E3E8CA7B6FEE85E0FB42280CA83B603E17D14CED98DF9D3724D
-        C8DB0E2EDC41533AE0FEDD7E17C222F2AD1BB63B59473729AC5C108402F18240
-        9D7CFE2CF8FBEA858D70FDF50946638E23B83FE861349982B6AF3C6CAC0930A0
-        401984291FC554513ACA248ABCC8B07A07B5065C4819E81C9C9402C1DE36C761
-        11B48B5B2EA04108405CDE8107FE8462B834293D052E4281CCC49BB8EC20CE66
-        FF262F8F46038817F85F21C29265BEE5F5FCFF170205E66F8E9F3F50BCB2F619
-        874B3EE79AB5E71DE48B346034A2F10000000049454E44AE426082}
-      Properties.FitMode = ifmProportionalStretch
-      Style.BorderStyle = ebsNone
-      TabOrder = 0
-    end
-    object dtTarih2: TcxDateEdit
-      AlignWithMargins = True
-      Left = 312
-      Top = 6
-      Align = alLeft
-      EditValue = 43466d
-      Properties.DateOnError = deToday
-      Properties.View = cavModern
-      TabOrder = 1
-      Width = 201
-    end
-    object btnListele: TcxButton
-      Left = 516
-      Top = 3
-      Width = 133
-      Height = 27
-      Align = alLeft
-      Caption = 'Listele'
-      OptionsImage.Glyph.SourceDPI = 96
-      OptionsImage.Glyph.Data = {
-        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-        610000001974455874536F6674776172650041646F626520496D616765526561
-        647971C9653C00000026744558745469746C650046696E643B426172733B5269
-        62626F6E3B5374616E646172643B536561726368BB659C080000009549444154
-        785EA592C10DC3200C459B7598815118A21324ED0E6C81D299B8C01AAE5DFD5C
-        ACDA4AE2C3932CFDAF27C03C8828C46FC8390B0B5398C64C017341660B507831
-        6420D9E2090A8A83D99824601EC88A2768286DBA201264CD134C94D21F414236
-        C382F015EE3E22811DEB3E30D6E8B31A02F7237DB4440B5C507E6BC9158125A9
-        6705D649BA21B04F012AD399E72108F1057CFE2C0C2A4306D60000000049454E
-        44AE426082}
-      TabOrder = 2
-      OnClick = btnListeleClick
-    end
-    object dtTarih1: TcxDateEdit
-      AlignWithMargins = True
-      Left = 65
-      Top = 6
-      Align = alLeft
-      EditValue = 43466d
-      Properties.DateOnError = deToday
-      Properties.View = cavModern
-      TabOrder = 3
-      Width = 219
-    end
-  end
   object cxGroupBox2: TcxGroupBox
     AlignWithMargins = True
     Left = 3
@@ -142,15 +28,15 @@ object frmRaporlar: TfrmRaporlar
     Style.Font.Name = 'Tahoma'
     Style.Font.Style = [fsBold]
     Style.IsFontAssigned = True
-    TabOrder = 1
+    TabOrder = 0
     Height = 46
     Width = 960
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 813
-      Top = 6
+      Left = 814
+      Top = 5
       Width = 141
-      Height = 34
+      Height = 36
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -173,10 +59,10 @@ object frmRaporlar: TfrmRaporlar
     end
     object btnYazdir: TcxButton
       AlignWithMargins = True
-      Left = 6
-      Top = 6
+      Left = 5
+      Top = 5
       Width = 141
-      Height = 34
+      Height = 36
       Align = alLeft
       Caption = 'Yazd'#305'r'
       OptionsImage.Glyph.SourceDPI = 96
@@ -240,20 +126,23 @@ object frmRaporlar: TfrmRaporlar
   object pg: TcxPageControl
     AlignWithMargins = True
     Left = 3
-    Top = 42
+    Top = 44
     Width = 960
-    Height = 529
+    Height = 527
     Align = alClient
-    TabOrder = 2
+    TabOrder = 1
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 524
-    ClientRectLeft = 2
-    ClientRectRight = 955
-    ClientRectTop = 25
+    ExplicitTop = 42
+    ExplicitHeight = 529
+    ClientRectBottom = 523
+    ClientRectLeft = 4
+    ClientRectRight = 956
+    ClientRectTop = 24
     object cxTabSheet1: TcxTabSheet
       Caption = 'G'#252'n Sonu Raporu'
       ImageIndex = 0
+      ExplicitHeight = 501
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -263,23 +152,23 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 0
         Height = 86
-        Width = 947
+        Width = 946
         object cxGroupBox1: TcxGroupBox
           AlignWithMargins = True
-          Left = 462
-          Top = 6
+          Left = 461
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 0
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel2: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Maliyet'
             ParentFont = False
@@ -292,12 +181,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblMaliyet: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -309,25 +198,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox4: TcxGroupBox
           AlignWithMargins = True
-          Left = 234
-          Top = 6
+          Left = 233
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 1
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel3: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Kasa '#199#305'k'#305#351
             ParentFont = False
@@ -340,12 +229,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblKasaCikis: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -357,25 +246,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox5: TcxGroupBox
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 2
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel5: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Kasa Giri'#351
             ParentFont = False
@@ -388,12 +277,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblKasaGiris: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -405,25 +294,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox6: TcxGroupBox
           AlignWithMargins = True
-          Left = 690
-          Top = 6
+          Left = 689
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 3
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel7: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Kar'
             ParentFont = False
@@ -436,12 +325,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblKar: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -453,7 +342,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
       end
@@ -466,23 +355,23 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 1
         Height = 86
-        Width = 947
+        Width = 946
         object cxGroupBox8: TcxGroupBox
           AlignWithMargins = True
-          Left = 462
-          Top = 6
+          Left = 461
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 0
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel9: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Kredi Kart'#305' Sat'#305#351
             ParentFont = False
@@ -495,12 +384,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblKKsatis: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -512,25 +401,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox9: TcxGroupBox
           AlignWithMargins = True
-          Left = 234
-          Top = 6
+          Left = 233
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 1
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel11: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Nakit Sat'#305#351
             ParentFont = False
@@ -543,12 +432,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblNakitSatis: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -560,25 +449,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox10: TcxGroupBox
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 2
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel13: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Toplam Sat'#305#351
             ParentFont = False
@@ -591,12 +480,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblToplamSatis: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -608,25 +497,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox12: TcxGroupBox
           AlignWithMargins = True
-          Left = 690
-          Top = 6
+          Left = 689
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 3
-          Height = 74
+          Height = 76
           Width = 222
           object cxLabel15: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Veresiye Sat'#305#351
             ParentFont = False
@@ -639,12 +528,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblVeresiyeSatis: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -656,7 +545,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
       end
@@ -669,23 +558,23 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 2
         Height = 118
-        Width = 947
+        Width = 946
         object cxGroupBox17: TcxGroupBox
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clYellow
           TabOrder = 0
-          Height = 106
+          Height = 108
           Width = 222
           object cxLabel23: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Kasa Nakit'
             ParentFont = False
@@ -698,12 +587,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblKasaNakit: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -716,25 +605,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 66
+            AnchorY = 67
           end
         end
         object cxGroupBox14: TcxGroupBox
           AlignWithMargins = True
-          Left = 462
-          Top = 6
+          Left = 461
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 1
-          Height = 106
+          Height = 108
           Width = 222
           object cxLabel17: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Cari Bor'#231'lanma'
             ParentFont = False
@@ -747,12 +636,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lblCariBorclanma: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -764,25 +653,25 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 66
+            AnchorY = 67
           end
         end
         object cxGroupBox15: TcxGroupBox
           AlignWithMargins = True
-          Left = 234
-          Top = 6
+          Left = 233
+          Top = 5
           Align = alLeft
           PanelStyle.Active = True
           ParentBackground = False
           ParentColor = False
           Style.Color = clGreen
           TabOrder = 2
-          Height = 106
+          Height = 108
           Width = 222
           object cxLabel19: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 6
+            Left = 5
+            Top = 5
             Align = alTop
             Caption = 'Tahsilatlar'
             ParentFont = False
@@ -795,12 +684,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 16
+            AnchorY = 15
           end
           object lbltahsilatlar: TcxLabel
             AlignWithMargins = True
-            Left = 6
-            Top = 32
+            Left = 5
+            Top = 31
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -812,7 +701,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 66
+            AnchorY = 67
           end
         end
       end
@@ -820,14 +709,16 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet2: TcxTabSheet
       Caption = 'H'#305'zl'#305' Sat'#305#351' Raporu'
       ImageIndex = 1
+      ExplicitHeight = 501
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
+        Width = 946
         Height = 493
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 495
         object cxGrid1DBTableView1: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -973,14 +864,16 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet3: TcxTabSheet
       Caption = 'Stok Hareket Raporu'
       ImageIndex = 2
+      ExplicitHeight = 501
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
+        Width = 946
         Height = 493
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 495
         object cxGridDBTableView1: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1209,14 +1102,16 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet4: TcxTabSheet
       Caption = 'Cari Hareket Raporu'
       ImageIndex = 3
+      ExplicitHeight = 501
       object cxGrid3: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
+        Width = 946
         Height = 493
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 495
         object cxGridDBTableView3: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1532,14 +1427,16 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet5: TcxTabSheet
       Caption = 'Gruplara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 4
+      ExplicitHeight = 501
       object cxGrid4: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
+        Width = 946
         Height = 493
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 495
         object cxGridDBTableView6: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1815,14 +1712,16 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet6: TcxTabSheet
       Caption = 'Markalara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 5
+      ExplicitHeight = 501
       object cxGrid5: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
+        Width = 946
         Height = 493
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 495
         object cxGridDBTableView9: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -2094,6 +1993,99 @@ object frmRaporlar: TfrmRaporlar
       end
     end
   end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 966
+    Height = 41
+    Align = alTop
+    TabOrder = 2
+    ExplicitWidth = 868
+    object btnSonHafta: TcxButton
+      AlignWithMargins = True
+      Left = 239
+      Top = 4
+      Width = 101
+      Height = 33
+      Margins.Left = 10
+      Align = alLeft
+      Caption = 'Son Hafta'
+      TabOrder = 0
+    end
+    object btnDun: TcxButton
+      AlignWithMargins = True
+      Left = 125
+      Top = 4
+      Width = 101
+      Height = 33
+      Margins.Left = 10
+      Align = alLeft
+      Caption = 'D'#252'n'
+      TabOrder = 1
+    end
+    object btnBugun: TcxButton
+      AlignWithMargins = True
+      Left = 11
+      Top = 4
+      Width = 101
+      Height = 33
+      Margins.Left = 10
+      Align = alLeft
+      Caption = 'Bug'#252'n'
+      TabOrder = 2
+    end
+    object btnSonAy: TcxButton
+      AlignWithMargins = True
+      Left = 353
+      Top = 4
+      Width = 101
+      Height = 33
+      Margins.Left = 10
+      Align = alLeft
+      Caption = 'Son Ay'
+      TabOrder = 3
+    end
+    object Panel2: TPanel
+      AlignWithMargins = True
+      Left = 618
+      Top = 4
+      Width = 344
+      Height = 33
+      Align = alRight
+      TabOrder = 4
+      ExplicitLeft = 520
+      object btnFiltrele: TcxButton
+        AlignWithMargins = True
+        Left = 265
+        Top = 4
+        Width = 75
+        Height = 25
+        Align = alRight
+        Caption = 'Filtrele'
+        TabOrder = 0
+      end
+      object dtBit: TcxDateEdit
+        AlignWithMargins = True
+        Left = 131
+        Top = 4
+        Align = alLeft
+        Properties.SaveTime = False
+        Properties.ShowTime = False
+        TabOrder = 1
+        Width = 121
+      end
+      object dtBas: TcxDateEdit
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Align = alLeft
+        Properties.SaveTime = False
+        Properties.ShowTime = False
+        TabOrder = 2
+        Width = 121
+      end
+    end
+  end
   object qryHsRapor: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
@@ -2294,7 +2286,7 @@ object frmRaporlar: TfrmRaporlar
     PrintOptions.Printer = 'Varsay'#305'lan'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44091.995410150500000000
-    ReportOptions.LastChange = 44484.006429201390000000
+    ReportOptions.LastChange = 44484.006429201400000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -2415,7 +2407,7 @@ object frmRaporlar: TfrmRaporlar
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
-          Width = 718.110236220472000000
+          Width = 718.110236220471900000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText

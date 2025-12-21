@@ -260,6 +260,8 @@ begin
   DataSet.FieldByName('BIRIMADI').AsString    := qryStok.FieldByName('BIRIMADI').AsString;
   DataSet.FieldByName('KDVORANI').AsString    := qryStok.FieldByName('KDV').AsString;
   DataSet.FieldByName('KDVTUTARI').AsFloat    := StrToFloatDef(edtFiyatKdvDahil.Text,0) - StrToFloatDef(edtFiyatKdvHaric.Text,0);
+  DataSet.FieldByName('CARIID').AsString      := '0';
+  DataSet.FieldByName('POSID').AsString       := '0';
 
 
   if DataSet.FieldByName('KDVTUTARI').AsFloat <= 0 then

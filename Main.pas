@@ -36,6 +36,8 @@ uses
   function PosHareketVarmi_fn( APosId : string): Boolean;
   function StokIdKartiSil_fn( AStokId : string): Boolean;
   function CariIdKartiSil_fn( ACariId : string): Boolean;
+  function CariHareketSil_fn( ACariHarID : string): Boolean;
+  function KasaHareketSil_fn(AKasaHarID : string): Boolean;
   function StokHareketSil_fn( AStokHarID : string): Boolean;
   procedure CariKartiAc_fn(ACariID : string = '');
   procedure FaturaKartiAc_fn(AFaturaTipi : string = ''; AFaturaID : string = '');
@@ -405,6 +407,46 @@ begin
     if MesajSor('Seçili stok kartı silinecek. Eminmisiniz?') then
     begin
       if VeriSil_fn('STOK','ID', AStokId) = 'OK' then
+         Result := True;
+    end;
+  end;
+end;
+
+function CariHareketSil_fn( ACariHarID : string): Boolean;
+begin
+  Result := False;
+  if not y.CARIHARSIL then yetkiYok;
+  if trim(ACariHarID) <> EmptyStr then
+  begin
+    if MesajSor(rstr_KAYIT_SILME_ONAY) then
+    begin
+      if veriCekSQL('SELECT * FROM ISLEM_H WHERE ISLEMID =  ' + ACariHarID, 'ID') <> VERI_YOK then
+      begin
+        MesajHata('Bu işlem kasiyer satış yada faturaya ait. Bu ekrandan silinemez');
+        abort;
+      end;
+
+      if VeriSil_fn('ISLEM_BASLIK','ID', ACariHarID) = 'OK' then
+         Result := True;
+    end;
+  end;
+end;
+
+function KasaHareketSil_fn(AKasaHarID : string): Boolean;
+begin
+  Result := False;
+  if not y.KASAISLEMSIL then yetkiYok;
+  if trim(AKasaHarID) <> EmptyStr then
+  begin
+    if MesajSor(rstr_KAYIT_SILME_ONAY) then
+    begin
+      if veriCekSQL('SELECT * FROM ISLEM_H WHERE ISLEMID =  ' + AKasaHarID, 'ID') <> VERI_YOK then
+      begin
+        MesajHata('Bu işlem kasiyer satış yada faturaya ait. Bu ekrandan silinemez');
+        abort;
+      end;
+
+      if VeriSil_fn('ISLEM_BASLIK','ID', AKasaHarID) = 'OK' then
          Result := True;
     end;
   end;

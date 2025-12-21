@@ -39,21 +39,17 @@ type
     vwCariHarlistBORC: TcxGridDBColumn;
     vwCariHarlistALACAK: TcxGridDBColumn;
     vwCariHarlistEVRAKNO: TcxGridDBColumn;
-    vwCariHarlistKASAHID: TcxGridDBColumn;
     vwCariHarlistACIKLAMA1: TcxGridDBColumn;
-    vwCariHarlistACIKLAMA2: TcxGridDBColumn;
-    vwCariHarlistACIKLAMA3: TcxGridDBColumn;
     vwCariHarlistISLEMTURU: TcxGridDBColumn;
-    vwCariHarlistFATURAID: TcxGridDBColumn;
-    vwCariHarlistPERSONEL: TcxGridDBColumn;
     vwCariHarlistPOSHID: TcxGridDBColumn;
-    vwCariHarlistCOMNAMETIME: TcxGridDBColumn;
-    vwCariHarlistUPDATECOUNT: TcxGridDBColumn;
-    vwCariHarlistZAMAN: TcxGridDBColumn;
-    Label7: TLabel;
+    vwCariHarlistColumn1: TcxGridDBColumn;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxDBTextEdit6: TcxDBTextEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
+    procedure btnSilClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,6 +70,13 @@ begin
   Close;
 end;
 
+procedure TfrmCariHarList.btnSilClick(Sender: TObject);
+begin
+  inherited;
+  if qryCariHar.RecordCount > 0 then
+    if CariHareketSil_fn(qryCariHar.FieldByName('ID').AsString) then qryCariHar.Refresh;
+end;
+
 procedure TfrmCariHarList.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -87,7 +90,7 @@ procedure TfrmCariHarList.FormShow(Sender: TObject);
 begin
   inherited;
   qryCari.SQL.Add(' and ID =' + CariID);
-  qryCariHar.SQL.Add(' where CARIID =' + CariID);
+  qryCariHar.SQL.Add(' and CARIID =' + CariID);
 
   TumQueryleriAc(self, true);
 

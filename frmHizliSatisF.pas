@@ -136,7 +136,6 @@ type
     qrySatisBitir: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure lblAdClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -165,6 +164,7 @@ type
     procedure qryTempSatisBeforePost(DataSet: TDataSet);
     procedure qryTempSatisAfterPost(DataSet: TDataSet);
     procedure RaporTasarm1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
   public
@@ -681,7 +681,7 @@ begin
   qryStokBul.Open;
 end;
 
-procedure TfrmHizliSatis.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmHizliSatis.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if qryTempSatis.RecordCount >0 then
     if MesajSor('Aktif Satýþ Ýþlemi Ýptal Edilecek. Eminmisiniz?') then
@@ -691,9 +691,16 @@ begin
       qryBekleyenSatislar.close;
       qryBekleyenSatislarDetay.close;
       qryStokBul.close;
+      CanClose := true;
+      exit;
     end
     else
-      action := caNone;
+    begin
+      CanClose:= false;
+      exit;
+    end;
+
+  CanClose := true;
 end;
 
 procedure TfrmHizliSatis.FormCreate(Sender: TObject);
@@ -779,7 +786,7 @@ begin
     edtBarkod.SetFocus;
   end;
   edtCariBul.Clear;
-  cbCari.ItemIndex := 0;
+  cbCari.text := 'PERAKENDE';
 
   tutarEditGuncelle;
 end;
@@ -839,7 +846,7 @@ end;
 procedure TfrmHizliSatis.satisTamamla(Aislem:string);
 var
   qTemp, qHar: TUniQuery;
-  PosID : string;
+  PosID, EvrakNo : string;
 begin
   if Aislem = '' then exit;
   if qryTempSatis.IsEmpty then exit;
@@ -868,7 +875,9 @@ begin
         exit;
     end;
     PosID := veriCekSQL('select ID from POS where POSADI = ' + quotedstr(cbPos.text), 'ID');
-  end;
+  end
+  else
+    PosID := '0';
 
   if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + Aislem +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
               #13#10 + 'ÖDEME ÞEKLÝ : ' + Aislem)
@@ -891,11 +900,24 @@ begin
   qrySatisBitir.ParamByName('UserID').AsInteger    := loginUserID;
   qrySatisBitir.ParamByName('CariID').AsString     := veriCekSQL('select ID from CARI where UNVAN='+ QuotedStr(cbcari.text), 'ID');
   qrySatisBitir.ParamByName('ISLEMTURU').AsInteger := ord(HIT_KASIYER_SATIS);
-  qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS;
+  //qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS;
 
-  if Aislem = NAKIT           then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_NAKIT)
-  else if Aislem = KREDIKARTI then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_KREDIKARTI)
-  else if Aislem = CARI       then qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_CARI);
+  if Aislem = NAKIT  then
+  begin
+    qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_NAKIT);
+    qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS + '-' + NAKIT;
+  end
+  else
+  if Aislem = KREDIKARTI then
+  begin
+    qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_KREDIKARTI);
+    qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS + '-' + KREDIKARTI;
+  end
+  else if Aislem = CARI then
+  begin
+    qrySatisBitir.ParamByName('ODEMETURU').AsInteger := ord(HOT_CARI);
+    qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS + '-' + CARI;
+  end;
 
   qrySatisBitir.Execute;
 

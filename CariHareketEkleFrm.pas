@@ -186,7 +186,10 @@ begin
     //deneme
   end;
 
-  DataSet.FieldByName('TUTAR').AsString      := edtTutar.Text;
+  DataSet.FieldByName('POSID').AsString       := qryPos.FieldByName('ID').asstring;
+
+  DataSet.FieldByName('CARIID').AsString := CariID;
+  DataSet.FieldByName('TUTAR').AsString  := edtTutar.Text;
 
 
 

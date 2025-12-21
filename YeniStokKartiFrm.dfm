@@ -1,9 +1,10 @@
 object frmYeniStokKarti: TfrmYeniStokKarti
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'frmYeniStokKarti'
-  ClientHeight = 447
-  ClientWidth = 577
+  ClientHeight = 457
+  ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,13 +20,17 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 571
-    Height = 399
+    Width = 581
+    Height = 409
     ActivePage = shStok
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 571
+    ExplicitHeight = 399
     object shStok: TTabSheet
       Caption = 'Stok Bilgileri'
+      ExplicitWidth = 563
+      ExplicitHeight = 371
       object Label1: TLabel
         Left = 12
         Top = 21
@@ -603,14 +608,16 @@ object frmYeniStokKarti: TfrmYeniStokKarti
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 408
-    Width = 571
+    Top = 418
+    Width = 581
     Height = 36
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 408
+    ExplicitWidth = 571
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 482
+      Left = 492
       Top = 4
       Width = 85
       Height = 28
@@ -704,10 +711,11 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
+      ExplicitLeft = 482
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 300
+      Left = 310
       Top = 4
       Width = 85
       Height = 28
@@ -736,10 +744,11 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
       OnClick = btnKaydetClick
+      ExplicitLeft = 300
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
-      Left = 144
+      Left = 154
       Top = 4
       Width = 150
       Height = 28
@@ -773,10 +782,11 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         76673E0D0A}
       TabOrder = 2
       OnClick = btnKaydetVeYeniClick
+      ExplicitLeft = 144
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 391
+      Left = 401
       Top = 4
       Width = 85
       Height = 28
@@ -826,6 +836,7 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 3
       OnClick = btnSilClick
+      ExplicitLeft = 391
     end
   end
   object qryStok: TUniQuery

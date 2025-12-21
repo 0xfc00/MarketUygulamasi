@@ -1,9 +1,10 @@
 object frmYeniCariKart: TfrmYeniCariKart
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'frmYeniCariKart'
-  ClientHeight = 425
-  ClientWidth = 955
+  ClientHeight = 435
+  ClientWidth = 965
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +19,16 @@ object frmYeniCariKart: TfrmYeniCariKart
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 386
-    Width = 949
+    Top = 396
+    Width = 959
     Height = 36
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 386
+    ExplicitWidth = 949
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 860
+      Left = 870
       Top = 4
       Width = 85
       Height = 28
@@ -119,10 +122,11 @@ object frmYeniCariKart: TfrmYeniCariKart
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
+      ExplicitLeft = 860
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 678
+      Left = 688
       Top = 4
       Width = 85
       Height = 28
@@ -151,10 +155,11 @@ object frmYeniCariKart: TfrmYeniCariKart
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
       OnClick = btnKaydetClick
+      ExplicitLeft = 678
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
-      Left = 522
+      Left = 532
       Top = 4
       Width = 150
       Height = 28
@@ -188,10 +193,11 @@ object frmYeniCariKart: TfrmYeniCariKart
         76673E0D0A}
       TabOrder = 2
       OnClick = btnKaydetVeYeniClick
+      ExplicitLeft = 522
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 769
+      Left = 779
       Top = 4
       Width = 85
       Height = 28
@@ -241,6 +247,7 @@ object frmYeniCariKart: TfrmYeniCariKart
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 3
       OnClick = btnSilClick
+      ExplicitLeft = 769
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 720
@@ -282,7 +289,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'CARIKODU'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -311,7 +317,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'UNVAN'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 558
     end
   end
@@ -340,7 +345,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'TARIH'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -410,7 +414,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'SEHIR'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -439,7 +442,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ILCE'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -468,7 +470,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'VERGIDAIRESI'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -497,7 +498,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'VERGINO'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -532,7 +532,6 @@ object frmYeniCariKart: TfrmYeniCariKart
         end>
       Properties.ListSource = dsCariGrupLook
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 157
     end
     object btnYeniCariGrup: TcxButton
@@ -606,7 +605,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'BANKA'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -635,7 +633,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'BANKAHESAPNO'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -665,7 +662,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ISTELEFONU1'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -694,7 +690,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ISTELEFONU2'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -723,7 +718,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'FAX'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -752,7 +746,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'CEPTELEFONU'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -781,7 +774,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'EVTELEFONU'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -810,7 +802,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'EMAIL'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -839,7 +830,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'EMAIL2'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -868,7 +858,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'EMAIL3'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -897,7 +886,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ADRES1'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -926,7 +914,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ADRES2'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -955,7 +942,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ADRES3'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -984,7 +970,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ACIKLAMA1'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -1013,7 +998,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ACIKLAMA2'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end
@@ -1042,7 +1026,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       DataBinding.DataField = 'ACIKLAMA3'
       DataBinding.DataSource = dsCari
       TabOrder = 1
-      ExplicitHeight = 21
       Width = 185
     end
   end

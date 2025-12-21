@@ -21,6 +21,7 @@ uses
   function yetkiYok(): boolean;
 
 
+
 implementation
 
 uses  _cons, _vars, MainDM, Main;
@@ -324,6 +325,8 @@ begin
   MesajHata(rstr_YETKI_YOK);
   abort;
 end;
+
+
 
 
 end.

@@ -130,6 +130,9 @@ begin
   DataSet.FieldByName('ODEMETURU').asinteger := ord(HOT_NAKIT);
   DataSet.FieldByName('TUTAR').AsString      := edtTutar.Text;
 
+  DataSet.FieldByName('CARIID').AsString      := '0';
+  DataSet.FieldByName('POSID').AsString       := '0';
+
   EkleyenDegistiren(DataSet);
 end;
 
