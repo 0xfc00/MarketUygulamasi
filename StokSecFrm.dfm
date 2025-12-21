@@ -190,7 +190,6 @@ object frmStokSec: TfrmStokSec
       OptionsImage.Glyph.SourceWidth = 16
       TabOrder = 1
       OnClick = btnSecClick
-      ExplicitTop = 0
     end
   end
   object qryStoklar: TUniQuery

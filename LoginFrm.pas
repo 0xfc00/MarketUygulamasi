@@ -3,12 +3,14 @@ unit LoginFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue,
-  Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, cxMaskEdit, cxDropDownEdit,
-  cxLabel, cxTextEdit, dxGDIPlusClasses, cxImage, MainDM, dxBevel, Data.DB,
-  MemDS, DBAccess, Uni, cxDBEdit, Vcl.DBCtrls;
+  System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  cxContainer,
+  cxButtons, Vcl.ExtCtrls, cxDropDownEdit,
+  cxLabel, cxTextEdit, cxImage, MainDM, dxBevel, Data.DB,
+  DBAccess, Uni, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxEdit, dxSkinsCore, dxSkinBlue, Vcl.Menus, MemDS, cxMaskEdit, Vcl.StdCtrls,
+  dxGDIPlusClasses;
 
 type
   TfrmLogin = class(TForm)

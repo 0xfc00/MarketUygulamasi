@@ -3,8 +3,8 @@ unit BaseFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, MainDM, uni;
+  System.Classes,
+  Vcl.Controls, Vcl.Forms, MainDM, uni;
 
 type
   TfrmBase = class(TForm)

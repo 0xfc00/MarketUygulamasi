@@ -24,8 +24,6 @@ object frmYeniCariKart: TfrmYeniCariKart
     Height = 36
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 386
-    ExplicitWidth = 949
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 870
@@ -122,7 +120,6 @@ object frmYeniCariKart: TfrmYeniCariKart
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitLeft = 860
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -155,7 +152,6 @@ object frmYeniCariKart: TfrmYeniCariKart
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
       OnClick = btnKaydetClick
-      ExplicitLeft = 678
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -193,7 +189,6 @@ object frmYeniCariKart: TfrmYeniCariKart
         76673E0D0A}
       TabOrder = 2
       OnClick = btnKaydetVeYeniClick
-      ExplicitLeft = 522
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -247,7 +242,6 @@ object frmYeniCariKart: TfrmYeniCariKart
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 3
       OnClick = btnSilClick
-      ExplicitLeft = 769
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 720

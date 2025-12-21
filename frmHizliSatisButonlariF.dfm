@@ -28,10 +28,10 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Width = 222
     object grdHsGrup: TcxGrid
       AlignWithMargins = True
-      Left = 5
-      Top = 21
-      Width = 212
-      Height = 395
+      Left = 6
+      Top = 18
+      Width = 210
+      Height = 391
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -75,15 +75,18 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         object viewHsGrupColumn1: TcxGridDBColumn
           Caption = 'No'
           DataBinding.FieldName = 'ID'
+          DataBinding.IsNullValueType = True
         end
         object viewHsGrupadi: TcxGridDBColumn
           Caption = 'Grup Ad'#305
           DataBinding.FieldName = 'GRUPADI'
+          DataBinding.IsNullValueType = True
           Width = 161
         end
         object viewHsGrupsira: TcxGridDBColumn
           Caption = 'S'#305'ra'
           DataBinding.FieldName = 'SIRA'
+          DataBinding.IsNullValueType = True
           Width = 49
         end
       end
@@ -93,9 +96,9 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       end
     end
     object cxButton1: TcxButton
-      Left = 2
-      Top = 419
-      Width = 218
+      Left = 3
+      Top = 412
+      Width = 216
       Height = 34
       Align = alBottom
       Caption = 'Ekle'
@@ -112,9 +115,9 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       OnClick = cxButton1Click
     end
     object cxButton2: TcxButton
-      Left = 2
-      Top = 453
-      Width = 218
+      Left = 3
+      Top = 446
+      Width = 216
       Height = 35
       Align = alBottom
       Caption = 'Sil'
@@ -148,10 +151,10 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Width = 400
     object grdStoklar: TcxGrid
       AlignWithMargins = True
-      Left = 5
-      Top = 21
-      Width = 390
-      Height = 395
+      Left = 6
+      Top = 18
+      Width = 388
+      Height = 391
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -208,6 +211,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         object viewStoklarsira: TcxGridDBColumn
           Caption = 'S'#305'ra'
           DataBinding.FieldName = 'SIRA'
+          DataBinding.IsNullValueType = True
           Width = 80
         end
       end
@@ -217,9 +221,9 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       end
     end
     object cxButton3: TcxButton
-      Left = 2
-      Top = 419
-      Width = 396
+      Left = 3
+      Top = 412
+      Width = 394
       Height = 34
       Align = alBottom
       Caption = 'Ekle'
@@ -236,9 +240,9 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       OnClick = cxButton3Click
     end
     object cxButton4: TcxButton
-      Left = 2
-      Top = 453
-      Width = 396
+      Left = 3
+      Top = 446
+      Width = 394
       Height = 35
       Align = alBottom
       Caption = 'Sil'
@@ -271,10 +275,10 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Width = 628
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 482
-      Top = 21
+      Left = 481
+      Top = 24
       Width = 141
-      Height = 45
+      Height = 41
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -297,10 +301,10 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 5
-      Top = 21
+      Left = 6
+      Top = 24
       Width = 165
-      Height = 45
+      Height = 41
       Align = alLeft
       Cancel = True
       Caption = 'Kaydet'

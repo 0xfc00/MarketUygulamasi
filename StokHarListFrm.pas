@@ -3,15 +3,20 @@ unit StokHarListFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ListBaseFrm, uni, MainDM, dxSkinsCore,
-  dxSkinBlue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
-  cxControls, cxGeometry, dxFramedControl, cxContainer, cxEdit, Data.DB, MemDS,
-  DBAccess, cxTextEdit, cxDBEdit, Vcl.StdCtrls, dxPanel, cxButtons, Vcl.ExtCtrls, main,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, cxDBData, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, _func, _cons;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm, uni,
+
+  Data.DB,
+  DBAccess, cxDBEdit, Vcl.StdCtrls, dxPanel, cxButtons, Vcl.ExtCtrls, main,
+
+  cxGridLevel,
+  cxGridDBTableView,
+  cxGrid, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxGeometry, dxFramedControl,
+  cxContainer, cxEdit, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, MemDS,
+  cxGridCustomTableView, cxGridTableView, cxClasses, cxGridCustomView,
+  cxTextEdit;
 
 type
   TfrmStokHarList = class(TfrmListBase)
@@ -70,7 +75,7 @@ implementation
 
 {$R *.dfm}
 
-uses _vars;
+
 
 procedure TfrmStokHarList.btnKapatClick(Sender: TObject);
 begin

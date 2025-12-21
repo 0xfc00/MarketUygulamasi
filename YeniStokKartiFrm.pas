@@ -3,14 +3,16 @@ unit YeniStokKartiFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, Vcl.StdCtrls,
-  GradientLabel, Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, Uni, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxCheckBox, cxDBEdit, cxSpinEdit, cxBlobEdit, cxCalc, cxMaskEdit,
-  cxDropDownEdit, cxCalendar, cxTextEdit, Vcl.ComCtrls, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, cxImage, dxBevel, Vcl.Menus, cxButtons, StrUtils,
-  dxShellDialogs, Vcl.DBCtrls, dxSkinsCore, dxSkinBlue;
+  Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, Uni,
+  cxContainer,
+  cxDBEdit,
+  cxDropDownEdit, cxTextEdit, Vcl.ComCtrls,
+  cxDBLookupComboBox, dxBevel, Vcl.Menus, cxButtons, StrUtils,
+  dxShellDialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxEdit, dxSkinsCore, dxSkinBlue, cxImage, cxLookupEdit, cxDBLookupEdit,
+  cxMaskEdit, cxCalendar;
 
 type
   TfrmYeniStokKarti = class(TfrmKartBase)
@@ -110,6 +112,7 @@ begin
   btnKaydetVeYeni.visible := true;
   qAcKapa_fn(qryStok);
   qryStok.Append;
+  cbxTeraziTip.ItemIndex := 0;
   edtStokAdi.SetFocus;
 end;
 

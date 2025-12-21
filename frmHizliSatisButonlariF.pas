@@ -3,14 +3,18 @@ unit frmHizliSatisButonlariF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxNavigator, dxDateRanges, Data.DB, cxDBData,
-  cxDBLookupComboBox, Vcl.Menus, Vcl.StdCtrls, cxButtons, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, cxGroupBox, MemDS, DBAccess, MainDM,
-  dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations, Uni, KartBaseFrm;
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms,
+
+  Data.DB,
+  Vcl.StdCtrls, cxButtons, cxGridLevel,
+  cxGridDBTableView,
+  cxGrid, cxGroupBox, MemDS,
+  Uni, KartBaseFrm, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, cxDBLookupComboBox, Vcl.Menus, DBAccess,
+  cxGridCustomTableView, cxGridTableView, cxClasses, cxGridCustomView;
 
 type
   TfrmHizliSatisButonlari = class(Tfrmkartbase)
@@ -61,7 +65,7 @@ implementation
 
 {$R *.dfm}
 
-uses _func, Main;
+uses Main;
 
 procedure TfrmHizliSatisButonlari.btnKapatClick(Sender: TObject);
 begin

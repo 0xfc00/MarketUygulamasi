@@ -334,12 +334,14 @@ object frmCariList: TfrmCariList
       object vwCariListBORC: TcxGridDBColumn
         Caption = 'Toplam Bor'#231
         DataBinding.FieldName = 'TOPLAM_BORC'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end
       object vwCariListALACAK: TcxGridDBColumn
         Caption = 'Toplam Alacak'
         DataBinding.FieldName = 'TOPLAM_ALACAK'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end

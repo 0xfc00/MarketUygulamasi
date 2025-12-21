@@ -3,12 +3,14 @@ unit CariHareketEkleFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, main, MainDM, dxSkinsCore,
-  dxSkinBlue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm, main,
+
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, Uni,
-  cxControls, cxContainer, cxEdit, cxCalc, cxDBEdit, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxContainer, cxCalc, cxDBEdit, cxTextEdit,
+  cxDropDownEdit, cxDBLookupComboBox, dxSkinsCore, dxSkinBlue, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxControls, cxEdit,
+  cxLookupEdit, cxDBLookupEdit, cxMaskEdit, cxCalendar;
 
 type
   TfrmCariHareketEkle = class(TfrmKartBase)

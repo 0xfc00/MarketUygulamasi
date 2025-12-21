@@ -3,14 +3,18 @@ unit StokSecFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, MemDS, DBAccess, Uni, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, MainDM, Main;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm,
+
+
+  Data.DB,
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Uni, cxGridLevel,
+  cxGridCustomTableView, cxGridDBTableView,
+  cxGrid, MainDM, Main, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS, DBAccess, cxGridTableView,
+  cxClasses, cxGridCustomView;
 
 type
   TfrmStokSec = class(TfrmKartBase)

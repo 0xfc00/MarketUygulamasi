@@ -3,13 +3,15 @@ unit KasaHareketEkleFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue,
-  Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS, DBAccess,
-  Uni, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxDropDownEdit, cxCalc,
-  cxDBEdit, cxTextEdit, cxMaskEdit, cxCalendar, KartBaseFrm, cxGroupBox,
-  dxCheckGroupBox, cxCheckBox,  _cons, _func;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms,
+  cxContainer,
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS,
+  Uni, cxCalc,
+  cxDBEdit, cxTextEdit, KartBaseFrm,
+   _cons, _func, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxEdit, dxSkinsCore, dxSkinBlue, Vcl.Menus, DBAccess, cxCalendar, cxMaskEdit,
+  cxDropDownEdit;
 
 type
   TfrmKasaHareketEkle = class(TfrmKartBase)

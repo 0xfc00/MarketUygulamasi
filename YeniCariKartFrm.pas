@@ -3,14 +3,16 @@ unit YeniCariKartFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, dxSkinsCore, dxSkinBlue,
-  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, Vcl.StdCtrls,
-  cxButtons, Vcl.ExtCtrls, cxControls, cxContainer, cxEdit, Data.DB, MemDS,
-  DBAccess, Uni, cxGroupBox, MainDM, cxLabel, cxMemo, cxDBEdit, cxSpinEdit,
-  cxCheckBox, cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
-  cxRadioGroup, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, STRUTils, Main,
-  _func, _cons;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm,
+  Vcl.StdCtrls,
+  cxButtons, Vcl.ExtCtrls, cxContainer, Data.DB, MemDS,
+  DBAccess, Uni, cxGroupBox, MainDM, cxLabel, cxDBEdit,
+  cxTextEdit,
+  cxRadioGroup, cxDBLookupComboBox, STRUTils, Main,
+  _func, _cons, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxEdit, cxMemo, cxDropDownEdit,
+  cxCalendar, cxMaskEdit, cxLookupEdit, cxDBLookupEdit;
 
 type
   TfrmYeniCariKart = class(TfrmKartBase)

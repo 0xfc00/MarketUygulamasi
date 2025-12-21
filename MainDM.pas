@@ -3,8 +3,9 @@ unit MainDM;
 interface
 
 uses
-  System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni, UniProvider,
-  SQLServerUniProvider, MemDS, Vcl.Dialogs, System.IniFiles, _cons, _vars;
+  System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni,
+  SQLServerUniProvider, Vcl.Dialogs, System.IniFiles, _cons, _vars, MemDS,
+  UniProvider;
 
 type
   TdmMain = class(TDataModule)
@@ -27,7 +28,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses Main, DbAyarlarFrm, _func;
+uses DbAyarlarFrm, _func;
 
 {$R *.dfm}
 

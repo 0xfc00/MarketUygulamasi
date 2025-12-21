@@ -3,14 +3,18 @@ unit StokListFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ListBaseFrm, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, uni,
-  cxControls, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, MemDS,
-  DBAccess, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, System.Actions, Vcl.ActnList,
-  dxSkinsCore, dxSkinBlue, dxCore, dxSkinsForm, stokAktarimFormF, CariListFrm;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm,
+  Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, uni,
+
+  Data.DB,
+  cxGridLevel, cxGridCustomTableView,
+  cxGridDBTableView, cxGrid, Vcl.ActnList,
+  stokAktarimFormF, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, cxControls, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  cxDBData, System.Actions, MemDS, DBAccess, cxGridTableView, cxClasses,
+  cxGridCustomView;
 
 type
   TfrmStokList = class(TfrmListBase)
@@ -71,7 +75,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainDM,Main, YeniStokKartiFrm;
+uses Main, YeniStokKartiFrm;
 
 procedure TfrmStokList.acStokDuzenleExecute(Sender: TObject);
 var

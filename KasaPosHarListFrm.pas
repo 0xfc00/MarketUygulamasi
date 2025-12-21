@@ -3,16 +3,21 @@ unit KasaPosHarListFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ListBaseFrm,  dxBarBuiltInMenu,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
-  dxSkinBlue, Vcl.Menus, cxPC, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData,  System.DateUtils,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, MemDS, DBAccess, Uni, cxContainer,
-  Vcl.ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxCalendar;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm,
+
+  cxPC, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+
+  Data.DB,  System.DateUtils,
+  cxGridCustomTableView, cxGridDBTableView, cxGridLevel,
+  cxGrid, DBAccess, Uni,
+
+  cxCalendar, dxBarBuiltInMenu, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, cxContainer, Vcl.ComCtrls,
+  dxCore, cxDateUtils, MemDS, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxGridTableView, cxClasses, cxGridCustomView;
 
 type
   TfrmKasaPosHarList = class(TfrmListBase)
@@ -58,7 +63,6 @@ type
     vwPosColumn1: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure btnBugunClick(Sender: TObject);
     procedure btnDunClick(Sender: TObject);
     procedure btnSonHaftaClick(Sender: TObject);
@@ -80,7 +84,7 @@ implementation
 
 {$R *.dfm}
 
-uses Main, _cons;
+uses Main;
 
 var
   qryKasaHarSQL,qryPosHarSQL : string;
@@ -177,14 +181,8 @@ begin
   pnlHeader.Color := clgreen;
   TumQuerylereConnectionAta(self);
 
-  dtBas.date := now;
-  dtbit.date := now;
   pcAna.ActivePageIndex := 0;
-end;
-
-procedure TfrmKasaPosHarList.FormShow(Sender: TObject);
-begin
-  btnFiltreleClick(sender);
+  btnBugunClick(sender);
 end;
 
 procedure TfrmKasaPosHarList.pcAnaChange(Sender: TObject);

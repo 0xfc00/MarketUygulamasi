@@ -1024,9 +1024,6 @@ object frmHizliSatis: TfrmHizliSatis
             Caption = 'shtHS_deneme'
             ImageIndex = 0
             TabVisible = False
-            ExplicitLeft = 4
-            ExplicitTop = 4
-            ExplicitHeight = 440
             object ScrollBox1: TScrollBox
               AlignWithMargins = True
               Left = 3
@@ -1037,7 +1034,6 @@ object frmHizliSatis: TfrmHizliSatis
               Color = clGradientInactiveCaption
               ParentColor = False
               TabOrder = 0
-              ExplicitHeight = 434
               object fPanelHS: TFlowPanel
                 AlignWithMargins = True
                 Left = 3
@@ -1075,7 +1071,6 @@ object frmHizliSatis: TfrmHizliSatis
                     Properties.Alignment.Horz = taCenter
                     Properties.Alignment.Vert = taVCenter
                     Properties.WordWrap = True
-                    ExplicitHeight = 64
                     Width = 162
                     AnchorX = 85
                     AnchorY = 35
@@ -1106,10 +1101,6 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet2: TcxTabSheet
         Caption = #220'r'#252'n Bul'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGroupBox7: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1138,7 +1129,6 @@ object frmHizliSatis: TfrmHizliSatis
             TabOrder = 0
             ExplicitLeft = 5
             ExplicitTop = 21
-            ExplicitWidth = 580
             ExplicitHeight = 21
             Width = 577
           end
@@ -1152,8 +1142,6 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 1
-          ExplicitWidth = 590
-          ExplicitHeight = 377
           Height = 373
           Width = 589
           object grdUrunAra: TcxGrid
@@ -1239,10 +1227,6 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet3: TcxTabSheet
         Caption = 'Bekleyen Sat'#305#351'lar'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGroupBox9: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1329,8 +1313,6 @@ object frmHizliSatis: TfrmHizliSatis
           Align = alClient
           Caption = 'Bekleyen Sat'#305#351' Detaylar'#305
           TabOrder = 1
-          ExplicitWidth = 590
-          ExplicitHeight = 164
           Height = 160
           Width = 589
           object grdBekleyenSatislarDetay: TcxGrid

@@ -3,83 +3,55 @@ unit frmRaporlarF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, strutils,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.ComCtrls, dxCore, cxDateUtils,
-  Vcl.Menus, Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxCalendar, dxGDIPlusClasses, cxImage, cxGroupBox, dxBarBuiltInMenu, cxPC,
-  cxLabel, Vcl.ExtCtrls, Data.DB, DBAccess, MemDS, cxStyles,
+  System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms,
+
+  Vcl.Menus, Vcl.StdCtrls, cxButtons,
+  cxCalendar, cxGroupBox, cxPC,
+  cxLabel, Vcl.ExtCtrls, Data.DB,
+
+  cxGridDBTableView,
+  cxGridLevel, cxGrid, frxClass, frxDBSet, frxDesgn,
+  Uni, ListBaseFrm, Main,
+  dateutils, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, dxBarBuiltInMenu, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridCustomView, cxClasses, cxGridLevel, cxGrid, frxClass, frxDBSet, frxDesgn,
-  dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations, Uni, ListBaseFrm, Main,
-  MainDM;
+  dxScrollbarAnnotations, cxDBData, Vcl.ComCtrls, dxCore, cxDateUtils, MemDS,
+  DBAccess, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxGridCustomTableView,
+  cxGridTableView, cxClasses, cxGridCustomView;
 
 type
   TfrmRaporlar = class(TfrmListBase)
     cxGroupBox2: TcxGroupBox;
     btnKapat: TcxButton;
     pg: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    cxTabSheet2: TcxTabSheet;
+    shOzet: TcxTabSheet;
+    shHs: TcxTabSheet;
     cxGroupBox3: TcxGroupBox;
-    cxGroupBox1: TcxGroupBox;
-    cxLabel2: TcxLabel;
-    lblMaliyet: TcxLabel;
-    cxGroupBox4: TcxGroupBox;
-    cxLabel3: TcxLabel;
-    lblKasaCikis: TcxLabel;
-    cxGroupBox5: TcxGroupBox;
-    cxLabel5: TcxLabel;
-    lblKasaGiris: TcxLabel;
-    cxGroupBox6: TcxGroupBox;
-    cxLabel7: TcxLabel;
-    lblKar: TcxLabel;
     cxGroupBox7: TcxGroupBox;
-    cxGroupBox8: TcxGroupBox;
-    cxLabel9: TcxLabel;
-    lblKKsatis: TcxLabel;
-    cxGroupBox9: TcxGroupBox;
-    cxLabel11: TcxLabel;
-    lblNakitSatis: TcxLabel;
-    cxGroupBox10: TcxGroupBox;
-    cxLabel13: TcxLabel;
-    lblToplamSatis: TcxLabel;
-    cxGroupBox12: TcxGroupBox;
-    cxLabel15: TcxLabel;
-    lblVeresiyeSatis: TcxLabel;
     cxGroupBox13: TcxGroupBox;
-    cxGroupBox17: TcxGroupBox;
-    cxLabel23: TcxLabel;
-    lblKasaNakit: TcxLabel;
     cxTabSheet3: TcxTabSheet;
     cxTabSheet4: TcxTabSheet;
-    cxGroupBox14: TcxGroupBox;
-    cxLabel17: TcxLabel;
-    lblCariBorclanma: TcxLabel;
-    cxGroupBox15: TcxGroupBox;
-    cxLabel19: TcxLabel;
-    lbltahsilatlar: TcxLabel;
     qryHsRapor: TUniQuery;
     dsHsRapor: TDataSource;
     cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
+    vwHsrapor: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    cxGrid1DBTableView1kayit_tarihi: TcxGridDBColumn;
-    cxGrid1DBTableView1carisim: TcxGridDBColumn;
-    cxGrid1DBTableView1tutar: TcxGridDBColumn;
-    cxGrid1DBTableView1aciklama: TcxGridDBColumn;
-    cxGrid1DBTableView1kaydeden: TcxGridDBColumn;
+    vwHsraporkayit_tarihi: TcxGridDBColumn;
+    vwHsraporcarisim: TcxGridDBColumn;
+    vwHsraportutar: TcxGridDBColumn;
+    vwHsraporaciklama: TcxGridDBColumn;
+    vwHsraporkaydeden: TcxGridDBColumn;
     cxGrid1Level2: TcxGridLevel;
-    cxGrid1DBTableView3: TcxGridDBTableView;
+    vwHsraporDetay: TcxGridDBTableView;
     qryHsRaporDet: TUniQuery;
     dsHsRaporDet: TDataSource;
-    cxGrid1DBTableView3stok_kodu: TcxGridDBColumn;
-    cxGrid1DBTableView3stok_adi: TcxGridDBColumn;
-    cxGrid1DBTableView3adet: TcxGridDBColumn;
-    cxGrid1DBTableView3sfiyat: TcxGridDBColumn;
-    cxGrid1DBTableView3iskonto: TcxGridDBColumn;
-    cxGrid1DBTableView3toplam: TcxGridDBColumn;
+    vwHsraporDetaystok_kodu: TcxGridDBColumn;
+    vwHsraporDetaystok_adi: TcxGridDBColumn;
+    vwHsraporDetayadet: TcxGridDBColumn;
+    vwHsraporDetaysfiyat: TcxGridDBColumn;
+    vwHsraporDetayiskonto: TcxGridDBColumn;
+    vwHsraporDetaytoplam: TcxGridDBColumn;
     pmGrdHsRapor: TPopupMenu;
     pmGrdHsRaporDet: TPopupMenu;
     SatleminiSil1: TMenuItem;
@@ -222,14 +194,47 @@ type
     btnSonAy: TcxButton;
     Panel2: TPanel;
     btnFiltrele: TcxButton;
-    dtBit: TcxDateEdit;
-    dtBas: TcxDateEdit;
+    dtTarih2: TcxDateEdit;
+    dtTarih1: TcxDateEdit;
+    Panel3: TPanel;
+    cxLabel13: TcxLabel;
+    lblToplamSatis: TcxLabel;
+    cxGroupBox8: TPanel;
+    cxLabel9: TcxLabel;
+    lblKKsatis: TcxLabel;
+    cxGroupBox9: TPanel;
+    cxLabel11: TcxLabel;
+    lblNakitSatis: TcxLabel;
+    cxGroupBox12: TPanel;
+    cxLabel15: TcxLabel;
+    lblVeresiyeSatis: TcxLabel;
+    qryRapor: TUniQuery;
+    cxGroupBox4: TPanel;
+    cxLabel3: TcxLabel;
+    lblKasaCikis: TcxLabel;
+    cxGroupBox5: TPanel;
+    cxLabel5: TcxLabel;
+    lblKasaGiris: TcxLabel;
+    cxGroupBox15: TPanel;
+    cxLabel19: TcxLabel;
+    lbltahsilatlar: TcxLabel;
+    cxGroupBox17: TPanel;
+    cxLabel23: TcxLabel;
+    lblKasaNakit: TcxLabel;
+    cxGroupBox14: TPanel;
+    cxLabel17: TcxLabel;
+    lblOdemeler: TcxLabel;
+    vwHsraporColumn1: TcxGridDBColumn;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure btnListeleClick(Sender: TObject);
     procedure SatleminiSil1Click(Sender: TObject);
     procedure btnYazdirClick(Sender: TObject);
     procedure RaporTasarm1Click(Sender: TObject);
+    procedure btnBugunClick(Sender: TObject);
+    procedure btnDunClick(Sender: TObject);
+    procedure btnSonHaftaClick(Sender: TObject);
+    procedure btnSonAyClick(Sender: TObject);
+    procedure btnFiltreleClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -243,141 +248,129 @@ implementation
 
 {$R *.dfm}
 
-uses _cons, _func, _vars;
+uses _cons, _vars;
 
-procedure TfrmRaporlar.btnKapatClick(Sender: TObject);
+procedure TfrmRaporlar.btnBugunClick(Sender: TObject);
 begin
-  close;
+  inherited;
+  dtTarih1.date := now;
+  dtTarih2.date := now;
+  btnFiltreleClick(sender);
 end;
 
-procedure TfrmRaporlar.btnListeleClick(Sender: TObject);
-var
-  nakitSatis, kasaGiris, kasaCikis, tahsilat : double;
-  q: TUniQuery;
-
+procedure TfrmRaporlar.btnDunClick(Sender: TObject);
 begin
-  q := yeniQuery('', false);
-  if pg.ActivePageIndex = 0 then
+  inherited;
+  dtTarih1.date := IncDay(now, -1);
+  dtTarih2.date := now;
+  btnFiltreleClick(sender);
+end;
+
+procedure TfrmRaporlar.btnFiltreleClick(Sender: TObject);
+  procedure IncFloat(var AValue: Currency; const AStep: Currency);
   begin
-    //toplam satýþ
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HS'',''HSV'',''HSKK'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblToplamSatis.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //TOPLAM SATIÞ
-
-    //nakit satýþ
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HS'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblNakitSatis.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //NAKÝT SATIÞ
-
-    //kredi kartý satýþ
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HSKK'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblkkSatis.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //KREDÝ KARTI SATIÞ
-
-    //veresiye satýþ
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HSV'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblVeresiyeSatis.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //VERESÝYE SATIÞ
-
-    //kasa giriþ
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''KG'') AND gckodu=1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblKasaGiris.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //KASA GÝRÝÞ
-
-    //kasa çýkýþ
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''KC'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblKasaCikis.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //KASA ÇKIÞ
-
-    //maliyet
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(adet*afiyat) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HS'',''HSV'',''HSKK'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblMaliyet.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //MALÝYET
-
-    //kar
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(TUTAR) - SUM(adet*afiyat) AS toplam FROM t_har_det WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''HS'',''HSV'',''HSKK'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblKar.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //KAR
-
-    //tahsilatlar
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''ON'',''OKK'') AND gckodu=1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lbltahsilatlar.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //TAHSÝLATLAR
-
-    //cari borçlanma
-    q.Close;
-    q.SQL.Text := 'SELECT SUM(tutar) AS toplam FROM t_har WHERE CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2 and tipi IN(''CB'') AND gckodu=-1';
-    q.ParamByName('tar1').AsDate := dtTarih1.Date;
-    q.ParamByName('tar2').AsDate := dtTarih2.Date;
-    q.Open;
-    if not q.IsEmpty then
-      lblCariBorclanma.Caption := IfThen(q.IsEmpty, '0', q.FieldByName('toplam').AsString);
-    //CARÝ BORÇLANMA
-
-    //kasa nakit
-    nakitSatis := StrToFloatDef(lblNakitSatis.Caption,0);
-    kasaGiris  := StrToFloatDef(lblKasaGiris.Caption,0);
-    kasaCikis  := StrToFloatDef(lblKasaCikis.Caption,0);
-    tahsilat   := StrToFloatDef(lbltahsilatlar.Caption,0);
-
-    lblKasaNakit.Caption := ((nakitSatis + kasaGiris + tahsilat) - kasaCikis).ToString;
-    //KASA NAKÝT
+    AValue := AValue + AStep;
   end;
 
-  if pg.ActivePageIndex = 1 then
+var
+  toplamSatis,nakitSatis, kkSatis,veresiyeSatis, kasaGiris, kasaCikis,
+  tahsilatlarNakit, tahsilatlarKk, odemelerNakit, odemelerKk : Currency;
+  fs: TFormatSettings;
+begin
+  {$REGION 'Gün Sonu'}
+  toplamSatis		   := 0;
+  nakitSatis		   := 0;
+  kkSatis			     := 0;
+  veresiyeSatis	   := 0;
+  kasaGiris		     := 0;
+  kasaCikis		     := 0;
+  tahsilatlarNakit := 0;
+  tahsilatlarKk    := 0;
+  odemelerNakit		 := 0;
+  odemelerKk       := 0;
+
+  if pg.ActivePage = shOzet then
   begin
-    with qryHsRapor do
+    with qryRapor do
     begin
       close;
       ParamByName('tar1').AsDate := dtTarih1.Date;
       ParamByName('tar2').AsDate := dtTarih2.Date;
       open;
+      if IsEmpty then exit;
+    end;
+
+    while not qryRapor.Eof  do
+    begin
+      if qryRapor.FieldByName('tutar').AsFloat <> 0 then
+      begin
+        if qryRapor.FieldByName('ISLEMTURU').AsInteger = ord(HIT_KASIYER_SATIS) then
+        begin
+          IncFloat(toplamSatis,qryRapor.FieldByName('tutar').AsFloat);
+
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_NAKIT)      then IncFloat(nakitSatis,    qryRapor.FieldByName('tutar').AsFloat);
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_KREDIKARTI) then IncFloat(kkSatis,       qryRapor.FieldByName('tutar').AsFloat);
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_CARI)       then IncFloat(veresiyeSatis, qryRapor.FieldByName('tutar').AsFloat);
+        end;
+
+        if qryRapor.FieldByName('ISLEMTURU').AsInteger = ord(HIT_CARIDEN_TAHSILAT) then
+        begin
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_NAKIT)      then IncFloat(tahsilatlarNakit, qryRapor.FieldByName('tutar').AsFloat);
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_KREDIKARTI) then IncFloat(tahsilatlarKk,    qryRapor.FieldByName('tutar').AsFloat);
+        end;
+
+        if qryRapor.FieldByName('ISLEMTURU').AsInteger = ord(HIT_CARIYE_ODEME) then
+        begin
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_NAKIT)      then IncFloat(odemelerNakit, qryRapor.FieldByName('tutar').AsFloat);
+          if qryRapor.FieldByName('ODEMETURU').AsInteger = ord(HOT_KREDIKARTI) then IncFloat(odemelerKk,    qryRapor.FieldByName('tutar').AsFloat);
+        end;
+
+        if qryRapor.FieldByName('ISLEMTURU').AsInteger = ord(HIT_KASA_GIRIS) then
+        begin
+          IncFloat(kasaGiris, qryRapor.FieldByName('tutar').AsFloat);
+        end;
+
+        if qryRapor.FieldByName('ISLEMTURU').AsInteger = ord(HIT_KASA_CIKIS) then
+        begin
+          IncFloat(kasaCikis, qryRapor.FieldByName('tutar').AsFloat);
+        end;
+      end;
+
+      qryRapor.next;
+    end;
+
+    kasaGiris := kasaGiris + nakitSatis + tahsilatlarNakit;
+    kasaCikis := kasaCikis + odemelerNakit;
+
+    fs := TFormatSettings.Create;
+    fs.ThousandSeparator := '.';
+    fs.DecimalSeparator  := ',';
+
+    lblToplamSatis.Caption       := FormatCurr('#,##0.00', toplamSatis, fs);
+    lblNakitSatis.Caption        := FormatCurr('#,##0.00', nakitSatis, fs);
+    lblkkSatis.Caption           := FormatCurr('#,##0.00', kkSatis, fs);
+    lblVeresiyeSatis.Caption     := FormatCurr('#,##0.00', veresiyeSatis, fs);
+    lblKasaGiris.Caption         := FormatCurr('#,##0.00', kasaGiris, fs);
+    lblKasaCikis.Caption         := FormatCurr('#,##0.00', kasaCikis, fs);
+    lbltahsilatlar.Caption       := FormatCurr('#,##0.00', tahsilatlarNakit + tahsilatlarkk, fs);
+    lblOdemeler.Caption          := FormatCurr('#,##0.00', odemelerNakit + odemelerKk, fs);
+    lblKasaNakit.Caption         := FormatCurr('#,##0.00', kasaGiris - kasaCikis, fs);
+
+  end;
+
+{$ENDREGION}
+
+  if pg.ActivePage = shHs then
+  begin
+    with qryHsRapor do
+    begin
+      close;                                       asd
+      ParamByName('tar1').AsDate := dtTarih1.Date;
+      ParamByName('tar2').AsDate := dtTarih2.Date;
+      open;
     end;
     if not qryHsRaporDet.Active then qryHsRaporDet.Open;
+    vwHsrapor.ApplyBestFit(nil);
   end;
 
   if pg.ActivePageIndex = 2 then
@@ -424,7 +417,30 @@ begin
     end;
   end;
 
-  FreeAndNil(q);
+
+
+
+end;
+
+procedure TfrmRaporlar.btnKapatClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfrmRaporlar.btnSonAyClick(Sender: TObject);
+begin
+  inherited;
+  dtTarih1.date := IncMonth(now, -1);
+  dtTarih2.date := now;
+  btnFiltreleClick(sender);
+end;
+
+procedure TfrmRaporlar.btnSonHaftaClick(Sender: TObject);
+begin
+  inherited;
+  dtTarih1.date := IncWeek(now, -1);
+  dtTarih2.date := now;
+  btnFiltreleClick(sender);
 end;
 
 procedure TfrmRaporlar.btnYazdirClick(Sender: TObject);
@@ -437,6 +453,9 @@ end;
 
 procedure TfrmRaporlar.FormCreate(Sender: TObject);
 begin
+  inherited;
+  pnlHeader.Caption := '   RAPORLAR';
+  TumQuerylereConnectionAta(self);
   if FileExists(RAPORLAR+ '\hizli_Satis.fr3') then
   begin
     try rprHizliSatis.LoadFromFile(RAPORLAR+ '\hizli_Satis.fr3');
@@ -448,8 +467,9 @@ begin
 
   pg.ActivePageIndex := 0;
 
-  dtTarih1.Date := date;
-  dtTarih2.Date := date;
+
+
+  btnBugunClick(sender);
 end;
 
 procedure TfrmRaporlar.RaporTasarm1Click(Sender: TObject);

@@ -33,10 +33,10 @@ object frmRaporlar: TfrmRaporlar
     Width = 960
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 814
-      Top = 5
+      Left = 813
+      Top = 6
       Width = 141
-      Height = 36
+      Height = 34
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -59,10 +59,10 @@ object frmRaporlar: TfrmRaporlar
     end
     object btnYazdir: TcxButton
       AlignWithMargins = True
-      Left = 5
-      Top = 5
+      Left = 6
+      Top = 6
       Width = 141
-      Height = 36
+      Height = 34
       Align = alLeft
       Caption = 'Yazd'#305'r'
       OptionsImage.Glyph.SourceDPI = 96
@@ -131,18 +131,18 @@ object frmRaporlar: TfrmRaporlar
     Height = 527
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = cxTabSheet1
+    Properties.ActivePage = shHs
     Properties.CustomButtons.Buttons = <>
-    ExplicitTop = 42
-    ExplicitHeight = 529
-    ClientRectBottom = 523
-    ClientRectLeft = 4
-    ClientRectRight = 956
-    ClientRectTop = 24
-    object cxTabSheet1: TcxTabSheet
+    ExplicitLeft = 8
+    ClientRectBottom = 522
+    ClientRectLeft = 2
+    ClientRectRight = 955
+    ClientRectTop = 25
+    object shOzet: TcxTabSheet
       Caption = 'G'#252'n Sonu Raporu'
       ImageIndex = 0
-      ExplicitHeight = 501
+      ExplicitLeft = 4
+      ExplicitTop = 27
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -152,71 +152,21 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 0
         Height = 86
-        Width = 946
-        object cxGroupBox1: TcxGroupBox
+        Width = 947
+        object cxGroupBox4: TPanel
           AlignWithMargins = True
-          Left = 461
-          Top = 5
+          Left = 234
+          Top = 6
+          Width = 222
+          Height = 74
           Align = alLeft
-          PanelStyle.Active = True
+          UseDockManager = False
           ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
           TabOrder = 0
-          Height = 76
-          Width = 222
-          object cxLabel2: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Maliyet'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblMaliyet: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-        object cxGroupBox4: TcxGroupBox
-          AlignWithMargins = True
-          Left = 233
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 1
-          Height = 76
-          Width = 222
           object cxLabel3: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 5
+            Left = 4
+            Top = 4
             Align = alTop
             Caption = 'Kasa '#199#305'k'#305#351
             ParentFont = False
@@ -229,12 +179,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 15
+            AnchorY = 14
           end
           object lblKasaCikis: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 31
+            Left = 4
+            Top = 30
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -246,25 +196,23 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 51
+            AnchorY = 50
           end
         end
-        object cxGroupBox5: TcxGroupBox
+        object cxGroupBox5: TPanel
           AlignWithMargins = True
-          Left = 5
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 2
-          Height = 76
+          Left = 6
+          Top = 6
           Width = 222
+          Height = 74
+          Align = alLeft
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 1
           object cxLabel5: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 5
+            Left = 4
+            Top = 4
             Align = alTop
             Caption = 'Kasa Giri'#351
             ParentFont = False
@@ -277,12 +225,12 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 15
+            AnchorY = 14
           end
           object lblKasaGiris: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 31
+            Left = 4
+            Top = 30
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -294,384 +242,23 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 51
+            AnchorY = 50
           end
         end
-        object cxGroupBox6: TcxGroupBox
+        object cxGroupBox15: TPanel
           AlignWithMargins = True
-          Left = 689
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 3
-          Height = 76
+          Left = 462
+          Top = 6
           Width = 222
-          object cxLabel7: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Kar'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblKar: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-      end
-      object cxGroupBox7: TcxGroupBox
-        AlignWithMargins = True
-        Left = 3
-        Top = 3
-        Align = alTop
-        PanelStyle.Active = True
-        Style.BorderStyle = ebsNone
-        TabOrder = 1
-        Height = 86
-        Width = 946
-        object cxGroupBox8: TcxGroupBox
-          AlignWithMargins = True
-          Left = 461
-          Top = 5
+          Height = 74
           Align = alLeft
-          PanelStyle.Active = True
+          UseDockManager = False
           ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 0
-          Height = 76
-          Width = 222
-          object cxLabel9: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Kredi Kart'#305' Sat'#305#351
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblKKsatis: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-        object cxGroupBox9: TcxGroupBox
-          AlignWithMargins = True
-          Left = 233
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 1
-          Height = 76
-          Width = 222
-          object cxLabel11: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Nakit Sat'#305#351
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblNakitSatis: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-        object cxGroupBox10: TcxGroupBox
-          AlignWithMargins = True
-          Left = 5
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
           TabOrder = 2
-          Height = 76
-          Width = 222
-          object cxLabel13: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Toplam Sat'#305#351
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblToplamSatis: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-        object cxGroupBox12: TcxGroupBox
-          AlignWithMargins = True
-          Left = 689
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 3
-          Height = 76
-          Width = 222
-          object cxLabel15: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Veresiye Sat'#305#351
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblVeresiyeSatis: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 51
-          end
-        end
-      end
-      object cxGroupBox13: TcxGroupBox
-        AlignWithMargins = True
-        Left = 3
-        Top = 187
-        Align = alTop
-        PanelStyle.Active = True
-        Style.BorderStyle = ebsNone
-        TabOrder = 2
-        Height = 118
-        Width = 946
-        object cxGroupBox17: TcxGroupBox
-          AlignWithMargins = True
-          Left = 5
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clYellow
-          TabOrder = 0
-          Height = 108
-          Width = 222
-          object cxLabel23: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Kasa Nakit'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblKasaNakit: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.TextColor = clBlack
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 67
-          end
-        end
-        object cxGroupBox14: TcxGroupBox
-          AlignWithMargins = True
-          Left = 461
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 1
-          Height = 108
-          Width = 222
-          object cxLabel17: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Align = alTop
-            Caption = 'Cari Bor'#231'lanma'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clBlack
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 15
-          end
-          object lblCariBorclanma: TcxLabel
-            AlignWithMargins = True
-            Left = 5
-            Top = 31
-            Align = alClient
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -19
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taCenter
-            Properties.Alignment.Vert = taVCenter
-            AnchorX = 111
-            AnchorY = 67
-          end
-        end
-        object cxGroupBox15: TcxGroupBox
-          AlignWithMargins = True
-          Left = 233
-          Top = 5
-          Align = alLeft
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = clGreen
-          TabOrder = 2
-          Height = 108
-          Width = 222
           object cxLabel19: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 5
+            Left = 4
+            Top = 4
             Align = alTop
             Caption = 'Tahsilatlar'
             ParentFont = False
@@ -684,12 +271,60 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 15
+            AnchorY = 14
           end
           object lbltahsilatlar: TcxLabel
             AlignWithMargins = True
-            Left = 5
-            Top = 31
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentColor = False
+            ParentFont = False
+            Style.Color = clBtnFace
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 50
+          end
+        end
+        object cxGroupBox14: TPanel
+          AlignWithMargins = True
+          Left = 690
+          Top = 6
+          Width = 222
+          Height = 74
+          Align = alLeft
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 3
+          object cxLabel17: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = #214'demeler'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 14
+          end
+          object lblOdemeler: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
             Align = alClient
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -701,25 +336,275 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 67
+            AnchorY = 50
+          end
+        end
+      end
+      object cxGroupBox7: TcxGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Align = alTop
+        PanelStyle.Active = True
+        Style.BorderStyle = ebsNone
+        TabOrder = 1
+        Height = 86
+        Width = 947
+        object Panel3: TPanel
+          AlignWithMargins = True
+          Left = 6
+          Top = 6
+          Width = 216
+          Height = 74
+          Align = alLeft
+          TabOrder = 3
+          object cxLabel13: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = 'Toplam Sat'#305#351
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 108
+            AnchorY = 14
+          end
+          object lblToplamSatis: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 108
+            AnchorY = 50
+          end
+        end
+        object cxGroupBox8: TPanel
+          AlignWithMargins = True
+          Left = 456
+          Top = 6
+          Width = 222
+          Height = 74
+          Align = alLeft
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 0
+          object cxLabel9: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = 'Kredi Kart'#305' Sat'#305#351
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 14
+          end
+          object lblKKsatis: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 50
+          end
+        end
+        object cxGroupBox9: TPanel
+          AlignWithMargins = True
+          Left = 228
+          Top = 6
+          Width = 222
+          Height = 74
+          Align = alLeft
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 1
+          object cxLabel11: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = 'Nakit Sat'#305#351
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 14
+          end
+          object lblNakitSatis: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 50
+          end
+        end
+        object cxGroupBox12: TPanel
+          AlignWithMargins = True
+          Left = 684
+          Top = 6
+          Width = 222
+          Height = 74
+          Align = alLeft
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 2
+          object cxLabel15: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = 'Veresiye Sat'#305#351
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 14
+          end
+          object lblVeresiyeSatis: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 50
+          end
+        end
+      end
+      object cxGroupBox13: TcxGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 187
+        Align = alTop
+        PanelStyle.Active = True
+        Style.BorderStyle = ebsNone
+        TabOrder = 2
+        Height = 118
+        Width = 947
+        object cxGroupBox17: TPanel
+          AlignWithMargins = True
+          Left = 6
+          Top = 6
+          Width = 222
+          Height = 106
+          Align = alLeft
+          Color = clYellow
+          UseDockManager = False
+          ParentBackground = False
+          TabOrder = 0
+          object cxLabel23: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Align = alTop
+            Caption = 'Kasa Nakit'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clBlack
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 14
+          end
+          object lblKasaNakit: TcxLabel
+            AlignWithMargins = True
+            Left = 4
+            Top = 30
+            Align = alClient
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -19
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.TextColor = clBlack
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Vert = taVCenter
+            AnchorX = 111
+            AnchorY = 66
           end
         end
       end
     end
-    object cxTabSheet2: TcxTabSheet
+    object shHs: TcxTabSheet
       Caption = 'H'#305'zl'#305' Sat'#305#351' Raporu'
       ImageIndex = 1
-      ExplicitHeight = 501
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 946
-        Height = 493
+        Width = 947
+        Height = 491
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 495
-        object cxGrid1DBTableView1: TcxGridDBTableView
+        object vwHsrapor: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -751,38 +636,42 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.GroupByBox = False
           OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-          object cxGrid1DBTableView1kayit_tarihi: TcxGridDBColumn
+          object vwHsraporkayit_tarihi: TcxGridDBColumn
             Caption = 'Tarih'
             DataBinding.FieldName = 'kayit_tarihi'
             DataBinding.IsNullValueType = True
-            Width = 51
+            Width = 77
           end
-          object cxGrid1DBTableView1carisim: TcxGridDBColumn
+          object vwHsraporcarisim: TcxGridDBColumn
             Caption = 'Cari '#304'sim'
-            DataBinding.FieldName = 'carisim'
+            DataBinding.FieldName = 'cariUnvan'
             DataBinding.IsNullValueType = True
-            Width = 414
+            Width = 208
           end
-          object cxGrid1DBTableView1tutar: TcxGridDBColumn
+          object vwHsraportutar: TcxGridDBColumn
             Caption = 'Tutar'
-            DataBinding.FieldName = 'tutar'
-            DataBinding.IsNullValueType = True
-            Width = 49
+            DataBinding.FieldName = 'TUTAR'
+            Width = 158
           end
-          object cxGrid1DBTableView1aciklama: TcxGridDBColumn
+          object vwHsraporColumn1: TcxGridDBColumn
+            Caption = #214'deme T'#252'r'#252
+            DataBinding.FieldName = 'strOdemeTuru'
+            DataBinding.IsNullValueType = True
+          end
+          object vwHsraporaciklama: TcxGridDBColumn
             Caption = 'A'#231#305'klama'
-            DataBinding.FieldName = 'aciklama'
+            DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
-            Width = 101
+            Width = 331
           end
-          object cxGrid1DBTableView1kaydeden: TcxGridDBColumn
+          object vwHsraporkaydeden: TcxGridDBColumn
             Caption = 'Kaydeden'
-            DataBinding.FieldName = 'kaydeden'
+            DataBinding.FieldName = 'USERID'
             DataBinding.IsNullValueType = True
-            Width = 48
+            Width = 156
           end
         end
-        object cxGrid1DBTableView3: TcxGridDBTableView
+        object vwHsraporDetay: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -802,8 +691,8 @@ object frmRaporlar: TfrmRaporlar
           Navigator.Buttons.Filter.Visible = True
           ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = dsHsRaporDet
-          DataController.DetailKeyFieldNames = 'har_id'
-          DataController.MasterKeyFieldNames = 'id'
+          DataController.DetailKeyFieldNames = 'ISLEMID'
+          DataController.MasterKeyFieldNames = 'ID'
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
@@ -815,48 +704,48 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.GroupByBox = False
           OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-          object cxGrid1DBTableView3stok_kodu: TcxGridDBColumn
+          object vwHsraporDetaystok_kodu: TcxGridDBColumn
             Caption = 'Stok Kodu'
-            DataBinding.FieldName = 'stok_kodu'
+            DataBinding.FieldName = 'STOKID'
             DataBinding.IsNullValueType = True
             Width = 100
           end
-          object cxGrid1DBTableView3stok_adi: TcxGridDBColumn
+          object vwHsraporDetaystok_adi: TcxGridDBColumn
             Caption = 'Stok Ad'#305
-            DataBinding.FieldName = 'stok_adi'
+            DataBinding.FieldName = 'stokAdi'
             DataBinding.IsNullValueType = True
             Width = 405
           end
-          object cxGrid1DBTableView3adet: TcxGridDBColumn
+          object vwHsraporDetayadet: TcxGridDBColumn
             Caption = 'Adet'
-            DataBinding.FieldName = 'adet'
+            DataBinding.FieldName = 'MIKTAR'
             DataBinding.IsNullValueType = True
             Width = 75
           end
-          object cxGrid1DBTableView3sfiyat: TcxGridDBColumn
+          object vwHsraporDetaysfiyat: TcxGridDBColumn
             Caption = 'Fiyat'
-            DataBinding.FieldName = 'sfiyat'
+            DataBinding.FieldName = 'BIRIMFIYAT'
             DataBinding.IsNullValueType = True
             Width = 89
           end
-          object cxGrid1DBTableView3iskonto: TcxGridDBColumn
+          object vwHsraporDetayiskonto: TcxGridDBColumn
             Caption = #304'skonto'
-            DataBinding.FieldName = 'iskonto'
+            DataBinding.FieldName = 'ISKONTO_TUTARI'
             DataBinding.IsNullValueType = True
             Width = 97
           end
-          object cxGrid1DBTableView3toplam: TcxGridDBColumn
+          object vwHsraporDetaytoplam: TcxGridDBColumn
             Caption = 'Toplam'
-            DataBinding.FieldName = 'toplam'
+            DataBinding.FieldName = 'TUTAR'
             DataBinding.IsNullValueType = True
             Width = 149
           end
         end
         object cxGrid1Level1: TcxGridLevel
           Caption = 'cxGrid1Level1'
-          GridView = cxGrid1DBTableView1
+          GridView = vwHsrapor
           object cxGrid1Level2: TcxGridLevel
-            GridView = cxGrid1DBTableView3
+            GridView = vwHsraporDetay
           end
         end
       end
@@ -864,16 +753,14 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet3: TcxTabSheet
       Caption = 'Stok Hareket Raporu'
       ImageIndex = 2
-      ExplicitHeight = 501
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 946
-        Height = 493
+        Width = 947
+        Height = 491
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 495
         object cxGridDBTableView1: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -921,7 +808,6 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn3: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
-            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn4: TcxGridDBColumn
@@ -1102,16 +988,14 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet4: TcxTabSheet
       Caption = 'Cari Hareket Raporu'
       ImageIndex = 3
-      ExplicitHeight = 501
       object cxGrid3: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 946
-        Height = 493
+        Width = 947
+        Height = 491
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 495
         object cxGridDBTableView3: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1159,7 +1043,6 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn14: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
-            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn15: TcxGridDBColumn
@@ -1427,16 +1310,14 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet5: TcxTabSheet
       Caption = 'Gruplara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 4
-      ExplicitHeight = 501
       object cxGrid4: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 946
-        Height = 493
+        Width = 947
+        Height = 491
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 495
         object cxGridDBTableView6: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1484,7 +1365,6 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn34: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
-            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn35: TcxGridDBColumn
@@ -1712,16 +1592,14 @@ object frmRaporlar: TfrmRaporlar
     object cxTabSheet6: TcxTabSheet
       Caption = 'Markalara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 5
-      ExplicitHeight = 501
       object cxGrid5: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 946
-        Height = 493
+        Width = 947
+        Height = 491
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 495
         object cxGridDBTableView9: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1769,7 +1647,6 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn54: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
-            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn55: TcxGridDBColumn
@@ -2000,7 +1877,6 @@ object frmRaporlar: TfrmRaporlar
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 868
     object btnSonHafta: TcxButton
       AlignWithMargins = True
       Left = 239
@@ -2011,6 +1887,7 @@ object frmRaporlar: TfrmRaporlar
       Align = alLeft
       Caption = 'Son Hafta'
       TabOrder = 0
+      OnClick = btnSonHaftaClick
     end
     object btnDun: TcxButton
       AlignWithMargins = True
@@ -2022,6 +1899,7 @@ object frmRaporlar: TfrmRaporlar
       Align = alLeft
       Caption = 'D'#252'n'
       TabOrder = 1
+      OnClick = btnDunClick
     end
     object btnBugun: TcxButton
       AlignWithMargins = True
@@ -2033,6 +1911,7 @@ object frmRaporlar: TfrmRaporlar
       Align = alLeft
       Caption = 'Bug'#252'n'
       TabOrder = 2
+      OnClick = btnBugunClick
     end
     object btnSonAy: TcxButton
       AlignWithMargins = True
@@ -2044,6 +1923,7 @@ object frmRaporlar: TfrmRaporlar
       Align = alLeft
       Caption = 'Son Ay'
       TabOrder = 3
+      OnClick = btnSonAyClick
     end
     object Panel2: TPanel
       AlignWithMargins = True
@@ -2053,7 +1933,6 @@ object frmRaporlar: TfrmRaporlar
       Height = 33
       Align = alRight
       TabOrder = 4
-      ExplicitLeft = 520
       object btnFiltrele: TcxButton
         AlignWithMargins = True
         Left = 265
@@ -2063,8 +1942,11 @@ object frmRaporlar: TfrmRaporlar
         Align = alRight
         Caption = 'Filtrele'
         TabOrder = 0
+        OnClick = btnFiltreleClick
+        ExplicitLeft = 258
+        ExplicitTop = 9
       end
-      object dtBit: TcxDateEdit
+      object dtTarih2: TcxDateEdit
         AlignWithMargins = True
         Left = 131
         Top = 4
@@ -2074,7 +1956,7 @@ object frmRaporlar: TfrmRaporlar
         TabOrder = 1
         Width = 121
       end
-      object dtBas: TcxDateEdit
+      object dtTarih1: TcxDateEdit
         AlignWithMargins = True
         Left = 4
         Top = 4
@@ -2089,31 +1971,31 @@ object frmRaporlar: TfrmRaporlar
   object qryHsRapor: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'SELECT'
-      '  *'
+      'SELECT '
+      '(SELECT STOKADI from STOK WHERE ID = i.STOKID) AS stokAdi'
+      ',(select UNVAN FROM CARI WHERE ID = i.CARIID) AS cariUnvan'
       ' ,CASE'
-      '    WHEN cari_kodu <> '#39'PERAKENDE'#39' THEN (SELECT'
-      '          cari_isim'
-      '        FROM t_cari'
-      '        WHERE cari_kodu = h.cari_kodu)'
-      '    ELSE '#39'PERAKENDE'#39
-      '  END AS carisim'
+      '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      '  END AS strOdemeTuru'
+      ',* FROM ISLEM_H i WHERE ISLEMTURU = 1 AND ISNULL(STOKID,0) <> 0'
       ''
-      'FROM t_har h'
-      'WHERE tipi IN ('#39'HS'#39', '#39'HSV'#39', '#39'HSKK'#39')'
-      'and CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2')
+      
+        'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
+        'te) <= :tar2')
     Left = 24
     Top = 424
     ParamData = <
       item
         DataType = ftUnknown
         Name = 'tar1'
-        Value = Null
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'tar2'
-        Value = Null
+        Value = nil
       end>
   end
   object dsHsRapor: TDataSource
@@ -2125,7 +2007,19 @@ object frmRaporlar: TfrmRaporlar
   object qryHsRaporDet: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'SELECT * FROM t_har_det')
+      'SELECT '
+      '(SELECT STOKADI from STOK WHERE ID = i.STOKID) AS stokAdi'
+      ',(select UNVAN FROM CARI WHERE ID = i.CARIID) AS cariUnvan'
+      ' ,CASE'
+      '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      '  END AS strOdemeTuru'
+      ',* FROM ISLEM_H i WHERE ISLEMTURU = 1 AND ISNULL(STOKID,0) <> 0'
+      ''
+      
+        '-- and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS' +
+        ' date) <= :tar2')
     Left = 104
     Top = 432
   end
@@ -2136,8 +2030,8 @@ object frmRaporlar: TfrmRaporlar
     Top = 488
   end
   object pmGrdHsRapor: TPopupMenu
-    Left = 307
-    Top = 242
+    Left = 803
+    Top = 274
     object SatleminiSil1: TMenuItem
       Caption = 'Sat'#305#351' '#304#351'lemini Sil'
       ImageIndex = 9
@@ -2145,8 +2039,8 @@ object frmRaporlar: TfrmRaporlar
     end
   end
   object pmGrdHsRaporDet: TPopupMenu
-    Left = 403
-    Top = 266
+    Left = 683
+    Top = 314
   end
   object qryRaporStok: TUniQuery
     Connection = dmMain.UniConn
@@ -2294,7 +2188,7 @@ object frmRaporlar: TfrmRaporlar
       ''
       'end.')
     Left = 776
-    Top = 184
+    Top = 216
     Datasets = <
       item
         DataSet = rprDBhizlisatis
@@ -2663,8 +2557,8 @@ object frmRaporlar: TfrmRaporlar
       'carisim=carisim')
     DataSet = qryHsRapor
     BCDToCurrency = False
-    Left = 784
-    Top = 264
+    Left = 856
+    Top = 160
   end
   object frxDesigner1: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'
@@ -2685,15 +2579,59 @@ object frmRaporlar: TfrmRaporlar
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 706
-    Top = 176
+    Left = 610
+    Top = 312
   end
   object pmRaporTasarim: TPopupMenu
-    Left = 536
-    Top = 184
+    Left = 848
+    Top = 264
     object RaporTasarm1: TMenuItem
       Caption = 'Rapor Tasar'#305'm'
       OnClick = RaporTasarm1Click
     end
+  end
+  object qryRapor: TUniQuery
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'SELECT'
+      '  ISLEMTURU'
+      ' ,ODEMETURU'
+      ' ,CASE'
+      '    WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39
+      '    WHEN ISLEMTURU = 5 THEN '#39'Cariden Tahsilat'#39
+      '    WHEN ISLEMTURU = 6 THEN '#39'Cariye '#214'deme'#39
+      '    WHEN ISLEMTURU = 7 THEN '#39'Kasa Giri'#351#39
+      '    WHEN ISLEMTURU = 8 THEN '#39'Kasa '#199#305'k'#305#351#39
+      '  END AS strislemTuru'
+      ' ,CASE'
+      '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      '  END AS strOdemeTuru'
+      ' ,SUM(TUTAR) AS tutar'
+      ''
+      'FROM ISLEM_BASLIK'
+      
+        'WHERE CAST(ISLEMTARIHI AS date)>= :tar1 and CAST(ISLEMTARIHI AS ' +
+        'date) <= :tar2'
+      ''
+      'GROUP BY ISLEMTURU'
+      '        ,ODEMETURU'
+      ''
+      'ORDER BY ISLEMTURU'
+      '        ,ODEMETURU ASC')
+    Left = 96
+    Top = 184
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'tar1'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'tar2'
+        Value = nil
+      end>
   end
 end

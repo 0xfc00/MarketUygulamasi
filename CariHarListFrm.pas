@@ -3,15 +3,19 @@ unit CariHarListFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ListBaseFrm,uni,main,MainDM, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue,
-  cxGeometry, dxFramedControl, cxContainer, cxEdit, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, Data.DB, cxDBData, Vcl.Menus, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  MemDS, DBAccess, cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxTextEdit,
-  cxDBEdit, dxPanel;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm,uni,main,
+
+
+
+  Data.DB, cxGridCustomTableView,
+  cxGridDBTableView, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  DBAccess, cxGridLevel, cxGrid,
+  cxDBEdit, dxPanel, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxGeometry, dxFramedControl,
+  cxContainer, cxEdit, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS,
+  cxGridTableView, cxClasses, cxGridCustomView, cxTextEdit;
 
 type
   TfrmCariHarList = class(TfrmListBase)

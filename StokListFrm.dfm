@@ -361,7 +361,6 @@ object frmStokList: TfrmStokList
     Height = 463
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 8
     object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -422,6 +421,7 @@ object frmStokList: TfrmStokList
       object vwStoklarColumn3: TcxGridDBColumn
         Caption = 'Stok Adet'
         DataBinding.FieldName = 'MEVCUT'
+        DataBinding.IsNullValueType = True
       end
       object vwStoklarURUNMARKASI: TcxGridDBColumn
         Caption = 'Marka'

@@ -141,7 +141,6 @@ object frmCariSec: TfrmCariSec
     Height = 391
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -2
     object vmCariler: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways

@@ -5,16 +5,19 @@ interface
 
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxNavBarGroupItems, dxNavBarCollns, cxClasses,
-  dxNavBarBase, dxNavBar, System.ImageList, Vcl.ImgList, cxImageList,
-  dxNavBarStyles, Vcl.Menus, System.Actions, Vcl.ActnList, Uni, dxSkinsCore,
-  dxSkinBlue, dxCore, cxStyles, cxGridTableView, dxSkinsForm,
-  dxSkinOffice2019Colorful, LoginFrm, _vars, cxContainer, cxEdit, cxImage,
-  PosListFrm, dxGDIPlusClasses, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  Winapi.Windows, System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms, cxGraphics,
+  dxNavBarCollns,
+  dxNavBar,
+  dxNavBarStyles, Vcl.Menus, Vcl.ActnList, Uni,
+  cxStyles, cxGridTableView, dxSkinsForm,
+  LoginFrm, _vars, cxImage,
+  PosListFrm, cxButtons, Vcl.ExtCtrls,
   Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF,
-  Data.DB, MemDS, DBAccess;
+  Data.DB, DBAccess, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinBlue, cxContainer, cxEdit, dxCore, cxClasses,
+  System.Actions, System.ImageList, Vcl.ImgList, cxImageList, Vcl.StdCtrls,
+  dxGDIPlusClasses, dxNavBarBase;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -103,7 +106,7 @@ type
     nbiSatisFaturasi: TdxNavBarItem;
     acHizliSatis: TAction;
     nbiHizliSatis: TdxNavBarItem;
-    NavBarSolGroup1: TdxNavBarGroup;
+    nbgRaporlar: TdxNavBarGroup;
     nbiKasaGiris: TdxNavBarItem;
     nbiKasaCikis: TdxNavBarItem;
     nbiPosTanim: TdxNavBarItem;
@@ -127,6 +130,9 @@ type
     cxButton7: TcxButton;
     cxButton8: TcxButton;
     cxButton9: TcxButton;
+    nbiRaporlar: TdxNavBarItem;
+    acRaporlar: TAction;
+    cxButton1: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -153,6 +159,7 @@ type
     procedure acKasaPosHarListExecute(Sender: TObject);
     procedure acKullaniciYonetimiExecute(Sender: TObject);
     procedure acHizliSatisButonlariExecute(Sender: TObject);
+    procedure acRaporlarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -173,7 +180,7 @@ implementation
 uses
   YeniStokKartiFrm, TanimlarFrm, MainDM,StokListFrm, StokSecFrm, StokHareketEkleFrm, StokHarListFrm, YeniCariKartFrm,
   CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm,
-  _cons, frmHizliSatisF, frmKullanicilarF, _func;
+  _cons, frmHizliSatisF, frmKullanicilarF, _func, frmRaporlarF;
 
 {$R *.dfm}
 
@@ -582,6 +589,12 @@ end;
 procedure TfrmMain.acPosTanimlariExecute(Sender: TObject);
 begin
   with TfrmPosList.Create(nil) do
+    showmodal;
+end;
+
+procedure TfrmMain.acRaporlarExecute(Sender: TObject);
+begin
+  with TfrmRaporlar.Create(nil) do
     showmodal;
 end;
 

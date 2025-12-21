@@ -3,13 +3,15 @@ unit StokHareketEkleFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, main, MainDM, dxSkinsCore,
-  dxSkinBlue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,  cxControls, cxGeometry,
-  dxFramedControl, Data.DB, MemDS, DBAccess, Uni, dxPanel, cxContainer, cxEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalc, cxDBEdit, cxTextEdit, Vcl.Mask,
-  Vcl.DBCtrls, cxCalendar, _cons, _func;
+  Winapi.Messages, System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm, main, MainDM,
+
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  Data.DB, MemDS, DBAccess, Uni, dxPanel, cxContainer,
+  cxDBEdit, cxTextEdit,
+  _cons, _func, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxGeometry, dxFramedControl,
+  cxEdit, cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar;
 
 type
   TfrmStokHareketEkle = class(TfrmKartBase)

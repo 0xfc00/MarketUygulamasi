@@ -387,50 +387,60 @@ object frmStokHarList: TfrmStokHarList
       object vwISLEMTARIHI: TcxGridDBColumn
         Caption = #304#351'lem Tarihi'
         DataBinding.FieldName = 'ISLEMTARIHI'
+        DataBinding.IsNullValueType = True
         Width = 126
       end
       object vwGIREN: TcxGridDBColumn
         Caption = 'Giren'
         DataBinding.FieldName = 'GIREN'
+        DataBinding.IsNullValueType = True
         Width = 85
       end
       object vwCIKAN: TcxGridDBColumn
         Caption = #199#305'kan'
         DataBinding.FieldName = 'CIKAN'
+        DataBinding.IsNullValueType = True
         Width = 85
       end
       object vwBIRIMADI: TcxGridDBColumn
         Caption = 'Birim'
         DataBinding.FieldName = 'BIRIMADI'
+        DataBinding.IsNullValueType = True
         Width = 61
       end
       object vwBIRIMFIYATI: TcxGridDBColumn
         Caption = 'Birim Fiyat'
         DataBinding.FieldName = 'BIRIMFIYAT'
+        DataBinding.IsNullValueType = True
         Width = 85
       end
       object vwTUTAR: TcxGridDBColumn
         Caption = 'Tutar'
         DataBinding.FieldName = 'TUTAR'
+        DataBinding.IsNullValueType = True
         Width = 85
       end
       object vwCARIID: TcxGridDBColumn
         Caption = 'Cari'
         DataBinding.FieldName = 'cariadi'
+        DataBinding.IsNullValueType = True
         Width = 151
       end
       object vwACIKLAMA: TcxGridDBColumn
         Caption = 'A'#231#305'klama'
         DataBinding.FieldName = 'ACIKLAMA1'
+        DataBinding.IsNullValueType = True
         Width = 85
       end
       object vwColumn1: TcxGridDBColumn
         Caption = #304#351'lem'
         DataBinding.FieldName = 'strislemTuru'
+        DataBinding.IsNullValueType = True
       end
       object vwColumn2: TcxGridDBColumn
         Caption = #214'deme T'#252'r'#252
         DataBinding.FieldName = 'strOdemeTuru'
+        DataBinding.IsNullValueType = True
       end
     end
     object cxGrid1Level1: TcxGridLevel

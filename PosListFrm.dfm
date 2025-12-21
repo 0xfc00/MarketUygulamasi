@@ -208,7 +208,6 @@ object frmPosList: TfrmPosList
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnSilClick
-      ExplicitLeft = 110
     end
   end
   object cxGrid1: TcxGrid

@@ -3,12 +3,14 @@ unit DbAyarlarFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
-  dxSkinBlue, Vcl.Menus, Data.DB, DBAccess, Uni, cxButtons, cxMaskEdit,
+  System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+
+  DBAccess, Uni, cxButtons,
   cxDropDownEdit, cxLabel, cxTextEdit,
-  System.IniFiles, MemDS;
+  System.IniFiles, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue,
+  Vcl.Menus, Data.DB, MemDS, cxMaskEdit;
 
 type
   TfrmDbAyarlar = class(TForm)

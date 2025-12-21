@@ -3,10 +3,9 @@ unit KartBaseFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseFrm, Vcl.StdCtrls, GradientLabel,
-  Vcl.ExtCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
-  cxButtons;
+  System.Classes,
+  Vcl.Controls, Vcl.Forms, BaseFrm, GradientLabel,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TfrmKartBase = class(TfrmBase)

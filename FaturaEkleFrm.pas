@@ -3,10 +3,11 @@ unit FaturaEkleFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,KartBaseFrm, Main, MainDM, dxSkinsCore,
-  dxSkinBlue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons;
+  System.SysUtils, System.Classes,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm,
+
+  Vcl.StdCtrls, cxButtons, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus;
 
 type
   TfrmFaturaEkle = class(TfrmKartBase)
@@ -26,7 +27,7 @@ implementation
 
 {$R *.dfm}
 
-uses _cons;
+
 
 procedure TfrmFaturaEkle.FormShow(Sender: TObject);
 begin

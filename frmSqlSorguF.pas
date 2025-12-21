@@ -3,14 +3,18 @@ unit frmSqlSorguF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges, Data.DB, cxDBData,
-  DBAccess,  MemDS, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.StdCtrls, cxButtons, cxGroupBox, cxTextEdit, cxMemo, dxSkinsCore,
-  dxSkinBlue, dxScrollbarAnnotations, Uni, MainDM;
+  System.Classes,
+  Vcl.Controls, Vcl.Forms,
+
+  Data.DB,
+  DBAccess,  cxGridLevel,
+  cxGridCustomTableView, cxGridDBTableView, cxGrid,
+  cxButtons, cxGroupBox, cxMemo,
+  Uni, MainDM, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS, Vcl.StdCtrls, cxTextEdit,
+  cxClasses, cxGridCustomView, cxGridTableView;
 
 type
   TfrmSqlSorgu = class(TForm)
@@ -40,7 +44,7 @@ implementation
 
 {$R *.dfm}
 
-uses Main;
+
 
 
 

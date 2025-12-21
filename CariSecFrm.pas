@@ -3,14 +3,18 @@ unit CariSecFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, dxSkinsCore, dxSkinBlue,
-  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxControls,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, MemDS,
-  DBAccess, Uni,Main,MainDM;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm,
+
+
+  Data.DB, cxGridLevel,
+  cxGridCustomTableView, cxGridDBTableView,
+  cxGrid, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  Uni,Main,MainDM, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, MemDS, DBAccess, cxGridTableView, cxClasses,
+  cxGridCustomView;
 
 type
   TfrmCariSec = class(TfrmKartBase)

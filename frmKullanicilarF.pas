@@ -3,15 +3,19 @@ unit frmKullanicilarF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges, Data.DB, cxDBData,
-  cxCheckBox, cxDBEdit, cxLabel, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  Vcl.StdCtrls, cxButtons, cxGroupBox, DBAccess, MemDS, cxTextEdit,
-  dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations, Uni, KartBaseFrm,
-  frmSqlSorguF;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms,
+
+  Data.DB,
+  cxDBEdit, cxLabel, cxGridLevel,
+  cxGridDBTableView, cxGrid,
+  Vcl.StdCtrls, cxButtons, cxGroupBox, MemDS,
+  Uni, KartBaseFrm,
+  frmSqlSorguF, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, DBAccess, cxTextEdit, cxCheckBox,
+  cxGridCustomTableView, cxGridTableView, cxClasses, cxGridCustomView;
 
 type
   TfrmKullanicilar = class(TfrmKartBase)
@@ -113,7 +117,7 @@ implementation
 
 {$R *.dfm}
 
-uses _func, MainDM, Main;
+uses _func, Main;
 
 var
   lblSayac : integer = 0;

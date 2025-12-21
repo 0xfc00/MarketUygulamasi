@@ -3,14 +3,18 @@ unit PosListFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ListBaseFrm, dxSkinsCore, dxSkinBlue,
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm,
+
+
+  Data.DB,
+  MemDS, Uni, cxGridLevel, cxGridCustomTableView,
+  cxGridDBTableView, cxGrid,
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, _func, dxSkinsCore, dxSkinBlue,
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxControls,
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, System.Actions,
-  Vcl.ActnList, MemDS, DBAccess, Uni, cxGridLevel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, _func;
+  dxDateRanges, dxScrollbarAnnotations, cxDBData, DBAccess, cxGridTableView,
+  cxClasses, cxGridCustomView;
 
 type
   TfrmPosList = class(TfrmListBase)

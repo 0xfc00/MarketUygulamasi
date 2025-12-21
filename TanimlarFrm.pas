@@ -3,14 +3,18 @@ unit TanimlarFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, dxBarBuiltInMenu,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
-  cxEdit, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.ExtCtrls, cxGridLevel, cxClasses,
-  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGrid, cxGroupBox, cxPC, MemDS, DBAccess, Uni, dxSkinsCore, dxSkinBlue, MainDM;
+  System.SysUtils, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, KartBaseFrm,
+  cxContainer,
+  cxEdit,
+  Data.DB, Vcl.Menus,
+  Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.ExtCtrls, cxGridLevel,
+  cxGridDBTableView,
+  cxGrid, cxPC, Uni, MainDM, dxBarBuiltInMenu, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, MemDS, DBAccess, cxGridCustomTableView,
+  cxGridTableView, cxClasses, cxGridCustomView;
 
 type
   TfrmTanimlar = class(TfrmKartBase)

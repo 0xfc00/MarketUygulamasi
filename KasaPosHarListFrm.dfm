@@ -13,7 +13,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pcAna: TcxPageControl
@@ -26,8 +25,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ExplicitLeft = 8
-    ExplicitTop = 42
     ClientRectBottom = 434
     ClientRectLeft = 2
     ClientRectRight = 863
@@ -35,10 +32,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 860
-      ExplicitHeight = 411
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -47,8 +40,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 403
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 854
-        ExplicitHeight = 405
         object vwKasa: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -112,10 +103,10 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 860
-      ExplicitHeight = 411
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -124,8 +115,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 403
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 854
-        ExplicitHeight = 405
         object vwPos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>

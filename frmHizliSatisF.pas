@@ -3,17 +3,21 @@ unit frmHizliSatisF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, strutils,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges, Data.DB, cxDBData,
-  dxBarBuiltInMenu, System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList,
-  cxImageList, Vcl.Touch.Keyboard, dxGDIPlusClasses, Vcl.ExtCtrls, cxImage,
+  Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, strutils,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls,
+  cxContainer, cxEdit, Vcl.Menus, cxCustomData,
+  Data.DB,
+  Vcl.ActnList,
+  Vcl.Touch.Keyboard, Vcl.ExtCtrls, cxImage,
   cxLabel, cxPC, Vcl.StdCtrls, cxGridLevel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
-  DBAccess, frxClass, frxDBSet, dxSkinsCore, dxSkinBlue, dxScrollbarAnnotations,
-  Uni, BaseFrm, MainDM, PosListFrm, KasaPosHarListFrm;
+  cxGridTableView, cxGridDBTableView, cxGrid,
+  cxButtons, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
+  DBAccess, frxClass, frxDBSet,
+  Uni, BaseFrm, PosListFrm, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBlue, cxStyles, cxFilter, cxData, cxDataStorage, cxNavigator,
+  dxDateRanges, dxScrollbarAnnotations, cxDBData, dxBarBuiltInMenu,
+  System.Actions, System.ImageList, Vcl.ImgList, cxImageList, dxGDIPlusClasses,
+  cxClasses, cxGridCustomView, cxMaskEdit;
 
 type
   TfrmHizliSatis = class(TfrmBase)
