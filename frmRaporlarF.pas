@@ -18,7 +18,23 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, Vcl.ComCtrls, dxCore, cxDateUtils, MemDS,
   DBAccess, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxGridCustomTableView,
-  cxGridTableView, cxClasses, cxGridCustomView;
+  cxGridTableView, cxClasses, cxGridCustomView, dxSkinBasic, dxSkinBlack,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
+  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TfrmRaporlar = class(TfrmListBase)
@@ -30,8 +46,8 @@ type
     cxGroupBox3: TcxGroupBox;
     cxGroupBox7: TcxGroupBox;
     cxGroupBox13: TcxGroupBox;
-    cxTabSheet3: TcxTabSheet;
-    cxTabSheet4: TcxTabSheet;
+    shStokHarRaporu: TcxTabSheet;
+    shCarHarRapor: TcxTabSheet;
     qryHsRapor: TUniQuery;
     dsHsRapor: TDataSource;
     cxGrid1: TcxGrid;
@@ -71,17 +87,16 @@ type
     cxGridDBColumn11: TcxGridDBColumn;
     qryRaporStok: TUniQuery;
     dsRaporStok: TDataSource;
-    cxGrid2DBTableView1: TcxGridDBTableView;
+    vwStokHar: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
-    cxGrid2DBTableView1girisCikis: TcxGridDBColumn;
-    cxGrid2DBTableView1stok_kodu: TcxGridDBColumn;
-    cxGrid2DBTableView1stok_adi: TcxGridDBColumn;
-    cxGrid2DBTableView1adet: TcxGridDBColumn;
-    cxGrid2DBTableView1tarih: TcxGridDBColumn;
-    cxGrid2DBTableView1afiyat: TcxGridDBColumn;
-    cxGrid2DBTableView1sfiyat: TcxGridDBColumn;
-    cxGrid2DBTableView1toplam: TcxGridDBColumn;
-    cxGrid2DBTableView1aciklama: TcxGridDBColumn;
+    vwStokHargirisCikis: TcxGridDBColumn;
+    vwStokHarstok_adi: TcxGridDBColumn;
+    vwStokHaradet: TcxGridDBColumn;
+    vwStokHartarih: TcxGridDBColumn;
+    vwStokHarafiyat: TcxGridDBColumn;
+    vwStokHarsfiyat: TcxGridDBColumn;
+    vwStokHartoplam: TcxGridDBColumn;
+    vwStokHaraciklama: TcxGridDBColumn;
     btnYazdir: TcxButton;
     qryRaporCari: TUniQuery;
     dsRaporCari: TDataSource;
@@ -109,18 +124,16 @@ type
     cxGridDBColumn29: TcxGridDBColumn;
     cxGridDBColumn30: TcxGridDBColumn;
     cxGridDBColumn31: TcxGridDBColumn;
-    cxGrid3DBTableView1: TcxGridDBTableView;
+    vwCariHarRapor: TcxGridDBTableView;
     cxGrid3Level1: TcxGridLevel;
-    cxGrid3DBTableView1girisCikis: TcxGridDBColumn;
-    cxGrid3DBTableView1cari_kodu: TcxGridDBColumn;
-    cxGrid3DBTableView1Cari_isim: TcxGridDBColumn;
-    cxGrid3DBTableView1tarih: TcxGridDBColumn;
-    cxGrid3DBTableView1tutar: TcxGridDBColumn;
-    cxGrid3DBTableView1odeme_nakit: TcxGridDBColumn;
-    cxGrid3DBTableView1odeme_kk: TcxGridDBColumn;
-    cxGrid3DBTableView1odeme_cari: TcxGridDBColumn;
-    cxGrid3DBTableView1aciklama: TcxGridDBColumn;
-    cxTabSheet5: TcxTabSheet;
+    vwCariHarRaporgirisCikis: TcxGridDBColumn;
+    vwCariHarRaporCari_isim: TcxGridDBColumn;
+    vwCariHarRaportarih: TcxGridDBColumn;
+    vwCariHarRaportutar: TcxGridDBColumn;
+    vwCariHarRaporodeme_nakit: TcxGridDBColumn;
+    vwCariHarRaporodeme_kk: TcxGridDBColumn;
+    vwCariHarRaporaciklama: TcxGridDBColumn;
+    hsGrupSatisRapor: TcxTabSheet;
     cxGrid4: TcxGrid;
     cxGridDBTableView6: TcxGridDBTableView;
     cxGridDBColumn32: TcxGridDBColumn;
@@ -147,13 +160,13 @@ type
     cxGridDBColumn51: TcxGridDBColumn;
     qryHsRaporStokGrup: TUniQuery;
     dsHsRaporStokGrup: TDataSource;
-    cxGrid4DBTableView1: TcxGridDBTableView;
+    vwGrupRapor: TcxGridDBTableView;
     cxGrid4Level1: TcxGridLevel;
-    cxGrid4DBTableView1toplam: TcxGridDBColumn;
-    cxGrid4DBTableView1grup_: TcxGridDBColumn;
+    vwGrupRaportoplam: TcxGridDBColumn;
+    vwGrupRaporgrup_: TcxGridDBColumn;
     qryHsRaporStokMarka: TUniQuery;
     dsHsRaporStokMarka: TDataSource;
-    cxTabSheet6: TcxTabSheet;
+    hsMarkaSatisRapor: TcxTabSheet;
     cxGrid5: TcxGrid;
     cxGridDBTableView9: TcxGridDBTableView;
     cxGridDBColumn52: TcxGridDBColumn;
@@ -225,6 +238,7 @@ type
     cxLabel17: TcxLabel;
     lblOdemeler: TcxLabel;
     vwHsraporColumn1: TcxGridDBColumn;
+    vwStokHarColumn1: TcxGridDBColumn;
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SatleminiSil1Click(Sender: TObject);
@@ -235,6 +249,7 @@ type
     procedure btnSonHaftaClick(Sender: TObject);
     procedure btnSonAyClick(Sender: TObject);
     procedure btnFiltreleClick(Sender: TObject);
+    procedure pgChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -276,6 +291,18 @@ var
   toplamSatis,nakitSatis, kkSatis,veresiyeSatis, kasaGiris, kasaCikis,
   tahsilatlarNakit, tahsilatlarKk, odemelerNakit, odemelerKk : Currency;
   fs: TFormatSettings;
+  procedure labelleriDoldur();
+  begin
+    lblToplamSatis.Caption       := FormatCurr('#,##0.00', toplamSatis, fs);
+    lblNakitSatis.Caption        := FormatCurr('#,##0.00', nakitSatis, fs);
+    lblkkSatis.Caption           := FormatCurr('#,##0.00', kkSatis, fs);
+    lblVeresiyeSatis.Caption     := FormatCurr('#,##0.00', veresiyeSatis, fs);
+    lblKasaGiris.Caption         := FormatCurr('#,##0.00', kasaGiris, fs);
+    lblKasaCikis.Caption         := FormatCurr('#,##0.00', kasaCikis, fs);
+    lbltahsilatlar.Caption       := FormatCurr('#,##0.00', tahsilatlarNakit + tahsilatlarkk, fs);
+    lblOdemeler.Caption          := FormatCurr('#,##0.00', odemelerNakit + odemelerKk, fs);
+    lblKasaNakit.Caption         := FormatCurr('#,##0.00', kasaGiris - kasaCikis, fs);
+  end;
 begin
   {$REGION 'Gün Sonu'}
   toplamSatis		   := 0;
@@ -288,6 +315,8 @@ begin
   tahsilatlarKk    := 0;
   odemelerNakit		 := 0;
   odemelerKk       := 0;
+
+  labelleriDoldur;
 
   if pg.ActivePage = shOzet then
   begin
@@ -346,15 +375,7 @@ begin
     fs.ThousandSeparator := '.';
     fs.DecimalSeparator  := ',';
 
-    lblToplamSatis.Caption       := FormatCurr('#,##0.00', toplamSatis, fs);
-    lblNakitSatis.Caption        := FormatCurr('#,##0.00', nakitSatis, fs);
-    lblkkSatis.Caption           := FormatCurr('#,##0.00', kkSatis, fs);
-    lblVeresiyeSatis.Caption     := FormatCurr('#,##0.00', veresiyeSatis, fs);
-    lblKasaGiris.Caption         := FormatCurr('#,##0.00', kasaGiris, fs);
-    lblKasaCikis.Caption         := FormatCurr('#,##0.00', kasaCikis, fs);
-    lbltahsilatlar.Caption       := FormatCurr('#,##0.00', tahsilatlarNakit + tahsilatlarkk, fs);
-    lblOdemeler.Caption          := FormatCurr('#,##0.00', odemelerNakit + odemelerKk, fs);
-    lblKasaNakit.Caption         := FormatCurr('#,##0.00', kasaGiris - kasaCikis, fs);
+    labelleriDoldur;
 
   end;
 
@@ -364,7 +385,7 @@ begin
   begin
     with qryHsRapor do
     begin
-      close;                                       asd
+      close;
       ParamByName('tar1').AsDate := dtTarih1.Date;
       ParamByName('tar2').AsDate := dtTarih2.Date;
       open;
@@ -373,7 +394,7 @@ begin
     vwHsrapor.ApplyBestFit(nil);
   end;
 
-  if pg.ActivePageIndex = 2 then
+  if pg.ActivePage = shStokHarRaporu then
   begin
     with qryRaporStok do
     begin
@@ -381,10 +402,11 @@ begin
       ParamByName('tar1').AsDate := dtTarih1.Date;
       ParamByName('tar2').AsDate := dtTarih2.Date;
       open;
+      vwStokHar.ApplyBestFit(nil);
     end;
   end;
 
-  if pg.ActivePageIndex = 3 then
+  if pg.ActivePage = shCarHarRapor then
   begin
     with qryRaporCari do
     begin
@@ -392,10 +414,11 @@ begin
       ParamByName('tar1').AsDate := dtTarih1.Date;
       ParamByName('tar2').AsDate := dtTarih2.Date;
       open;
+      vwCariHarRapor.ApplyBestFit(nil);
     end;
   end;
 
-  if pg.ActivePageIndex = 4 then
+  if pg.ActivePage = hsGrupSatisRapor then
   begin
     with qryHsRaporStokGrup do
     begin
@@ -406,7 +429,7 @@ begin
     end;
   end;
 
-  if pg.ActivePageIndex = 5 then
+  if pg.ActivePage = hsMarkaSatisRapor then
   begin
     with qryHsRaporStokMarka do
     begin
@@ -472,6 +495,12 @@ begin
   btnBugunClick(sender);
 end;
 
+procedure TfrmRaporlar.pgChange(Sender: TObject);
+begin
+  inherited;
+  btnFiltreleClick(sender);
+end;
+
 procedure TfrmRaporlar.RaporTasarm1Click(Sender: TObject);
 begin
   if not y.admin then
@@ -487,18 +516,18 @@ procedure TfrmRaporlar.SatleminiSil1Click(Sender: TObject);
 begin
   if qryHsRapor.IsEmpty then exit;
 
-  if not y.admin then
-    if not y.STOKHARSIL then
-    begin
-      MesajBilgi('Bu Ýþlem için Yetkiniz Yoktur..');
-      exit;
-    end;
-
-  if MesajSor('Seçili satýþ Ýþlemi ve Ona Bðalý hareketler Silinecek. Eminmisiniz?') then
-  begin
-    qryHsRapor.Delete;
-    qryHsRapor.Refresh;
-  end;
+//  if not y.admin then
+//    if not y.STOKHARSIL then
+//    begin
+//      MesajBilgi('Bu Ýþlem için Yetkiniz Yoktur..');
+//      exit;
+//    end;
+//
+//  if MesajSor('Seçili satýþ Ýþlemi ve Ona Bðalý hareketler Silinecek. Eminmisiniz?') then
+//  begin
+//    qryHsRapor.Delete;
+//    qryHsRapor.Refresh;
+//  end;
 end;
 
 end.

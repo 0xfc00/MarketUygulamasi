@@ -17,7 +17,24 @@ uses
   Data.DB, DBAccess, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   dxSkinsCore, dxSkinBlue, cxContainer, cxEdit, dxCore, cxClasses,
   System.Actions, System.ImageList, Vcl.ImgList, cxImageList, Vcl.StdCtrls,
-  dxGDIPlusClasses, dxNavBarBase;
+  dxGDIPlusClasses, dxNavBarBase, dxSkinBasic, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinBlack,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
+  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGroupBox, dxCustomTileControl,
+  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -113,11 +130,7 @@ type
     nbiKasaIslemListesi: TdxNavBarItem;
     cxImage1: TcxImage;
     acPosTanimlari: TAction;
-    Panel1: TPanel;
-    cxButton2: TcxButton;
-    cxButton3: TcxButton;
     StatusBar1: TStatusBar;
-    btnKapat: TcxButton;
     acKasaGiris: TAction;
     acKasaCikis: TAction;
     acKasaPosHarList: TAction;
@@ -125,14 +138,39 @@ type
     nbiKullanicilar: TdxNavBarItem;
     acHizliSatisButonlari: TAction;
     nbiHizlisatisButonlari: TdxNavBarItem;
-    cxButton5: TcxButton;
-    cxButton6: TcxButton;
-    cxButton7: TcxButton;
-    cxButton8: TcxButton;
-    cxButton9: TcxButton;
     nbiRaporlar: TdxNavBarItem;
     acRaporlar: TAction;
-    cxButton1: TcxButton;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    cxButton4: TcxButton;
+    Panel5: TPanel;
+    cxButton10: TcxButton;
+    Panel6: TPanel;
+    cxButton11: TcxButton;
+    Panel7: TPanel;
+    cxButton12: TcxButton;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    cxButton13: TcxButton;
+    Panel10: TPanel;
+    cxButton14: TcxButton;
+    Panel11: TPanel;
+    cxButton15: TcxButton;
+    Panel12: TPanel;
+    cxButton16: TcxButton;
+    Panel13: TPanel;
+    Panel14: TPanel;
+    cxButton17: TcxButton;
+    Panel15: TPanel;
+    cxButton18: TcxButton;
+    Panel16: TPanel;
+    cxButton19: TcxButton;
+    Panel17: TPanel;
+    cxButton20: TcxButton;
+    Panel1: TPanel;
+    btnKapat: TcxButton;
+    btnKullaniciDegistir: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);

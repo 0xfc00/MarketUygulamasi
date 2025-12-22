@@ -8,7 +8,7 @@ type
                        HIT_KASIYER_SATIS,       // 1
                        HIT_STOK_GIRIS ,         // 2
                        HIT_STOK_CIKIS,          // 3
-                       HIT_CARI_SATIS ,         // 4
+                       HIT_CARI_SATIS_UPTAL ,   // 4
                        HIT_CARIDEN_TAHSILAT ,   // 5
                        HIT_CARIYE_ODEME,        // 6
                        HIT_KASA_GIRIS,          // 7

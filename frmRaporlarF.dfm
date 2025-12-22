@@ -131,18 +131,16 @@ object frmRaporlar: TfrmRaporlar
     Height = 527
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = shHs
+    Properties.ActivePage = shOzet
     Properties.CustomButtons.Buttons = <>
-    ExplicitLeft = 8
-    ClientRectBottom = 522
-    ClientRectLeft = 2
-    ClientRectRight = 955
-    ClientRectTop = 25
+    OnChange = pgChange
+    ClientRectBottom = 523
+    ClientRectLeft = 4
+    ClientRectRight = 956
+    ClientRectTop = 28
     object shOzet: TcxTabSheet
       Caption = 'G'#252'n Sonu Raporu'
       ImageIndex = 0
-      ExplicitLeft = 4
-      ExplicitTop = 27
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -152,7 +150,7 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 0
         Height = 86
-        Width = 947
+        Width = 946
         object cxGroupBox4: TPanel
           AlignWithMargins = True
           Left = 234
@@ -349,7 +347,7 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 1
         Height = 86
-        Width = 947
+        Width = 946
         object Panel3: TPanel
           AlignWithMargins = True
           Left = 6
@@ -542,7 +540,7 @@ object frmRaporlar: TfrmRaporlar
         Style.BorderStyle = ebsNone
         TabOrder = 2
         Height = 118
-        Width = 947
+        Width = 946
         object cxGroupBox17: TPanel
           AlignWithMargins = True
           Left = 6
@@ -600,12 +598,11 @@ object frmRaporlar: TfrmRaporlar
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
-        Height = 491
+        Width = 946
+        Height = 489
         Align = alClient
         TabOrder = 0
         object vwHsrapor: TcxGridDBTableView
-          PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -651,6 +648,7 @@ object frmRaporlar: TfrmRaporlar
           object vwHsraportutar: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'TUTAR'
+            DataBinding.IsNullValueType = True
             Width = 158
           end
           object vwHsraporColumn1: TcxGridDBColumn
@@ -750,15 +748,15 @@ object frmRaporlar: TfrmRaporlar
         end
       end
     end
-    object cxTabSheet3: TcxTabSheet
+    object shStokHarRaporu: TcxTabSheet
       Caption = 'Stok Hareket Raporu'
       ImageIndex = 2
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
-        Height = 491
+        Width = 946
+        Height = 489
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -808,6 +806,7 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn3: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
+            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn4: TcxGridDBColumn
@@ -893,7 +892,7 @@ object frmRaporlar: TfrmRaporlar
             Width = 149
           end
         end
-        object cxGrid2DBTableView1: TcxGridDBTableView
+        object vwStokHar: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -924,76 +923,75 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.GroupByBox = False
           OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-          object cxGrid2DBTableView1girisCikis: TcxGridDBColumn
-            Caption = 'T'#252'r'#252
-            DataBinding.FieldName = 'girisCikis'
-            DataBinding.IsNullValueType = True
-            Width = 59
-          end
-          object cxGrid2DBTableView1stok_kodu: TcxGridDBColumn
-            Caption = 'Stok Kodu'
-            DataBinding.FieldName = 'stok_kodu'
-            DataBinding.IsNullValueType = True
-            Width = 127
-          end
-          object cxGrid2DBTableView1stok_adi: TcxGridDBColumn
-            Caption = 'Stok Ad'#305
-            DataBinding.FieldName = 'stok_adi'
-            DataBinding.IsNullValueType = True
-            Width = 205
-          end
-          object cxGrid2DBTableView1adet: TcxGridDBColumn
-            Caption = 'Adet'
-            DataBinding.FieldName = 'adet'
-            DataBinding.IsNullValueType = True
-            Width = 75
-          end
-          object cxGrid2DBTableView1tarih: TcxGridDBColumn
+          object vwStokHartarih: TcxGridDBColumn
             Caption = 'Tarih'
-            DataBinding.FieldName = 'tarih'
+            DataBinding.FieldName = 'ISLEMTARIHI'
             DataBinding.IsNullValueType = True
             Width = 128
           end
-          object cxGrid2DBTableView1afiyat: TcxGridDBColumn
+          object vwStokHargirisCikis: TcxGridDBColumn
+            Caption = 'T'#252'r'#252
+            DataBinding.FieldName = 'sttislemTuru'
+            DataBinding.IsNullValueType = True
+            Width = 59
+          end
+          object vwStokHarstok_adi: TcxGridDBColumn
+            Caption = 'Stok Ad'#305
+            DataBinding.FieldName = 'stokAdi'
+            DataBinding.IsNullValueType = True
+            Width = 205
+          end
+          object vwStokHarColumn1: TcxGridDBColumn
+            Caption = 'Giren'
+            DataBinding.FieldName = 'GIREN'
+            DataBinding.IsNullValueType = True
+          end
+          object vwStokHaradet: TcxGridDBColumn
+            Caption = #199#305'kan'
+            DataBinding.FieldName = 'CIKAN'
+            DataBinding.IsNullValueType = True
+            Width = 75
+          end
+          object vwStokHarafiyat: TcxGridDBColumn
             Caption = 'A.Fiyat'
-            DataBinding.FieldName = 'afiyat'
+            DataBinding.FieldName = 'ALISFIYATI'
             DataBinding.IsNullValueType = True
             Width = 86
           end
-          object cxGrid2DBTableView1sfiyat: TcxGridDBColumn
+          object vwStokHarsfiyat: TcxGridDBColumn
             Caption = 'S.Fiyat'
-            DataBinding.FieldName = 'sfiyat'
+            DataBinding.FieldName = 'BIRIMFIYAT'
             DataBinding.IsNullValueType = True
             Width = 88
           end
-          object cxGrid2DBTableView1toplam: TcxGridDBColumn
+          object vwStokHartoplam: TcxGridDBColumn
             Caption = 'Toplam'
-            DataBinding.FieldName = 'toplam'
+            DataBinding.FieldName = 'TUTAR'
             DataBinding.IsNullValueType = True
             Width = 91
           end
-          object cxGrid2DBTableView1aciklama: TcxGridDBColumn
+          object vwStokHaraciklama: TcxGridDBColumn
             Caption = 'A'#231#305'klama'
-            DataBinding.FieldName = 'aciklama'
+            DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
             Width = 85
           end
         end
         object cxGrid2Level1: TcxGridLevel
           Caption = 'cxGrid2Level1'
-          GridView = cxGrid2DBTableView1
+          GridView = vwStokHar
         end
       end
     end
-    object cxTabSheet4: TcxTabSheet
+    object shCarHarRapor: TcxTabSheet
       Caption = 'Cari Hareket Raporu'
       ImageIndex = 3
       object cxGrid3: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
-        Height = 491
+        Width = 946
+        Height = 489
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView3: TcxGridDBTableView
@@ -1043,6 +1041,7 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn14: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
+            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn15: TcxGridDBColumn
@@ -1215,7 +1214,7 @@ object frmRaporlar: TfrmRaporlar
             Width = 85
           end
         end
-        object cxGrid3DBTableView1: TcxGridDBTableView
+        object vwCariHarRapor: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -1246,76 +1245,64 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.GroupByBox = False
           OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-          object cxGrid3DBTableView1girisCikis: TcxGridDBColumn
-            Caption = 'T'#252'r'#252
-            DataBinding.FieldName = 'girisCikis'
-            DataBinding.IsNullValueType = True
-            Width = 67
-          end
-          object cxGrid3DBTableView1cari_kodu: TcxGridDBColumn
-            Caption = 'Cari Kodu'
-            DataBinding.FieldName = 'cari_kodu'
-            DataBinding.IsNullValueType = True
-            Width = 92
-          end
-          object cxGrid3DBTableView1Cari_isim: TcxGridDBColumn
-            Caption = 'Cari '#304'sim'
-            DataBinding.FieldName = 'Cari_isim'
-            DataBinding.IsNullValueType = True
-            Width = 298
-          end
-          object cxGrid3DBTableView1tarih: TcxGridDBColumn
+          object vwCariHarRaportarih: TcxGridDBColumn
             Caption = 'Tarih'
-            DataBinding.FieldName = 'tarih'
+            DataBinding.FieldName = 'ISLEMTARIHI'
             DataBinding.IsNullValueType = True
             Width = 124
           end
-          object cxGrid3DBTableView1tutar: TcxGridDBColumn
-            Caption = 'Tutar'
-            DataBinding.FieldName = 'tutar'
+          object vwCariHarRaporgirisCikis: TcxGridDBColumn
+            Caption = 'T'#252'r'#252
+            DataBinding.FieldName = 'sttislemTuru'
             DataBinding.IsNullValueType = True
-            Width = 76
+            Width = 67
           end
-          object cxGrid3DBTableView1odeme_nakit: TcxGridDBColumn
-            Caption = #214'.Nakit'
-            DataBinding.FieldName = 'odeme_nakit'
+          object vwCariHarRaporCari_isim: TcxGridDBColumn
+            Caption = 'Cari '#304'sim'
+            DataBinding.FieldName = 'strUnvan'
+            DataBinding.IsNullValueType = True
+            Width = 298
+          end
+          object vwCariHarRaporodeme_nakit: TcxGridDBColumn
+            Caption = 'Giren'
+            DataBinding.FieldName = 'GIREN'
             DataBinding.IsNullValueType = True
             Width = 68
           end
-          object cxGrid3DBTableView1odeme_kk: TcxGridDBColumn
-            Caption = #214'.K.Kart'#305
-            DataBinding.FieldName = 'odeme_kk'
+          object vwCariHarRaporodeme_kk: TcxGridDBColumn
+            Caption = #199#305'kan'
+            DataBinding.FieldName = 'CIKAN'
             DataBinding.IsNullValueType = True
             Width = 73
           end
-          object cxGrid3DBTableView1odeme_cari: TcxGridDBColumn
-            Caption = 'Cari Bor'#231
-            DataBinding.FieldName = 'odeme_cari'
+          object vwCariHarRaportutar: TcxGridDBColumn
+            Caption = 'Tutar'
+            DataBinding.FieldName = 'TUTAR'
             DataBinding.IsNullValueType = True
-            Width = 72
+            Width = 76
           end
-          object cxGrid3DBTableView1aciklama: TcxGridDBColumn
+          object vwCariHarRaporaciklama: TcxGridDBColumn
             Caption = 'A'#231#305'klama'
-            DataBinding.FieldName = 'aciklama'
+            DataBinding.FieldName = 'EVRAKNO'
             DataBinding.IsNullValueType = True
             Width = 74
           end
         end
         object cxGrid3Level1: TcxGridLevel
           Caption = 'cxGrid3Level1'
-          GridView = cxGrid3DBTableView1
+          GridView = vwCariHarRapor
         end
       end
     end
-    object cxTabSheet5: TcxTabSheet
+    object hsGrupSatisRapor: TcxTabSheet
       Caption = 'Gruplara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 4
       object cxGrid4: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
-        Height = 491
+        Width = 946
+        Height = 489
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView6: TcxGridDBTableView
@@ -1365,6 +1352,7 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn34: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
+            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn35: TcxGridDBColumn
@@ -1537,7 +1525,7 @@ object frmRaporlar: TfrmRaporlar
             Width = 85
           end
         end
-        object cxGrid4DBTableView1: TcxGridDBTableView
+        object vwGrupRapor: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -1568,36 +1556,36 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.GroupByBox = False
           OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-          object cxGrid4DBTableView1grup_: TcxGridDBColumn
+          object vwGrupRaporgrup_: TcxGridDBColumn
             Caption = 'Stok Grubu'
-            DataBinding.FieldName = 'grup_'
+            DataBinding.FieldName = 'GRUPADI'
             DataBinding.IsNullValueType = True
-            Width = 409
+            Width = 198
           end
-          object cxGrid4DBTableView1toplam: TcxGridDBColumn
+          object vwGrupRaportoplam: TcxGridDBColumn
             Caption = 'Toplam Sat'#305#351
             DataBinding.FieldName = 'toplam'
             DataBinding.IsNullValueType = True
             FooterAlignmentHorz = taRightJustify
             GroupSummaryAlignment = taRightJustify
-            Width = 535
+            Width = 747
           end
         end
         object cxGrid4Level1: TcxGridLevel
           Caption = 'cxGrid4Level1'
-          GridView = cxGrid4DBTableView1
+          GridView = vwGrupRapor
         end
       end
     end
-    object cxTabSheet6: TcxTabSheet
+    object hsMarkaSatisRapor: TcxTabSheet
       Caption = 'Markalara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 5
       object cxGrid5: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 947
-        Height = 491
+        Width = 946
+        Height = 489
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView9: TcxGridDBTableView
@@ -1647,6 +1635,7 @@ object frmRaporlar: TfrmRaporlar
           object cxGridDBColumn54: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'tutar'
+            DataBinding.IsNullValueType = True
             Width = 49
           end
           object cxGridDBColumn55: TcxGridDBColumn
@@ -1852,15 +1841,15 @@ object frmRaporlar: TfrmRaporlar
           OptionsView.ShowColumnFilterButtons = sfbWhenSelected
           object cxGridDBColumn72: TcxGridDBColumn
             Caption = 'Marka'
-            DataBinding.FieldName = 'marka_'
+            DataBinding.FieldName = 'MARKAADI'
             DataBinding.IsNullValueType = True
-            Width = 409
+            Width = 199
           end
           object cxGridDBColumn73: TcxGridDBColumn
             Caption = 'Toplam Sat'#305#351
             DataBinding.FieldName = 'toplam'
             DataBinding.IsNullValueType = True
-            Width = 535
+            Width = 746
           end
         end
         object cxGridLevel1: TcxGridLevel
@@ -1972,14 +1961,15 @@ object frmRaporlar: TfrmRaporlar
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT '
-      '(SELECT STOKADI from STOK WHERE ID = i.STOKID) AS stokAdi'
-      ',(select UNVAN FROM CARI WHERE ID = i.CARIID) AS cariUnvan'
+      '--(SELECT STOKADI from STOK WHERE ID = i.STOKID) AS stokAdi,'
+      '(select UNVAN FROM CARI WHERE ID = i.CARIID) AS cariUnvan'
       ' ,CASE'
       '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
       '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
       '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
       '  END AS strOdemeTuru'
-      ',* FROM ISLEM_H i WHERE ISLEMTURU = 1 AND ISNULL(STOKID,0) <> 0'
+      ',* FROM ISLEM_BASLIK i WHERE ISLEMTURU = 1 '
+      '--AND ISNULL(STOKID,0) <> 0'
       ''
       
         'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
@@ -2045,16 +2035,26 @@ object frmRaporlar: TfrmRaporlar
   object qryRaporStok: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'SELECT'
-      '  *'
+      'SELECT '
+      '(SELECT STOKADI from STOK WHERE ID = i.STOKID) AS stokAdi,'
+      '(select UNVAN FROM CARI WHERE ID = i.CARIID) AS cariUnvan'
       ' ,CASE'
-      '    WHEN gckodu = '#39'1'#39' THEN '#39'Giri'#351#39
-      '    ELSE '#39#199#305'k'#305#351#39
-      '  END AS '#39'girisCikis'#39
-      'FROM t_har_det'
-      'WHERE stok_kodu <> '#39#39
-      'AND stok_kodu IS NOT NULL'
-      'and CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2')
+      '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      '  END AS strOdemeTuru,'
+      ''
+      'CASE '
+      #9'WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39
+      #9'WHEN ISLEMTURU =2 THEN '#39'Stok Giri'#351#39
+      #9'WHEN ISLEMTURU = 3 THEN '#39'Stok '#199#305'k'#305#351#39#9
+      'END as sttislemTuru'
+      ',* FROM ISLEM_H i WHERE ISLEMTURU in(1,2,3)'
+      'AND ISNULL(STOKID,0) <> 0'
+      ''
+      
+        'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
+        'te) <= :tar2')
     Left = 248
     Top = 424
     ParamData = <
@@ -2079,15 +2079,35 @@ object frmRaporlar: TfrmRaporlar
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT *,'
-      
-        '(SELECT cari_isim FROM t_cari c WHERE c.cari_kodu=t_har.cari_kod' +
-        'u) AS '#39'Cari_isim'#39','
+      ''
+      '(SELECT UNVAN from CARI WHERE ID = i.CARIID) AS strUnvan,'
+      ''
       'CASE'
-      '    WHEN gckodu = '#39'1'#39' THEN '#39'Giri'#351#39
-      '    ELSE '#39#199#305'k'#305#351#39
-      '  END AS '#39'girisCikis'#39
-      ' FROM t_har WHERE cari_kodu<>'#39#39' AND cari_kodu IS not null'
-      'and CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2')
+      '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
+      '    WHEN ODEMETURU = 2 THEN '#39'Kredi Kart'#305#39
+      '    WHEN ODEMETURU = 3 THEN '#39'Cari'#39
+      '  END AS strOdemeTuru,'
+      ''
+      'CASE '
+      #9'WHEN ISLEMTURU = 1 THEN '#39'Kasiyer Sat'#305#351#39
+      #9'WHEN ISLEMTURU = 5 THEN '#39'Cariden Tahsilat'#39
+      #9'WHEN ISLEMTURU = 6 THEN '#39'Cariye '#214'deme'#39#9
+      'END as sttislemTuru'
+      ''
+      ''
+      ''
+      ''
+      'FROM ISLEM_BASLIK i'
+      ''
+      'WHERE ISLEMTURU in(1,5,6)'
+      
+        'AND ISNULL(CARIID,0) <> 0 AND CARIID NOT IN (SELECT ID from CARI' +
+        ' WHERE UNVAN = '#39'PERAKENDE'#39')'
+      
+        'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
+        'te) <= :tar2'
+      ''
+      '')
     Left = 328
     Top = 432
     ParamData = <
@@ -2112,14 +2132,21 @@ object frmRaporlar: TfrmRaporlar
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'
-      '  SUM(tutar) AS toplam,ISNULL(g.grup_adi,'#39'Grup Yok'#39') as grup_'
-      '  FROM t_har h'
-      '  LEFT JOIN t_stok s ON s.stok_kodu=s.stok_kodu'
-      '  LEFT JOIN t_stok_grup g ON g.id=s.grup'
-      'WHERE tipi IN ('#39'HS'#39', '#39'HSV'#39', '#39'HSKK'#39')'
-      'and CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2'
-      '  GROUP BY g.grup_adi'
-      '')
+      '  ISNULL(sg.GRUPADI, '#39'Grup Yok'#39') AS GRUPADI,'
+      '  sum(i.TUTAR) AS toplam'
+      'FROM ISLEM_H i'
+      'LEFT JOIN STOK s'
+      '  ON s.ID = i.STOKID'
+      'LEFT JOIN T_STOKGRUP sg'
+      '  ON sg.ID = s.GRUPID'
+      'WHERE ISLEMTURU = 1'
+      'AND ISNULL(STOKID, 0) <> 0'
+      ''
+      
+        'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
+        'te) <= :tar2'
+      ''
+      'GROUP BY   sg.GRUPADI')
     Left = 408
     Top = 424
     ParamData = <
@@ -2144,13 +2171,21 @@ object frmRaporlar: TfrmRaporlar
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'
-      '  SUM(tutar) AS toplam,ISNULL(m.marka_adi,'#39'Marka Yok'#39') as marka_'
-      '  FROM t_har h'
-      '  left JOIN t_stok s ON s.stok_kodu=s.stok_kodu'
-      '  left JOIN t_stok_marka m ON m.id=s.marka'
-      'WHERE tipi IN ('#39'HS'#39', '#39'HSV'#39', '#39'HSKK'#39')'
-      'and CAST(tarih AS date)>= :tar1 and CAST(tarih AS date) <= :tar2'
-      '  GROUP BY m.marka_adi')
+      '  ISNULL(m.MARKAADI, '#39'Marka Yok'#39') AS MARKAADI,'
+      '  sum(i.TUTAR) AS toplam'
+      'FROM ISLEM_H i'
+      'LEFT JOIN STOK s'
+      '  ON s.ID = i.STOKID'
+      'LEFT JOIN T_MARKA m'
+      '  ON m.ID = s.MARKAID'
+      'WHERE ISLEMTURU = 1'
+      'AND ISNULL(STOKID, 0) <> 0'
+      ''
+      
+        'and CAST(ISLEMTARIHI AS DATE)>= :tar1 and CAST(ISLEMTARIHI AS da' +
+        'te) <= :tar2'
+      ''
+      'GROUP BY   MARKAADI')
     Left = 504
     Top = 424
     ParamData = <
