@@ -32,7 +32,9 @@ uses
   frmHizliSatisButonlariF in 'frmHizliSatisButonlariF.pas' {frmHizliSatisButonlari},
   stokAktarimFormF in 'stokAktarimFormF.pas' {stokAktarimForm},
   frmSqlSorguF in 'frmSqlSorguF.pas' {frmSqlSorgu},
-  frmRaporlarF in 'frmRaporlarF.pas' {frmRaporlar};
+  frmRaporlarF in 'frmRaporlarF.pas' {frmRaporlar},
+  AyarlarFrm in 'AyarlarFrm.pas' {frmAyarlar},
+  lisansFormF in 'lisansFormF.pas' {lisansForm};
 
 {$R *.res}
 
@@ -40,7 +42,8 @@ begin
   //ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TdmMain, dmMain);
+  Application.CreateForm(TfrmMain, frmMain);
+
   Application.Run;
 end.

@@ -22,6 +22,7 @@ interface
     CARIHARSIL      : boolean;
     KASAISLEMEKLE   : boolean;
     KASAISLEMSIL    : boolean;
+    RAPORLAR        : boolean;
   end;
 
   TAyar = record

@@ -195,8 +195,8 @@ type
     cxGridDBColumn72: TcxGridDBColumn;
     cxGridDBColumn73: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
-    rprHizliSatis: TfrxReport;
-    rprDBhizlisatis: TfrxDBDataset;
+    rprCarihar: TfrxReport;
+    rprDBCariHar: TfrxDBDataset;
     frxDesigner1: TfrxDesigner;
     pmRaporTasarim: TPopupMenu;
     RaporTasarm1: TMenuItem;
@@ -468,9 +468,9 @@ end;
 
 procedure TfrmRaporlar.btnYazdirClick(Sender: TObject);
 begin
-  if pg.ActivePageIndex = 1 then
+  if pg.ActivePage = shCarHarRapor then
   begin
-    rprHizliSatis.ShowReport();
+    rprCarihar.ShowReport();
   end;
 end;
 
@@ -479,14 +479,14 @@ begin
   inherited;
   pnlHeader.Caption := '   RAPORLAR';
   TumQuerylereConnectionAta(self);
-  if FileExists(RAPORLAR+ '\hizli_Satis.fr3') then
+  if FileExists(RAPORLAR+ '\cari_Hareket.fr3') then
   begin
-    try rprHizliSatis.LoadFromFile(RAPORLAR+ '\hizli_Satis.fr3');
+    try rprCarihar.LoadFromFile(RAPORLAR+ '\cari_Hareket.fr3');
     except
     end;
   end
   else
-    Mesajbilgi(RAPORLAR+ '\hizli_Satis.fr3 Dosyasý bulunamadý..');
+    Mesajbilgi(RAPORLAR+ '\cari_Hareket.fr3 Dosyasý bulunamadý..');
 
   pg.ActivePageIndex := 0;
 
@@ -508,8 +508,8 @@ begin
     MesajBilgi('Bu Ýþlem için Yetkiniz Yoktur..');
     exit;
   end;
-  if pg.ActivePageIndex = 1 then
-    rprHizliSatis.DesignReport();
+  if pg.ActivePage = shCarHarRapor then
+    rprCarihar.DesignReport();
 end;
 
 procedure TfrmRaporlar.SatleminiSil1Click(Sender: TObject);

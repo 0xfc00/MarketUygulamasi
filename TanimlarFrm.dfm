@@ -27,18 +27,18 @@ object frmTanimlar: TfrmTanimlar
     Properties.ActivePage = shBirimler
     Properties.CustomButtons.Buttons = <>
     OnChange = pcChange
-    ClientRectBottom = 273
-    ClientRectLeft = 2
-    ClientRectRight = 455
-    ClientRectTop = 25
+    ClientRectBottom = 271
+    ClientRectLeft = 3
+    ClientRectRight = 453
+    ClientRectTop = 26
     object shBirimler: TcxTabSheet
       Caption = 'Birimler'
       ImageIndex = 0
       object grdBirimler: TcxGrid
         Left = 0
         Top = 0
-        Width = 453
-        Height = 207
+        Width = 450
+        Height = 204
         Align = alClient
         TabOrder = 0
         object viewBrimler: TcxGridDBTableView
@@ -69,8 +69,8 @@ object frmTanimlar: TfrmTanimlar
       end
       object Panel2: TPanel
         Left = 0
-        Top = 207
-        Width = 453
+        Top = 204
+        Width = 450
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -80,11 +80,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 399
+          Width = 396
         end
         object btnBirimEkle: TcxButton
           AlignWithMargins = True
-          Left = 409
+          Left = 406
           Top = 4
           Width = 40
           Height = 33
@@ -104,6 +104,10 @@ object frmTanimlar: TfrmTanimlar
     object shGruplar: TcxTabSheet
       Caption = 'Stok Gruplar'#305
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdStokGrup: TcxGrid
         Left = 0
         Top = 0
@@ -174,6 +178,10 @@ object frmTanimlar: TfrmTanimlar
     object shMarkalar: TcxTabSheet
       Caption = 'Markalar'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdMarkalar: TcxGrid
         Left = 0
         Top = 0
@@ -244,6 +252,10 @@ object frmTanimlar: TfrmTanimlar
     object shReyonRaf: TcxTabSheet
       Caption = 'Reyon - Raf'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdReyonRaf: TcxGrid
         Left = 0
         Top = 0
@@ -268,7 +280,6 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
-          Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
           object cxGridDBColumn3: TcxGridDBColumn
             DataBinding.FieldName = 'REYONRAFADI'
             DataBinding.IsNullValueType = True
@@ -315,6 +326,10 @@ object frmTanimlar: TfrmTanimlar
     object shCariGruplar: TcxTabSheet
       Caption = 'Cari Gruplar'#305
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -339,7 +354,6 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
-          Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
           object cxGridDBColumn4: TcxGridDBColumn
             DataBinding.FieldName = 'GRUPADI'
             DataBinding.IsNullValueType = True

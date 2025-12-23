@@ -18,13 +18,13 @@ uses
   procedure lisansYoksaKapat();
   procedure demoKontrol();
   procedure EkleyenDegistiren(ADataset: TDataSet);
-  function yetkiYok(): boolean;
+  function YetkiKontrol(AYetki : boolean = False): boolean;
 
 
 
 implementation
 
-uses  _cons, _vars, MainDM, Main;
+uses  _cons, _vars, MainDM, Main, lisansFormF;
 
 const
   CKEY1 = 53761;
@@ -168,6 +168,9 @@ begin
   y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').AsBoolean     = true;
   y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').AsBoolean  = true;
   y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').AsBoolean   = true;
+  y.RAPORLAR       := q.FieldByName('y_RAPORLAR').AsBoolean       = true;
+
+
 
   FreeAndNil(q);
 end;
@@ -217,59 +220,60 @@ C: array [0..255] of Char;
 Buffer: array [0..255] of Char;
 dSerial, dKey : double;
   q : TUniQuery;
-//mForm : TlisansForm;
+mForm : TlisansForm;
 begin
-//  if not demo then
-//  begin
-//    try
-//      GetVolumeInformation(
-//        PChar('C:\'),
-//        Buffer,
-//        256,
-//        @SerialNum,
-//        A,
-//        B,
-//        C,
-//        256);
-//
-//      dSerial := SerialNum;
-//
-//      dSerial := dSerial *31;
-//      dSerial := dSerial + 52;
-//      dSerial := dSerial /69;
-//
-//      dKey := dSerial;
-//
-//      dKey := dKey *31;
-//      dKey := dKey +52;
-//      dKey := dKey /69;
-//
-//      dKey := trunc (dKey);
-//
-//
-//      q := yeniQuery('select * from t_ayarlar');
-//
-//      if q.FieldByName('lisansKey').AsString <> FloatToStr(dKey)  then
-//      begin
-//        mForm := TlisansForm.Create(nil);
-//        mForm.lblSeriNO.Text := FloatToStr(dSerial);
-//        //mform.lblAnahtar.Text := FloatToStr(dKey);//deneme;;
-//        mform.key := dKey;
-//        mForm.ShowModal;
-//      end
-//      else
-//      lisans := 1;
-//
-//    except
-//      begin
-//        MesajGoster('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
-//        Application.Terminate;
-//      end;
-//
-//    end;
-//
-//    FreeAndNil(q);
-//  end;
+  if not demo then
+  begin
+    try
+      GetVolumeInformation(
+        PChar('C:\'),
+        Buffer,
+        256,
+        @SerialNum,
+        A,
+        B,
+        C,
+        256);
+
+      dSerial := SerialNum;
+
+      dSerial := dSerial *31;
+      dSerial := dSerial + 52;
+      dSerial := dSerial /69;
+
+      dKey := dSerial;
+
+      dKey := dKey *31;
+      dKey := dKey +52;
+      dKey := dKey /69;
+
+      dKey := trunc (dKey);
+
+
+      q := yeniQuery('select * from AYARLAR');
+
+
+      if (q.IsEmpty) or  (q.FieldByName('LISANSKEY').AsString <> FloatToStr(dKey)  )  then
+      begin
+        mForm := TlisansForm.Create(nil);
+        mForm.lblSeriNO.Text := FloatToStr(dSerial);
+        //mform.lblAnahtar.Text := FloatToStr(dKey);//deneme;;
+        mform.key := dKey;
+        mForm.ShowModal;
+      end
+      else
+      lisans := 1;
+
+    except
+      begin
+        MesajHata('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
+        Application.Terminate;
+      end;
+
+    end;
+
+    FreeAndNil(q);
+  end;
 end;
 
 
@@ -288,6 +292,7 @@ begin
   begin
     MesajBilgi('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
     Application.Terminate;
+    halt;
   end;
 
 end;
@@ -312,21 +317,20 @@ begin
   end;
 end;
 
-function yetkiYok(): boolean;
+function YetkiKontrol(AYetki : boolean = False): boolean;
 begin
-  result := false;
+  result := AYetki;
 
-  if y.admin then
+  if (y.admin) or (AYetki)  then
   begin
     result := true;
     exit;
+  end
+  else
+  begin
+    MesajHata(rstr_YETKI_YOK);
+    abort;
   end;
-
-  MesajHata(rstr_YETKI_YOK);
-  abort;
 end;
-
-
-
 
 end.

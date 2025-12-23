@@ -218,6 +218,14 @@
             <Form>frmRaporlar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="AyarlarFrm.pas">
+            <Form>frmAyarlar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="lisansFormF.pas">
+            <Form>lisansForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

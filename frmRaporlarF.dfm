@@ -2,7 +2,7 @@ object frmRaporlar: TfrmRaporlar
   Left = 0
   Top = 0
   Caption = 'Raporlar'
-  ClientHeight = 626
+  ClientHeight = 610
   ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,10 +18,11 @@ object frmRaporlar: TfrmRaporlar
   object cxGroupBox2: TcxGroupBox
     AlignWithMargins = True
     Left = 3
-    Top = 577
+    Top = 561
     Align = alBottom
     PanelStyle.Active = True
     ParentFont = False
+    PopupMenu = pmRaporTasarim
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -12
@@ -29,14 +30,15 @@ object frmRaporlar: TfrmRaporlar
     Style.Font.Style = [fsBold]
     Style.IsFontAssigned = True
     TabOrder = 0
+    ExplicitTop = 577
     Height = 46
     Width = 960
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 813
-      Top = 6
+      Left = 814
+      Top = 5
       Width = 141
-      Height = 34
+      Height = 36
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -59,10 +61,10 @@ object frmRaporlar: TfrmRaporlar
     end
     object btnYazdir: TcxButton
       AlignWithMargins = True
-      Left = 6
-      Top = 6
+      Left = 5
+      Top = 5
       Width = 141
-      Height = 34
+      Height = 36
       Align = alLeft
       Caption = 'Yazd'#305'r'
       OptionsImage.Glyph.SourceDPI = 96
@@ -121,6 +123,8 @@ object frmRaporlar: TfrmRaporlar
       PopupMenu = pmRaporTasarim
       TabOrder = 1
       OnClick = btnYazdirClick
+      ExplicitLeft = 3
+      ExplicitTop = 7
     end
   end
   object pg: TcxPageControl
@@ -128,19 +132,21 @@ object frmRaporlar: TfrmRaporlar
     Left = 3
     Top = 44
     Width = 960
-    Height = 527
+    Height = 511
     Align = alClient
     TabOrder = 1
     Properties.ActivePage = shOzet
     Properties.CustomButtons.Buttons = <>
     OnChange = pgChange
-    ClientRectBottom = 523
+    ExplicitHeight = 527
+    ClientRectBottom = 507
     ClientRectLeft = 4
     ClientRectRight = 956
-    ClientRectTop = 28
+    ClientRectTop = 24
     object shOzet: TcxTabSheet
       Caption = 'G'#252'n Sonu Raporu'
       ImageIndex = 0
+      ExplicitHeight = 499
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -153,10 +159,10 @@ object frmRaporlar: TfrmRaporlar
         Width = 946
         object cxGroupBox4: TPanel
           AlignWithMargins = True
-          Left = 234
-          Top = 6
+          Left = 233
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -194,15 +200,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox5: TPanel
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -240,15 +246,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox15: TPanel
           AlignWithMargins = True
-          Left = 462
-          Top = 6
+          Left = 461
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -288,15 +294,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox14: TPanel
           AlignWithMargins = True
-          Left = 690
-          Top = 6
+          Left = 689
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -334,7 +340,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
       end
@@ -350,10 +356,10 @@ object frmRaporlar: TfrmRaporlar
         Width = 946
         object Panel3: TPanel
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Width = 216
-          Height = 74
+          Height = 76
           Align = alLeft
           TabOrder = 3
           object cxLabel13: TcxLabel
@@ -389,15 +395,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 108
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox8: TPanel
           AlignWithMargins = True
-          Left = 456
-          Top = 6
+          Left = 455
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -435,15 +441,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox9: TPanel
           AlignWithMargins = True
-          Left = 228
-          Top = 6
+          Left = 227
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -481,15 +487,15 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
         object cxGroupBox12: TPanel
           AlignWithMargins = True
-          Left = 684
-          Top = 6
+          Left = 683
+          Top = 5
           Width = 222
-          Height = 74
+          Height = 76
           Align = alLeft
           UseDockManager = False
           ParentBackground = False
@@ -527,7 +533,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 50
+            AnchorY = 51
           end
         end
       end
@@ -543,10 +549,10 @@ object frmRaporlar: TfrmRaporlar
         Width = 946
         object cxGroupBox17: TPanel
           AlignWithMargins = True
-          Left = 6
-          Top = 6
+          Left = 5
+          Top = 5
           Width = 222
-          Height = 106
+          Height = 108
           Align = alLeft
           Color = clYellow
           UseDockManager = False
@@ -586,7 +592,7 @@ object frmRaporlar: TfrmRaporlar
             Properties.Alignment.Horz = taCenter
             Properties.Alignment.Vert = taVCenter
             AnchorX = 111
-            AnchorY = 66
+            AnchorY = 67
           end
         end
       end
@@ -594,14 +600,16 @@ object frmRaporlar: TfrmRaporlar
     object shHs: TcxTabSheet
       Caption = 'H'#305'zl'#305' Sat'#305#351' Raporu'
       ImageIndex = 1
+      ExplicitHeight = 499
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 946
-        Height = 489
+        Height = 477
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 493
         object vwHsrapor: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -751,14 +759,16 @@ object frmRaporlar: TfrmRaporlar
     object shStokHarRaporu: TcxTabSheet
       Caption = 'Stok Hareket Raporu'
       ImageIndex = 2
+      ExplicitHeight = 499
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 946
-        Height = 489
+        Height = 477
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 493
         object cxGridDBTableView1: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -986,14 +996,16 @@ object frmRaporlar: TfrmRaporlar
     object shCarHarRapor: TcxTabSheet
       Caption = 'Cari Hareket Raporu'
       ImageIndex = 3
+      ExplicitHeight = 499
       object cxGrid3: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 946
-        Height = 489
+        Height = 477
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 493
         object cxGridDBTableView3: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1248,43 +1260,36 @@ object frmRaporlar: TfrmRaporlar
           object vwCariHarRaportarih: TcxGridDBColumn
             Caption = 'Tarih'
             DataBinding.FieldName = 'ISLEMTARIHI'
-            DataBinding.IsNullValueType = True
             Width = 124
           end
           object vwCariHarRaporgirisCikis: TcxGridDBColumn
             Caption = 'T'#252'r'#252
             DataBinding.FieldName = 'sttislemTuru'
-            DataBinding.IsNullValueType = True
             Width = 67
           end
           object vwCariHarRaporCari_isim: TcxGridDBColumn
             Caption = 'Cari '#304'sim'
             DataBinding.FieldName = 'strUnvan'
-            DataBinding.IsNullValueType = True
             Width = 298
           end
           object vwCariHarRaporodeme_nakit: TcxGridDBColumn
             Caption = 'Giren'
             DataBinding.FieldName = 'GIREN'
-            DataBinding.IsNullValueType = True
             Width = 68
           end
           object vwCariHarRaporodeme_kk: TcxGridDBColumn
             Caption = #199#305'kan'
             DataBinding.FieldName = 'CIKAN'
-            DataBinding.IsNullValueType = True
             Width = 73
           end
           object vwCariHarRaportutar: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'TUTAR'
-            DataBinding.IsNullValueType = True
             Width = 76
           end
           object vwCariHarRaporaciklama: TcxGridDBColumn
             Caption = 'A'#231#305'klama'
             DataBinding.FieldName = 'EVRAKNO'
-            DataBinding.IsNullValueType = True
             Width = 74
           end
         end
@@ -1297,14 +1302,16 @@ object frmRaporlar: TfrmRaporlar
     object hsGrupSatisRapor: TcxTabSheet
       Caption = 'Gruplara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 4
+      ExplicitHeight = 499
       object cxGrid4: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 946
-        Height = 489
+        Height = 477
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 493
         object cxGridDBTableView6: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1580,14 +1587,16 @@ object frmRaporlar: TfrmRaporlar
     object hsMarkaSatisRapor: TcxTabSheet
       Caption = 'Markalara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 5
+      ExplicitHeight = 499
       object cxGrid5: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 946
-        Height = 489
+        Height = 477
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 493
         object cxGridDBTableView9: TcxGridDBTableView
           PopupMenu = pmGrdHsRapor
           Navigator.Buttons.CustomButtons = <>
@@ -1932,8 +1941,6 @@ object frmRaporlar: TfrmRaporlar
         Caption = 'Filtrele'
         TabOrder = 0
         OnClick = btnFiltreleClick
-        ExplicitLeft = 258
-        ExplicitTop = 9
       end
       object dtTarih2: TcxDateEdit
         AlignWithMargins = True
@@ -2029,8 +2036,8 @@ object frmRaporlar: TfrmRaporlar
     end
   end
   object pmGrdHsRaporDet: TPopupMenu
-    Left = 683
-    Top = 314
+    Left = 715
+    Top = 322
   end
   object qryRaporStok: TUniQuery
     Connection = dmMain.UniConn
@@ -2081,6 +2088,7 @@ object frmRaporlar: TfrmRaporlar
       'SELECT *,'
       ''
       '(SELECT UNVAN from CARI WHERE ID = i.CARIID) AS strUnvan,'
+      '(SELECT BAKIYE from CARI WHERE ID = i.CARIID) AS strBakiye,'
       ''
       'CASE'
       '    WHEN ODEMETURU = 1 THEN '#39'Nakit'#39
@@ -2108,6 +2116,7 @@ object frmRaporlar: TfrmRaporlar
         'te) <= :tar2'
       ''
       '')
+    Active = True
     Left = 328
     Top = 432
     ParamData = <
@@ -2206,28 +2215,28 @@ object frmRaporlar: TfrmRaporlar
     Left = 504
     Top = 488
   end
-  object rprHizliSatis: TfrxReport
+  object rprCarihar: TfrxReport
     Version = '6.6.17'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
     PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = 'Varsay'#305'lan'
+    PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 44091.995410150500000000
-    ReportOptions.LastChange = 44484.006429201400000000
+    ReportOptions.CreateDate = 44075.343728402800000000
+    ReportOptions.LastChange = 46014.914231250000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
       ''
       'end.')
-    Left = 776
-    Top = 216
+    Left = 672
+    Top = 240
     Datasets = <
       item
-        DataSet = rprDBhizlisatis
-        DataSetName = 'rprDBhizlisatis'
+        DataSet = rprDBCariHar
+        DataSetName = 'rprDBCariHar'
       end>
     Variables = <>
     Style = <
@@ -2313,6 +2322,9 @@ object frmRaporlar: TfrmRaporlar
           AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 22.677180000000000000
+          DataField = 'strUnvan'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
           Font.Height = -16
@@ -2322,7 +2334,7 @@ object frmRaporlar: TfrmRaporlar
           Fill.BackColor = clGray
           HAlign = haCenter
           Memo.UTF8W = (
-            'Sat'#305#351' Raporlar'#305)
+            '[rprDBCariHar."strUnvan"]')
           ParentFont = False
           Style = 'Title'
           VAlign = vaCenter
@@ -2333,10 +2345,11 @@ object frmRaporlar: TfrmRaporlar
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 68.031540000000000000
+        Visible = False
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
-          Width = 718.110236220471900000
+          Width = 718.110236220472000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2350,8 +2363,11 @@ object frmRaporlar: TfrmRaporlar
         end
         object Memo3: TfrxMemoView
           AllowVectorExport = True
-          Width = 235.770630350000000000
+          Width = 139.686967520000000000
           Height = 22.677180000000000000
+          DataField = 'EVRAKNO'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -2359,15 +2375,18 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'CARIADI')
+            '[rprDBCariHar."EVRAKNO"]')
           ParentFont = False
           Style = 'Header'
         end
         object Memo4: TfrxMemoView
           AllowVectorExport = True
-          Left = 254.668280350000000000
-          Width = 85.242313540000000000
+          Left = 139.686967520000000000
+          Width = 151.113130660000000000
           Height = 22.677180000000000000
+          DataField = 'sttislemTuru'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -2375,15 +2394,18 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Tarih')
+            '[rprDBCariHar."sttislemTuru"]')
           ParentFont = False
           Style = 'Header'
         end
         object Memo5: TfrxMemoView
           AllowVectorExport = True
-          Left = 357.855553890000000000
-          Width = 202.763505540000000000
+          Left = 290.800098180000000000
+          Width = 107.525080320000000000
           Height = 22.677180000000000000
+          DataField = 'strOdemeTuru'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -2391,15 +2413,18 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            #304#351'lem T'#252'r'#252)
+            '[rprDBCariHar."strOdemeTuru"]')
           ParentFont = False
           Style = 'Header'
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 632.619059420000000000
-          Width = 54.491176800000000000
+          Left = 398.325178500000000000
+          Width = 39.326832460000000000
           Height = 22.677180000000000000
+          DataField = 'TUTAR'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
           Font.Height = -13
@@ -2407,7 +2432,26 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            'Tutar')
+            '[rprDBCariHar."TUTAR"]')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 437.652010960000000000
+          Width = 280.458225260000000000
+          Height = 22.677180000000000000
+          DataField = 'ISLEMTARIHI'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clMaroon
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[rprDBCariHar."ISLEMTARIHI"]')
           ParentFont = False
           Style = 'Header'
         end
@@ -2418,35 +2462,16 @@ object frmRaporlar: TfrmRaporlar
         Height = 18.897650000000000000
         Top = 151.181200000000000000
         Width = 718.110700000000000000
-        DataSet = rprDBhizlisatis
-        DataSetName = 'rprDBhizlisatis'
+        DataSet = rprDBCariHar
+        DataSetName = 'rprDBCariHar'
         RowCount = 0
-        object Memo7: TfrxMemoView
-          AllowVectorExport = True
-          Width = 235.770630350000000000
-          Height = 18.897650000000000000
-          DataField = 'cari_kodu'
-          DataSet = rprDBhizlisatis
-          DataSetName = 'rprDBhizlisatis'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[rprDBhizlisatis."cari_kodu"]')
-          ParentFont = False
-          Style = 'Data'
-        end
         object Memo8: TfrxMemoView
           AllowVectorExport = True
-          Left = 254.668280350000000000
-          Width = 85.242313540000000000
+          Width = 139.686967520000000000
           Height = 18.897650000000000000
-          DataField = 'tarih'
-          DataSet = rprDBhizlisatis
-          DataSetName = 'rprDBhizlisatis'
+          DataField = 'EVRAKNO'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -2454,18 +2479,18 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[rprDBhizlisatis."tarih"]')
+            '[rprDBCariHar."EVRAKNO"]')
           ParentFont = False
           Style = 'Data'
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 357.855553890000000000
-          Width = 202.763505540000000000
+          Left = 139.686967520000000000
+          Width = 151.113130660000000000
           Height = 18.897650000000000000
-          DataField = 'tipi'
-          DataSet = rprDBhizlisatis
-          DataSetName = 'rprDBhizlisatis'
+          DataField = 'ISLEMTURU'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -2473,18 +2498,18 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[rprDBhizlisatis."tipi"]')
+            '[rprDBCariHar."ISLEMTURU"]')
           ParentFont = False
           Style = 'Data'
         end
         object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Left = 632.619059420000000000
-          Width = 54.491176800000000000
+          Left = 290.800098180000000000
+          Width = 107.525080320000000000
           Height = 18.897650000000000000
-          DataField = 'tutar'
-          DataSet = rprDBhizlisatis
-          DataSetName = 'rprDBhizlisatis'
+          DataField = 'strOdemeTuru'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -2492,7 +2517,45 @@ object frmRaporlar: TfrmRaporlar
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            '[rprDBhizlisatis."tutar"]')
+            '[rprDBCariHar."strOdemeTuru"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 398.325178500000000000
+          Width = 39.326832460000000000
+          Height = 18.897650000000000000
+          DataField = 'TUTAR'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[rprDBCariHar."TUTAR"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 437.652010960000000000
+          Width = 280.458225260000000000
+          Height = 18.897650000000000000
+          DataField = 'ISLEMTARIHI'
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[rprDBCariHar."ISLEMTARIHI"]')
           ParentFont = False
           Style = 'Data'
         end
@@ -2500,100 +2563,110 @@ object frmRaporlar: TfrmRaporlar
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 188.976500000000000000
+        Height = 49.133890000000000000
         Top = 230.551330000000000000
         Width = 718.110700000000000000
-        object Memo11: TfrxMemoView
-          AllowVectorExport = True
-          Left = 313.700990000000000000
-          Top = 7.559060000000000000
-          Width = 374.173470000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[SUM(<rprDBhizlisatis."tutar">,MasterData1)]')
-          ParentFont = False
-        end
-        object Memo12: TfrxMemoView
-          AllowVectorExport = True
-          Left = 313.700990000000000000
-          Top = 41.574830000000000000
-          Width = 377.952755910000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[SUM(<rprDBhizlisatis."odeme_nakit">,MasterData1)]')
-          ParentFont = False
-        end
         object Memo13: TfrxMemoView
+          Align = baWidth
           AllowVectorExport = True
-          Left = 313.700990000000000000
-          Top = 71.811070000000000000
-          Width = 377.952755910000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[SUM(<rprDBhizlisatis."odeme_kk">,MasterData1)]')
-          ParentFont = False
+          Width = 718.110700000000000000
+          Frame.Typ = [ftTop]
+          Frame.Width = 2.000000000000000000
         end
         object Memo14: TfrxMemoView
           AllowVectorExport = True
-          Left = 313.700990000000000000
-          Top = 102.047310000000000000
-          Width = 377.952755910000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
+          Top = 1.000000000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
           Frame.Typ = []
           Memo.UTF8W = (
-            '[SUM(<rprDBhizlisatis."odeme_cari">,MasterData1)]')
+            '[Date] [Time]')
+        end
+        object Memo15: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 642.520100000000000000
+          Top = 4.779530000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Page [Page#]')
+        end
+        object Memo177: TfrxMemoView
+          AllowVectorExport = True
+          Left = 207.874150000000000000
+          Top = 11.338590000000000000
+          Width = 154.960730000000000000
+          Height = 18.897635350000000000
+          DataSet = rprDBCariHar
+          DataSetName = 'rprDBCariHar'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Courier New'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SUM(<rprDBCariHar."TUTAR">,MasterData1)] TL')
           ParentFont = False
         end
       end
+      object Memo16: TfrxMemoView
+        AllowVectorExport = True
+        Left = 343.937230000000000000
+        Top = 181.417440000000000000
+        Width = 170.010780660000000000
+        Height = 26.456710000000000000
+        DataField = 'strBakiye'
+        DataSet = rprDBCariHar
+        DataSetName = 'rprDBCariHar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Memo.UTF8W = (
+          '[rprDBCariHar."strBakiye"]')
+        ParentFont = False
+        Style = 'Header'
+      end
     end
   end
-  object rprDBhizlisatis: TfrxDBDataset
-    UserName = 'rprDBhizlisatis'
+  object rprDBCariHar: TfrxDBDataset
+    UserName = 'rprDBCariHar'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'id=id'
-      'tipi=tipi'
-      'gckodu=gckodu'
-      'fatura_no=fatura_no'
-      'cari_kodu=cari_kodu'
-      'tarih=tarih'
-      'tutar=tutar'
-      'odeme_nakit=odeme_nakit'
-      'odeme_kk=odeme_kk'
-      'odeme_cari=odeme_cari'
-      'aciklama=aciklama'
-      'kayit_tarihi=kayit_tarihi'
-      'guncellenme_tarihi=guncellenme_tarihi'
-      'kaydeden=kaydeden'
-      'guncelleyen=guncelleyen'
-      'carisim=carisim')
-    DataSet = qryHsRapor
+      'ID=ID'
+      'ISLEMTURU=ISLEMTURU'
+      'ODEMETURU=ODEMETURU'
+      'ISLEMTARIHI=ISLEMTARIHI'
+      'CARIID=CARIID'
+      'POSID=POSID'
+      'EVRAKNO=EVRAKNO'
+      'GIREN=GIREN'
+      'CIKAN=CIKAN'
+      'TUTAR=TUTAR'
+      'KDVORANI=KDVORANI'
+      'KDVTUTARI=KDVTUTARI'
+      'ISKONTO_ORANI=ISKONTO_ORANI'
+      'ISKONTO_TUTARI=ISKONTO_TUTARI'
+      'ACIKLAMA1=ACIKLAMA1'
+      'ACIKLAMA2=ACIKLAMA2'
+      'CREATEDAT=CREATEDAT'
+      'UPDATEDAT=UPDATEDAT'
+      'USERID=USERID'
+      'USERIDUP=USERIDUP'
+      'strUnvan=strUnvan'
+      'strBakiye=strBakiye'
+      'strOdemeTuru=strOdemeTuru'
+      'sttislemTuru=sttislemTuru')
+    DataSet = qryRaporCari
     BCDToCurrency = False
-    Left = 856
-    Top = 160
+    Left = 544
+    Top = 248
   end
   object frxDesigner1: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'
@@ -2618,8 +2691,8 @@ object frmRaporlar: TfrmRaporlar
     Top = 312
   end
   object pmRaporTasarim: TPopupMenu
-    Left = 848
-    Top = 264
+    Left = 872
+    Top = 280
     object RaporTasarm1: TMenuItem
       Caption = 'Rapor Tasar'#305'm'
       OnClick = RaporTasarm1Click

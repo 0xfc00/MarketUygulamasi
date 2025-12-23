@@ -15,7 +15,24 @@ uses
   cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, Vcl.Menus, DBAccess, cxTextEdit, cxCheckBox,
-  cxGridCustomTableView, cxGridTableView, cxClasses, cxGridCustomView;
+  cxGridCustomTableView, cxGridTableView, cxClasses, cxGridCustomView,
+  dxSkinBasic, dxSkinBlack, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue;
 
 type
   TfrmKullanicilar = class(TfrmKartBase)
@@ -97,6 +114,13 @@ type
     cxButton2: TcxButton;
     cxLabel1: TcxLabel;
     cxDBCheckBox1: TcxDBCheckBox;
+    cxGroupBox4: TcxGroupBox;
+    cxGroupBox5: TcxGroupBox;
+    cxLabel2: TcxLabel;
+    cxDBCheckBox2: TcxDBCheckBox;
+    cxGroupBox13: TcxGroupBox;
+    cxLabel9: TcxLabel;
+    cxDBCheckBox9: TcxDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnKapatClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

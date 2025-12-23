@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes,
-  Vcl.Controls, Vcl.Forms, MainDM, uni;
+  Vcl.Controls, Vcl.Forms, MainDM, uni, _func;
 
 type
   TfrmBase = class(TForm)
@@ -36,6 +36,8 @@ end;
 procedure TfrmBase.FormCreate(Sender: TObject);
 begin
   caption := APP_NAME;
+  try lisansKontrol; except end;
+  lisansYoksaKapat;
 end;
 
 procedure TfrmBase.TumQueryleriAc(AFrm : TForm; AAcKapa : boolean = False);

@@ -162,7 +162,6 @@ object frmCariSec: TfrmCariSec
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object vmCarilerSTOKKODU: TcxGridDBColumn
         Caption = 'Kod'
         DataBinding.FieldName = 'CARIKODU'

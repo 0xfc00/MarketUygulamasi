@@ -43,7 +43,6 @@ object frmStokSec: TfrmStokSec
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
-      Styles.StyleSheet = frmMain.GridTableViewStyleSheetDevExpress
       object vwStoklarSTOKKODU: TcxGridDBColumn
         Caption = 'Kod'
         DataBinding.FieldName = 'STOKKODU'

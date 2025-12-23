@@ -12,6 +12,7 @@ object frmListBase: TfrmListBase
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pntUst: TPanel
@@ -22,12 +23,11 @@ object frmListBase: TfrmListBase
     Align = alTop
     Caption = 'pntUst'
     TabOrder = 0
-    ExplicitWidth = 819
     object pnlHeader: TGradientLabel
       Left = 1
       Top = 1
-      Width = 12
-      Height = 16
+      Width = 1055
+      Height = 31
       Align = alClient
       Caption = '   '
       Color = clBlue
@@ -46,6 +46,8 @@ object frmListBase: TfrmListBase
       TransparentText = False
       VAlignment = vaCenter
       Version = '1.2.1.0'
+      ExplicitWidth = 12
+      ExplicitHeight = 16
     end
   end
 end

@@ -34,7 +34,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxGroupBox, dxCustomTileControl,
-  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton;
+  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton, BaseFrm;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -69,7 +69,7 @@ uses
 
 
 type
-  TfrmMain = class(TForm)
+  TfrmMain = class(TfrmBase)
     NavBarSol: TdxNavBar;
     nbgStoklar: TdxNavBarGroup;
     nbgCariler: TdxNavBarGroup;
@@ -186,6 +186,10 @@ type
     Panel1: TPanel;
     btnKapat: TcxButton;
     btnKullaniciDegistir: TcxButton;
+    A1: TMenuItem;
+    anmlar1: TMenuItem;
+    acAyarlar: TAction;
+    Ayarlar1: TMenuItem;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -214,6 +218,7 @@ type
     procedure acHizliSatisButonlariExecute(Sender: TObject);
     procedure acRaporlarExecute(Sender: TObject);
     procedure btnKullaniciDegistirClick(Sender: TObject);
+    procedure acAyarlarExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -234,7 +239,8 @@ implementation
 uses
   YeniStokKartiFrm, TanimlarFrm, MainDM,StokListFrm, StokSecFrm, StokHareketEkleFrm, StokHarListFrm, YeniCariKartFrm,
   CariHarListFrm, CariListFrm, CariSecFrm, CariHareketEkleFrm, FaturaEkleFrm,
-  _cons, frmHizliSatisF, frmKullanicilarF, _func, frmRaporlarF;
+  _cons, frmHizliSatisF, frmKullanicilarF, _func, frmRaporlarF, AyarlarFrm
+  ;
 
 {$R *.dfm}
 
@@ -478,7 +484,8 @@ end;
 function CariHareketSil_fn( ACariHarID : string): Boolean;
 begin
   Result := False;
-  if not y.CARIHARSIL then yetkiYok;
+  YetkiKontrol(y.CARIHARSIL);
+
   if trim(ACariHarID) <> EmptyStr then
   begin
     if MesajSor(rstr_KAYIT_SILME_ONAY) then
@@ -498,7 +505,8 @@ end;
 function KasaHareketSil_fn(AKasaHarID : string): Boolean;
 begin
   Result := False;
-  if not y.KASAISLEMSIL then yetkiYok;
+  YetkiKontrol(y.KASAISLEMSIL);
+
   if trim(AKasaHarID) <> EmptyStr then
   begin
     if MesajSor(rstr_KAYIT_SILME_ONAY) then
@@ -518,7 +526,8 @@ end;
 function StokHareketSil_fn( AStokHarID : string): Boolean;
 begin
   Result := False;
-  if not y.STOKHARSIL then yetkiYok;
+  YetkiKontrol(y.STOKHARSIL);
+
   if trim(AStokHarID) <> EmptyStr then
   begin
     if MesajSor(rstr_KAYIT_SILME_ONAY) then
@@ -603,8 +612,15 @@ begin
     Result := CariSec_CariID;
 end;
 
+procedure TfrmMain.acAyarlarExecute(Sender: TObject);
+begin
+  YetkiKontrol();
+  CallFrmAyarlar;
+end;
+
 procedure TfrmMain.acCaridenTahsilatExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.TAHSILATGIR);
   CariHareketEkleFormuAc_fn(ord(HIT_CARIDEN_TAHSILAT));
 end;
 
@@ -622,60 +638,71 @@ end;
 
 procedure TfrmMain.acKasaCikisExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.KASAISLEMEKLE);
   KasaGirisCikisFormuAc_fn(ord(HIT_KASA_CIKIS));
 end;
 
 procedure TfrmMain.acKasaGirisExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.KASAISLEMEKLE);
   KasaGirisCikisFormuAc_fn(ord(HIT_KASA_GIRIS));
 end;
 
 procedure TfrmMain.acKasaPosHarListExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.RAPORLAR);
   with TfrmKasaPosHarList.Create(nil) do
     showmodal;
 end;
 
 procedure TfrmMain.acKullaniciYonetimiExecute(Sender: TObject);
 begin
+  YetkiKontrol();
   with TfrmKullanicilar.Create(nil) do
     showmodal;
 end;
 
 procedure TfrmMain.acPosTanimlariExecute(Sender: TObject);
 begin
+  YetkiKontrol();
   with TfrmPosList.Create(nil) do
     showmodal;
 end;
 
 procedure TfrmMain.acRaporlarExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.RAPORLAR);
   with TfrmRaporlar.Create(nil) do
     showmodal;
 end;
 
 procedure TfrmMain.acCariyeOdemeExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.BORCEKLE);
   CariHareketEkleFormuAc_fn(ord(HIT_CARIYE_ODEME));
 end;
 
 procedure TfrmMain.acCariHarListExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.RAPORLAR);
   CariHarListFormuAc_fn;
 end;
 
 procedure TfrmMain.acStokCikisiExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.STOKEKLE);
   StokGirisCikisFormuAc_fn(C);
 end;
 
 procedure TfrmMain.acStokGirisiExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.STOKEKLE);
   StokGirisCikisFormuAc_fn(G);
 end;
 
 procedure TfrmMain.acStokHarListExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.RAPORLAR);
   StokHarListFormuAc_fn;
 end;
 
@@ -718,7 +745,7 @@ end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-
+  inherited;
   Caption := APP_NAME;
 
 end;
@@ -772,6 +799,7 @@ procedure TfrmMain.acTanimlarExecute(Sender: TObject);
 var
   FForm : TfrmTanimlar;
 begin
+  YetkiKontrol(y.STOKEKLE);
   FForm := TfrmTanimlar.Create(Application);
   FForm.ShowModal;
 end;
@@ -785,6 +813,7 @@ procedure TfrmMain.acTumCarilerExecute(Sender: TObject);
 var
   FForm : TfrmCariList;
 begin
+  YetkiKontrol(y.CARIEKLE);
   FForm := TfrmCariList.Create(Application);
   FForm.ShowModal;
 end;
@@ -793,12 +822,14 @@ procedure TfrmMain.acTumStoklarExecute(Sender: TObject);
 var
   FForm : TfrmStokList;
 begin
+  YetkiKontrol(y.STOKEKLE);
   FForm := TfrmStokList.Create(Application);
   FForm.ShowModal;
 end;
 
 procedure TfrmMain.acYeniCariKartiExecute(Sender: TObject);
 begin
+  YetkiKontrol(y.CARIEKLE);
   CariKartiAc_fn;
 end;
 
@@ -806,6 +837,8 @@ procedure TfrmMain.acYeniStokKartiExecute(Sender: TObject);
 var
   FForm : TfrmYeniStokKarti;
 begin
+  YetkiKontrol(y.STOKEKLE);
+
   FForm := TfrmYeniStokKarti.Create(Application);
   FForm.StokID := '';
   FForm.ShowModal;

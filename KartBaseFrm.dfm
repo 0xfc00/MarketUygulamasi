@@ -13,6 +13,7 @@ object frmKartBase: TfrmKartBase
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pntUst: TPanel
@@ -26,8 +27,8 @@ object frmKartBase: TfrmKartBase
     object pnlHeader: TGradientLabel
       Left = 1
       Top = 1
-      Width = 12
-      Height = 16
+      Width = 513
+      Height = 31
       Align = alClient
       Caption = '   '
       Color = clBlue
@@ -46,6 +47,8 @@ object frmKartBase: TfrmKartBase
       TransparentText = False
       VAlignment = vaCenter
       Version = '1.2.1.0'
+      ExplicitWidth = 12
+      ExplicitHeight = 16
     end
   end
 end
