@@ -2,8 +2,8 @@ object frmStokList: TfrmStokList
   Left = 0
   Top = 0
   Caption = 'frmStokList'
-  ClientHeight = 511
-  ClientWidth = 988
+  ClientHeight = 729
+  ClientWidth = 1264
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,20 +12,23 @@ object frmStokList: TfrmStokList
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 472
-    Width = 982
+    Top = 690
+    Width = 1258
     Height = 36
     Align = alBottom
     PopupMenu = PopupMenu1
     TabOrder = 0
+    ExplicitTop = 472
+    ExplicitWidth = 982
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 878
+      Left = 1154
       Top = 4
       Width = 100
       Height = 28
@@ -119,6 +122,7 @@ object frmStokList: TfrmStokList
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
+      ExplicitLeft = 878
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -160,7 +164,7 @@ object frmStokList: TfrmStokList
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 772
+      Left = 1048
       Top = 4
       Width = 100
       Height = 28
@@ -209,10 +213,11 @@ object frmStokList: TfrmStokList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
+      ExplicitLeft = 772
     end
     object btnStokDuzenle: TcxButton
       AlignWithMargins = True
-      Left = 666
+      Left = 942
       Top = 4
       Width = 100
       Height = 28
@@ -241,6 +246,7 @@ object frmStokList: TfrmStokList
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 3
+      ExplicitLeft = 666
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
@@ -357,10 +363,12 @@ object frmStokList: TfrmStokList
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 982
-    Height = 463
+    Width = 1258
+    Height = 681
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 982
+    ExplicitHeight = 463
     object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -395,6 +403,7 @@ object frmStokList: TfrmStokList
       OptionsView.CellAutoHeight = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
       object vwStoklarSTOKKODU: TcxGridDBColumn
         Caption = 'Stok Kodu'
         DataBinding.FieldName = 'STOKKODU'

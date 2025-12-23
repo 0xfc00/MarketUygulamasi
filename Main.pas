@@ -98,18 +98,6 @@ type
     acTanimlar: TAction;
     acTumStoklar: TAction;
     cxStyleRepository1: TcxStyleRepository;
-    cxStyleContentEven: TcxStyle;
-    cxStyleContentOld: TcxStyle;
-    cxStyleActive: TcxStyle;
-    cxStyleclMoneyGreen: TcxStyle;
-    cxUygun: TcxStyle;
-    cxStylePasif: TcxStyle;
-    cxStyleKilitli: TcxStyle;
-    cxStyle1: TcxStyle;
-    cxStyle2: TcxStyle;
-    cxStyle3: TcxStyle;
-    cxStyle4: TcxStyle;
-    GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
     dxSkinController1: TdxSkinController;
     acStokGirisi: TAction;
     acStokCikisi: TAction;
@@ -168,6 +156,33 @@ type
     cxButton19: TcxButton;
     Panel17: TPanel;
     cxButton20: TcxButton;
+    GridTableViewStyleSheetUserFormat2: TcxGridTableViewStyleSheet;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    cxStyle5: TcxStyle;
+    cxStyle6: TcxStyle;
+    cxStyle7: TcxStyle;
+    cxStyle8: TcxStyle;
+    cxStyle9: TcxStyle;
+    cxStyle10: TcxStyle;
+    cxStyle11: TcxStyle;
+    HzlSat1: TMenuItem;
+    S1: TMenuItem;
+    mStoklar1: TMenuItem;
+    Stokk1: TMenuItem;
+    Stokk2: TMenuItem;
+    StokHareketleri1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    C1: TMenuItem;
+    mCariler1: TMenuItem;
+    CariTahsilat1: TMenuItem;
+    Carideme1: TMenuItem;
+    CariHareketleri1: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
     Panel1: TPanel;
     btnKapat: TcxButton;
     btnKullaniciDegistir: TcxButton;
@@ -198,6 +213,7 @@ type
     procedure acKullaniciYonetimiExecute(Sender: TObject);
     procedure acHizliSatisButonlariExecute(Sender: TObject);
     procedure acRaporlarExecute(Sender: TObject);
+    procedure btnKullaniciDegistirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -227,6 +243,8 @@ uses
 
 procedure LoginFormAc_fn();
 begin
+  loginUserID := -1;
+  loginSuccess := false;
   try
     Application.CreateForm(TfrmLogin, frmLogin);
       frmLogin.showmodal;
@@ -796,6 +814,11 @@ end;
 procedure TfrmMain.btnKapatClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TfrmMain.btnKullaniciDegistirClick(Sender: TObject);
+begin
+  LoginFormAc_fn;
 end;
 
 end.

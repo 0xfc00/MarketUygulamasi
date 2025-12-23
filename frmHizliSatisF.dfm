@@ -999,10 +999,10 @@ object frmHizliSatis: TfrmHizliSatis
       Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Images = imgListPageControl
-      ClientRectBottom = 484
-      ClientRectLeft = 2
-      ClientRectRight = 597
-      ClientRectTop = 34
+      ClientRectBottom = 482
+      ClientRectLeft = 3
+      ClientRectRight = 595
+      ClientRectTop = 35
       object cxTabSheet1: TcxTabSheet
         Caption = 'H'#305'zl'#305' Sat'#305#351
         ImageIndex = 0
@@ -1010,16 +1010,16 @@ object frmHizliSatis: TfrmHizliSatis
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 589
-          Height = 444
+          Width = 586
+          Height = 441
           Align = alClient
           TabOrder = 0
           Properties.CustomButtons.Buttons = <>
           Properties.Images = imgListPageControl
-          ClientRectBottom = 439
-          ClientRectLeft = 2
-          ClientRectRight = 584
-          ClientRectTop = 2
+          ClientRectBottom = 434
+          ClientRectLeft = 3
+          ClientRectRight = 579
+          ClientRectTop = 3
           object shtHS_deneme: TcxTabSheet
             Caption = 'shtHS_deneme'
             ImageIndex = 0
@@ -1028,8 +1028,8 @@ object frmHizliSatis: TfrmHizliSatis
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 576
-              Height = 431
+              Width = 570
+              Height = 425
               Align = alClient
               Color = clGradientInactiveCaption
               ParentColor = False
@@ -1038,7 +1038,7 @@ object frmHizliSatis: TfrmHizliSatis
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 566
+                Width = 560
                 Height = 107
                 Align = alTop
                 AutoSize = True
@@ -1089,7 +1089,6 @@ object frmHizliSatis: TfrmHizliSatis
                     Style.Font.Style = [fsBold]
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taCenter
-                    ExplicitTop = 74
                     AnchorX = 85
                   end
                 end
@@ -1112,7 +1111,7 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Color = clBtnFace
           TabOrder = 0
           Height = 65
-          Width = 589
+          Width = 586
           object edtUrunBul: TcxTextEdit
             AlignWithMargins = True
             Left = 6
@@ -1127,10 +1126,7 @@ object frmHizliSatis: TfrmHizliSatis
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
-            ExplicitLeft = 5
-            ExplicitTop = 21
-            ExplicitHeight = 21
-            Width = 577
+            Width = 574
           end
         end
         object cxGroupBox8: TcxGroupBox
@@ -1142,20 +1138,16 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 1
-          Height = 373
-          Width = 589
+          Height = 370
+          Width = 586
           object grdUrunAra: TcxGrid
             AlignWithMargins = True
             Left = 6
             Top = 24
-            Width = 577
-            Height = 343
+            Width = 574
+            Height = 340
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 5
-            ExplicitTop = 21
-            ExplicitWidth = 580
-            ExplicitHeight = 351
             object grdUrunAraDBTableView1: TcxGridDBTableView
               OnDblClick = grdUrunAraDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1238,19 +1230,15 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Color = clBtnFace
           TabOrder = 0
           Height = 278
-          Width = 589
+          Width = 586
           object grdBekleyenSatislar: TcxGrid
             AlignWithMargins = True
             Left = 6
             Top = 18
-            Width = 577
+            Width = 574
             Height = 248
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 5
-            ExplicitTop = 21
-            ExplicitWidth = 580
-            ExplicitHeight = 252
             object grdBekleyenSatislarDBTableView1: TcxGridDBTableView
               OnDblClick = grdBekleyenSatislarDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1313,20 +1301,16 @@ object frmHizliSatis: TfrmHizliSatis
           Align = alClient
           Caption = 'Bekleyen Sat'#305#351' Detaylar'#305
           TabOrder = 1
-          Height = 160
-          Width = 589
+          Height = 157
+          Width = 586
           object grdBekleyenSatislarDetay: TcxGrid
             AlignWithMargins = True
             Left = 6
             Top = 18
-            Width = 577
-            Height = 130
+            Width = 574
+            Height = 127
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 5
-            ExplicitTop = 21
-            ExplicitWidth = 580
-            ExplicitHeight = 138
             object grdBekleyenSatislarDetayDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -1395,23 +1379,19 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet4: TcxTabSheet
         Caption = 'Para '#220'st'#252' Hesaplama'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox2: TScrollBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 590
-          Height = 448
+          Width = 586
+          Height = 441
           Align = alClient
           TabOrder = 0
           object FlowPanel1: TFlowPanel
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 580
+            Width = 576
             Height = 395
             Align = alTop
             AutoSize = True
@@ -2501,7 +2481,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu5tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -2511,6 +2491,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu10tl: TPanel
@@ -3812,7 +3793,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu10tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -3822,6 +3803,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu20tl: TPanel
@@ -6066,7 +6048,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu20tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -6076,6 +6058,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu50tl: TPanel
@@ -8302,7 +8285,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu50tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -8312,6 +8295,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu100tl: TPanel
@@ -22971,7 +22955,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu100tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -22981,6 +22965,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
             object pnlParaUstu200tl: TPanel
@@ -28999,7 +28984,7 @@ object frmHizliSatis: TfrmHizliSatis
               object lblParaUstu200tl: TLabel
                 Left = 1
                 Top = 106
-                Width = 4
+                Width = 230
                 Height = 18
                 Align = alBottom
                 Alignment = taCenter
@@ -29009,6 +28994,7 @@ object frmHizliSatis: TfrmHizliSatis
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
+                ExplicitWidth = 4
               end
             end
           end
@@ -29588,32 +29574,51 @@ object frmHizliSatis: TfrmHizliSatis
     UserName = 'frxDsHsCari'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'id=id'
-      'cari_kodu=cari_kodu'
-      'cari_isim=cari_isim'
-      'cari_grup=cari_grup'
-      'tckn=tckn'
-      'adres=adres'
-      'ilce=ilce'
-      'il=il'
-      'tel=tel'
-      'fax=fax'
-      'mail=mail'
-      'vergi_dairesi=vergi_dairesi'
-      'vergi_no=vergi_no'
-      'banka=banka'
-      'banka_sube=banka_sube'
-      'banka_hesapno=banka_hesapno'
-      'banka_iban=banka_iban'
-      'aciklama=aciklama'
-      'kayit_tarihi=kayit_tarihi'
-      'guncellenme_tarihi=guncellenme_tarihi'
-      'kaydeden=kaydeden'
-      'guncelleyen=guncelleyen'
-      'grup_adi=grup_adi'
-      'odeme=odeme'
-      'borc=borc'
-      'bakiye=bakiye')
+      'ID=id'
+      'CARIKODU=CARIKODU'
+      'UNVAN=UNVAN'
+      'TARIH=TARIH'
+      'GROUPID=GROUPID'
+      'MESLEK=MESLEK'
+      'ILCE=ilce'
+      'SEHIR=SEHIR'
+      'POSTAKODU=POSTAKODU'
+      'ULKE=ULKE'
+      'VERGIDAIRESI=VERGIDAIRESI'
+      'VERGINO=VERGINO'
+      'BANKA=banka'
+      'BANKAHESAPNO=BANKAHESAPNO'
+      'ISTELEFONU1=ISTELEFONU1'
+      'ISTELEFONU2=ISTELEFONU2'
+      'FAX=fax'
+      'CEPTELEFONU=CEPTELEFONU'
+      'EVTELEFONU=EVTELEFONU'
+      'EMAIL=EMAIL'
+      'ADRES1=ADRES1'
+      'ADRES2=ADRES2'
+      'ADRES3=ADRES3'
+      'ACIKLAMA1=ACIKLAMA1'
+      'ACIKLAMA2=ACIKLAMA2'
+      'ACIKLAMA3=ACIKLAMA3'
+      'RESIM=RESIM'
+      'YETKILI=YETKILI'
+      'VERESIYE_LIMITI=VERESIYE_LIMITI'
+      'VERESIYE_UYAR=VERESIYE_UYAR'
+      'VERESIYE_SURESI=VERESIYE_SURESI'
+      'EMAIL2=EMAIL2'
+      'EMAIL3=EMAIL3'
+      'TIPI=TIPI'
+      'AKTIF=AKTIF'
+      'DELETED=DELETED'
+      'CREATEDAT=CREATEDAT'
+      'UPDATEDAT=UPDATEDAT'
+      'DELETEDAT=DELETEDAT'
+      'USERID=USERID'
+      'USERIDUP=USERIDUP'
+      'TOPLAM_GIREN=TOPLAM_GIREN'
+      'TOPLAM_CIKAN=TOPLAM_CIKAN'
+      'BAKIYE=bakiye')
+    DataSet = qryCari
     BCDToCurrency = False
     Left = 35
     Top = 347
@@ -29622,11 +29627,14 @@ object frmHizliSatis: TfrmHizliSatis
     UserName = 'frxDsHsFisTitle'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'id=id'
-      'FisYazdirma=FisYazdirma'
-      'sirket_adi=sirket_adi'
-      'tel=tel'
-      'adres=adres')
+      'ID=ID'
+      'FIRMAADI=FIRMAADI'
+      'FIRMATELEFON=FIRMATELEFON'
+      'FIRMAADRES=FIRMAADRES'
+      'FIRMAIL=FIRMAIL'
+      'FIRMAILCE=FIRMAILCE'
+      'FIRMAEPOSTA=FIRMAEPOSTA')
+    DataSet = qryFisTitle
     BCDToCurrency = False
     Left = 43
     Top = 291
@@ -30020,25 +30028,33 @@ object frmHizliSatis: TfrmHizliSatis
     UserName = 'frxDsHsFis'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'id=id'
-      'har_id=har_id'
-      'tipi=tipi'
-      'gckodu=gckodu'
-      'tarih=tarih'
-      'stok_kodu=stok_kodu'
-      'stok_adi=stok_adi'
-      'adet=adet'
-      'afiyat=afiyat'
-      'sfiyat=sfiyat'
-      'kdv=kdv'
-      'tutar=tutar'
-      'iskonto=iskonto'
-      'toplam=toplam'
-      'aciklama=aciklama'
-      'kayit_tarihi=kayit_tarihi'
-      'guncellenme_tarihi=guncellenme_tarihi'
-      'kaydeden=kaydeden'
-      'guncelleyen=guncelleyen')
+      'ID=id'
+      'ISLEMID=ISLEMID'
+      'ISLEMTURU=ISLEMTURU'
+      'ODEMETURU=ODEMETURU'
+      'ISLEMTARIHI=ISLEMTARIHI'
+      'CARIID=CARIID'
+      'STOKID=STOKID'
+      'POSID=POSID'
+      'EVRAKNO=EVRAKNO'
+      'MIKTAR=MIKTAR'
+      'BIRIMFIYAT=BIRIMFIYAT'
+      'GIREN=GIREN'
+      'CIKAN=CIKAN'
+      'TUTAR=tutar'
+      'BIRIMID=BIRIMID'
+      'BIRIMADI=BIRIMADI'
+      'KDVORANI=KDVORANI'
+      'KDVTUTARI=KDVTUTARI'
+      'ISKONTO_ORANI=ISKONTO_ORANI'
+      'ISKONTO_TUTARI=ISKONTO_TUTARI'
+      'ALISFIYATI=ALISFIYATI'
+      'ACIKLAMA1=ACIKLAMA1'
+      'ACIKLAMA2=ACIKLAMA2'
+      'CREATEDAT=CREATEDAT'
+      'UPDATEDAT=UPDATEDAT'
+      'USERID=USERID'
+      'USERIDUP=USERIDUP')
     DataSet = qryFis
     BCDToCurrency = False
     Left = 43
@@ -30047,13 +30063,13 @@ object frmHizliSatis: TfrmHizliSatis
   object qryFis: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from t_har_det where har_id= :har_id')
+      'SELECT * FROM ISLEM_H where ISLEMID= :islemID')
     Left = 99
     Top = 403
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'har_id'
+        Name = 'islemID'
         Value = Null
       end>
   end
@@ -30068,45 +30084,14 @@ object frmHizliSatis: TfrmHizliSatis
   object qryCari: TUniQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'SELECT'
-      '  *'
-      ' ,(SELECT'
-      '      grup_adi'
-      '    FROM t_cari_grup g'
-      '    WHERE g.id = c.cari_grup)'
-      '  AS grup_adi'
-      ' ,(SELECT'
-      '      SUM(tutar)'
-      '    FROM t_har ch'
-      '    WHERE ch.gckodu = 1'
-      '    AND ch.cari_kodu = c.cari_kodu)'
-      '  AS odeme'
-      ' ,(SELECT'
-      '      SUM(tutar)'
-      '    FROM t_har ch'
-      '    WHERE ch.gckodu = -1'
-      '    AND ch.cari_kodu = c.cari_kodu)'
-      '  AS borc'
-      ' ,((SELECT'
-      '      SUM(tutar)'
-      '    FROM t_har ch'
-      '    WHERE ch.gckodu = 1'
-      '    AND ch.cari_kodu = c.cari_kodu)'
-      '  - (SELECT'
-      '      SUM(tutar)'
-      '    FROM t_har ch'
-      '    WHERE ch.gckodu = -1'
-      '    AND ch.cari_kodu = c.cari_kodu)'
-      '  ) AS bakiye'
-      ''
-      'FROM t_cari c'
-      'where c.cari_kodu= :cari_kodu')
+      'SELECT * FROM CARI'
+      'where ID = :cariID')
     Left = 99
     Top = 347
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'cari_kodu'
+        Name = 'cariID'
         Value = Null
       end>
   end
@@ -30632,5 +30617,12 @@ object frmHizliSatis: TfrmHizliSatis
         Name = 'EVRAKNO'
         Value = nil
       end>
+  end
+  object qryFisTitle: TUniQuery
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'SELECT * FROM AYARLAR')
+    Left = 115
+    Top = 275
   end
 end

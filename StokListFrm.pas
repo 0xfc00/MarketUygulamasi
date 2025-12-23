@@ -14,7 +14,23 @@ uses
   cxLookAndFeelPainters, cxControls, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
   cxDBData, System.Actions, MemDS, DBAccess, cxGridTableView, cxClasses,
-  cxGridCustomView;
+  cxGridCustomView, dxSkinBasic, dxSkinBlack, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue;
 
 type
   TfrmStokList = class(TfrmListBase)
@@ -62,6 +78,7 @@ type
     procedure cxButton3Click(Sender: TObject);
     procedure acStokHarListExecute(Sender: TObject);
     procedure E1Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -170,6 +187,12 @@ begin
 
 
 
+  vwStoklar.ApplyBestFit(nil);
+end;
+
+procedure TfrmStokList.FormResize(Sender: TObject);
+begin
+  inherited;
   vwStoklar.ApplyBestFit(nil);
 end;
 

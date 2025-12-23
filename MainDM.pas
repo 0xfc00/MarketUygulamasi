@@ -28,7 +28,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses DbAyarlarFrm, _func;
+uses DbAyarlarFrm, _func, Main;
 
 {$R *.dfm}
 

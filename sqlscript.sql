@@ -62,6 +62,7 @@ CREATE TABLE dbo.TMPSATIS (
   FIYAT decimal(20, 2) NULL,
   ISKONTO decimal(20, 2) NULL,
   TOPLAM decimal(20, 2) NULL,
+  ALISFIYATI decimal(20, 2) NULL,
   CONSTRAINT PK_tmp_Satis_ID PRIMARY KEY CLUSTERED (ID)
 )
 ON [PRIMARY]
@@ -459,73 +460,6 @@ CREATE UNIQUE INDEX UK_POS_POSADI
 GO
 
 --
--- Create table [dbo].[ISLEM_H]
---
-PRINT (N'Create table [dbo].[ISLEM_H]')
-GO
-CREATE TABLE dbo.ISLEM_H (
-  ID int IDENTITY,
-  ISLEMID int NOT NULL,
-  ISLEMTURU tinyint NOT NULL,
-  ODEMETURU tinyint NOT NULL,
-  ISLEMTARIHI datetime NOT NULL,
-  CARIID int NOT NULL,
-  STOKID int NOT NULL,
-  POSID int NOT NULL,
-  EVRAKNO nvarchar(100) NULL,
-  MIKTAR decimal(18, 4) NULL,
-  BIRIMFIYAT decimal(18, 4) NULL,
-  GIREN decimal(18, 4) NULL DEFAULT (0),
-  CIKAN decimal(18, 4) NULL DEFAULT (0),
-  TUTAR decimal(18, 2) NULL,
-  BIRIMID int NULL,
-  BIRIMADI varchar(50) NULL,
-  KDVORANI decimal(5, 2) NULL,
-  KDVTUTARI decimal(18, 2) NULL,
-  ISKONTO_ORANI decimal(5, 2) NULL,
-  ISKONTO_TUTARI decimal(18, 2) NULL,
-  ACIKLAMA1 nvarchar(150) NULL,
-  ACIKLAMA2 nvarchar(150) NULL,
-  CREATEDAT datetime2(0) NULL DEFAULT (sysdatetime()),
-  UPDATEDAT datetime2(0) NULL,
-  USERID int NULL,
-  USERIDUP int NULL,
-  PRIMARY KEY CLUSTERED (ID)
-)
-ON [PRIMARY]
-GO
-
---
--- Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]
---
-PRINT (N'Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]')
-GO
-CREATE INDEX IX_ISLEM_H_ISLEMID
-  ON dbo.ISLEM_H (ISLEMID)
-  ON [PRIMARY]
-GO
-
---
--- Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]
---
-PRINT (N'Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]')
-GO
-CREATE INDEX IX_ISLEM_H_TARIH
-  ON dbo.ISLEM_H (ISLEMTARIHI)
-  ON [PRIMARY]
-GO
-
---
--- Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]
---
-PRINT (N'Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]')
-GO
-CREATE INDEX IX_ISLEM_H_TIP_HESAP
-  ON dbo.ISLEM_H (ISLEMTURU, CARIID)
-  ON [PRIMARY]
-GO
-
---
 -- Create table [dbo].[ISLEM_BASLIK]
 --
 PRINT (N'Create table [dbo].[ISLEM_BASLIK]')
@@ -574,4 +508,81 @@ GO
 CREATE INDEX IX_ISLEM_BASLIK_TARIH
   ON dbo.ISLEM_BASLIK (ISLEMTARIHI)
   ON [PRIMARY]
+GO
+
+--
+-- Create table [dbo].[ISLEM_H]
+--
+PRINT (N'Create table [dbo].[ISLEM_H]')
+GO
+CREATE TABLE dbo.ISLEM_H (
+  ID int IDENTITY,
+  ISLEMID int NOT NULL,
+  ISLEMTURU tinyint NOT NULL,
+  ODEMETURU tinyint NOT NULL,
+  ISLEMTARIHI datetime NOT NULL,
+  CARIID int NOT NULL,
+  STOKID int NOT NULL,
+  POSID int NOT NULL,
+  EVRAKNO nvarchar(100) NULL,
+  MIKTAR decimal(18, 4) NULL,
+  BIRIMFIYAT decimal(18, 4) NULL,
+  GIREN decimal(18, 4) NULL DEFAULT (0),
+  CIKAN decimal(18, 4) NULL DEFAULT (0),
+  TUTAR decimal(18, 2) NULL,
+  BIRIMID int NULL,
+  BIRIMADI varchar(50) NULL,
+  KDVORANI decimal(5, 2) NULL,
+  KDVTUTARI decimal(18, 2) NULL,
+  ISKONTO_ORANI decimal(5, 2) NULL,
+  ISKONTO_TUTARI decimal(18, 2) NULL,
+  ALISFIYATI decimal(20, 2) NULL,
+  ACIKLAMA1 nvarchar(150) NULL,
+  ACIKLAMA2 nvarchar(150) NULL,
+  CREATEDAT datetime2(0) NULL DEFAULT (sysdatetime()),
+  UPDATEDAT datetime2(0) NULL,
+  USERID int NULL,
+  USERIDUP int NULL,
+  PRIMARY KEY CLUSTERED (ID)
+)
+ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_ISLEMID
+  ON dbo.ISLEM_H (ISLEMID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_TARIH] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_TARIH
+  ON dbo.ISLEM_H (ISLEMTARIHI)
+  ON [PRIMARY]
+GO
+
+--
+-- Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create index [IX_ISLEM_H_TIP_HESAP] on table [dbo].[ISLEM_H]')
+GO
+CREATE INDEX IX_ISLEM_H_TIP_HESAP
+  ON dbo.ISLEM_H (ISLEMTURU, CARIID)
+  ON [PRIMARY]
+GO
+
+--
+-- Create foreign key [FK_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]
+--
+PRINT (N'Create foreign key [FK_ISLEM_H_ISLEMID] on table [dbo].[ISLEM_H]')
+GO
+ALTER TABLE dbo.ISLEM_H
+  ADD CONSTRAINT FK_ISLEM_H_ISLEMID FOREIGN KEY (ISLEMID) REFERENCES dbo.ISLEM_BASLIK (ID)
 GO
