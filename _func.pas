@@ -291,8 +291,9 @@ begin
   if demo then
   begin
     MesajBilgi('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
+     abort;
+
     Application.Terminate;
-    halt;
   end;
 
 end;

@@ -113,6 +113,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         8E847E4EA9750000000049454E44AE426082}
       TabOrder = 1
       OnClick = cxButton1Click
+      ExplicitTop = 415
     end
     object cxButton2: TcxButton
       Left = 3
@@ -238,6 +239,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         8E847E4EA9750000000049454E44AE426082}
       TabOrder = 1
       OnClick = cxButton3Click
+      ExplicitTop = 415
     end
     object cxButton4: TcxButton
       Left = 3
@@ -344,6 +346,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_HSGRUP')
+    BeforePost = qryHsGrupBeforePost
     Left = 85
     Top = 93
   end
@@ -359,6 +362,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     MasterSource = dsHsGrup
     MasterFields = 'ID'
     DetailFields = 'GRUPID'
+    BeforePost = qryHsStoklarBeforePost
     Left = 309
     Top = 149
     ParamData = <

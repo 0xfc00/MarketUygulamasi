@@ -34,7 +34,8 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxGroupBox, dxCustomTileControl,
-  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton, BaseFrm;
+  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton, BaseFrm, AdvNavBar,
+  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -91,7 +92,6 @@ type
     NavBarStyleListe: TdxNavBarStyleItem;
     NavBarStyleListeHover: TdxNavBarStyleItem;
     NavBarStyleListeHeader: TdxNavBarStyleItem;
-    MainMenu1: TMainMenu;
     ActionList1: TActionList;
     acYeniStokKarti: TAction;
     nbiTanimlar: TdxNavBarItem;
@@ -168,28 +168,26 @@ type
     cxStyle9: TcxStyle;
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
-    HzlSat1: TMenuItem;
-    S1: TMenuItem;
-    mStoklar1: TMenuItem;
-    Stokk1: TMenuItem;
-    Stokk2: TMenuItem;
-    StokHareketleri1: TMenuItem;
-    N1: TMenuItem;
-    N2: TMenuItem;
-    C1: TMenuItem;
-    mCariler1: TMenuItem;
-    CariTahsilat1: TMenuItem;
-    Carideme1: TMenuItem;
-    CariHareketleri1: TMenuItem;
-    N3: TMenuItem;
-    N4: TMenuItem;
+    acAyarlar: TAction;
     Panel1: TPanel;
     btnKapat: TcxButton;
     btnKullaniciDegistir: TcxButton;
-    A1: TMenuItem;
-    anmlar1: TMenuItem;
-    acAyarlar: TAction;
-    Ayarlar1: TMenuItem;
+    Panel18: TPanel;
+    Panel19: TPanel;
+    cxButton1: TcxButton;
+    Panel20: TPanel;
+    cxButton2: TcxButton;
+    Panel21: TPanel;
+    cxButton3: TcxButton;
+    Panel22: TPanel;
+    cxButton5: TcxButton;
+    Panel23: TPanel;
+    Panel25: TPanel;
+    cxButton7: TcxButton;
+    Panel26: TPanel;
+    cxButton8: TcxButton;
+    Panel27: TPanel;
+    cxButton9: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);

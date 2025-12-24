@@ -5,7 +5,7 @@ interface
 uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms,
-
+  System.SysUtils,
   Data.DB,
   Vcl.StdCtrls, cxButtons, cxGridLevel,
   cxGridDBTableView,
@@ -69,6 +69,8 @@ type
     procedure btnKaydetClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure qryHsGrupBeforePost(DataSet: TDataSet);
+    procedure qryHsStoklarBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -155,6 +157,19 @@ begin
   inherited;
   pnlHeader.Caption := '   HIZLI SATIÞ BUTONLARI';
   pnlHeader.color :=clGreen;
+end;
+
+procedure TfrmHizliSatisButonlari.qryHsGrupBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  if trim(dataset.FieldByName('GRUPADI').AsString) = '' then abort;
+end;
+
+procedure TfrmHizliSatisButonlari.qryHsStoklarBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  if trim(dataset.FieldByName('GRUPID').AsString) = '' then abort;
+  if trim(dataset.FieldByName('STOKKODU').AsString) = '' then abort;
 end;
 
 end.

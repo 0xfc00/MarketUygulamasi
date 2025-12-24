@@ -22,6 +22,7 @@ type
   tip_CARI_TIPI = (CT_MUSTERI, CT_TEDARIKCI, CT_MUSTERITEDARIKCI);
 
 const
+  Ver = 1000;
   APP_NAME = 'Kolay Hesap Pro';
   VERI_YOK = 'VERI_YOK';
   G = 'G';

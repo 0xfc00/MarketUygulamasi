@@ -118,12 +118,21 @@ begin
         close;
         open;
       end;
+
       First;
       while not eof  do
       begin
         cbUserName.Properties.Items.Add(FieldByName('KULLANICI').AsString);
         Next;
       end;
+
+      close;
+      sql.text := 'select * from USERS where  KULLANICI = ''ADMIN'' ';
+      open;
+      edit;
+      FieldByName('YONETICI').asboolean := true;
+      post;
+
       Free;
     end;
   except

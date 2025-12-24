@@ -42,7 +42,7 @@ var
   Ini: TIniFile;
 begin
   if UniConn.Connected then
-    //showmessage('UniConn açýk');  //deneme
+    showmessage('UniConn açýk');  //deneme
   UniConn.close;
 
   if not FileExists(ExtractFilePath(ParamStr(0)) + 'khpro.ini') then
@@ -85,6 +85,8 @@ begin
       ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
       application.createform(TfrmDbAyarlar,frmDbAyarlar);
       frmDbAyarlar.showmodal;
+      Application.Terminate;
+      halt;
     end;
   end;
 

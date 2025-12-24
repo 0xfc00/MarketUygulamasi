@@ -430,7 +430,7 @@ begin
     fPanelHS.AlignWithMargins := True;
     fPanelHS.Left     := 3;
     fPanelHS.Top      := 3;
-    fPanelHS.Width    := 956;
+    fPanelHS.Width    := 956; //956
     fPanelHS.Height   := 660;
     fPanelHS.Align    := alTop;
     fPanelHS.AutoSize := true;
@@ -464,7 +464,7 @@ begin
       pnlHS.AlignWithMargins := true;
       pnlHS.Left        := 1;
       pnlHS.Top         := 1;
-      pnlHS.Width       := 170;
+      pnlHS.Width       := 165;  //170
       pnlHS.Height      := 99;
       pnlHS.Color       := clWhite;
       pnlHS.BorderStyle := bsSingle;
@@ -490,7 +490,7 @@ begin
       lblAd.Style.Font.Charset := DEFAULT_CHARSET;
       lblad.Style.Color := clWhite;
       lblAd.Style.Font.Color := clWindowText;
-      lblAd.Style.Font.Height := -13;   //13
+      lblAd.Style.Font.Height := -16;   //13
       lblAd.Style.Font.Name := 'Tahoma';
       lblAd.Style.Font.Style := [fsBold];
 
@@ -506,6 +506,7 @@ begin
       lblFiyat.Name      := 'lblFiyat' + qHsStok_.FieldByName('ID').AsString+ '___'+ qHsStok_.FieldByName('STOKKODU').AsString;
       lblFiyat.Parent    := pnlHS;
       lblFiyat.Align     := alBottom;
+
 //      lblFiyat.Left      := pnlHS.Width -58; //114;
 //      lblFiyat.Top       := pnlHS.Height -25; //154;
 
@@ -515,7 +516,7 @@ begin
       lblFiyat.Style.Color := clRed;
 
       lblFiyat.Style.Font.Color   := clWhite;
-      lblFiyat.Style.Font.Height  := -16;  //11
+      lblFiyat.Style.Font.Height  := -20;  //11
       lblFiyat.Style.Font.Name    := 'Tahoma';
       lblFiyat.Style.Font.Style   := [fsBold];
       lblFiyat.Properties.Alignment.Horz := taCenter;
@@ -753,9 +754,12 @@ begin
 
   grdHizliSatisDBTableView1.OptionsSelection.CellSelect := (y.admin or y.HSSATIRDUZENLE);
 
+
   if not qryStokBul.Active               then qryStokBul.Open;
   if not qryBekleyenSatislar.Active      then qryBekleyenSatislar.Open;
   if not qryBekleyenSatislarDetay.Active then qryBekleyenSatislarDetay.Open;
+
+
 end;
 
 
@@ -777,7 +781,8 @@ begin
   hizliSatisDoldur;
   tutarEditGuncelle;
   edtCariBulPropertiesChange(sender);
-  cbFisYazdirma.ItemIndex := StrToIntDef(veriCekSQL('select p_FISYAZDIRMA from USERS WHERE ID= ' + loginUserID.ToString, 'p_FISYAZDIRMA') , 0)
+  cbFisYazdirma.ItemIndex := StrToIntDef(veriCekSQL('select p_FISYAZDIRMA from USERS WHERE ID= ' + loginUserID.ToString, 'p_FISYAZDIRMA') , 0);
+  WindowState := wsMaximized;
 end;
 
 
