@@ -315,11 +315,16 @@ object frmHizliSatis: TfrmHizliSatis
         OptionsData.Deleting = False
         OptionsData.Inserting = False
         OptionsSelection.CellSelect = False
+        OptionsView.NoDataToDisplayInfoText = 'Sat'#305#351' Yok...'
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
         OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
         OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-        Styles.StyleSheet = GridTableViewStyleSheetUserFormat2
+        Styles.Content = cxStyle9
+        Styles.ContentEven = cxStyle9
+        Styles.ContentOdd = cxStyle9
+        Styles.Selection = cxStyle9
+        Styles.StyleSheet = GridTableViewStyleSheetPumpkinlarge
         object grdHizliSatisDBTableView1adi: TcxGridDBColumn
           Caption = #220'r'#252'n Ad'#305
           DataBinding.FieldName = 'STOKADI'
@@ -999,7 +1004,6 @@ object frmHizliSatis: TfrmHizliSatis
       Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Images = imgListPageControl
-      ExplicitLeft = 3
       ClientRectBottom = 482
       ClientRectLeft = 3
       ClientRectRight = 595
@@ -30567,7 +30571,7 @@ object frmHizliSatis: TfrmHizliSatis
         '      '#9#9#9#9'ISLEMID ,ISLEMTURU ,ODEMETURU ,ISLEMTARIHI, EVRAKNO,CA' +
         'RIID ,STOKID ,POSID ,'
       '      '#9#9#9#9'MIKTAR ,'
-      '      '#9#9#9#9'GIREN  ,TUTAR ,'
+      '      '#9#9#9#9'CIKAN  ,TUTAR ,'
       '      '#9#9#9#9'BIRIMFIYAT ,BIRIMID'
       '      '#9#9#9#9',BIRIMADI ,KDVTUTARI ,'
       '      '#9#9#9#9'ISKONTO_TUTARI ,'
@@ -30580,8 +30584,8 @@ object frmHizliSatis: TfrmHizliSatis
         'KNO, @CariID,ISNULL(src.STOKID,0),@PosID,'
       '              CAST(ISNULL(src.ADET,0) AS float),'
       
-        '              CAST(ISNULL(src.TOPLAM,0) AS float),CAST(ISNULL(sr' +
-        'c.TOPLAM,0) AS float),'#9#9#9#9
+        '              CAST(ISNULL(src.ADET,0) AS float),CAST(ISNULL(src.' +
+        'TOPLAM,0) AS float),'#9#9#9#9
       '              CAST(ISNULL(src.FIYAT,0) AS float),null,'
       
         '              CAST(src.BIRIMADI AS nvarchar(15)),CAST(ISNULL(src' +
@@ -30670,79 +30674,79 @@ object frmHizliSatis: TfrmHizliSatis
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -19
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Height = -16
+      Font.Name = 'Microsoft Sans Serif'
+      Font.Style = []
       TextColor = clBlack
     end
     object cxStyle2: TcxStyle
       AssignedValues = [svColor, svTextColor]
-      Color = 9234160
+      Color = 10343916
       TextColor = clBlack
     end
     object cxStyle3: TcxStyle
       AssignedValues = [svColor, svTextColor]
-      Color = 11788021
+      Color = 13626101
       TextColor = clBlack
     end
     object cxStyle4: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 9157775
+      Color = 10343916
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
       Font.Style = []
       TextColor = clBlack
     end
     object cxStyle5: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 11193702
+      Color = 3122647
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
       Font.Style = []
-      TextColor = clBlack
+      TextColor = 13626101
     end
     object cxStyle6: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 5737262
+      Color = 4325442
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      TextColor = clBlack
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
+      Font.Style = [fsBold]
+      TextColor = clWhite
     end
     object cxStyle7: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 9157775
+      Color = 10343916
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'Tahoma'
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
       Font.Style = [fsBold]
       TextColor = clBlack
     end
     object cxStyle8: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 5736750
+      Color = 4944971
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
+      Font.Style = []
       TextColor = clWhite
     end
     object cxStyle9: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 9157775
+      Color = 10343916
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = []
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
+      Font.Style = [fsBold]
       TextColor = clBlack
     end
     object cxStyle10: TcxStyle
@@ -30750,23 +30754,23 @@ object frmHizliSatis: TfrmHizliSatis
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
       Font.Style = []
-      TextColor = clBlue
+      TextColor = 3122647
     end
     object cxStyle11: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = 4615972
+      Color = 4944971
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Microsoft Sans Serif'
+      Font.Style = []
       TextColor = clWhite
     end
-    object GridTableViewStyleSheetUserFormat2: TcxGridTableViewStyleSheet
-      Caption = 'UserFormat2'
+    object GridTableViewStyleSheetPumpkinlarge: TcxGridTableViewStyleSheet
+      Caption = 'Pumpkin (large)'
       Styles.Content = cxStyle1
       Styles.ContentEven = cxStyle2
       Styles.ContentOdd = cxStyle3

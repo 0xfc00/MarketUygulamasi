@@ -26,8 +26,8 @@ interface
   end;
 
   TAyar = record
-    oto_yedek_kapanirken   : integer;
-    oto_yedek_dizini       : string;
+    OTO_YEDEK              : BOOLEAN;
+    OTO_YEDEK_DIZINI       : string;
 
   end;
 

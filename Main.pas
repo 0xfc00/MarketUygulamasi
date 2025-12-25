@@ -188,6 +188,9 @@ type
     cxButton8: TcxButton;
     Panel27: TPanel;
     cxButton9: TcxButton;
+    stylButonlar: TcxStyle;
+    Panel24: TPanel;
+    cxButton6: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -217,6 +220,8 @@ type
     procedure acRaporlarExecute(Sender: TObject);
     procedure btnKullaniciDegistirClick(Sender: TObject);
     procedure acAyarlarExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -258,9 +263,10 @@ begin
 
   if not loginSuccess then
   begin
-    Application.Terminate;
-    frmMain.close;
+    ExitProcess(0);
   end;
+
+  yetkileriYukle;
 end;
 
 procedure FormYarat_fn(Tformadi: TComponentClass;  var formadi: TForm; checkIfNotExist : boolean = true);
@@ -741,11 +747,25 @@ begin
   end;
 end;
 
+procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  if a.OTO_YEDEK then
+    if not otoyedek_fn then MesajHata('Otomatik Yedek Alınamadı');
+end;
+
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   inherited;
   Caption := APP_NAME;
 
+end;
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  inherited;
+  yetkileriYukle;     //deneme
+  ayarlariYukle;
 end;
 
 procedure TfrmMain.KasaGirisCikisFormuAc_fn(AGCKodu : integer);

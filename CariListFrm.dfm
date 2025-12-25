@@ -17,17 +17,18 @@ object frmCariList: TfrmCariList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 466
+    Top = 440
     Width = 1061
-    Height = 36
+    Height = 62
     Align = alBottom
     TabOrder = 0
+    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 957
       Top = 4
       Width = 100
-      Height = 28
+      Height = 54
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -117,14 +118,21 @@ object frmCariList: TfrmCariList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitHeight = 28
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 150
+      Height = 54
       Align = alLeft
       Caption = 'Yeni Cari Kart'#305
       OptionsImage.Glyph.SourceDPI = 96
@@ -155,6 +163,12 @@ object frmCariList: TfrmCariList
         76673E0D0A}
       OptionsImage.ImageIndex = 0
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetVeYeniClick
     end
     object btnSil: TcxButton
@@ -162,7 +176,7 @@ object frmCariList: TfrmCariList
       Left = 851
       Top = 4
       Width = 100
-      Height = 28
+      Height = 54
       Align = alRight
       Action = acCariKartSil
       OptionsImage.Glyph.SourceDPI = 96
@@ -208,13 +222,20 @@ object frmCariList: TfrmCariList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitHeight = 28
     end
     object btnStokDuzenle: TcxButton
       AlignWithMargins = True
       Left = 745
       Top = 4
       Width = 100
-      Height = 28
+      Height = 54
       Align = alRight
       Action = acCariDuzenle
       OptionsImage.Glyph.SourceDPI = 96
@@ -239,13 +260,20 @@ object frmCariList: TfrmCariList
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitHeight = 28
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 110
+      Left = 160
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 150
+      Height = 54
       Align = alLeft
       Action = acCariHarList
       OptionsImage.Glyph.SourceDPI = 96
@@ -275,6 +303,13 @@ object frmCariList: TfrmCariList
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 4
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 130
     end
   end
   object cxGrid1: TcxGrid
@@ -282,9 +317,10 @@ object frmCariList: TfrmCariList
     Left = 3
     Top = 3
     Width = 1061
-    Height = 457
+    Height = 431
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 457
     object vwCariList: TcxGridDBTableView
       PopupMenu = pmGrid
       Navigator.Buttons.CustomButtons = <>
@@ -320,6 +356,7 @@ object frmCariList: TfrmCariList
       OptionsView.CellAutoHeight = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
+      Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
       object vwCariListCARIKODU: TcxGridDBColumn
         Caption = 'Cari Kodu'
         DataBinding.FieldName = 'CARIKODU'

@@ -72,6 +72,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         OptionsView.GroupByBox = False
         OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
         OptionsView.ShowColumnFilterButtons = sfbWhenSelected
+        Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
         object viewHsGrupColumn1: TcxGridDBColumn
           Caption = 'No'
           DataBinding.FieldName = 'ID'
@@ -112,6 +113,12 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         000000002C9B9F881D00E0FD2D1875173F8043F4C51002B8EF2D0700A00379E5
         8E847E4EA9750000000049454E44AE426082}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton1Click
       ExplicitTop = 415
     end
@@ -138,6 +145,12 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         9E5179BF8290FB59BEFE335A016F69850D637E4FD7AD0000000049454E44AE42
         6082}
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton2Click
     end
   end
@@ -195,6 +208,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         OptionsView.GroupByBox = False
         OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
         OptionsView.ShowColumnFilterButtons = sfbWhenSelected
+        Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
         object viewStoklarstokid: TcxGridDBColumn
           Caption = 'Stok Ad'#305
           DataBinding.FieldName = 'STOKKODU'
@@ -238,8 +252,13 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         000000002C9B9F881D00E0FD2D1875173F8043F4C51002B8EF2D0700A00379E5
         8E847E4EA9750000000049454E44AE426082}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton3Click
-      ExplicitTop = 415
     end
     object cxButton4: TcxButton
       Left = 3
@@ -264,23 +283,32 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         9E5179BF8290FB59BEFE335A016F69850D637E4FD7AD0000000049454E44AE42
         6082}
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton4Click
     end
   end
-  object cxGroupBox4: TcxGroupBox
+  object cxGroupBox4: TPanel
     AlignWithMargins = True
     Left = 3
     Top = 499
-    Align = alBottom
-    TabOrder = 2
-    Height = 71
     Width = 628
+    Height = 71
+    Align = alBottom
+    UseDockManager = False
+    ParentColor = True
+    TabOrder = 2
+    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 481
-      Top = 24
+      Left = 483
+      Top = 4
       Width = 141
-      Height = 41
+      Height = 63
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -299,14 +327,23 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         4D07593944B49ECFF1205983F20942E12BC9D5FB0606D55B3943B4564E0196F4
         ED1FA5CBFF8205306B1EDD7B20108AD63FFD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitLeft = 481
+      ExplicitTop = 24
+      ExplicitHeight = 41
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 6
-      Top = 24
+      Left = 4
+      Top = 4
       Width = 165
-      Height = 41
+      Height = 63
       Align = alLeft
       Cancel = True
       Caption = 'Kaydet'
@@ -334,7 +371,15 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         2C31382031312C3135202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E
         0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetClick
+      ExplicitLeft = 3
+      ExplicitTop = 0
     end
   end
   object dsHsGrup: TDataSource

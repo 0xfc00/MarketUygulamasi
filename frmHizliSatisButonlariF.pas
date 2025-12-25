@@ -31,7 +31,7 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, Vcl.ExtCtrls;
 
 type
   TfrmHizliSatisButonlari = class(Tfrmkartbase)
@@ -52,15 +52,15 @@ type
     grdStoklarLevel1: TcxGridLevel;
     cxButton3: TcxButton;
     cxButton4: TcxButton;
-    cxGroupBox4: TcxGroupBox;
-    btnKapat: TcxButton;
-    btnKaydet: TcxButton;
     dsHsGrup: TDataSource;
     qryHsGrup: TUniQuery;
     dsHsStoklar: TDataSource;
     qryHsStoklar: TUniQuery;
     qryStok: TUniQuery;
     dsStok: TDataSource;
+    cxGroupBox4: TPanel;
+    btnKapat: TcxButton;
+    btnKaydet: TcxButton;
     procedure cxButton1Click(Sender: TObject);
     procedure cxButton2Click(Sender: TObject);
     procedure cxButton3Click(Sender: TObject);

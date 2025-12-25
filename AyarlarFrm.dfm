@@ -1,7 +1,6 @@
 object frmAyarlar: TfrmAyarlar
   Left = 0
   Top = 0
-  ActiveControl = cxDBTextEdit9
   BorderStyle = bsDialog
   Caption = 'frmAyarlar'
   ClientHeight = 415
@@ -19,17 +18,17 @@ object frmAyarlar: TfrmAyarlar
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 376
+    Top = 352
     Width = 663
-    Height = 36
+    Height = 60
     Align = alBottom
     TabOrder = 0
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 574
+      Left = 559
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 100
+      Height = 52
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -119,14 +118,20 @@ object frmAyarlar: TfrmAyarlar
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 483
+      Left = 453
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 100
+      Height = 52
       Align = alRight
       Caption = 'Kaydet'
       Default = True
@@ -152,6 +157,12 @@ object frmAyarlar: TfrmAyarlar
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetClick
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
@@ -173,195 +184,287 @@ object frmAyarlar: TfrmAyarlar
     Left = 0
     Top = 0
     Width = 669
-    Height = 373
+    Height = 349
     Align = alClient
     TabOrder = 1
     Properties.ActivePage = shTemelAyarlar
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 369
-    ClientRectLeft = 4
-    ClientRectRight = 665
-    ClientRectTop = 24
+    ClientRectBottom = 342
+    ClientRectLeft = 3
+    ClientRectRight = 662
+    ClientRectTop = 26
     object shTemelAyarlar: TcxTabSheet
       Caption = 'Temel Ayarlar'
       ImageIndex = 0
-      ExplicitLeft = 3
-      ExplicitTop = 25
+      object cxGroupBox1: TcxGroupBox
+        Left = 16
+        Top = 14
+        Caption = 'Firma Bilgileri'
+        TabOrder = 0
+        Height = 203
+        Width = 329
+        object cxGroupBox8: TcxGroupBox
+          Left = 13
+          Top = 11
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 0
+          Height = 30
+          Width = 300
+          object cxLabel7: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = 'Firma Ad'#305
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit9: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMAADI'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+        object cxGroupBox2: TcxGroupBox
+          Left = 13
+          Top = 41
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 1
+          Height = 30
+          Width = 300
+          object cxLabel1: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = 'Telefon'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit1: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMATELEFON'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+        object cxGroupBox3: TcxGroupBox
+          Left = 13
+          Top = 93
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 3
+          Height = 30
+          Width = 300
+          object cxLabel2: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = #304'l'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit2: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMAIL'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+        object cxGroupBox4: TcxGroupBox
+          Left = 13
+          Top = 63
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 2
+          Height = 30
+          Width = 300
+          object cxLabel3: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = 'Adres'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit3: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMAADRES'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+        object cxGroupBox5: TcxGroupBox
+          Left = 13
+          Top = 145
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 5
+          Height = 30
+          Width = 300
+          object cxLabel4: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = 'E-Posta'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit4: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMAEPOSTA'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+        object cxGroupBox6: TcxGroupBox
+          Left = 13
+          Top = 115
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 4
+          Height = 30
+          Width = 300
+          object cxLabel5: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = #304'l'#231'e'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxDBTextEdit5: TcxDBTextEdit
+            Left = 112
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'FIRMAILCE'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 1
+            Width = 185
+          end
+        end
+      end
     end
-  end
-  object cxGroupBox1: TcxGroupBox
-    Left = 16
-    Top = 38
-    Caption = 'Firma Bilgileri'
-    TabOrder = 2
-    Height = 203
-    Width = 329
-    object cxGroupBox8: TcxGroupBox
-      Left = 13
-      Top = 11
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 0
-      Height = 30
-      Width = 300
-      object cxLabel7: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = 'Firma Ad'#305
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit9: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMAADI'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
-      end
-    end
-    object cxGroupBox2: TcxGroupBox
-      Left = 13
-      Top = 41
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 1
-      Height = 30
-      Width = 300
-      object cxLabel1: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = 'Telefon'
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit1: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMATELEFON'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
-      end
-    end
-    object cxGroupBox3: TcxGroupBox
-      Left = 13
-      Top = 93
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 3
-      Height = 30
-      Width = 300
-      object cxLabel2: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = #304'l'
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit2: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMAIL'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
-      end
-    end
-    object cxGroupBox4: TcxGroupBox
-      Left = 13
-      Top = 63
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 2
-      Height = 30
-      Width = 300
-      object cxLabel3: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = 'Adres'
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit3: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMAADRES'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
-      end
-    end
-    object cxGroupBox5: TcxGroupBox
-      Left = 13
-      Top = 145
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 5
-      Height = 30
-      Width = 300
-      object cxLabel4: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = 'E-Posta'
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit4: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMAEPOSTA'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
-      end
-    end
-    object cxGroupBox6: TcxGroupBox
-      Left = 13
-      Top = 115
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 4
-      Height = 30
-      Width = 300
-      object cxLabel5: TcxLabel
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Align = alLeft
-        Caption = #304'l'#231'e'
-        Properties.Alignment.Vert = taVCenter
-        Transparent = True
-        AnchorY = 15
-      end
-      object cxDBTextEdit5: TcxDBTextEdit
-        Left = 113
-        Top = 2
-        Align = alRight
-        DataBinding.DataField = 'FIRMAILCE'
-        DataBinding.DataSource = dsAyarlar
-        TabOrder = 1
-        Width = 185
+    object cxTabSheet1: TcxTabSheet
+      Caption = 'Yedekleme Ayarlar'#305
+      ImageIndex = 1
+      object cxGroupBox7: TcxGroupBox
+        Left = 24
+        Top = 22
+        Caption = 'Firma Bilgileri'
+        TabOrder = 0
+        Height = 203
+        Width = 329
+        object cxGroupBox13: TcxGroupBox
+          Left = 13
+          Top = 57
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 1
+          Height = 30
+          Width = 300
+          object edtOtoYedekDizin: TcxDBTextEdit
+            Left = 88
+            Top = 3
+            Align = alRight
+            DataBinding.DataField = 'OTO_YEDEK_DIZINI'
+            DataBinding.DataSource = dsAyarlar
+            TabOrder = 0
+            Width = 173
+          end
+          object cxLabel8: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            Caption = 'Yedek  Dizini'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            AnchorY = 15
+          end
+          object cxButton1: TcxButton
+            AlignWithMargins = True
+            Left = 264
+            Top = 6
+            Width = 30
+            Height = 18
+            Align = alRight
+            Caption = '...'
+            TabOrder = 2
+            OnClick = cxButton1Click
+          end
+        end
+        object cxGroupBox14: TcxGroupBox
+          Left = 13
+          Top = 27
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          TabOrder = 0
+          Height = 30
+          Width = 300
+          object cxLabel6: TcxLabel
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Align = alLeft
+            AutoSize = False
+            Caption = 'Oto Yedek'
+            Properties.Alignment.Vert = taVCenter
+            Transparent = True
+            Height = 18
+            Width = 81
+            AnchorY = 15
+          end
+          object cxDBCheckBox1: TcxDBCheckBox
+            Left = 90
+            Top = 3
+            Align = alLeft
+            DataBinding.DataField = 'OTO_YEDEK'
+            DataBinding.DataSource = dsAyarlar
+            Style.TransparentBorder = False
+            TabOrder = 1
+            ExplicitLeft = 179
+            ExplicitTop = 9
+            ExplicitHeight = 19
+          end
+        end
+        object cxButton2: TcxButton
+          Left = 192
+          Top = 29
+          Width = 82
+          Height = 25
+          Caption = #350'imdi Yedekle'
+          TabOrder = 2
+          OnClick = cxButton2Click
+        end
       end
     end
   end
@@ -369,6 +472,7 @@ object frmAyarlar: TfrmAyarlar
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select TOP 1 * from AYARLAR')
+    AfterPost = qryAyarlarAfterPost
     Left = 96
     Top = 256
   end
@@ -376,5 +480,12 @@ object frmAyarlar: TfrmAyarlar
     DataSet = qryAyarlar
     Left = 216
     Top = 248
+  end
+  object FileSaveDialog1: TFileSaveDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    Options = []
+    Left = 392
+    Top = 152
   end
 end

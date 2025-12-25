@@ -2,8 +2,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   Left = 0
   Top = 0
   Caption = 'frmKasaPosHarList'
-  ClientHeight = 522
-  ClientWidth = 868
+  ClientHeight = 536
+  ClientWidth = 967
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,29 +17,36 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   TextHeight = 13
   object pcAna: TcxPageControl
     Left = 0
-    Top = 41
-    Width = 868
-    Height = 439
+    Top = 61
+    Width = 967
+    Height = 392
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ClientRectBottom = 434
-    ClientRectLeft = 2
-    ClientRectRight = 863
-    ClientRectTop = 25
+    ExplicitTop = 41
+    ExplicitWidth = 868
+    ExplicitHeight = 439
+    ClientRectBottom = 385
+    ClientRectLeft = 3
+    ClientRectRight = 960
+    ClientRectTop = 26
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
+      ExplicitWidth = 858
+      ExplicitHeight = 406
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 855
-        Height = 403
+        Width = 951
+        Height = 353
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 852
+        ExplicitHeight = 400
         object vwKasa: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -60,6 +67,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.GroupByBox = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object vwKasaTARIH: TcxGridDBColumn
             Caption = #304#351'lem Tarihi'
             DataBinding.FieldName = 'ISLEMTARIHI'
@@ -103,18 +111,18 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 858
+      ExplicitHeight = 406
       object cxGrid2: TcxGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 855
-        Height = 403
+        Width = 951
+        Height = 353
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 852
+        ExplicitHeight = 400
         object vwPos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -190,17 +198,20 @@ object frmKasaPosHarList: TfrmKasaPosHarList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 483
-    Width = 862
-    Height = 36
+    Top = 456
+    Width = 961
+    Height = 77
     Align = alBottom
     TabOrder = 1
+    ExplicitLeft = 8
+    ExplicitTop = 452
+    ExplicitWidth = 862
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 758
+      Left = 837
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 120
+      Height = 69
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -290,14 +301,21 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitLeft = 758
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 652
+      Left = 711
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 120
+      Height = 69
       Align = alRight
       Caption = 'Sil'
       OptionsImage.Glyph.SourceDPI = 96
@@ -343,92 +361,135 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSilClick
+      ExplicitLeft = 652
     end
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 868
-    Height = 41
+    Width = 967
+    Height = 61
     Align = alTop
     TabOrder = 2
+    ExplicitTop = -6
     object btnSonHafta: TcxButton
       AlignWithMargins = True
       Left = 239
       Top = 4
       Width = 101
-      Height = 33
+      Height = 53
       Margins.Left = 10
       Align = alLeft
       Caption = 'Son Hafta'
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSonHaftaClick
+      ExplicitHeight = 33
     end
     object btnDun: TcxButton
       AlignWithMargins = True
       Left = 125
       Top = 4
       Width = 101
-      Height = 33
+      Height = 53
       Margins.Left = 10
       Align = alLeft
       Caption = 'D'#252'n'
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnDunClick
+      ExplicitHeight = 33
     end
     object btnBugun: TcxButton
       AlignWithMargins = True
       Left = 11
       Top = 4
       Width = 101
-      Height = 33
+      Height = 53
       Margins.Left = 10
       Align = alLeft
       Caption = 'Bug'#252'n'
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnBugunClick
+      ExplicitHeight = 33
     end
     object btnSonAy: TcxButton
       AlignWithMargins = True
       Left = 353
       Top = 4
       Width = 101
-      Height = 33
+      Height = 53
       Margins.Left = 10
       Align = alLeft
       Caption = 'Son Ay'
       TabOrder = 3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSonAyClick
+      ExplicitHeight = 33
     end
     object Panel2: TPanel
       AlignWithMargins = True
-      Left = 520
+      Left = 528
       Top = 4
-      Width = 344
-      Height = 33
+      Width = 435
+      Height = 53
       Align = alRight
       TabOrder = 4
       object btnFiltrele: TcxButton
         AlignWithMargins = True
-        Left = 265
+        Left = 328
         Top = 4
-        Width = 75
-        Height = 25
+        Width = 103
+        Height = 45
         Align = alRight
         Caption = 'Filtrele'
         TabOrder = 0
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
         OnClick = btnFiltreleClick
       end
       object dtBit: TcxDateEdit
         AlignWithMargins = True
-        Left = 131
+        Left = 160
         Top = 4
         Align = alLeft
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 1
-        Width = 121
+        ExplicitTop = 6
+        Width = 150
       end
       object dtBas: TcxDateEdit
         AlignWithMargins = True
@@ -438,7 +499,9 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 2
-        Width = 121
+        ExplicitLeft = -20
+        ExplicitTop = 6
+        Width = 150
       end
     end
   end

@@ -21,12 +21,14 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Left = 3
     Top = 3
     Width = 581
-    Height = 409
+    Height = 375
     ActivePage = shStok
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 409
     object shStok: TTabSheet
       Caption = 'Stok Bilgileri'
+      ExplicitHeight = 381
       object Label1: TLabel
         Left = 12
         Top = 21
@@ -604,17 +606,18 @@ object frmYeniStokKarti: TfrmYeniStokKarti
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 418
+    Top = 384
     Width = 581
-    Height = 36
+    Height = 70
     Align = alBottom
     TabOrder = 1
+    ExplicitLeft = -2
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 492
+      Left = 487
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 90
+      Height = 62
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -704,14 +707,21 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitLeft = 492
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 310
+      Left = 295
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 90
+      Height = 62
       Align = alRight
       Caption = 'Kaydet'
       OptionsImage.Glyph.SourceDPI = 96
@@ -736,14 +746,21 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetClick
+      ExplicitLeft = 310
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
-      Left = 154
+      Left = 85
       Top = 4
-      Width = 150
-      Height = 28
+      Width = 204
+      Height = 62
       Align = alRight
       Caption = 'Kaydet - Yeni Kay'#305't'
       OptionsImage.Glyph.SourceDPI = 96
@@ -773,14 +790,21 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetVeYeniClick
+      ExplicitLeft = 100
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 401
+      Left = 391
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 90
+      Height = 62
       Align = alRight
       Caption = 'Sil'
       OptionsImage.Glyph.SourceDPI = 96
@@ -826,7 +850,14 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSilClick
+      ExplicitLeft = 401
     end
   end
   object qryStok: TUniQuery

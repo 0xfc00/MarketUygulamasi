@@ -3,9 +3,9 @@ unit DbAyarlarFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes,
+  System.SysUtils, System.Classes,  windows,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-
+  Registry,
   DBAccess, Uni, cxButtons,
   cxDropDownEdit, cxLabel, cxTextEdit,
   System.IniFiles, cxGraphics, cxControls, cxLookAndFeels,
@@ -49,6 +49,8 @@ type
     qCreateTables: TUniQuery;
     q: TUniQuery;
     procedure btnKaydetClick(Sender: TObject);
+
+
     function TestConnection(AShowInfo : boolean = true): boolean;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnTestClick(Sender: TObject);
@@ -58,6 +60,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure ExecuteSqlServerScript(const AScript: string);
+
   private
     { Private declarations }
   public
@@ -126,6 +129,13 @@ begin
 
 end;
 
+
+
+
+
+
+
+
 procedure TfrmDbAyarlar.cxLabel1Click(Sender: TObject);
 begin
   if dbOlusturSayac >5 then
@@ -168,8 +178,8 @@ end;
 
 function TfrmDbAyarlar.TestConnection(AShowInfo : boolean = true): boolean;
 begin
-  if (Trim(edtServer.text) = EmptyStr) or
-     (Trim(edtDatabase.text) = EmptyStr)
+  if (Trim(edtServer.text) = EmptyStr)
+    // or (Trim(edtDatabase.text) = EmptyStr)
   then
   begin
     ShowMessage('Veritabaný bilgileri eksik');

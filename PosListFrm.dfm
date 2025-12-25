@@ -17,17 +17,18 @@ object frmPosList: TfrmPosList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 406
+    Top = 368
     Width = 637
-    Height = 36
+    Height = 74
     Align = alBottom
     TabOrder = 0
+    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 533
       Top = 4
       Width = 100
-      Height = 28
+      Height = 66
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -117,14 +118,21 @@ object frmPosList: TfrmPosList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitHeight = 28
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 117
-      Height = 28
+      Width = 197
+      Height = 66
       Align = alLeft
       Caption = 'Yeni POS Tan'#305'm'#305
       OptionsImage.Glyph.SourceDPI = 96
@@ -155,14 +163,20 @@ object frmPosList: TfrmPosList
         76673E0D0A}
       OptionsImage.ImageIndex = 0
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetVeYeniClick
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 127
+      Left = 207
       Top = 4
       Width = 100
-      Height = 28
+      Height = 66
       Align = alLeft
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
@@ -208,6 +222,8 @@ object frmPosList: TfrmPosList
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnSilClick
+      ExplicitLeft = 127
+      ExplicitHeight = 28
     end
   end
   object cxGrid1: TcxGrid
@@ -215,9 +231,10 @@ object frmPosList: TfrmPosList
     Left = 3
     Top = 3
     Width = 637
-    Height = 397
+    Height = 359
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 397
     object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False

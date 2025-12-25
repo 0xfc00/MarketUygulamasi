@@ -2,7 +2,7 @@ object frmStokHarList: TfrmStokHarList
   Left = 0
   Top = 0
   Caption = 'frmStokHarList'
-  ClientHeight = 496
+  ClientHeight = 511
   ClientWidth = 955
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,17 +18,18 @@ object frmStokHarList: TfrmStokHarList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 457
+    Top = 439
     Width = 949
-    Height = 36
+    Height = 69
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 424
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 845
       Top = 4
       Width = 100
-      Height = 28
+      Height = 61
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -118,14 +119,21 @@ object frmStokHarList: TfrmStokHarList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitHeight = 28
     end
     object btnSil: TcxButton
       AlignWithMargins = True
       Left = 739
       Top = 4
       Width = 100
-      Height = 28
+      Height = 61
       Align = alRight
       Caption = 'Sil '
       OptionsImage.Glyph.SourceDPI = 96
@@ -171,7 +179,14 @@ object frmStokHarList: TfrmStokHarList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSilClick
+      ExplicitTop = 0
     end
   end
   object dxPanel1: TdxPanel
@@ -368,9 +383,10 @@ object frmStokHarList: TfrmStokHarList
     Left = 3
     Top = 111
     Width = 949
-    Height = 340
+    Height = 322
     Align = alClient
     TabOrder = 2
+    ExplicitHeight = 340
     object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -384,6 +400,7 @@ object frmStokHarList: TfrmStokHarList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
+      Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
       object vwISLEMTARIHI: TcxGridDBColumn
         Caption = #304#351'lem Tarihi'
         DataBinding.FieldName = 'ISLEMTARIHI'

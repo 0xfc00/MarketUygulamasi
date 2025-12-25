@@ -3,7 +3,7 @@ object frmYeniCariKart: TfrmYeniCariKart
   Top = 0
   BorderStyle = bsDialog
   Caption = 'frmYeniCariKart'
-  ClientHeight = 435
+  ClientHeight = 464
   ClientWidth = 965
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,17 +19,19 @@ object frmYeniCariKart: TfrmYeniCariKart
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 396
+    Top = 384
     Width = 959
-    Height = 36
+    Height = 77
     Align = alBottom
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 379
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 870
+      Left = 855
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 100
+      Height = 69
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -119,14 +121,21 @@ object frmYeniCariKart: TfrmYeniCariKart
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitLeft = 870
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
-      Left = 688
+      Left = 643
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 100
+      Height = 69
       Align = alRight
       Caption = 'Kaydet'
       OptionsImage.Glyph.SourceDPI = 96
@@ -151,14 +160,21 @@ object frmYeniCariKart: TfrmYeniCariKart
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetClick
+      ExplicitLeft = 688
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
-      Left = 532
+      Left = 424
       Top = 4
-      Width = 150
-      Height = 28
+      Width = 213
+      Height = 69
       Align = alRight
       Caption = 'Kaydet - Yeni Kay'#305't'
       OptionsImage.Glyph.SourceDPI = 96
@@ -188,14 +204,20 @@ object frmYeniCariKart: TfrmYeniCariKart
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetVeYeniClick
     end
     object btnSil: TcxButton
       AlignWithMargins = True
-      Left = 779
+      Left = 749
       Top = 4
-      Width = 85
-      Height = 28
+      Width = 100
+      Height = 69
       Align = alRight
       Caption = 'Sil'
       OptionsImage.Glyph.SourceDPI = 96
@@ -241,7 +263,14 @@ object frmYeniCariKart: TfrmYeniCariKart
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 3
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSilClick
+      ExplicitLeft = 779
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 720

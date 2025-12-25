@@ -3,7 +3,7 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
   Top = 0
   BorderStyle = bsDialog
   Caption = 'frmKasaHareketEkle'
-  ClientHeight = 235
+  ClientHeight = 274
   ClientWidth = 435
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -88,9 +88,9 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 196
+    Top = 200
     Width = 429
-    Height = 36
+    Height = 71
     Align = alBottom
     TabOrder = 4
     object btnKapat: TcxButton
@@ -98,7 +98,7 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
       Left = 325
       Top = 4
       Width = 100
-      Height = 28
+      Height = 63
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -188,20 +188,53 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitHeight = 28
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
       Left = 4
       Top = 4
       Width = 100
-      Height = 28
+      Height = 63
       Align = alLeft
       Caption = 'Kaydet'
+      OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
+      OptionsImage.Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F637373223E2E426C61636B7B
+        66696C6C3A233732373237323B7D3C2F7374796C653E0D0A3C7061746820636C
+        6173733D22426C61636B2220643D224D31382C36682D387638683856367A204D
+        31342C3132682D32563868325631327A222F3E0D0A3C7061746820636C617373
+        3D22426C61636B2220643D224D32342C3676313048385636483543342E342C36
+        2C342C362E342C342C3776323263302C302E362C302E342C312C312C31683232
+        63302E362C302C312D302E342C312D31563138762D32563763302D302E362D30
+        2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
+        365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnkaydetClick
+      ExplicitLeft = 0
     end
   end
   object edtIslemTarihi: TcxDBDateEdit

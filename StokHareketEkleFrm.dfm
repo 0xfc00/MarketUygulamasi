@@ -2,7 +2,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
   Left = 0
   Top = 0
   Caption = 'frmStokHareketEkle'
-  ClientHeight = 390
+  ClientHeight = 438
   ClientWidth = 457
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -120,9 +120,9 @@ object frmStokHareketEkle: TfrmStokHareketEkle
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 351
+    Top = 360
     Width = 451
-    Height = 36
+    Height = 75
     Align = alBottom
     TabOrder = 0
     object btnKapat: TcxButton
@@ -130,7 +130,7 @@ object frmStokHareketEkle: TfrmStokHareketEkle
       Left = 347
       Top = 4
       Width = 100
-      Height = 28
+      Height = 67
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -220,6 +220,12 @@ object frmStokHareketEkle: TfrmStokHareketEkle
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
     end
     object btnkaydet: TcxButton
@@ -227,12 +233,36 @@ object frmStokHareketEkle: TfrmStokHareketEkle
       Left = 4
       Top = 4
       Width = 100
-      Height = 28
+      Height = 67
       Align = alLeft
       Caption = 'Kaydet'
+      OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.SourceHeight = 16
       OptionsImage.Glyph.SourceWidth = 16
+      OptionsImage.Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F637373223E2E477265656E7B
+        66696C6C3A233033394332333B7D3C2F7374796C653E0D0A3C7061746820636C
+        6173733D22477265656E2220643D224D32392C32682D35763130483856324833
+        43322E342C322C322C322E342C322C3376323663302C302E362C302E342C312C
+        312C3168323663302E362C302C312D302E342C312D3156334333302C322E342C
+        32392E362C322C32392C327A204D32342C32344838762D3620202623393B6831
+        365632347A204D31302C327638683856324831307A204D31342C38682D325634
+        683256387A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnkaydetClick
     end
   end

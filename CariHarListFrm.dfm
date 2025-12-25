@@ -171,9 +171,10 @@ object frmCariHarList: TfrmCariHarList
     Left = 3
     Top = 95
     Width = 977
-    Height = 437
+    Height = 395
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 437
     object vwCariHarlist: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -187,6 +188,7 @@ object frmCariHarList: TfrmCariHarList
       OptionsData.Inserting = False
       OptionsView.CellAutoHeight = True
       OptionsView.GroupByBox = False
+      Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
       object vwCariHarlistTARIH: TcxGridDBColumn
         Caption = #304#351'lem Tarihi'
         DataBinding.FieldName = 'ISLEMTARIHI'
@@ -234,17 +236,18 @@ object frmCariHarList: TfrmCariHarList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 538
+    Top = 496
     Width = 977
-    Height = 36
+    Height = 78
     Align = alBottom
     TabOrder = 2
+    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 873
       Top = 4
       Width = 100
-      Height = 28
+      Height = 70
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -334,14 +337,21 @@ object frmCariHarList: TfrmCariHarList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
+      ExplicitHeight = 28
     end
     object btnSil: TcxButton
       AlignWithMargins = True
       Left = 767
       Top = 4
       Width = 100
-      Height = 28
+      Height = 70
       Align = alRight
       Caption = 'Sil '
       OptionsImage.Glyph.SourceDPI = 96
@@ -387,7 +397,14 @@ object frmCariHarList: TfrmCariHarList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnSilClick
+      ExplicitHeight = 28
     end
   end
   object qryCari: TUniQuery

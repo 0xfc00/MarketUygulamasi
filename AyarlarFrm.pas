@@ -26,7 +26,7 @@ uses
   Vcl.Menus, cxControls, cxContainer, cxEdit, dxBarBuiltInMenu, cxDBEdit,
   cxLabel, cxGroupBox, Data.DB, DBAccess, Uni, MemDS, cxPC, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls;
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, cxCheckBox, _func;
 
 type
   TfrmAyarlar = class(TfrmKartBase)
@@ -39,6 +39,7 @@ type
     shTemelAyarlar: TcxTabSheet;
     qryAyarlar: TUniQuery;
     dsAyarlar: TUniDataSource;
+    cxTabSheet1: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
     cxGroupBox8: TcxGroupBox;
     cxLabel7: TcxLabel;
@@ -58,9 +59,22 @@ type
     cxGroupBox6: TcxGroupBox;
     cxLabel5: TcxLabel;
     cxDBTextEdit5: TcxDBTextEdit;
+    cxGroupBox7: TcxGroupBox;
+    cxGroupBox13: TcxGroupBox;
+    edtOtoYedekDizin: TcxDBTextEdit;
+    cxGroupBox14: TcxGroupBox;
+    cxLabel6: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxButton1: TcxButton;
+    FileSaveDialog1: TFileSaveDialog;
+    cxButton2: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
+    procedure qryAyarlarAfterPost(DataSet: TDataSet);
+    procedure cxButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,12 +115,32 @@ begin
     qryAyarlar.Post;
 end;
 
+procedure TfrmAyarlar.cxButton1Click(Sender: TObject);
+begin
+  inherited;
+  if FileSaveDialog1.Execute then
+    if FileSaveDialog1.FileName <> EmptyStr then
+      qryAyarlar.FieldByName('OTO_YEDEK_DIZINI').AsString := edtOtoYedekDizin.text;
+end;
+
+procedure TfrmAyarlar.cxButton2Click(Sender: TObject);
+begin
+  inherited;
+  OtoYedek_fn;
+end;
+
 procedure TfrmAyarlar.FormCreate(Sender: TObject);
 begin
   pntUst.visible := false;
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);
+end;
+
+procedure TfrmAyarlar.qryAyarlarAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  ayarlariYukle;
 end;
 
 end.

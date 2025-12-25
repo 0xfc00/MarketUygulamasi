@@ -3,7 +3,7 @@ object frmDbAyarlar: TfrmDbAyarlar
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Veritaban'#305' Ayarlar'#305
-  ClientHeight = 245
+  ClientHeight = 469
   ClientWidth = 317
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -103,7 +103,7 @@ object frmDbAyarlar: TfrmDbAyarlar
   end
   object Button2: TButton
     Left = 0
-    Top = 220
+    Top = 444
     Width = 317
     Height = 25
     Align = alBottom
@@ -115,7 +115,7 @@ object frmDbAyarlar: TfrmDbAyarlar
   end
   object Button1: TButton
     Left = 0
-    Top = 195
+    Top = 419
     Width = 317
     Height = 25
     Align = alBottom
@@ -257,12 +257,9 @@ object frmDbAyarlar: TfrmDbAyarlar
       
         'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTI' +
         'MIZER_HOTFIXES = PRIMARY;'
-      'GO'
-      ''
-      '-- ALTER AUTHORIZATION ON DATABASE::KHPRO TO [DESKTOP-MCB\mcb]'
-      '-- GO')
-    Left = 88
-    Top = 128
+      'GO')
+    Left = 64
+    Top = 200
   end
   object qCreateTables: TUniQuery
     Connection = UniConnTest

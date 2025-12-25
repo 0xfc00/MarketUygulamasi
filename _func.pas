@@ -3,7 +3,7 @@ unit _func;
 interface
 
 uses
-  Data.DB,DBAccess, Vcl.Forms,Uni,sysUtils,Winapi.Windows;
+  Data.DB,DBAccess, Vcl.Forms,Uni,sysUtils,Winapi.Windows, System.IOUtils;
 
   function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
   function EncryptStr(const S :WideString; Key: Word): String;
@@ -19,6 +19,7 @@ uses
   procedure demoKontrol();
   procedure EkleyenDegistiren(ADataset: TDataSet);
   function YetkiKontrol(AYetki : boolean = False): boolean;
+  function OtoYedek_fn() : boolean;
 
 
 
@@ -179,12 +180,12 @@ procedure ayarlariYukle();
 var
   q: TUniQuery;
 begin
-  q := yeniQuery('select * from t_ayarlar');
+  q := yeniQuery('select * from AYARLAR');
 
   if not q.IsEmpty then
   begin
-    a.oto_yedek_kapanirken  := q.FieldByName('oto_yedek_kapanirken').AsInteger;
-    a.oto_yedek_dizini      := q.FieldByName('oto_yedek_dizini').asString;
+    a.OTO_YEDEK  := q.FieldByName('OTO_YEDEK').ASBOOLEaN;;
+    a.OTO_YEDEK_DIZINI      := q.FieldByName('OTO_YEDEK_DIZINI').asString;
   end;
 
 
@@ -267,7 +268,7 @@ begin
     except
       begin
         MesajHata('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
-        Application.Terminate;
+        ExitProcess(0);
       end;
 
     end;
@@ -282,7 +283,7 @@ begin
   if (lisans = 0) and (demo = false) then
   begin
     MesajBilgi('Lisans ile ilgili sorun oluþtu. Program kapatýlacak..');
-    Application.Terminate;
+    ExitProcess(0);
   end;
 end;
 
@@ -293,7 +294,7 @@ begin
     MesajBilgi('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
      abort;
 
-    Application.Terminate;
+    ExitProcess(0);
   end;
 
 end;
@@ -332,6 +333,49 @@ begin
     MesajHata(rstr_YETKI_YOK);
     abort;
   end;
+end;
+
+function GetComputerName: string;
+var
+  Buffer: array[0..MAX_COMPUTERNAME_LENGTH] of Char;
+  Size: DWORD;
+begin
+  Size := Length(Buffer);
+  Winapi.Windows.GetComputerName(Buffer, Size);
+  Result := Buffer;
+end;
+
+function OtoYedek_fn() : boolean;
+var
+  dosyaAdi, sql : string;
+begin
+  result := false;
+
+  if trim(a.OTO_YEDEK_DIZINI) = EmptyStr then
+  begin
+    if not TDirectory.Exists(ExtractFilePath(ParamStr(0)) + 'yedek') then
+      TDirectory.CreateDirectory(ExtractFilePath(ParamStr(0)) + 'yedek');
+    dosyaAdi := ExtractFilePath(ParamStr(0)) + 'yedek\' + DateTimeToStr(now).Replace(':','.') + '.bak';
+  end
+  else  
+    dosyaAdi := a.OTO_YEDEK_DIZINI + '\' + DateTimeToStr(now).Replace(':','.');
+
+  sql := ' BACKUP DATABASE KHPRO ' +
+         ' TO DISK = ' + QuotedStr(dosyaAdi)  +
+         ' WITH INIT;';
+  
+  with yeniQuery(sql, false) do
+  begin
+    try 
+      Execute;
+      result := true;
+    except
+      result := false;
+    end; 
+    
+    Free;
+  end;
+
 end;
 
 end.

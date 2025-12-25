@@ -58,6 +58,7 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object viewBrimlerBIRIMADI: TcxGridDBColumn
             DataBinding.FieldName = 'BIRIMADI'
             DataBinding.IsNullValueType = True
@@ -104,15 +105,11 @@ object frmTanimlar: TfrmTanimlar
     object shGruplar: TcxTabSheet
       Caption = 'Stok Gruplar'#305
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdStokGrup: TcxGrid
         Left = 0
         Top = 0
-        Width = 453
-        Height = 207
+        Width = 450
+        Height = 204
         Align = alClient
         TabOrder = 0
         object viewStokGrup: TcxGridDBTableView
@@ -132,6 +129,7 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object cxGridDBColumn1: TcxGridDBColumn
             DataBinding.FieldName = 'GRUPADI'
             DataBinding.IsNullValueType = True
@@ -143,8 +141,8 @@ object frmTanimlar: TfrmTanimlar
       end
       object Panel1: TPanel
         Left = 0
-        Top = 207
-        Width = 453
+        Top = 204
+        Width = 450
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -154,11 +152,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 399
+          Width = 396
         end
         object btnGrupEkle: TcxButton
           AlignWithMargins = True
-          Left = 409
+          Left = 406
           Top = 4
           Width = 40
           Height = 33
@@ -178,15 +176,11 @@ object frmTanimlar: TfrmTanimlar
     object shMarkalar: TcxTabSheet
       Caption = 'Markalar'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdMarkalar: TcxGrid
         Left = 0
         Top = 0
-        Width = 453
-        Height = 207
+        Width = 450
+        Height = 204
         Align = alClient
         TabOrder = 0
         object ViewMarkalar: TcxGridDBTableView
@@ -206,6 +200,7 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object cxGridDBColumn2: TcxGridDBColumn
             DataBinding.FieldName = 'MARKAADI'
             DataBinding.IsNullValueType = True
@@ -217,8 +212,8 @@ object frmTanimlar: TfrmTanimlar
       end
       object Panel3: TPanel
         Left = 0
-        Top = 207
-        Width = 453
+        Top = 204
+        Width = 450
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -228,11 +223,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 399
+          Width = 396
         end
         object btnMarkaEkle: TcxButton
           AlignWithMargins = True
-          Left = 409
+          Left = 406
           Top = 4
           Width = 40
           Height = 33
@@ -252,15 +247,11 @@ object frmTanimlar: TfrmTanimlar
     object shReyonRaf: TcxTabSheet
       Caption = 'Reyon - Raf'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdReyonRaf: TcxGrid
         Left = 0
         Top = 0
-        Width = 453
-        Height = 207
+        Width = 450
+        Height = 204
         Align = alClient
         TabOrder = 0
         object viewReyonRaf: TcxGridDBTableView
@@ -280,6 +271,7 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object cxGridDBColumn3: TcxGridDBColumn
             DataBinding.FieldName = 'REYONRAFADI'
             DataBinding.IsNullValueType = True
@@ -291,8 +283,8 @@ object frmTanimlar: TfrmTanimlar
       end
       object Panel4: TPanel
         Left = 0
-        Top = 207
-        Width = 453
+        Top = 204
+        Width = 450
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -302,11 +294,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 399
+          Width = 396
         end
         object btnReyonRafEkle: TcxButton
           AlignWithMargins = True
-          Left = 409
+          Left = 406
           Top = 4
           Width = 40
           Height = 33
@@ -326,15 +318,11 @@ object frmTanimlar: TfrmTanimlar
     object shCariGruplar: TcxTabSheet
       Caption = 'Cari Gruplar'#305
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 453
-        Height = 207
+        Width = 450
+        Height = 204
         Align = alClient
         TabOrder = 0
         object viewCariGrup: TcxGridDBTableView
@@ -354,6 +342,7 @@ object frmTanimlar: TfrmTanimlar
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.Header = False
+          Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
           object cxGridDBColumn4: TcxGridDBColumn
             DataBinding.FieldName = 'GRUPADI'
             DataBinding.IsNullValueType = True
@@ -365,8 +354,8 @@ object frmTanimlar: TfrmTanimlar
       end
       object Panel5: TPanel
         Left = 0
-        Top = 207
-        Width = 453
+        Top = 204
+        Width = 450
         Height = 41
         Align = alBottom
         TabOrder = 1
@@ -376,11 +365,11 @@ object frmTanimlar: TfrmTanimlar
           Top = 4
           Align = alClient
           TabOrder = 0
-          Width = 399
+          Width = 396
         end
         object btnCariGrupEkle: TcxButton
           AlignWithMargins = True
-          Left = 409
+          Left = 406
           Top = 4
           Width = 40
           Height = 33
@@ -401,17 +390,19 @@ object frmTanimlar: TfrmTanimlar
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 356
+    Top = 328
     Width = 460
-    Height = 36
+    Height = 64
     Align = alBottom
     TabOrder = 1
+    ExplicitLeft = 8
+    ExplicitTop = 323
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 370
+      Left = 352
       Top = 4
-      Width = 86
-      Height = 28
+      Width = 104
+      Height = 56
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -501,6 +492,12 @@ object frmTanimlar: TfrmTanimlar
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton1Click
     end
   end

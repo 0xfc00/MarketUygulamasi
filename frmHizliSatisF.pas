@@ -156,6 +156,7 @@ type
     qrySatisBitir: TUniQuery;
     qryFisTitle: TUniQuery;
     cxStyleRepository1: TcxStyleRepository;
+    GridTableViewStyleSheetPumpkinlarge: TcxGridTableViewStyleSheet;
     cxStyle1: TcxStyle;
     cxStyle2: TcxStyle;
     cxStyle3: TcxStyle;
@@ -167,7 +168,6 @@ type
     cxStyle9: TcxStyle;
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
-    GridTableViewStyleSheetUserFormat2: TcxGridTableViewStyleSheet;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormCreate(Sender: TObject);

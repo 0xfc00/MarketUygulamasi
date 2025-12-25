@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni,
   SQLServerUniProvider, Vcl.Dialogs, System.IniFiles, _cons, _vars, MemDS,
-  UniProvider;
+  UniProvider, Winapi.Windows;
 
 type
   TdmMain = class(TDataModule)
@@ -85,16 +85,16 @@ begin
       ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
       application.createform(TfrmDbAyarlar,frmDbAyarlar);
       frmDbAyarlar.showmodal;
-      Application.Terminate;
-      halt;
+      ExitProcess(0);
     end;
   end;
 
   //LoginFormAc_fn; //deneme
   loginUserID := 1; //deneme
-  yetkileriYukle;
+
 
   SabitSatirlarKontrol;
+  ayarlariYukle;
   if veriCekSQL('select ID from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE') , 'ID') = VERI_YOK then
     sqlCalistir('insert into CARI ( CARIKODU, UNVAN) values (' + QuotedStr('PERAKENDE') + ', ' + QuotedStr('PERAKENDE') + ')');
 end;

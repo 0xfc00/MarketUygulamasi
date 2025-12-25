@@ -3,7 +3,7 @@ unit LoginFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes,
+  System.SysUtils, System.Classes, Winapi.Windows,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   cxContainer,
   cxButtons, Vcl.ExtCtrls, cxDropDownEdit,
@@ -103,7 +103,7 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   if dmMain.UniConn.Connected = false then
-    halt;
+    ExitProcess(0);
 
   UniQuery.Connection := dmMain.UniConn;
 
@@ -139,7 +139,7 @@ begin
     on E: Exception do
     begin
       ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
-      halt;
+      ExitProcess(0);
     end;
   end;
   cbUserName.ItemIndex := 0;

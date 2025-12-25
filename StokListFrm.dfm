@@ -18,20 +18,18 @@ object frmStokList: TfrmStokList
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 690
+    Top = 656
     Width = 1258
-    Height = 36
+    Height = 70
     Align = alBottom
     PopupMenu = PopupMenu1
     TabOrder = 0
-    ExplicitTop = 472
-    ExplicitWidth = 982
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 1154
       Top = 4
       Width = 100
-      Height = 28
+      Height = 62
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -121,15 +119,21 @@ object frmStokList: TfrmStokList
         12AA18FC3031CA70E5C11AE05F3BA2449DA28601604A421715ABFFE4FC153983
         B3D2BAD003AD0000000049454E44AE426082}
       TabOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 878
+      ExplicitTop = 0
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 165
+      Height = 62
       Align = alLeft
       Caption = 'Yeni Stok Kart'#305
       OptionsImage.Glyph.SourceDPI = 96
@@ -160,6 +164,12 @@ object frmStokList: TfrmStokList
         76673E0D0A}
       OptionsImage.ImageIndex = 0
       TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = btnKaydetVeYeniClick
     end
     object btnSil: TcxButton
@@ -167,7 +177,7 @@ object frmStokList: TfrmStokList
       Left = 1048
       Top = 4
       Width = 100
-      Height = 28
+      Height = 62
       Align = alRight
       Action = acStokKartSil
       OptionsImage.Glyph.SourceDPI = 96
@@ -213,14 +223,20 @@ object frmStokList: TfrmStokList
         32362032382C33302033302C32382032362C3234202623393B222F3E0D0A093C
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
-      ExplicitLeft = 772
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitHeight = 28
     end
     object btnStokDuzenle: TcxButton
       AlignWithMargins = True
       Left = 942
       Top = 4
       Width = 100
-      Height = 28
+      Height = 62
       Align = alRight
       Action = acStokDuzenle
       Caption = 'G'#246'ster'
@@ -246,14 +262,20 @@ object frmStokList: TfrmStokList
         2E342D312D312D314832347A204D32342C3236483820202623393B762D366831
         365632367A222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 3
-      ExplicitLeft = 666
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitHeight = 28
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 110
+      Left = 175
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 150
+      Height = 62
       Align = alLeft
       Caption = 'Stok Giri'#351'i'
       OptionsImage.Glyph.SourceDPI = 96
@@ -283,14 +305,21 @@ object frmStokList: TfrmStokList
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 4
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton1Click
+      ExplicitLeft = 160
     end
     object cxButton3: TcxButton
       AlignWithMargins = True
-      Left = 216
+      Left = 331
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 150
+      Height = 62
       Align = alLeft
       Caption = 'Stok '#199#305'k'#305#351#305
       OptionsImage.Glyph.SourceDPI = 96
@@ -320,14 +349,21 @@ object frmStokList: TfrmStokList
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 5
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       OnClick = cxButton3Click
+      ExplicitTop = 0
     end
     object cxButton4: TcxButton
       AlignWithMargins = True
-      Left = 322
+      Left = 487
       Top = 4
-      Width = 100
-      Height = 28
+      Width = 178
+      Height = 62
       Align = alLeft
       Action = acStokHarList
       OptionsImage.Glyph.SourceDPI = 96
@@ -357,6 +393,12 @@ object frmStokList: TfrmStokList
         63302E362C302C312D302E342C312D31563468345631367A222F3E0D0A3C2F73
         76673E0D0A}
       TabOrder = 6
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object cxGrid1: TcxGrid
@@ -364,11 +406,10 @@ object frmStokList: TfrmStokList
     Left = 3
     Top = 3
     Width = 1258
-    Height = 681
+    Height = 647
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 982
-    ExplicitHeight = 463
+    ExplicitHeight = 681
     object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -483,7 +524,6 @@ object frmStokList: TfrmStokList
       'LEFT JOIN T_STOKGRUP ON S.GRUPID = T_STOKGRUP.ID'
       'LEFT JOIN T_MARKA ON S.MARKAID = T_MARKA.ID'
       'LEFT JOIN T_REYONRAF ON S.REYONRAFID = T_REYONRAF.ID')
-    Active = True
     Left = 323
     Top = 104
   end

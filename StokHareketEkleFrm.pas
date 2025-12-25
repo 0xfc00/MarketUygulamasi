@@ -249,6 +249,7 @@ begin
   end;
 
   HarID := veriCekSQL('SELECT ID FROM ISLEM_BASLIK WHERE ISLEMTURU = 0 AND ODEMETURU = 0 AND EVRAKNO = ''STOKHARSABIT''', 'ID');
+
   if HarID <> VERI_YOK then
     DataSet.FieldByName('ISLEMID').AsString := HarID
   else
@@ -265,7 +266,7 @@ begin
   end
   else
   begin
-    DataSet.FieldByName('GIREN').AsString      := DataSet.FieldByName('MIKTAR').AsString;
+    DataSet.FieldByName('CIKAN').AsString      := DataSet.FieldByName('MIKTAR').AsString;
     DataSet.FieldByName('ISLEMTURU').AsInteger := Ord(HIT_STOK_CIKIS);
     if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString    := EVRAKNO_STOKCIKIS;
   end;
