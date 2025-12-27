@@ -1,10 +1,9 @@
 object frmDbAyarlar: TfrmDbAyarlar
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
   Caption = 'Veritaban'#305' Ayarlar'#305
-  ClientHeight = 469
-  ClientWidth = 317
+  ClientHeight = 551
+  ClientWidth = 318
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,118 +16,220 @@ object frmDbAyarlar: TfrmDbAyarlar
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object edtServer: TcxTextEdit
-    Left = 75
-    Top = 10
-    TabOrder = 0
-    Text = '127.0.0.1\SQLEXPRESS'
-    Width = 197
-  end
-  object cxLabel1: TcxLabel
-    Left = 12
-    Top = 11
-    Caption = 'Server :'
-    OnClick = cxLabel1Click
-  end
-  object edtDatabase: TcxTextEdit
-    Left = 75
-    Top = 34
-    TabOrder = 2
-    Width = 197
-  end
-  object cxLabel2: TcxLabel
-    Left = 12
-    Top = 35
-    Caption = 'Database'
-  end
-  object edtusername: TcxTextEdit
-    Left = 75
-    Top = 83
-    TabOrder = 4
-    Visible = False
-    Width = 197
-  end
-  object cxLabel3: TcxLabel
-    Left = 12
-    Top = 84
-    Caption = 'Username'
-    Visible = False
-  end
-  object edtPassword: TcxTextEdit
-    Left = 75
-    Top = 107
-    TabOrder = 6
-    Visible = False
-    Width = 197
-  end
-  object cxLabel4: TcxLabel
-    Left = 12
-    Top = 108
-    Caption = 'Password'
-    Visible = False
-  end
-  object cxLabel5: TcxLabel
-    Left = 12
-    Top = 62
-    Caption = 'Auth Type'
-  end
-  object cbAuthType: TcxComboBox
-    Left = 75
-    Top = 61
-    Properties.Items.Strings = (
-      'Windows Auth'
-      'SQL')
-    Properties.OnChange = cbAuthTypePropertiesChange
-    TabOrder = 9
-    Text = 'Windows Auth'
-    Width = 197
-  end
-  object btnTest: TcxButton
-    Left = 197
-    Top = 134
-    Width = 75
-    Height = 25
-    Caption = 'Test'
-    TabOrder = 10
-    OnClick = btnTestClick
-  end
   object btnKaydet: TcxButton
-    Left = 197
-    Top = 165
-    Width = 75
+    Left = 8
+    Top = 223
+    Width = 289
     Height = 25
     Caption = 'Kaydet'
-    TabOrder = 11
+    TabOrder = 0
     OnClick = btnKaydetClick
   end
-  object Button2: TButton
-    Left = 0
-    Top = 444
-    Width = 317
-    Height = 25
+  object GroupBox1: TGroupBox
+    AlignWithMargins = True
+    Left = 3
+    Top = 286
+    Width = 312
+    Height = 262
     Align = alBottom
-    Caption = 'Tablolar'#305' Olu'#351'tur'
-    Enabled = False
-    TabOrder = 12
+    TabOrder = 1
     Visible = False
-    OnClick = Button2Click
+    ExplicitTop = 296
+    ExplicitWidth = 765
+    object Memo1: TMemo
+      AlignWithMargins = True
+      Left = 5
+      Top = 18
+      Width = 302
+      Height = 139
+      Align = alClient
+      Lines.Strings = (
+        'USE master;'
+        ''
+        'IF DB_ID('#39'KHPRO'#39') IS NOT NULL '
+        'BEGIN '
+        'ALTER DATABASE KHPRO SET SINGLE_USER WITH ROLLBACK IMMEDIATE;'
+        'END;'
+        ''
+        ''
+        'RESTORE DATABASE KHPRO'
+        'FROM DISK = '#39'backup_dirr\khpro.bak'#39
+        'WITH'
+        '    MOVE '#39'KHPRO'#39' TO '#39'app_dirr\KHPRO.mdf'#39','
+        '    MOVE '#39'KHPRO_log'#39' TO '#39'app_dirr\KHPRO_log.ldf'#39','
+        '    REPLACE,'
+        '    RECOVERY;'
+        ''
+        'ALTER DATABASE KHPRO SET MULTI_USER;')
+      ScrollBars = ssBoth
+      TabOrder = 0
+      OnDblClick = Memo1DblClick
+      ExplicitTop = -12
+      ExplicitWidth = 755
+      ExplicitHeight = 100
+    end
+    object Button3: TButton
+      Left = 2
+      Top = 235
+      Width = 308
+      Height = 25
+      Align = alBottom
+      Caption = 'Tablolar'#305' Kald'#305'r'
+      TabOrder = 1
+      OnClick = Button3Click
+      ExplicitLeft = 0
+      ExplicitTop = 329
+      ExplicitWidth = 348
+    end
+    object Button4: TButton
+      Left = 2
+      Top = 210
+      Width = 308
+      Height = 25
+      Align = alBottom
+      Caption = 'Query Editor'
+      TabOrder = 2
+      OnClick = Button4Click
+      ExplicitLeft = 1
+      ExplicitTop = 203
+      ExplicitWidth = 761
+    end
+    object Button2: TButton
+      Left = 2
+      Top = 185
+      Width = 308
+      Height = 25
+      Align = alBottom
+      Caption = 'Tablolar'#305' Olu'#351'tur'
+      TabOrder = 3
+      OnClick = Button2Click
+      ExplicitLeft = -1
+      ExplicitTop = 179
+      ExplicitWidth = 761
+    end
+    object Button1: TButton
+      Left = 2
+      Top = 160
+      Width = 308
+      Height = 25
+      Align = alBottom
+      Caption = 'DB Olu'#351'tur'
+      TabOrder = 4
+      OnClick = Button1Click
+      ExplicitLeft = 3
+      ExplicitTop = 154
+      ExplicitWidth = 761
+    end
   end
-  object Button1: TButton
-    Left = 0
-    Top = 419
-    Width = 317
-    Height = 25
-    Align = alBottom
-    Caption = 'DB Olu'#351'tur'
-    TabOrder = 13
+  object cbDbTipi: TComboBox
+    Left = 75
+    Top = 8
+    Width = 145
+    Height = 22
+    Style = csOwnerDrawFixed
+    ItemIndex = 0
+    TabOrder = 2
+    Text = 'SQLite'
+    OnChange = cbDbTipiChange
+    Items.Strings = (
+      'SQLite'
+      'Sql Server')
+  end
+  object cxLabel6: TcxLabel
+    Left = 12
+    Top = 9
+    Caption = 'Ba'#287'lant'#305' : '
+    OnClick = cxLabel1Click
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 36
+    Width = 289
+    Height = 181
+    Caption = 'Sql Server Ayarlar'#305
+    TabOrder = 4
     Visible = False
-    OnClick = Button1Click
+    object edtServer: TcxTextEdit
+      Left = 75
+      Top = 26
+      TabOrder = 0
+      Text = '127.0.0.1\SQLEXPRESS'
+      Width = 197
+    end
+    object cxLabel1: TcxLabel
+      Left = 12
+      Top = 27
+      Caption = 'Server :'
+      OnClick = cxLabel1Click
+    end
+    object edtDatabase: TcxTextEdit
+      Left = 75
+      Top = 50
+      TabOrder = 2
+      Width = 197
+    end
+    object cxLabel2: TcxLabel
+      Left = 12
+      Top = 51
+      Caption = 'Database'
+    end
+    object edtusername: TcxTextEdit
+      Left = 75
+      Top = 99
+      TabOrder = 4
+      Visible = False
+      Width = 197
+    end
+    object cxLabel3: TcxLabel
+      Left = 12
+      Top = 100
+      Caption = 'Username'
+      Visible = False
+    end
+    object edtPassword: TcxTextEdit
+      Left = 75
+      Top = 123
+      TabOrder = 6
+      Visible = False
+      Width = 197
+    end
+    object cxLabel4: TcxLabel
+      Left = 12
+      Top = 124
+      Caption = 'Password'
+      Visible = False
+    end
+    object cxLabel5: TcxLabel
+      Left = 12
+      Top = 78
+      Caption = 'Auth Type'
+    end
+    object cbAuthType: TcxComboBox
+      Left = 75
+      Top = 77
+      Properties.Items.Strings = (
+        'Windows Auth'
+        'SQL')
+      Properties.OnChange = cbAuthTypePropertiesChange
+      TabOrder = 9
+      Text = 'Windows Auth'
+      Width = 197
+    end
+    object btnTest: TcxButton
+      Left = 197
+      Top = 150
+      Width = 75
+      Height = 25
+      Caption = 'Test'
+      TabOrder = 10
+      OnClick = btnTestClick
+    end
   end
   object UniConnTest: TUniConnection
     ProviderName = 'SQL Server'
     LoginPrompt = False
-    Left = 48
-    Top = 136
+    Left = 104
+    Top = 248
   end
   object qCreateDatabase: TUniQuery
     Connection = UniConnTest
@@ -136,25 +237,23 @@ object frmDbAyarlar: TfrmDbAyarlar
       'USE master'
       'GO'
       ''
-      'CREATE DATABASE KHPRO'
-      'ON PRIMARY ('
-      'NAME = N'#39'KHPRO'#39','
-      
-        'FILENAME = N'#39'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEX' +
-        'PRESS\MSSQL\DATA\KHPRO.mdf'#39','
-      'SIZE = 44224 KB,'
-      'MAXSIZE = UNLIMITED,'
-      'FILEGROWTH = 1024 KB'
-      ')'
-      'LOG ON ('
-      'NAME = N'#39'KHPRO_log'#39','
-      
-        'FILENAME = N'#39'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEX' +
-        'PRESS\MSSQL\DATA\KHPRO_log.ldf'#39','
-      'SIZE = 180992 KB,'
-      'MAXSIZE = UNLIMITED,'
-      'FILEGROWTH = 10 %'
-      ')'
+      ''
+      'IF DB_ID('#39'KHPRO'#39') IS NULL'
+      '  CREATE DATABASE KHPRO'
+      '  ON PRIMARY ('
+      '  NAME = N'#39'KHPRO'#39','
+      '  FILENAME = N'#39'C:\KHPRO\KHPRO.mdf'#39','
+      '  SIZE = 44224 KB,'
+      '  MAXSIZE = UNLIMITED,'
+      '  FILEGROWTH = 1024 KB'
+      '  )'
+      '  LOG ON ('
+      '  NAME = N'#39'KHPRO_log'#39','
+      '  FILENAME = N'#39'C:\KHPRO\KHPRO_log.ldf'#39','
+      '  SIZE = 180992 KB,'
+      '  MAXSIZE = UNLIMITED,'
+      '  FILEGROWTH = 10 %'
+      '  )'
       'GO'
       ''
       'ALTER DATABASE KHPRO'
@@ -256,10 +355,9 @@ object frmDbAyarlar: TfrmDbAyarlar
       ''
       
         'ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTI' +
-        'MIZER_HOTFIXES = PRIMARY;'
-      'GO')
-    Left = 64
-    Top = 200
+        'MIZER_HOTFIXES = PRIMARY;')
+    Left = 248
+    Top = 48
   end
   object qCreateTables: TUniQuery
     Connection = UniConnTest
@@ -614,12 +712,12 @@ object frmDbAyarlar: TfrmDbAyarlar
       '  USERID int NULL,'
       '  USERIDUP int NULL,'
       
-        '  TOPLAM_GIREN decimal(18, 4) NOT NULL CONSTRAINT DF_STOK_TOPLAM' +
-        '_GIREN DEFAULT (0),'
+        '  TOPLAM_GIREN decimal(18, 4) NULL CONSTRAINT DF_STOK_TOPLAM_GIR' +
+        'EN DEFAULT (0),'
       
-        '  TOPLAM_CIKAN decimal(18, 4) NOT NULL CONSTRAINT DF_STOK_TOPLAM' +
-        '_CIKAN DEFAULT (0),'
-      '  BAKIYE AS ([TOPLAM_GIREN]-[TOPLAM_CIKAN]) PERSISTED NOT NULL,'
+        '  TOPLAM_CIKAN decimal(18, 4) NULL CONSTRAINT DF_STOK_TOPLAM_CIK' +
+        'AN DEFAULT (0),'
+      '  BAKIYE AS ([TOPLAM_GIREN]-[TOPLAM_CIKAN]) PERSISTED,'
       '  CONSTRAINT PK_STOKKARTI PRIMARY KEY CLUSTERED (ID),'
       '  CONSTRAINT KEY_STOK_STOKKODU UNIQUE (STOKKODU)'
       ')'
@@ -942,16 +1040,365 @@ object frmDbAyarlar: TfrmDbAyarlar
       '  FIRMAILCE varchar(50) NULL,'
       '  FIRMAEPOSTA varchar(50) NULL,'
       '  LISANSKEY varchar(500) NULL,'
+      '  OTO_YEDEK bit NULL,'
+      '  OTO_YEDEK_DIZINI varchar(500) NULL,'
       '  CONSTRAINT PK_AYARLAR_ID PRIMARY KEY CLUSTERED (ID)'
       ')'
       'ON [PRIMARY]'
       'GO')
-    Left = 144
-    Top = 136
+    Left = 184
+    Top = 176
   end
   object q: TUniQuery
     Connection = UniConnTest
-    Left = 8
-    Top = 136
+    Left = 16
+    Top = 248
+  end
+  object qryDropTables: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'USE KHPRO'
+      'GO'
+      ''
+      'IF DB_NAME() <> N'#39'KHPRO'#39' SET NOEXEC ON'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[AYARLAR]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[AYARLAR]'#39')'
+      'GO'
+      'DROP TABLE dbo.AYARLAR'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[ISLEM_H]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[ISLEM_H]'#39')'
+      'GO'
+      'DROP TABLE dbo.ISLEM_H'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[ISLEM_BASLIK]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[ISLEM_BASLIK]'#39')'
+      'GO'
+      'DROP TABLE dbo.ISLEM_BASLIK'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[POS]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[POS]'#39')'
+      'GO'
+      'DROP TABLE dbo.POS'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[STOK]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[STOK]'#39')'
+      'GO'
+      'DROP TABLE dbo.STOK'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_BIRIM]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_BIRIM]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_BIRIM'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[CARI]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[CARI]'#39')'
+      'GO'
+      'DROP TABLE dbo.CARI'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_CARIGRUP]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_CARIGRUP]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_CARIGRUP'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_HSSIRA]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_HSSIRA]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_HSSIRA'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_HSGRUP]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_HSGRUP]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_HSGRUP'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_MARKA]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_MARKA]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_MARKA'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_REYONRAF]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_REYONRAF]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_REYONRAF'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[T_STOKGRUP]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[T_STOKGRUP]'#39')'
+      'GO'
+      'DROP TABLE dbo.T_STOKGRUP'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[TMPSATIS]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[TMPSATIS]'#39')'
+      'GO'
+      'DROP TABLE dbo.TMPSATIS'
+      'GO'
+      ''
+      '--'
+      '-- Drop table [dbo].[USERS]'
+      '--'
+      'PRINT (N'#39'Drop table [dbo].[USERS]'#39')'
+      'GO'
+      'DROP TABLE dbo.USERS'
+      'GO')
+    Left = 248
+    Top = 112
+  end
+  object qryCreateSp: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'CREATE PROCEDURE dbo.SP_REBUILD_ALL_TOTALS'
+      'AS'
+      'BEGIN'
+      '    SET NOCOUNT ON;'
+      '    SET XACT_ABORT ON;'
+      ''
+      '    BEGIN TRAN;'
+      ''
+      '    /* ====================================================='
+      '       1'#65039#8419' CARI TOPLAMLARINI SIFIRLA'
+      '    ===================================================== */'
+      '    UPDATE dbo.CARI'
+      '    SET'
+      '        TOPLAM_GIREN = 0,'
+      '        TOPLAM_CIKAN = 0;'
+      ''
+      '    /* ====================================================='
+      '       2'#65039#8419' POS TOPLAMLARINI SIFIRLA'
+      '    ===================================================== */'
+      '    UPDATE dbo.POS'
+      '    SET'
+      '        TOPLAM_GIREN = 0,'
+      '        TOPLAM_CIKAN = 0;'
+      ''
+      '    /* ====================================================='
+      '       3'#65039#8419' STOK TOPLAMLARINI SIFIRLA'
+      '    ===================================================== */'
+      '    UPDATE dbo.STOK'
+      '    SET'
+      '        TOPLAM_GIREN = 0,'
+      '        TOPLAM_CIKAN = 0;'
+      ''
+      '    /* ====================================================='
+      '       4'#65039#8419' CARI '#8211' ISLEM_BASLIK'#8217'TAN HESAPLA'
+      '       ISLEMTURU:'
+      '       1,5 = G'#304'R'#304#350
+      '       6   = '#199'IKI'#350
+      '    ===================================================== */'
+      '    ;WITH CARI_T AS ('
+      '        SELECT'
+      '            CARIID,'
+      '            SUM(GIREN) AS GIREN,'
+      '            SUM(CIKAN) AS CIKAN'
+      '        FROM dbo.ISLEM_BASLIK'
+      '        WHERE ISLEMTURU IN (1,5,6)'
+      '        GROUP BY CARIID'
+      '    )'
+      '    UPDATE C'
+      '    SET'
+      '        C.TOPLAM_GIREN = T.GIREN,'
+      '        C.TOPLAM_CIKAN = T.CIKAN'
+      '    FROM dbo.CARI C'
+      '    JOIN CARI_T T ON T.CARIID = C.ID;'
+      ''
+      '    /* ====================================================='
+      '       5'#65039#8419' POS '#8211' SADECE ODEMETURU = 2'
+      '    ===================================================== */'
+      '    ;WITH POS_T AS ('
+      '        SELECT'
+      '            POSID,'
+      '            SUM(GIREN) AS GIREN,'
+      '            SUM(CIKAN) AS CIKAN'
+      '        FROM dbo.ISLEM_BASLIK'
+      '        WHERE ODEMETURU = 2'
+      '          AND ISLEMTURU IN (1,5,6)'
+      '        GROUP BY POSID'
+      '    )'
+      '    UPDATE P'
+      '    SET'
+      '        P.TOPLAM_GIREN = T.GIREN,'
+      '        P.TOPLAM_CIKAN = T.CIKAN'
+      '    FROM dbo.POS P'
+      '    JOIN POS_T T ON T.POSID = P.ID;'
+      ''
+      '    /* ====================================================='
+      '       6'#65039#8419' STOK '#8211' ISLEM_H'#8217'TAN HESAPLA'
+      '       ISLEMTURU:'
+      '       1,2 = G'#304'R'#304#350
+      '       3   = '#199'IKI'#350
+      '    ===================================================== */'
+      '    ;WITH STOK_T AS ('
+      '        SELECT'
+      '            STOKID,'
+      '            SUM(GIREN) AS GIREN,'
+      '            SUM(CIKAN) AS CIKAN'
+      '        FROM dbo.ISLEM_H'
+      '        WHERE ISLEMTURU IN (1,2,3)'
+      '        GROUP BY STOKID'
+      '    )'
+      '    UPDATE S'
+      '    SET'
+      '        S.TOPLAM_GIREN = T.GIREN,'
+      '        S.TOPLAM_CIKAN = T.CIKAN'
+      '    FROM dbo.STOK S'
+      '    JOIN STOK_T T ON T.STOKID = S.ID;'
+      ''
+      '    COMMIT TRAN;'
+      'END'
+      'GO')
+    Left = 232
+    Top = 232
+  end
+  object qryCreateTrigerIslem_baslik: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'CREATE TRIGGER dbo.TRG_ISLEM_BASLIK_GUNCELLE'
+      'ON dbo.ISLEM_BASLIK'
+      'AFTER INSERT, UPDATE, DELETE'
+      'AS'
+      'BEGIN'
+      '    SET NOCOUNT ON;'
+      ''
+      '    /* ================================'
+      '       1'#65039#8419' CARI '#8211' ESK'#304' KAYITLARI GER'#304' AL'
+      '       ================================ */'
+      '    UPDATE C'
+      '    SET'
+      '        TOPLAM_GIREN = TOPLAM_GIREN - ISNULL(D.GIREN,0),'
+      '        TOPLAM_CIKAN = TOPLAM_CIKAN - ISNULL(D.CIKAN,0)'
+      '    FROM dbo.CARI C'
+      '    INNER JOIN deleted D ON D.CARIID = C.ID'
+      '    WHERE D.ISLEMTURU IN (1,5,6);'
+      ''
+      '    /* ================================'
+      '       2'#65039#8419' POS '#8211' ESK'#304' KAYITLARI GER'#304' AL'
+      '       (SADECE ODEMETURU = 2)'
+      '       ================================ */'
+      '    UPDATE P'
+      '    SET'
+      '        TOPLAM_GIREN = TOPLAM_GIREN - ISNULL(D.GIREN,0),'
+      '        TOPLAM_CIKAN = TOPLAM_CIKAN - ISNULL(D.CIKAN,0)'
+      '    FROM dbo.POS P'
+      '    INNER JOIN deleted D ON D.POSID = P.ID'
+      '    WHERE D.ODEMETURU = 2'
+      '      AND D.ISLEMTURU IN (1,5,6);'
+      ''
+      '    /* ================================'
+      '       3'#65039#8419' CARI '#8211' YEN'#304' KAYITLARI EKLE'
+      '       ================================ */'
+      '    UPDATE C'
+      '    SET'
+      '        TOPLAM_GIREN = TOPLAM_GIREN + ISNULL(I.GIREN,0),'
+      '        TOPLAM_CIKAN = TOPLAM_CIKAN + ISNULL(I.CIKAN,0)'
+      '    FROM dbo.CARI C'
+      '    INNER JOIN inserted I ON I.CARIID = C.ID'
+      '    WHERE I.ISLEMTURU IN (1,5,6);'
+      ''
+      '    /* ================================'
+      '       4'#65039#8419' POS '#8211' YEN'#304' KAYITLARI EKLE'
+      '       (SADECE ODEMETURU = 2)'
+      '       ================================ */'
+      '    UPDATE P'
+      '    SET'
+      '        TOPLAM_GIREN = TOPLAM_GIREN + ISNULL(I.GIREN,0),'
+      '        TOPLAM_CIKAN = TOPLAM_CIKAN + ISNULL(I.CIKAN,0)'
+      '    FROM dbo.POS P'
+      '    INNER JOIN inserted I ON I.POSID = P.ID'
+      '    WHERE I.ODEMETURU = 2'
+      '      AND I.ISLEMTURU IN (1,5,6);'
+      ''
+      'END'
+      'GO')
+    Left = 144
+    Top = 248
+  end
+  object qryCreateTrigerIslem_h: TUniQuery
+    Connection = UniConnTest
+    SQL.Strings = (
+      'CREATE TRIGGER dbo.TRG_ISLEM_H_UPDATE_TOTALS'
+      'ON dbo.ISLEM_H'
+      'AFTER INSERT, UPDATE, DELETE'
+      'AS'
+      'BEGIN'
+      '    SET NOCOUNT ON;'
+      ''
+      '    /* ====================================================='
+      '       STOK (ADET / M'#304'KTAR)'
+      '    ===================================================== */'
+      '    ;WITH X AS ('
+      '        SELECT STOKID,'
+      '               SUM(GIREN) AS GIREN,'
+      '               SUM(CIKAN) AS CIKAN'
+      '        FROM ('
+      '            SELECT STOKID, GIREN, CIKAN'
+      '            FROM inserted'
+      '            WHERE ISLEMTURU IN (1,2,3)'
+      ''
+      '            UNION ALL'
+      ''
+      '            SELECT STOKID, -GIREN, -CIKAN'
+      '            FROM deleted'
+      '            WHERE ISLEMTURU IN (1,2,3)'
+      '        ) T'
+      '        GROUP BY STOKID'
+      '    )'
+      '    UPDATE S'
+      '    SET'
+      '        S.TOPLAM_GIREN += X.GIREN,'
+      '        S.TOPLAM_CIKAN += X.CIKAN'
+      '    FROM dbo.STOK S'
+      '    JOIN X ON X.STOKID = S.ID;'
+      '  '
+      ''
+      'END'
+      ''
+      'GO')
+    Left = 56
+    Top = 248
+  end
+  object SQLiteUniProvider1: TSQLiteUniProvider
+    Left = 256
+    Top = 16
   end
 end

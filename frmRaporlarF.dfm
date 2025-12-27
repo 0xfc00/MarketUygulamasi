@@ -146,7 +146,6 @@ object frmRaporlar: TfrmRaporlar
     object shOzet: TcxTabSheet
       Caption = 'G'#252'n Sonu Raporu'
       ImageIndex = 0
-      ExplicitHeight = 478
       object cxGroupBox3: TcxGroupBox
         AlignWithMargins = True
         Left = 3
@@ -600,6 +599,9 @@ object frmRaporlar: TfrmRaporlar
     object shHs: TcxTabSheet
       Caption = 'H'#305'zl'#305' Sat'#305#351' Raporu'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 478
       object cxGrid1: TcxGrid
         AlignWithMargins = True
@@ -761,6 +763,9 @@ object frmRaporlar: TfrmRaporlar
     object shStokHarRaporu: TcxTabSheet
       Caption = 'Stok Hareket Raporu'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 478
       object cxGrid2: TcxGrid
         AlignWithMargins = True
@@ -999,6 +1004,9 @@ object frmRaporlar: TfrmRaporlar
     object shCarHarRapor: TcxTabSheet
       Caption = 'Cari Hareket Raporu'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 478
       object cxGrid3: TcxGrid
         AlignWithMargins = True
@@ -1264,36 +1272,43 @@ object frmRaporlar: TfrmRaporlar
           object vwCariHarRaportarih: TcxGridDBColumn
             Caption = 'Tarih'
             DataBinding.FieldName = 'ISLEMTARIHI'
+            DataBinding.IsNullValueType = True
             Width = 124
           end
           object vwCariHarRaporgirisCikis: TcxGridDBColumn
             Caption = 'T'#252'r'#252
             DataBinding.FieldName = 'sttislemTuru'
+            DataBinding.IsNullValueType = True
             Width = 67
           end
           object vwCariHarRaporCari_isim: TcxGridDBColumn
             Caption = 'Cari '#304'sim'
             DataBinding.FieldName = 'strUnvan'
+            DataBinding.IsNullValueType = True
             Width = 298
           end
           object vwCariHarRaporodeme_nakit: TcxGridDBColumn
             Caption = 'Giren'
             DataBinding.FieldName = 'GIREN'
+            DataBinding.IsNullValueType = True
             Width = 68
           end
           object vwCariHarRaporodeme_kk: TcxGridDBColumn
             Caption = #199#305'kan'
             DataBinding.FieldName = 'CIKAN'
+            DataBinding.IsNullValueType = True
             Width = 73
           end
           object vwCariHarRaportutar: TcxGridDBColumn
             Caption = 'Tutar'
             DataBinding.FieldName = 'TUTAR'
+            DataBinding.IsNullValueType = True
             Width = 76
           end
           object vwCariHarRaporaciklama: TcxGridDBColumn
             Caption = 'A'#231#305'klama'
             DataBinding.FieldName = 'EVRAKNO'
+            DataBinding.IsNullValueType = True
             Width = 74
           end
         end
@@ -1306,6 +1321,9 @@ object frmRaporlar: TfrmRaporlar
     object hsGrupSatisRapor: TcxTabSheet
       Caption = 'Gruplara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 478
       object cxGrid4: TcxGrid
         AlignWithMargins = True
@@ -1592,6 +1610,9 @@ object frmRaporlar: TfrmRaporlar
     object hsMarkaSatisRapor: TcxTabSheet
       Caption = 'Markalara G'#246're H'#305'zl'#305' Sat'#305#351
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
       ExplicitHeight = 478
       object cxGrid5: TcxGrid
         AlignWithMargins = True
@@ -2159,7 +2180,6 @@ object frmRaporlar: TfrmRaporlar
         'te) <= :tar2'
       ''
       '')
-    Active = True
     Left = 328
     Top = 432
     ParamData = <
@@ -2392,7 +2412,7 @@ object frmRaporlar: TfrmRaporlar
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           AllowVectorExport = True
-          Width = 718.110236220472000000
+          Width = 718.110236220471900000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText

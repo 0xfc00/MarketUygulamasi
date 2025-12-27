@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.6.17" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Varsayılan" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44089,4782145139" ReportOptions.Description.Text="" ReportOptions.LastChange="44089,4789756597" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBbarkod" DataSetName="frxDBbarkod"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxBarCodeView Name="BarCode1" AllowVectorExport="True" Left="151,1812" Top="98,26778" Width="103" Height="83,14966" BarType="bcCodeEAN13" Expression="&#60;frxDBbarkod.&#34;barkod&#34;&#62;" Frame.Typ="0" Rotation="0" TestLine="False" Text="12345678" WideBarRatio="2" Zoom="1" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" ColorBar="0"/>
+  </TfrxReportPage>
+</TfrxReport>

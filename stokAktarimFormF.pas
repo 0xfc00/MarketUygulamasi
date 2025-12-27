@@ -180,7 +180,8 @@ begin
   alýsFiyatKolon  := StrToIntDef((cbAlisFiyatKolon.Text),0)-1;
   kdvKolon        := StrToIntDef((cbKdvKolon.Text),0)-1;
 
-  q := yeniQuery('select * from STOK where STOKKODU= :STOKKODU OR STOKADI = :STOKADI OR BARKOD= :BARKOD ', false);
+  //q := yeniQuery('select * from STOK where STOKKODU= :STOKKODU OR STOKADI = :STOKADI OR BARKOD= :BARKOD ', false);
+  q := yeniQuery('select * from STOK where  BARKOD= :BARKOD ', false);
 
   intBasariliIslem := 0;
   inthataliIslem   := 0;
@@ -193,8 +194,8 @@ begin
     Caption :=' Stoklar aktarýlýyor... ' + IntToStr(i+1) + ' / ' + IntToStr(sGrd.RowCount);
     try
       q.Close;
-      q.ParamByName('STOKKODU').AsString := sGrd.Cells[stokKodKolon,i] ;
-      q.ParamByName('STOKADI').AsString := sGrd.Cells[stokAdiKolon,i] ;
+//      q.ParamByName('STOKKODU').AsString := sGrd.Cells[stokKodKolon,i] ;
+//      q.ParamByName('STOKADI').AsString := sGrd.Cells[stokAdiKolon,i] ;
       q.ParamByName('BARKOD').AsString := sGrd.Cells[barkodKolon,i] ;
       q.Open;
       if q.IsEmpty then

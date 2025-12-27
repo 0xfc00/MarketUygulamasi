@@ -20,6 +20,7 @@ uses
   procedure EkleyenDegistiren(ADataset: TDataSet);
   function YetkiKontrol(AYetki : boolean = False): boolean;
   function OtoYedek_fn() : boolean;
+  function tarihForSqlite(ATarih : TDateTime): string;
 
 
 
@@ -152,24 +153,24 @@ var
 begin
   q := yeniQuery('select * from USERS where ID='+ loginUserID.tostring);
 
-  y.admin          := q.FieldByName('YONETICI').AsBoolean         = true;
-  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').AsBoolean       = true;
-  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').AsBoolean   = true;
-  y.STOKSIL        := q.FieldByName('y_STOKSIL').AsBoolean        = true;
-  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').AsBoolean       = true;
-  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').AsBoolean   = true;
-  y.CARISIL        := q.FieldByName('y_CARISIL').AsBoolean        = true;
-  y.FATEKLE        := q.FieldByName('y_FATEKLE').AsBoolean        = true;
-  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').AsBoolean    = true;
-  y.FATSIL         := q.FieldByName('y_FATSIL').AsBoolean         = true;
-  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').AsBoolean       = true;
-  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').AsBoolean    = true;
-  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').AsBoolean = true;
-  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').AsBoolean     = true;
-  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').AsBoolean     = true;
-  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').AsBoolean  = true;
-  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').AsBoolean   = true;
-  y.RAPORLAR       := q.FieldByName('y_RAPORLAR').AsBoolean       = true;
+  y.admin          := q.FieldByName('YONETICI').asinteger         = 1;
+  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').asinteger       = 1;
+  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').asinteger   = 1;
+  y.STOKSIL        := q.FieldByName('y_STOKSIL').asinteger        = 1;
+  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').asinteger       = 1;
+  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').asinteger   = 1;
+  y.CARISIL        := q.FieldByName('y_CARISIL').asinteger        = 1;
+  y.FATEKLE        := q.FieldByName('y_FATEKLE').asinteger        = 1;
+  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').asinteger    = 1;
+  y.FATSIL         := q.FieldByName('y_FATSIL').asinteger         = 1;
+  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').asinteger       = 1;
+  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').asinteger    = 1;
+  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').asinteger = 1;
+  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').asinteger     = 1;
+  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').asinteger     = 1;
+  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').asinteger  = 1;
+  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').asinteger   = 1;
+  y.RAPORLAR       := q.FieldByName('y_RAPORLAR').asinteger       = 1;
 
 
 
@@ -184,7 +185,7 @@ begin
 
   if not q.IsEmpty then
   begin
-    a.OTO_YEDEK  := q.FieldByName('OTO_YEDEK').ASBOOLEaN;;
+    a.OTO_YEDEK  := q.FieldByName('OTO_YEDEK').asinteger = 1;
     a.OTO_YEDEK_DIZINI      := q.FieldByName('OTO_YEDEK_DIZINI').asString;
   end;
 
@@ -308,14 +309,14 @@ begin
       ADataset.FieldByName('USERID').Asinteger := loginUserID;
 
     if ADataset.FindField('CREATEDAT') <> nil then
-      ADataset.FieldByName('CREATEDAT').AsDateTime := now;
+      ADataset.FieldByName('CREATEDAT').AsString := tarihForSqlite(now);
   end
   else if ADataset.State = dsEdit then
   begin
     if ADataset.FindField('USERIDUP') <> nil then
       ADataset.FieldByName('USERIDUP').Asinteger := loginUserID;
     if ADataset.FindField('UPDATEDAT') <> nil then
-      ADataset.FieldByName('UPDATEDAT').AsDateTime := now;
+      ADataset.FieldByName('UPDATEDAT').AsString := tarihForSqlite(now);
   end;
 end;
 
@@ -376,6 +377,11 @@ begin
     Free;
   end;
 
+end;
+
+function tarihForSqlite(ATarih : TDateTime): string;
+begin
+  result := FormatDateTime('yyyy-mm-dd hh:nn:ss', ATarih);
 end;
 
 end.

@@ -71,8 +71,8 @@ end;
 
 procedure TfrmSqlSorgu.cxButton2Click(Sender: TObject);
 begin
-  if not dmMain.UniConn.Connected then
-    dmMain.UniConn.Connected := true;
+//  if not dmMain.UniConn.Connected then
+//    dmMain.UniConn.Connected := true;
 
   try
     with q do
@@ -88,7 +88,7 @@ begin
       DataController.CreateAllItems;
       ApplyBestFit(nil);
     end;
-  except
+  finally
   end;
 end;
 

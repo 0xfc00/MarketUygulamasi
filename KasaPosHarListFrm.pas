@@ -33,7 +33,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, _func;
 
 type
   TfrmKasaPosHarList = class(TfrmListBase)
@@ -140,8 +140,8 @@ Begin
 
   q.sql.text := sql;
   q.sql.add(' and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih');
-  q.ParamByName('bastarih').AsDate := dtBas.Date;
-  q.ParamByName('bittarih').AsDate := dtBit.Date;
+  q.ParamByName('bastarih').AsString := tarihForSqlite(dtBas.Date);
+  q.ParamByName('bittarih').AsString := tarihForSqlite(dtBit.Date);
   qAcKapa_fn(q);
 
   if pcAna.ActivePage = shtKasa then

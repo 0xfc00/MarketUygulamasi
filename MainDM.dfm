@@ -22,19 +22,8 @@ object dmMain: TdmMain
     Left = 208
     Top = 48
   end
-  object qrySabitSatirlarKontrol: TUniQuery
-    Connection = UniConn
-    SQL.Strings = (
-      
-        'IF NOT EXISTS (SELECT 1 FROM ISLEM_BASLIK WHERE ISLEMTURU = 0 AN' +
-        'D ODEMETURU = 0 AND EVRAKNO = '#39'STOKHARSABIT'#39')'
-      'BEGIN'
-      
-        '    INSERT INTO ISLEM_BASLIK (ISLEMTURU, ODEMETURU, ISLEMTARIHI,' +
-        ' EVRAKNO,CARIID,POSID)'
-      '    VALUES (0, 0, GETDATE(), '#39'STOKHARSABIT'#39',0,0)'
-      'END')
-    Left = 312
-    Top = 24
+  object SQLiteUniProvider1: TSQLiteUniProvider
+    Left = 544
+    Top = 128
   end
 end

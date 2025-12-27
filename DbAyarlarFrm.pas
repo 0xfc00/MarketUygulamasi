@@ -3,7 +3,7 @@ unit DbAyarlarFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes,  windows,
+  System.SysUtils, System.Classes,  windows,  System.IOUtils,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Registry,
   DBAccess, Uni, cxButtons,
@@ -26,10 +26,29 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, frmSqlSorguF, UniProvider,
+  SQLiteUniProvider;
 
 type
   TfrmDbAyarlar = class(TForm)
+    btnKaydet: TcxButton;
+    UniConnTest: TUniConnection;
+    qCreateDatabase: TUniQuery;
+    qCreateTables: TUniQuery;
+    q: TUniQuery;
+    qryDropTables: TUniQuery;
+    qryCreateSp: TUniQuery;
+    qryCreateTrigerIslem_baslik: TUniQuery;
+    qryCreateTrigerIslem_h: TUniQuery;
+    GroupBox1: TGroupBox;
+    Memo1: TMemo;
+    Button3: TButton;
+    Button4: TButton;
+    Button2: TButton;
+    Button1: TButton;
+    cbDbTipi: TComboBox;
+    cxLabel6: TcxLabel;
+    GroupBox2: TGroupBox;
     edtServer: TcxTextEdit;
     cxLabel1: TcxLabel;
     edtDatabase: TcxTextEdit;
@@ -41,13 +60,7 @@ type
     cxLabel5: TcxLabel;
     cbAuthType: TcxComboBox;
     btnTest: TcxButton;
-    btnKaydet: TcxButton;
-    UniConnTest: TUniConnection;
-    Button2: TButton;
-    Button1: TButton;
-    qCreateDatabase: TUniQuery;
-    qCreateTables: TUniQuery;
-    q: TUniQuery;
+    SQLiteUniProvider1: TSQLiteUniProvider;
     procedure btnKaydetClick(Sender: TObject);
 
 
@@ -60,6 +73,10 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure ExecuteSqlServerScript(const AScript: string);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Memo1DblClick(Sender: TObject);
+    procedure cbDbTipiChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -87,6 +104,7 @@ begin
   begin
     Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'khpro.ini');
     try
+      Ini.WriteString('Database', 'Db', cbDbTipi.ItemIndex.ToString);
       Ini.WriteString('Database', 'Server', edtServer.text);
       Ini.WriteString('Database', 'Database', edtdatabase.text);
       Ini.WriteString('Database', 'AuthType', cbAuthType.Text);
@@ -106,6 +124,9 @@ end;
 
 procedure TfrmDbAyarlar.Button1Click(Sender: TObject);
 begin
+  if not TDirectory.Exists('c:\KHPRO') then
+      TDirectory.CreateDirectory('c:\KHPRO');
+
   if not TestConnection then exit;
   ExecuteSqlServerScript(qCreateDatabase.sql.text);
   showmessage('DB oluþturuldu');
@@ -117,7 +138,28 @@ procedure TfrmDbAyarlar.Button2Click(Sender: TObject);
 begin
   if not TestConnection then exit;
   ExecuteSqlServerScript(qCreateTables.sql.text);
+  ExecuteSqlServerScript(qryCreateSp.sql.text);
+  ExecuteSqlServerScript(qryCreateTrigerIslem_baslik.sql.text);
+  ExecuteSqlServerScript(qryCreateTrigerIslem_h.sql.text);
   showmessage('Tablolar oluþturuldu');
+end;
+
+procedure TfrmDbAyarlar.Button3Click(Sender: TObject);
+begin
+  if not TestConnection then exit;
+  ExecuteSqlServerScript(qryDropTables.sql.text);
+  showmessage('Tablolar oluþturuldu');
+end;
+
+procedure TfrmDbAyarlar.Button4Click(Sender: TObject);
+begin
+  if TestConnection then
+    with TfrmSqlSorgu.create(nil) do
+    begin
+      q.Connection := UniConnTest;
+      showmodal;
+      free;
+    end;
 end;
 
 procedure TfrmDbAyarlar.cbAuthTypePropertiesChange(Sender: TObject);
@@ -136,12 +178,17 @@ end;
 
 
 
+procedure TfrmDbAyarlar.cbDbTipiChange(Sender: TObject);
+begin
+  GroupBox2.Visible := cbDbTipi.ItemIndex = 1;
+end;
+
 procedure TfrmDbAyarlar.cxLabel1Click(Sender: TObject);
 begin
-  if dbOlusturSayac >5 then
+  if dbOlusturSayac >3 then
   begin
-    button1.Visible := true;
-    button2.Visible := true;
+    height := 800;
+    GroupBox1.Visible := true;
     edtDatabase.text := 'master';
   end;
   inc(dbOlusturSayac);
@@ -156,10 +203,14 @@ procedure TfrmDbAyarlar.FormCreate(Sender: TObject);
 var
   Ini: TIniFile;
 begin
+  Memo1.Text := StringReplace(Memo1.Text, 'backup_dirr\',  ExtractFilePath(ParamStr(0)), [rfReplaceAll] );
+  Memo1.Text := StringReplace(Memo1.Text, 'app_dirr\',  ExtractFilePath(ParamStr(0)), [rfReplaceAll] );
+  Height := 333;
   if  FileExists(ExtractFilePath(ParamStr(0)) + 'khpro.ini') then
   begin
     Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'khpro.ini');
     try
+      cbDbTipi.ItemIndex := StrToIntDef(Ini.ReadString('Database', 'Db', '0'), 0);
       edtServer.text   := Ini.ReadString('Database', 'Server', '');
       edtDatabase.text := Ini.ReadString('Database', 'Database', '');
 
@@ -176,61 +227,89 @@ begin
   end;
 end;
 
+procedure TfrmDbAyarlar.Memo1DblClick(Sender: TObject);
+begin
+  q.sql := memo1.lines;
+  q.Execute;
+  showmessage('Baþarýlý..');
+end;
+
 function TfrmDbAyarlar.TestConnection(AShowInfo : boolean = true): boolean;
 begin
-  if (Trim(edtServer.text) = EmptyStr)
-    // or (Trim(edtDatabase.text) = EmptyStr)
-  then
+  if cbDbTipi.ItemIndex = 0 then
   begin
-    ShowMessage('Veritabaný bilgileri eksik');
-    exit;
-  end;
+    UniConntest.ProviderName := 'SQLite';
+    UniConntest.Database     := ExtractFilePath(ParamStr(0)) + 'db.db';
 
-  if cbAuthType.ItemIndex = 1 then
+    try
+      UniConntest.Connect;
+      if AShowInfo then ShowMessage('Baðlantý baþarýlý');
+      Result := True;
+    except
+      on E: Exception do
+      begin
+        if AShowInfo then ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
+        Result := false;
+      end;
+    end;
+
+  end
+  else
   begin
-    if (Trim(edtusername.text) = EmptyStr) or
-       (Trim(edtPassword.text) = EmptyStr)
+    if (Trim(edtServer.text) = EmptyStr)
+      // or (Trim(edtDatabase.text) = EmptyStr)
     then
     begin
       ShowMessage('Veritabaný bilgileri eksik');
       exit;
     end;
-  end;
 
-
-  UniConntest.Connected := False;
-  UniConntest.ProviderName := 'SQL Server';
-  UniConntest.Server   := edtServer.text;
-  UniConntest.Database := edtDatabase.text;
-
-  if cbAuthType.ItemIndex = 0 then
-  begin
-    // Windows Authentication
-    UniConntest.Username := '';
-    UniConntest.Password := '';
-    UniConntest.SpecificOptions.Values['Authentication'] := 'auWindows';
-  end
-  else
-  begin
-    // SQL Server Authentication
-    UniConntest.Username := edtusername.text;
-    UniConntest.Password := edtpassword.text;
-    UniConntest.SpecificOptions.Values['Authentication'] := 'auServer';
-  end;
-
-  UniConntest.LoginPrompt := False;
-
-  try
-    UniConntest.Connect;
-    if AShowInfo then ShowMessage('Baðlantý baþarýlý');
-    Result := True;
-  except
-    on E: Exception do
+    if cbAuthType.ItemIndex = 1 then
     begin
-      if AShowInfo then ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
-      Result := false;
+      if (Trim(edtusername.text) = EmptyStr) or
+         (Trim(edtPassword.text) = EmptyStr)
+      then
+      begin
+        ShowMessage('Veritabaný bilgileri eksik');
+        exit;
+      end;
     end;
 
+
+    UniConntest.Connected := False;
+    UniConntest.ProviderName := 'SQL Server';
+    UniConntest.Server   := edtServer.text;
+    UniConntest.Database := edtDatabase.text;
+
+    if cbAuthType.ItemIndex = 0 then
+    begin
+      // Windows Authentication
+      UniConntest.Username := '';
+      UniConntest.Password := '';
+      UniConntest.SpecificOptions.Values['Authentication'] := 'auWindows';
+    end
+    else
+    begin
+      // SQL Server Authentication
+      UniConntest.Username := edtusername.text;
+      UniConntest.Password := edtpassword.text;
+      UniConntest.SpecificOptions.Values['Authentication'] := 'auServer';
+    end;
+
+    UniConntest.LoginPrompt := False;
+
+    try
+      UniConntest.Connect;
+      if AShowInfo then ShowMessage('Baðlantý baþarýlý');
+      Result := True;
+    except
+      on E: Exception do
+      begin
+        if AShowInfo then ShowMessage('Veritabanýna baðlanýlamadý:' + sLineBreak + E.Message);
+        Result := false;
+      end;
+
+    end;
   end;
 end;
 

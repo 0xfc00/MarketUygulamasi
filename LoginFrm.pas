@@ -114,7 +114,7 @@ begin
     begin
       if IsEmpty then
       begin
-        sqlCalistir('INSERT INTO dbo.USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, '''')');
+        sqlCalistir('INSERT INTO USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, '''')');
         close;
         open;
       end;
@@ -130,7 +130,7 @@ begin
       sql.text := 'select * from USERS where  KULLANICI = ''ADMIN'' ';
       open;
       edit;
-      FieldByName('YONETICI').asboolean := true;
+      FieldByName('YONETICI').asinteger := 1;
       post;
 
       Free;

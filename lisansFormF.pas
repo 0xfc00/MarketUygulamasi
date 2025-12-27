@@ -66,7 +66,7 @@ begin
 
   if floattostr(key) = lblAnahtar.Text then
   begin
-    qLisans := yeniQuery('select TOP 1 * from AYARLAR');
+    qLisans := yeniQuery('select * from AYARLAR');
 
     if qLisans.IsEmpty then
       qLisans.Append

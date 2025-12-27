@@ -35,6 +35,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 858
       ExplicitHeight = 406
       object cxGrid1: TcxGrid
@@ -111,6 +113,8 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtPos: TcxTabSheet
       Caption = 'POS Hareketleri'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 858
       ExplicitHeight = 406
       object cxGrid2: TcxGrid

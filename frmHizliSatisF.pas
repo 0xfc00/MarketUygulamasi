@@ -168,6 +168,7 @@ type
     cxStyle9: TcxStyle;
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
+    qrySatisBitirYedekkkk: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormCreate(Sender: TObject);
@@ -199,6 +200,10 @@ type
     procedure qryTempSatisAfterPost(DataSet: TDataSet);
     procedure RaporTasarm1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure nakit_satisExecute(Sender: TObject);
+    procedure kk_satisExecute(Sender: TObject);
+    procedure veresiye_satisExecute(Sender: TObject);
+    procedure satis_iptalExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -217,9 +222,9 @@ uses _cons, _func, _vars, Main, MainDM;
 
 procedure TfrmHizliSatis.barkodOku(stokKodu:string);
 var
-i : integer;
+  i , adet: integer;
   qS, qG, qToplam, q : TUniQuery;
-  sTartilan, sTartiBarkod : string;
+  sTartilan, sTartiBarkod, s : string;
   dTartilan, dTartilanTutar : double;
 label
   lblBarkodYok, lblTeraziBarkodu;
@@ -238,6 +243,19 @@ begin
 
   if grdHizliSatisDBTableView1.DataController.RecordCount > 5 then demoKontrol;
   if (stokKodu = '') and (edtBarkod.Text = '') then exit;
+
+  adet := 0;
+
+  if Pos('*', edtBarkod.Text) > 0 then
+    if not StokBarkodVarmi_fn(edtBarkod.Text) then
+    begin
+      s := Copy(edtBarkod.Text, Pos('*', edtBarkod.Text) + 1, Length(edtBarkod.Text));
+      adet := StrToIntDef(Copy(edtBarkod.Text, 1, Pos('*', edtBarkod.Text) - 1), 0) -1;
+      if StokBarkodVarmi_fn(s) then
+      begin
+        edtBarkod.Text := s;
+      end;
+    end;
 
   sTartilan := '';
   dTartilan := 0;
@@ -276,7 +294,6 @@ begin
         dTartilan :=  dTartilan / 1000;
     end;
 
-
     if not qryTempSatis.Active then qryTempSatis.Open;
     qG := yeniQuery('select * from TMPSATIS where STOKKODU= :STOKKODU and BEKLEMEDE=0', false);
     qG.ParamByName('STOKKODU').AsString := qS.FieldByName('STOKKODU').AsString;
@@ -285,7 +302,7 @@ begin
     if qG.RecordCount >0 then
     begin
       qG.Edit;
-      qG.FieldByName('ADET').asfloat   := qG.FieldByName('ADET').asfloat +  strtofloat( IfThen(dTartilan = 0 , '1', FloatTostr(dtartilan) ));
+      qG.FieldByName('ADET').asfloat   := adet + qG.FieldByName('ADET').asfloat +  strtofloat( IfThen(dTartilan = 0 , '1', FloatTostr(dtartilan) ));
       qG.FieldByName('FIYAT').asfloat  := qS.FieldByName('SATISFIYATI').asfloat;
       qG.FieldByName('TOPLAM').asfloat := qS.FieldByName('SATISFIYATI').AsFloat * qG.FieldByName('ADET').asfloat;
       qG.Post;
@@ -299,6 +316,7 @@ begin
       qryTempSatis.FieldByName('KDV').AsString      := qS.FieldByName('KDV').AsString;
 
       qryTempSatis.FieldByName('ADET').AsString     := IfThen(dTartilan = 0, '1', floattostr(dtartilan) );
+      qryTempSatis.FieldByName('ADET').asfloat      := adet + qryTempSatis.FieldByName('ADET').asfloat;
       qryTempSatis.FieldByName('FIYAT').AsString    := qS.FieldByName('SATISFIYATI').AsString;
       qryTempSatis.FieldByName('TOPLAM').AsString   := ifthen(dTartilan = 0, qS.FieldByName('SATISFIYATI').AsString, floattostr(dTartilanTutar) );
 
@@ -354,6 +372,12 @@ begin
   if (sender is tpanel)   then stokKodu := tpanel(sender).Hint;
 
   if stokKodu <> '' then barkodOku(stokKodu);
+end;
+
+procedure TfrmHizliSatis.nakit_satisExecute(Sender: TObject);
+begin
+  inherited;
+  btnNakit_satisClick(sender);
 end;
 
 procedure TfrmHizliSatis.qryTempSatisAfterDelete(DataSet: TDataSet);
@@ -534,6 +558,12 @@ end;
 procedure TfrmHizliSatis.kapatExecute(Sender: TObject);
 begin
   close;
+end;
+
+procedure TfrmHizliSatis.kk_satisExecute(Sender: TObject);
+begin
+  inherited;
+  btnKk_satisClick(sender);
 end;
 
 procedure TfrmHizliSatis.btnKk_satisClick(Sender: TObject);
@@ -882,6 +912,12 @@ begin
 end;
 
 
+procedure TfrmHizliSatis.veresiye_satisExecute(Sender: TObject);
+begin
+  inherited;
+  btnVeresiye_satisClick(sender);
+end;
+
 procedure TfrmHizliSatis.satisTamamla(Aislem:string);
 var
   qTemp, qHar: TUniQuery;
@@ -961,7 +997,7 @@ begin
   end;
 
   qrySatisBitir.Execute;
-
+                                asdasd
   SatisID := qrySatisBitir.FieldByName('SatisID').AsString;
 
   with qryCari do
@@ -997,5 +1033,11 @@ end;
 
 
 
+
+procedure TfrmHizliSatis.satis_iptalExecute(Sender: TObject);
+begin
+  inherited;
+  btnSatisIptalClick(sender);
+end;
 
 end.
