@@ -25,10 +25,12 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     ActivePage = shStok
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 409
     object shStok: TTabSheet
       Caption = 'Stok Bilgileri'
-      ExplicitHeight = 381
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label1: TLabel
         Left = 12
         Top = 21
@@ -611,7 +613,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Height = 70
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -2
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 487
@@ -714,7 +715,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 492
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -753,7 +753,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
-      ExplicitLeft = 310
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -797,7 +796,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetVeYeniClick
-      ExplicitLeft = 100
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -857,7 +855,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitLeft = 401
     end
   end
   object qryStok: TUniQuery

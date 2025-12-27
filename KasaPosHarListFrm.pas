@@ -140,8 +140,8 @@ Begin
 
   q.sql.text := sql;
   q.sql.add(' and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih');
-  q.ParamByName('bastarih').AsString := tarihForSqlite(dtBas.Date);
-  q.ParamByName('bittarih').AsString := tarihForSqlite(dtBit.Date);
+  q.ParamByName('bastarih').AsDateTime := (dtBas.Date);
+  q.ParamByName('bittarih').AsDateTime := (dtBit.Date);
   qAcKapa_fn(q);
 
   if pcAna.ActivePage = shtKasa then

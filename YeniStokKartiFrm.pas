@@ -28,7 +28,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, _func;
 
 type
   TfrmYeniStokKarti = class(TfrmKartBase)
@@ -214,12 +214,11 @@ begin
       Abort;
       Exit;
     end;
-
   end;
-
-
-
   DataSet.FieldByName('TERAZITIP').AsInteger := cbxTeraziTip.ItemIndex;
+
+  if DataSet.FieldByName('ID').IsNull then
+    DataSet.FieldByName('ID').asstring := idUret('STOK');
 end;
 
 procedure TfrmYeniStokKarti.Sil1Click(Sender: TObject);

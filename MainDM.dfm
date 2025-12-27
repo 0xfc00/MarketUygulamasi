@@ -4,7 +4,7 @@ object dmMain: TdmMain
   Height = 356
   Width = 732
   object UniConn: TUniConnection
-    ProviderName = 'SQL Server'
+    ProviderName = 'InterBase'
     Database = 'KHPRO'
     SpecificOptions.Strings = (
       'SQL Server.Authentication=auWindows')

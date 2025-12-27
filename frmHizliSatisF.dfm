@@ -29,8 +29,8 @@ object frmHizliSatis: TfrmHizliSatis
     Width = 638
     object cxGroupBox3: TcxGroupBox
       AlignWithMargins = True
-      Left = 5
-      Top = 5
+      Left = 6
+      Top = 6
       Align = alTop
       PanelStyle.Active = True
       ParentFont = False
@@ -41,27 +41,24 @@ object frmHizliSatis: TfrmHizliSatis
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 6
-      ExplicitWidth = 626
       Height = 74
-      Width = 628
+      Width = 626
       object cxGroupBox4: TcxGroupBox
         AlignWithMargins = True
-        Left = 5
-        Top = 5
+        Left = 6
+        Top = 6
         Align = alLeft
         Caption = 'Barkod'
         ParentBackground = False
         ParentColor = False
         Style.Color = clBtnFace
         TabOrder = 0
-        Height = 64
+        Height = 62
         Width = 339
         object edtBarkod: TcxTextEdit
           AlignWithMargins = True
-          Left = 5
-          Top = 24
+          Left = 6
+          Top = 21
           Align = alClient
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
@@ -72,26 +69,22 @@ object frmHizliSatis: TfrmHizliSatis
           Style.IsFontAssigned = True
           TabOrder = 0
           OnKeyPress = edtBarkodKeyPress
-          ExplicitLeft = 6
-          ExplicitTop = 21
-          ExplicitWidth = 327
-          ExplicitHeight = 29
-          Width = 329
+          Width = 327
         end
       end
       object cxGroupBox12: TcxGroupBox
         AlignWithMargins = True
-        Left = 350
-        Top = 5
+        Left = 351
+        Top = 6
         Align = alLeft
         Caption = 'Fi'#351' Yazd'#305'r'
         TabOrder = 1
-        Height = 64
+        Height = 62
         Width = 79
         object cbFisYazdirma: TcxComboBox
           AlignWithMargins = True
-          Left = 5
-          Top = 24
+          Left = 6
+          Top = 21
           Align = alClient
           ParentFont = False
           PopupMenu = pmRaporTasarim
@@ -109,19 +102,15 @@ object frmHizliSatis: TfrmHizliSatis
           Style.IsFontAssigned = True
           TabOrder = 0
           Text = 'Kapal'#305
-          ExplicitLeft = 6
-          ExplicitTop = 21
-          ExplicitWidth = 67
-          ExplicitHeight = 29
-          Width = 69
+          Width = 67
         end
       end
       object cxButton2: TcxButton
         AlignWithMargins = True
-        Left = 435
-        Top = 5
+        Left = 436
+        Top = 6
         Width = 55
-        Height = 64
+        Height = 62
         Hint = 'Tam Klavyeyi G'#246'ster/Gizle'
         Align = alLeft
         OptionsImage.Glyph.SourceDPI = 96
@@ -160,16 +149,13 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 2
         OnClick = cxButton2Click
-        ExplicitLeft = 436
-        ExplicitTop = 6
-        ExplicitHeight = 62
       end
       object cxButton1: TcxButton
         AlignWithMargins = True
-        Left = 496
-        Top = 5
+        Left = 497
+        Top = 6
         Width = 55
-        Height = 64
+        Height = 62
         Hint = 'Numerik Klavye G'#246'ster/Gizle'
         Align = alLeft
         OptionsImage.Glyph.SourceDPI = 96
@@ -220,16 +206,13 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 3
         OnClick = cxButton1Click
-        ExplicitLeft = 497
-        ExplicitTop = 6
-        ExplicitHeight = 62
       end
       object cxButton4: TcxButton
         AlignWithMargins = True
-        Left = 557
-        Top = 5
+        Left = 558
+        Top = 6
         Width = 55
-        Height = 64
+        Height = 62
         Hint = 'Numerik Klavye G'#246'ster/Gizle'
         Align = alLeft
         OptionsImage.Glyph.SourceDPI = 96
@@ -286,17 +269,14 @@ object frmHizliSatis: TfrmHizliSatis
         ShowHint = True
         TabOrder = 4
         OnClick = cxButton4Click
-        ExplicitLeft = 558
-        ExplicitTop = 6
-        ExplicitHeight = 62
       end
     end
     object grdHizliSatis: TcxGrid
       AlignWithMargins = True
-      Left = 5
-      Top = 85
-      Width = 628
-      Height = 435
+      Left = 6
+      Top = 86
+      Width = 626
+      Height = 433
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -305,10 +285,6 @@ object frmHizliSatis: TfrmHizliSatis
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitLeft = 6
-      ExplicitTop = 86
-      ExplicitWidth = 626
-      ExplicitHeight = 433
       object grdHizliSatisDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -387,8 +363,8 @@ object frmHizliSatis: TfrmHizliSatis
     end
     object cxGroupBox6: TcxGroupBox
       AlignWithMargins = True
-      Left = 5
-      Top = 646
+      Left = 6
+      Top = 645
       Align = alBottom
       PanelStyle.Active = True
       ParentBackground = False
@@ -402,17 +378,14 @@ object frmHizliSatis: TfrmHizliSatis
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
-      ExplicitLeft = 6
-      ExplicitTop = 645
-      ExplicitWidth = 626
       Height = 72
-      Width = 628
+      Width = 626
       object btnSatisIptal: TcxButton
         AlignWithMargins = True
-        Left = 420
-        Top = 5
+        Left = 421
+        Top = 6
         Width = 95
-        Height = 62
+        Height = 60
         Align = alLeft
         Caption = 'Sat'#305#351' '#304'ptal(F6)'
         OptionsImage.Glyph.SourceDPI = 96
@@ -484,16 +457,13 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnSatisIptalClick
-        ExplicitLeft = 421
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
       object btnSatisBeklet: TcxButton
         AlignWithMargins = True
-        Left = 319
-        Top = 5
+        Left = 320
+        Top = 6
         Width = 95
-        Height = 62
+        Height = 60
         Align = alLeft
         Caption = 'Sat'#305#351' Beklet'
         OptionsImage.Glyph.SourceDPI = 96
@@ -532,16 +502,13 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnSatisBekletClick
-        ExplicitLeft = 320
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
       object btnVeresiye_satis: TcxButton
         AlignWithMargins = True
-        Left = 218
-        Top = 5
+        Left = 219
+        Top = 6
         Width = 95
-        Height = 62
+        Height = 60
         Align = alLeft
         Caption = 'Veresiye (F4)'
         OptionsImage.Glyph.SourceDPI = 96
@@ -620,16 +587,13 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnVeresiye_satisClick
-        ExplicitLeft = 219
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
       object btnKk_satis: TcxButton
         AlignWithMargins = True
-        Left = 106
-        Top = 5
+        Left = 107
+        Top = 6
         Width = 106
-        Height = 62
+        Height = 60
         Align = alLeft
         Caption = 'Kredi Kart'#305' (F3)'
         OptionsImage.Glyph.SourceDPI = 96
@@ -677,16 +641,13 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnKk_satisClick
-        ExplicitLeft = 107
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
       object btnNakit_satis: TcxButton
         AlignWithMargins = True
-        Left = 5
-        Top = 5
+        Left = 6
+        Top = 6
         Width = 95
-        Height = 62
+        Height = 60
         Align = alLeft
         Caption = 'Nakit (F2)'
         OptionsImage.Glyph.SourceDPI = 96
@@ -766,16 +727,13 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnNakit_satisClick
-        ExplicitLeft = 6
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
       object cxButton3: TcxButton
         AlignWithMargins = True
-        Left = 521
-        Top = 5
+        Left = 522
+        Top = 6
         Width = 95
-        Height = 62
+        Height = 60
         Align = alLeft
         Action = kapat
         Cancel = True
@@ -799,21 +757,15 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitLeft = 522
-        ExplicitTop = 6
-        ExplicitHeight = 60
       end
     end
     object Panel1: TPanel
-      Left = 2
-      Top = 523
-      Width = 634
+      Left = 3
+      Top = 522
+      Width = 632
       Height = 60
       Align = alBottom
       TabOrder = 3
-      ExplicitLeft = 3
-      ExplicitTop = 522
-      ExplicitWidth = 632
       object cxGroupBox11: TcxGroupBox
         Left = 1
         Top = 1
@@ -826,8 +778,8 @@ object frmHizliSatis: TfrmHizliSatis
         Height = 58
         Width = 614
         object cbCari: TcxComboBox
-          Left = 260
-          Top = 18
+          Left = 261
+          Top = 15
           Margins.Top = 0
           Align = alClient
           ParentFont = False
@@ -839,16 +791,12 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Font.Style = []
           Style.IsFontAssigned = True
           TabOrder = 0
-          ExplicitLeft = 261
-          ExplicitTop = 15
-          ExplicitWidth = 350
-          ExplicitHeight = 34
-          Width = 352
+          Width = 350
         end
         object edtCariBul: TcxTextEdit
           AlignWithMargins = True
-          Left = 2
-          Top = 18
+          Left = 3
+          Top = 15
           Margins.Left = 0
           Margins.Top = 0
           Margins.Bottom = 0
@@ -862,27 +810,21 @@ object frmHizliSatis: TfrmHizliSatis
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           TabOrder = 1
-          ExplicitLeft = 3
-          ExplicitTop = 15
-          ExplicitHeight = 34
           Width = 255
         end
       end
     end
     object cxGroupBox5: TcxGroupBox
-      Left = 2
-      Top = 583
+      Left = 3
+      Top = 582
       Align = alBottom
       PanelStyle.Active = True
       TabOrder = 4
-      ExplicitLeft = 3
-      ExplicitTop = 582
-      ExplicitWidth = 632
       Height = 60
-      Width = 634
+      Width = 632
       object edtToplam: TcxTextEdit
-        Left = 334
-        Top = 2
+        Left = 331
+        Top = 3
         Align = alRight
         ParentFont = False
         Properties.ReadOnly = True
@@ -894,17 +836,14 @@ object frmHizliSatis: TfrmHizliSatis
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
         TabOrder = 0
-        ExplicitLeft = 331
-        ExplicitTop = 3
-        ExplicitHeight = 54
         Width = 298
       end
       object btnSatirAdetArttir: TcxButton
         AlignWithMargins = True
-        Left = 5
-        Top = 5
+        Left = 6
+        Top = 6
         Width = 40
-        Height = 50
+        Height = 48
         Align = alLeft
         OptionsImage.Glyph.SourceDPI = 96
         OptionsImage.Glyph.Data = {
@@ -917,16 +856,13 @@ object frmHizliSatis: TfrmHizliSatis
           8E847E4EA9750000000049454E44AE426082}
         TabOrder = 1
         OnClick = btnSatirAdetArttirClick
-        ExplicitLeft = 6
-        ExplicitTop = 6
-        ExplicitHeight = 48
       end
       object btnSatirAdetEksilt: TcxButton
         AlignWithMargins = True
-        Left = 51
-        Top = 5
+        Left = 52
+        Top = 6
         Width = 40
-        Height = 50
+        Height = 48
         Align = alLeft
         OptionsImage.Glyph.SourceDPI = 96
         OptionsImage.Glyph.Data = {
@@ -939,16 +875,13 @@ object frmHizliSatis: TfrmHizliSatis
           00000049454E44AE426082}
         TabOrder = 2
         OnClick = btnSatirAdetArttirClick
-        ExplicitLeft = 52
-        ExplicitTop = 6
-        ExplicitHeight = 48
       end
       object cxButton6: TcxButton
         AlignWithMargins = True
-        Left = 97
-        Top = 5
+        Left = 98
+        Top = 6
         Width = 106
-        Height = 50
+        Height = 48
         Hint = 'Numerik Klavye G'#246'ster/Gizle'
         Align = alLeft
         Caption = 'Sat'#305'r Sil'
@@ -1029,14 +962,11 @@ object frmHizliSatis: TfrmHizliSatis
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = cxButton6Click
-        ExplicitLeft = 98
-        ExplicitTop = 6
-        ExplicitHeight = 48
       end
       object cbPos: TcxComboBox
         AlignWithMargins = True
-        Left = 211
-        Top = 7
+        Left = 212
+        Top = 8
         Margins.Left = 5
         Margins.Top = 5
         Margins.Right = 5
@@ -1051,11 +981,7 @@ object frmHizliSatis: TfrmHizliSatis
         Style.Font.Style = []
         Style.IsFontAssigned = True
         TabOrder = 4
-        ExplicitLeft = 212
-        ExplicitTop = 8
-        ExplicitWidth = 114
-        ExplicitHeight = 44
-        Width = 118
+        Width = 114
       end
     end
   end
@@ -1070,78 +996,61 @@ object frmHizliSatis: TfrmHizliSatis
     Width = 614
     object cxPageControl1: TcxPageControl
       AlignWithMargins = True
-      Left = 5
-      Top = 5
-      Width = 604
-      Height = 491
+      Left = 6
+      Top = 6
+      Width = 602
+      Height = 489
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Images = imgListPageControl
-      ExplicitLeft = 6
-      ExplicitTop = 6
-      ExplicitWidth = 602
-      ExplicitHeight = 489
-      ClientRectBottom = 487
-      ClientRectLeft = 4
-      ClientRectRight = 600
-      ClientRectTop = 33
+      ClientRectBottom = 482
+      ClientRectLeft = 3
+      ClientRectRight = 595
+      ClientRectTop = 35
       object cxTabSheet1: TcxTabSheet
         Caption = 'H'#305'zl'#305' Sat'#305#351
         ImageIndex = 0
-        ExplicitLeft = 3
-        ExplicitTop = 35
-        ExplicitWidth = 592
-        ExplicitHeight = 447
         object pcHS: TcxPageControl
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 590
-          Height = 448
+          Width = 586
+          Height = 441
           Align = alClient
           TabOrder = 0
           Properties.CustomButtons.Buttons = <>
           Properties.Images = imgListPageControl
-          ExplicitWidth = 586
-          ExplicitHeight = 441
-          ClientRectBottom = 444
-          ClientRectLeft = 4
-          ClientRectRight = 586
-          ClientRectTop = 4
+          ClientRectBottom = 434
+          ClientRectLeft = 3
+          ClientRectRight = 579
+          ClientRectTop = 3
           object shtHS_deneme: TcxTabSheet
             Caption = 'shtHS_deneme'
             ImageIndex = 0
             TabVisible = False
-            ExplicitLeft = 3
-            ExplicitTop = 3
-            ExplicitWidth = 576
-            ExplicitHeight = 431
             object ScrollBox1: TScrollBox
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 576
-              Height = 434
+              Width = 570
+              Height = 425
               Align = alClient
               Color = clGradientInactiveCaption
               ParentColor = False
               TabOrder = 0
-              ExplicitWidth = 570
-              ExplicitHeight = 425
               object fPanelHS: TFlowPanel
                 AlignWithMargins = True
                 Left = 3
                 Top = 3
-                Width = 566
+                Width = 560
                 Height = 107
                 Align = alTop
                 AutoSize = True
                 Color = clGradientInactiveCaption
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitWidth = 560
                 object Panel2: TPanel
                   AlignWithMargins = True
                   Left = 4
@@ -1197,10 +1106,6 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet2: TcxTabSheet
         Caption = #220'r'#252'n Bul'
         ImageIndex = 1
-        ExplicitLeft = 3
-        ExplicitTop = 35
-        ExplicitWidth = 592
-        ExplicitHeight = 447
         object cxGroupBox7: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1211,13 +1116,12 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 0
-          ExplicitWidth = 588
           Height = 65
-          Width = 590
+          Width = 586
           object edtUrunBul: TcxTextEdit
             AlignWithMargins = True
-            Left = 5
-            Top = 21
+            Left = 6
+            Top = 18
             Align = alClient
             ParentFont = False
             Properties.OnChange = edtUrunBulPropertiesChange
@@ -1228,11 +1132,7 @@ object frmHizliSatis: TfrmHizliSatis
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 18
-            ExplicitWidth = 574
-            ExplicitHeight = 35
-            Width = 580
+            Width = 574
           end
         end
         object cxGroupBox8: TcxGroupBox
@@ -1244,22 +1144,16 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 1
-          ExplicitWidth = 586
-          ExplicitHeight = 370
-          Height = 377
-          Width = 590
+          Height = 370
+          Width = 586
           object grdUrunAra: TcxGrid
             AlignWithMargins = True
-            Left = 5
-            Top = 21
-            Width = 580
-            Height = 351
+            Left = 6
+            Top = 24
+            Width = 574
+            Height = 340
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 24
-            ExplicitWidth = 574
-            ExplicitHeight = 340
             object grdUrunAraDBTableView1: TcxGridDBTableView
               OnDblClick = grdUrunAraDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1331,10 +1225,6 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet3: TcxTabSheet
         Caption = 'Bekleyen Sat'#305#351'lar'
         ImageIndex = 2
-        ExplicitLeft = 3
-        ExplicitTop = 35
-        ExplicitWidth = 592
-        ExplicitHeight = 447
         object cxGroupBox9: TcxGroupBox
           AlignWithMargins = True
           Left = 3
@@ -1345,21 +1235,16 @@ object frmHizliSatis: TfrmHizliSatis
           ParentColor = False
           Style.Color = clBtnFace
           TabOrder = 0
-          ExplicitWidth = 588
           Height = 278
-          Width = 590
+          Width = 586
           object grdBekleyenSatislar: TcxGrid
             AlignWithMargins = True
-            Left = 5
-            Top = 21
-            Width = 580
-            Height = 252
+            Left = 6
+            Top = 18
+            Width = 574
+            Height = 248
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 18
-            ExplicitWidth = 574
-            ExplicitHeight = 248
             object grdBekleyenSatislarDBTableView1: TcxGridDBTableView
               OnDblClick = grdBekleyenSatislarDBTableView1DblClick
               Navigator.Buttons.CustomButtons = <>
@@ -1422,22 +1307,16 @@ object frmHizliSatis: TfrmHizliSatis
           Align = alClient
           Caption = 'Bekleyen Sat'#305#351' Detaylar'#305
           TabOrder = 1
-          ExplicitWidth = 588
-          ExplicitHeight = 159
-          Height = 164
-          Width = 590
+          Height = 157
+          Width = 586
           object grdBekleyenSatislarDetay: TcxGrid
             AlignWithMargins = True
-            Left = 5
-            Top = 21
-            Width = 580
-            Height = 138
+            Left = 6
+            Top = 18
+            Width = 574
+            Height = 127
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 6
-            ExplicitTop = 18
-            ExplicitWidth = 574
-            ExplicitHeight = 127
             object grdBekleyenSatislarDetayDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -1506,30 +1385,23 @@ object frmHizliSatis: TfrmHizliSatis
       object cxTabSheet4: TcxTabSheet
         Caption = 'Para '#220'st'#252' Hesaplama'
         ImageIndex = 3
-        ExplicitLeft = 3
-        ExplicitTop = 35
-        ExplicitWidth = 592
-        ExplicitHeight = 447
         object ScrollBox2: TScrollBox
           AlignWithMargins = True
           Left = 3
           Top = 3
-          Width = 590
-          Height = 448
+          Width = 586
+          Height = 441
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 586
-          ExplicitHeight = 441
           object FlowPanel1: TFlowPanel
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 580
+            Width = 576
             Height = 395
             Align = alTop
             AutoSize = True
             TabOrder = 0
-            ExplicitWidth = 576
             object pnlParaUstu5tl: TPanel
               AlignWithMargins = True
               Left = 4
@@ -29137,17 +29009,14 @@ object frmHizliSatis: TfrmHizliSatis
     end
     object tKeyboard: TTouchKeyboard
       AlignWithMargins = True
-      Left = 5
-      Top = 502
-      Width = 604
+      Left = 6
+      Top = 501
+      Width = 602
       Height = 216
       Align = alBottom
       GradientEnd = clSilver
       GradientStart = clGray
       Layout = 'Standard'
-      ExplicitLeft = 6
-      ExplicitTop = 501
-      ExplicitWidth = 602
     end
   end
   object imgListPageControl: TcxImageList
@@ -30558,8 +30427,8 @@ object frmHizliSatis: TfrmHizliSatis
       '        DECLARE @Err nvarchar(4000) = ERROR_MESSAGE();'
       '        THROW 50099, @Err, 1;'
       '    END CATCH')
-    Left = 179
-    Top = 291
+    Left = 123
+    Top = 211
     ParamData = <
       item
         DataType = ftUnknown
@@ -30584,170 +30453,6 @@ object frmHizliSatis: TfrmHizliSatis
       item
         DataType = ftUnknown
         Name = 'PosID'
-        Value = nil
-      end>
-  end
-  object qrySatisBitir: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'BEGIN TRANSACTION;'
-      ''
-      '-- ====================================================='
-      '-- 1) TMP TABLO OLU'#350'TUR'
-      '-- ====================================================='
-      'DROP TABLE IF EXISTS Tmp;'
-      ''
-      'CREATE TEMP TABLE Tmp AS'
-      'SELECT'
-      '    ID      AS TmpID,'
-      '    STOKID,'
-      '    BIRIMADI,'
-      '    ADET,'
-      '    FIYAT,'
-      '    ISKONTO,'
-      '    KDV,'
-      '    TOPLAM'
-      'FROM TMPSATIS'
-      'WHERE IFNULL(BEKLEMEDE,0) = 0;'
-      ''
-      '-- ====================================================='
-      '-- 2) SATI'#350' KALEM'#304' VAR MI KONTROL'
-      '-- ====================================================='
-      ''
-      '-- ====================================================='
-      '-- 3) ISLEM_BASLIK INSERT'
-      '-- ====================================================='
-      'INSERT INTO ISLEM_BASLIK'
-      '('
-      '    ISLEMTURU,'
-      '    ODEMETURU,'
-      '    ISLEMTARIHI,'
-      '    EVRAKNO,'
-      '    CARIID,'
-      '    POSID,'
-      '    GIREN,'
-      '    TUTAR,'
-      '    KDVTUTARI,'
-      '    ISKONTO_TUTARI,'
-      '    USERID'
-      ')'
-      'SELECT'
-      '    :ISLEMTURU,'
-      '    :ODEMETURU,'
-      '    COALESCE(:ISLEMTARIHI, datetime('#39'now'#39','#39'localtime'#39')),'
-      '    :EVRAKNO,'
-      '    :CariID,'
-      '    :PosID,'
-      '    SUM(TOPLAM),'
-      '    SUM(TOPLAM),'
-      '    SUM(KDV),'
-      '    SUM(ISKONTO),'
-      '    :UserID'
-      'FROM Tmp;'
-      ''
-      '-- ====================================================='
-      '-- 4) SON EKLENEN SATI'#350' ID'
-      '-- ====================================================='
-      'SELECT last_insert_rowid() AS SatisID;'
-      ''
-      '-- ====================================================='
-      '-- 5) ISLEM_H INSERT (MERGE KAR'#350'ILI'#286'I)'
-      '-- ====================================================='
-      'INSERT INTO ISLEM_H'
-      '('
-      '    ISLEMID,'
-      '    ISLEMTURU,'
-      '    ODEMETURU,'
-      '    ISLEMTARIHI,'
-      '    EVRAKNO,'
-      '    CARIID,'
-      '    STOKID,'
-      '    POSID,'
-      '    MIKTAR,'
-      '    CIKAN,'
-      '    TUTAR,'
-      '    BIRIMFIYAT,'
-      '    BIRIMID,'
-      '    BIRIMADI,'
-      '    KDVTUTARI,'
-      '    ISKONTO_TUTARI,'
-      '    USERID'
-      ')'
-      'SELECT'
-      '    last_insert_rowid(),'
-      '    :ISLEMTURU,'
-      '    :ODEMETURU,'
-      '    COALESCE(:ISLEMTARIHI, datetime('#39'now'#39','#39'localtime'#39')),'
-      '    :EVRAKNO,'
-      '    :CariID,'
-      '    IFNULL(STOKID,0),'
-      '    :PosID,'
-      '    CAST(IFNULL(ADET,0) AS REAL),'
-      '    CAST(IFNULL(ADET,0) AS REAL),'
-      '    CAST(IFNULL(TOPLAM,0) AS REAL),'
-      '    CAST(IFNULL(FIYAT,0) AS REAL),'
-      '    NULL,'
-      '    CAST(BIRIMADI AS TEXT),'
-      '    CAST(IFNULL(KDV,0) AS REAL),'
-      '    CAST(IFNULL(ISKONTO,0) AS REAL),'
-      '    :UserID'
-      'FROM Tmp;'
-      ''
-      ''
-      '-- 7) SONU'#199'LAR'
-      '-- ====================================================='
-      'SELECT'
-      '    last_insert_rowid()                    AS SatisID,'
-      '    SUM(TOPLAM)                            AS Toplam,'
-      '    SUM(KDV)                               AS ToplamKdv,'
-      '    SUM(ISKONTO)                           AS Iskonto'
-      'FROM Tmp;'
-      ''
-      '-- ====================================================='
-      '-- 6) TMPSATIS TEM'#304'ZLE'
-      '-- ====================================================='
-      'DELETE FROM TMPSATIS'
-      'WHERE IFNULL(BEKLEMEDE,0) = 0;'
-      ''
-      '-- ====================================================='
-      ''
-      'COMMIT;')
-    Left = 83
-    Top = 219
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'ISLEMTURU'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'ODEMETURU'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'ISLEMTARIHI'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'EVRAKNO'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'CariID'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'PosID'
-        Value = nil
-      end
-      item
-        DataType = ftUnknown
-        Name = 'UserID'
         Value = nil
       end>
   end
@@ -31079,6 +30784,225 @@ object frmHizliSatis: TfrmHizliSatis
       item
         DataType = ftUnknown
         Name = 'EVRAKNO'
+        Value = nil
+      end>
+  end
+  object qrySatisBitir: TUniQuery
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'EXECUTE BLOCK'
+      'RETURNS ('
+      '    SATISID    INTEGER,'
+      '    CARIHARID  INTEGER,'
+      '    TOPLAM     DOUBLE PRECISION,'
+      '    TOPLAMKDV  DOUBLE PRECISION,'
+      '    ISKONTO    DOUBLE PRECISION'
+      ')'
+      'AS'
+      'DECLARE VARIABLE CARIID INTEGER;'
+      
+        'DECLARE VARIABLE ISLEM SMALLINT;           -- 1=NAKIT, 2=KREDIKA' +
+        'RTI, 3=CARI'
+      'DECLARE VARIABLE ISLEMTIPI INTEGER;'
+      'DECLARE VARIABLE STOKISLEMTIPI SMALLINT;'
+      'DECLARE VARIABLE POSID INTEGER;'
+      'DECLARE VARIABLE ACIKLAMA VARCHAR(100);'
+      'DECLARE VARIABLE USERID INTEGER;'
+      'DECLARE VARIABLE TMPSIL SMALLINT;'
+      ''
+      'DECLARE VARIABLE ISLEMTARIHI TIMESTAMP;'
+      'DECLARE VARIABLE MATRAH DOUBLE PRECISION;'
+      ''
+      'DECLARE VARIABLE TMPID INTEGER;'
+      'DECLARE VARIABLE STOKID INTEGER;'
+      'DECLARE VARIABLE BIRIMADI VARCHAR(15);'
+      'DECLARE VARIABLE ADET DOUBLE PRECISION;'
+      'DECLARE VARIABLE FIYAT DOUBLE PRECISION;'
+      'DECLARE VARIABLE KDV DOUBLE PRECISION;'
+      'DECLARE VARIABLE TOPLAM_SATIR DOUBLE PRECISION;'
+      ''
+      'DECLARE VARIABLE SATISHID INTEGER;'
+      'BEGIN'
+      '    /* ================= PARAMETRELER ================= */'
+      '    CARIID = :CariID;'
+      '    ISLEM = :Islem;'
+      '    ISLEMTIPI = :IslemTip;'
+      '    STOKISLEMTIPI = :StokIslemTipi;'
+      '    POSID = :PosID;'
+      '    ACIKLAMA = :Aciklama;'
+      '    USERID = :UserID;'
+      '    TMPSIL = 1;'
+      ''
+      '    ISLEMTARIHI = CURRENT_TIMESTAMP;'
+      ''
+      '    /* ================= KONTROLLER ================= */'
+      '    IF (ISLEM = 2 AND COALESCE(POSID,0) = 0) THEN'
+      '        EXCEPTION '#39'Kredi kart'#305' i'#351'leminde POSID zorunludur'#39';'
+      ''
+      '    /* ================= TOPLAM HESAPLAR ================= */'
+      '    SELECT'
+      '        COALESCE(SUM(TOPLAM),0),'
+      '        COALESCE(SUM(KDV),0),'
+      '        COALESCE(SUM(ISKONTO),0)'
+      '    FROM TMPSATIS'
+      '    WHERE COALESCE(BEKLEMEDE,0) = 0'
+      '    INTO TOPLAM, TOPLAMKDV, ISKONTO;'
+      ''
+      '    IF (TOPLAM = 0) THEN'
+      '        EXCEPTION '#39'Sat'#305#351' kalemi yok'#39';'
+      ''
+      '    MATRAH = TOPLAM - TOPLAMKDV;'
+      ''
+      '    /* ================= SATIS ================= */'
+      '    SATISID = GEN_ID(GEN_SATIS_ID,1);'
+      ''
+      '    INSERT INTO SATIS ('
+      '        ID, ISLEMTARIHI, ISLEMTIPI, TUTAR, CARIID,'
+      '        ACIKLAMA, POSID,'
+      '        SATISTUTARI, KDVTUTARI, IND_TOPLAMI,'
+      '        KDVMATRAHI, FATURAID, USERID'
+      '    )'
+      '    VALUES ('
+      '        SATISID, ISLEMTARIHI, ISLEMTIPI, TOPLAM, CARIID,'
+      '        ACIKLAMA,'
+      '        CASE WHEN ISLEM = 2 THEN POSID ELSE NULL END,'
+      '        TOPLAM, TOPLAMKDV, ISKONTO,'
+      '        MATRAH, 0, USERID'
+      '    );'
+      ''
+      '    /* ================= SATIS_H + STOK_H ================= */'
+      '    FOR'
+      '        SELECT ID, STOKID, BIRIMADI, ADET, FIYAT, KDV, TOPLAM'
+      '        FROM TMPSATIS'
+      '        WHERE COALESCE(BEKLEMEDE,0) = 0'
+      
+        '        INTO TMPID, STOKID, BIRIMADI, ADET, FIYAT, KDV, TOPLAM_S' +
+        'ATIR'
+      '    DO'
+      '    BEGIN'
+      '        SATISHID = GEN_ID(GEN_SATIS_H_ID,1);'
+      ''
+      '        INSERT INTO SATIS_H ('
+      '            ID, SATISID, ISLEMTARIHI, STOKID,'
+      '            BIRIMFIYATI, BIRIM, MIKTAR,'
+      '            TUTAR, ACIKLAMA, KDVTUTARI, USERID'
+      '        )'
+      '        VALUES ('
+      '            SATISHID, SATISID, ISLEMTARIHI, STOKID,'
+      '            FIYAT, BIRIMADI, ADET,'
+      '            TOPLAM_SATIR, ACIKLAMA, KDV, USERID'
+      '        );'
+      ''
+      '        INSERT INTO STOK_H ('
+      '            ID, STOKID, ISLEMTIPI, ISLEMTARIHI,'
+      '            MIKTAR, CIKAN, BIRIMADI,'
+      '            CARIID, SATISHID,'
+      '            TUTAR, FATURAID,'
+      '            BIRIMFIYATI, KDVTUTARI, USERID'
+      '        )'
+      '        VALUES ('
+      '            GEN_ID(GEN_STOK_H_ID,1),'
+      '            STOKID, STOKISLEMTIPI, ISLEMTARIHI,'
+      '            ADET, ADET, BIRIMADI,'
+      '            CARIID, SATISHID,'
+      '            TOPLAM_SATIR, 0,'
+      '            FIYAT, KDV, USERID'
+      '        );'
+      '    END'
+      ''
+      '    /* ================= CARI_H ================= */'
+      '    CARIHARID = GEN_ID(GEN_CARI_H_ID,1);'
+      ''
+      '    INSERT INTO CARI_H ('
+      '        ID, CARIID, ISLEMTARIHI,'
+      '        BORC, ALACAK,'
+      '        POSID, ACIKLAMA1,'
+      '        ISLEMTIPI, SATISID,'
+      '        FATURAID, USERID'
+      '    )'
+      '    VALUES ('
+      '        CARIHARID, CARIID, ISLEMTARIHI,'
+      '        0,'
+      '        CASE WHEN ISLEM = 3 THEN TOPLAM ELSE 0 END,'
+      '        CASE WHEN ISLEM = 2 THEN POSID ELSE 0 END,'
+      '        ACIKLAMA,'
+      '        ISLEMTIPI,'
+      '        SATISID,'
+      '        0, USERID'
+      '    );'
+      ''
+      '    /* ================= POS / KASA ================= */'
+      '    IF (ISLEM = 2) THEN'
+      '        INSERT INTO POS_H ('
+      '            ID, POSID, ISLEMTARIHI,'
+      '            ACIKLAMA1, BORC, ALACAK,'
+      '            CARIID, FATURAID,'
+      '            SATISID, USERID'
+      '        )'
+      '        VALUES ('
+      '            GEN_ID(GEN_POS_H_ID,1),'
+      '            POSID, ISLEMTARIHI,'
+      '            ACIKLAMA, 0, TOPLAM,'
+      '            CARIID, 0,'
+      '            SATISID, USERID'
+      '        );'
+      '    ELSE'
+      '        INSERT INTO KASA_H ('
+      '            ID, ISLEMTARIHI,'
+      '            ACIKLAMA1, GIREN, CIKAN,'
+      '            CARIID, FATURAID,'
+      '            SATISID, USERID'
+      '        )'
+      '        VALUES ('
+      '            GEN_ID(GEN_KASA_H_ID,1),'
+      '            ISLEMTARIHI,'
+      '            ACIKLAMA, TOPLAM, 0,'
+      '            CARIID, 0,'
+      '            SATISID, USERID'
+      '        );'
+      ''
+      '    /* ================= TMPSATIS TEM'#304'ZLE ================= */'
+      '    IF (TMPSIL = 1) THEN'
+      '        DELETE FROM TMPSATIS WHERE COALESCE(BEKLEMEDE,0) = 0;'
+      ''
+      '    SUSPEND;'
+      'END')
+    Left = 51
+    Top = 203
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CariID'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Islem'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'IslemTip'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'StokIslemTipi'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PosID'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'Aciklama'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'UserID'
         Value = nil
       end>
   end

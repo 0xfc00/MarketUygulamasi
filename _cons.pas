@@ -2,6 +2,9 @@ unit _cons;
        // sabitler
 interface
 
+uses
+  System.SysUtils;
+
 
 type
   tip_HAR_ISLEMTURU = (HIT_deneme,              // 0
@@ -45,9 +48,15 @@ const
 
 
 
+
+
+
 resourcestring
   rstr_KAYIT_SILME_ONAY = 'Seçili kaydý silmek istediðinizden eminmisiniz';
   rstr_YETKI_YOK = 'Bu iþlem için yetkiniz yoktur.';
+
+var
+  DBFILE : string;
 
 implementation
 

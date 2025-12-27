@@ -153,7 +153,6 @@ type
     qryCari: TUniQuery;
     cbPos: TcxComboBox;
     qrySatisBitir__yedek: TUniQuery;
-    qrySatisBitir: TUniQuery;
     qryFisTitle: TUniQuery;
     cxStyleRepository1: TcxStyleRepository;
     GridTableViewStyleSheetPumpkinlarge: TcxGridTableViewStyleSheet;
@@ -169,6 +168,7 @@ type
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
     qrySatisBitirYedekkkk: TUniQuery;
+    qrySatisBitir: TUniQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormCreate(Sender: TObject);
@@ -997,7 +997,7 @@ begin
   end;
 
   qrySatisBitir.Execute;
-                                asdasd
+
   SatisID := qrySatisBitir.FieldByName('SatisID').AsString;
 
   with qryCari do

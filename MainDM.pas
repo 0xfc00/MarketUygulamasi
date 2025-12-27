@@ -64,6 +64,7 @@ begin
   if q.IsEmpty then
   begin
     q.append;
+    q.FieldByName('ID').asstring        := '-1';
     q.FieldByName('CARIKODU').asstring := 'PERAKENDE';
     q.FieldByName('UNVAN').asstring    := 'PERAKENDE';
     q.post;
@@ -74,9 +75,10 @@ begin
   if q.IsEmpty then
   begin
     q.append;
+    q.FieldByName('ID').asstring          := '0';
     q.FieldByName('ISLEMTURU').asstring   := '0';
     q.FieldByName('ODEMETURU').asstring   := '0';
-    q.FieldByName('ISLEMTARIHI').asstring := tarihForSqlite(now);
+    q.FieldByName('ISLEMTARIHI').AsDateTime := (now);
     q.FieldByName('CARIID').asstring      := '0';
     q.FieldByName('POSID').asstring       := '0';
     q.FieldByName('EVRAKNO').asstring     := 'STOKHARSABIT';
@@ -92,6 +94,8 @@ procedure TdmMain.DataModuleCreate(Sender: TObject);
 var
   Ini: TIniFile;
 begin
+  DBFILE := ExtractFilePath(ParamStr(0)) + 'data\KHPRO.FDB';
+
   if UniConn.Connected then
     showmessage('UniConn açýk');  //deneme
   UniConn.close;
@@ -103,41 +107,30 @@ begin
   end
   else
   begin
+    if FileExists(DBFILE) then
+    begin
+      UniConn.Database := DBFILE;
+      UniConn.ProviderName := 'InterBase';
+      a.DB_TIPI := 1;
+    end
+    else
+    begin
+      raise Exception.Create(DBFILE + ' dosyasý yok.');
+    end;
+
+
     Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'khpro.ini');
     try
-      if Ini.ReadString('Database', 'Db', '0') = '0' then
+      if Ini.ReadString('Database', 'Db', '1') = '0' then
       begin
-        if FileExists(ExtractFilePath(ParamStr(0)) + 'db.db') then
-        begin
-          UniConn.Database := ExtractFilePath(ParamStr(0)) + 'db.db';
-          UniConn.ProviderName := 'SQLite';
-          a.DB_TIPI := 0;
-        end
-        else
-        begin
-          raise Exception.Create('db.db dosyasý yok.');
-        end;
+        a.DB_TIPI := 0;  //deneme
       end
       else
-      if Ini.ReadString('Database', 'Db', '0') = '1' then
+      if Ini.ReadString('Database', 'Db', '1') = '1' then
       begin
         UniConn.Server   := Ini.ReadString('Database', 'Server', '');
-        UniConn.Database := Ini.ReadString('Database', 'Database', '');
-
-        if Ini.ReadString('Database', 'AuthType', '') = 'Windows Auth' then
-        begin
-          UniConn.SpecificOptions.Values['Authentication'] := 'auWindows';
-        end
-        else
-        if Ini.ReadString('Database', 'AuthType', '') = 'SQL' then
-        begin
-          UniConn.SpecificOptions.Values['Authentication'] := 'auServer';
-          UniConn.Username := Ini.ReadString('Database', 'Username', '');
-          UniConn.Password := DecryptStr(Ini.ReadString('Database', 'Password', ''), 123);
-        end;
-
-        UniConn.ProviderName := 'SQL Server';
-
+        UniConn.Username := Ini.ReadString('Database', 'Username', '');
+        UniConn.Password := Ini.ReadString('Database', 'Password', '');
         a.DB_TIPI := 1;
       end;
     finally
@@ -152,7 +145,6 @@ begin
 
     with  yeniQuery('select ID from AYARLAR',TRUE) DO
     begin
-
       if FieldByName('ID').AsString = '' then
         FREE;
     end;

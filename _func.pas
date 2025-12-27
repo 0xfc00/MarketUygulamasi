@@ -5,6 +5,7 @@ interface
 uses
   Data.DB,DBAccess, Vcl.Forms,Uni,sysUtils,Winapi.Windows, System.IOUtils;
 
+  function idUret(ATabloAdi : string) : string;
   function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
   function EncryptStr(const S :WideString; Key: Word): String;
   function DecryptStr(const S: String; Key: Word): String;
@@ -20,9 +21,6 @@ uses
   procedure EkleyenDegistiren(ADataset: TDataSet);
   function YetkiKontrol(AYetki : boolean = False): boolean;
   function OtoYedek_fn() : boolean;
-  function tarihForSqlite(ATarih : TDateTime): string;
-
-
 
 implementation
 
@@ -31,6 +29,17 @@ uses  _cons, _vars, MainDM, Main, lisansFormF;
 const
   CKEY1 = 53761;
   CKEY2 = 32618;
+
+
+function idUret(ATabloAdi : string) : string;
+var
+  Gen : string;
+begin
+  if ATabloAdi = 'STOK' then Gen := 'GEN_STOK_ID';
+
+
+  result := veriCekSQL(format('SELECT GEN_ID(%s,1) as a  FROM RDB$DATABASE',[Gen]), 'a');
+end;
 
 function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
 var q : TUniQuery;
@@ -309,14 +318,14 @@ begin
       ADataset.FieldByName('USERID').Asinteger := loginUserID;
 
     if ADataset.FindField('CREATEDAT') <> nil then
-      ADataset.FieldByName('CREATEDAT').AsString := tarihForSqlite(now);
+      ADataset.FieldByName('CREATEDAT').AsDateTime := (now);
   end
   else if ADataset.State = dsEdit then
   begin
     if ADataset.FindField('USERIDUP') <> nil then
       ADataset.FieldByName('USERIDUP').Asinteger := loginUserID;
     if ADataset.FindField('UPDATEDAT') <> nil then
-      ADataset.FieldByName('UPDATEDAT').AsString := tarihForSqlite(now);
+      ADataset.FieldByName('UPDATEDAT').AsDateTime := (now);
   end;
 end;
 
@@ -379,9 +388,6 @@ begin
 
 end;
 
-function tarihForSqlite(ATarih : TDateTime): string;
-begin
-  result := FormatDateTime('yyyy-mm-dd hh:nn:ss', ATarih);
-end;
+
 
 end.
