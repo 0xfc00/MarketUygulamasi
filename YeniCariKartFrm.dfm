@@ -24,8 +24,6 @@ object frmYeniCariKart: TfrmYeniCariKart
     Height = 77
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 379
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 855
@@ -128,7 +126,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 870
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -167,7 +164,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
-      ExplicitLeft = 688
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -270,7 +266,6 @@ object frmYeniCariKart: TfrmYeniCariKart
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitLeft = 779
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 720
@@ -1073,11 +1068,11 @@ object frmYeniCariKart: TfrmYeniCariKart
     end
   end
   object qryCari: TFDQuery
+    Active = True
+    BeforePost = qryCariBeforePost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from CARI')
-    Active = True
-    BeforePost = qryCariBeforePost
     Left = 392
     Top = 8
   end
@@ -1087,10 +1082,10 @@ object frmYeniCariKart: TfrmYeniCariKart
     Top = 8
   end
   object qryCariGrupLook: TFDQuery
+    Active = True
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_CARIGRUP')
-    Active = True
     Left = 536
     Top = 8
   end

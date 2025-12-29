@@ -8,16 +8,13 @@ uses
 
 
 
-  Data.DB, cxGridCustomTableView,
+  Data.DB,
   cxGridDBTableView, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  DBAccess, cxGridLevel, cxGrid,
+  cxGridLevel, cxGrid,
   cxDBEdit, dxPanel, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxGeometry, dxFramedControl,
-  cxContainer, cxEdit, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS,
-  cxGridTableView, cxClasses, cxGridCustomView, cxTextEdit, dxSkinBasic,
-  dxSkinBlack, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
@@ -31,7 +28,13 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGeometry, dxFramedControl,
+  cxContainer, cxEdit, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, Vcl.Menus,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, cxGridCustomTableView,
+  cxGridTableView, cxClasses, cxGridCustomView, cxTextEdit;
 
 type
   TfrmCariHarList = class(TfrmListBase)

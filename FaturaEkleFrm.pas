@@ -6,8 +6,7 @@ uses
   System.SysUtils, System.Classes,
   Vcl.Controls, Vcl.Forms, KartBaseFrm,
 
-  Vcl.StdCtrls, cxButtons, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.Menus, dxSkinBasic, dxSkinBlack, dxSkinBlueprint,
+  cxButtons, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
   dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -23,7 +22,8 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, Vcl.StdCtrls;
 
 type
   TfrmFaturaEkle = class(TfrmKartBase)

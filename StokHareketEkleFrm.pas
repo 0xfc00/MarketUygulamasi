@@ -7,13 +7,11 @@ uses
   Vcl.Controls, Vcl.Forms, KartBaseFrm, main, MainDM,
 
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Data.DB, MemDS, DBAccess, FireDAC.Comp.Client, dxPanel, cxContainer,
+  Data.DB, FireDAC.Comp.Client, dxPanel,
   cxDBEdit, cxTextEdit,
-  _cons, _func, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxGeometry, dxFramedControl,
-  cxEdit, cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar, dxSkinBasic,
-  dxSkinBlack, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  _cons, _func, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
@@ -27,9 +25,12 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxGeometry, dxFramedControl,
+  cxContainer, cxEdit, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  cxCalc, cxMaskEdit, cxDropDownEdit, cxCalendar;
 
 type
   TfrmStokHareketEkle = class(TfrmKartBase)

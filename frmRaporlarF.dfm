@@ -57,7 +57,6 @@ object frmRaporlar: TfrmRaporlar
         ED1FA5CBFF8205306B1EDD7B20108AD63FFD0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnKapatClick
-      ExplicitHeight = 34
     end
     object btnYazdir: TcxButton
       AlignWithMargins = True
@@ -123,7 +122,6 @@ object frmRaporlar: TfrmRaporlar
       PopupMenu = pmRaporTasarim
       TabOrder = 1
       OnClick = btnYazdirClick
-      ExplicitHeight = 34
     end
   end
   object pg: TcxPageControl
@@ -137,8 +135,6 @@ object frmRaporlar: TfrmRaporlar
     Properties.ActivePage = shOzet
     Properties.CustomButtons.Buttons = <>
     OnChange = pgChange
-    ExplicitTop = 44
-    ExplicitHeight = 511
     ClientRectBottom = 461
     ClientRectLeft = 3
     ClientRectRight = 953
@@ -1919,7 +1915,6 @@ object frmRaporlar: TfrmRaporlar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSonHaftaClick
-      ExplicitHeight = 33
     end
     object btnDun: TcxButton
       AlignWithMargins = True
@@ -1938,7 +1933,6 @@ object frmRaporlar: TfrmRaporlar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnDunClick
-      ExplicitHeight = 33
     end
     object btnBugun: TcxButton
       AlignWithMargins = True
@@ -1957,7 +1951,6 @@ object frmRaporlar: TfrmRaporlar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnBugunClick
-      ExplicitHeight = 33
     end
     object btnSonAy: TcxButton
       AlignWithMargins = True
@@ -1976,7 +1969,6 @@ object frmRaporlar: TfrmRaporlar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSonAyClick
-      ExplicitHeight = 33
     end
     object Panel2: TPanel
       AlignWithMargins = True
@@ -2002,7 +1994,6 @@ object frmRaporlar: TfrmRaporlar
         Font.Style = [fsBold]
         ParentFont = False
         OnClick = btnFiltreleClick
-        ExplicitLeft = 280
       end
       object dtTarih2: TcxDateEdit
         AlignWithMargins = True
@@ -2012,7 +2003,6 @@ object frmRaporlar: TfrmRaporlar
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 1
-        ExplicitHeight = 25
         Width = 121
       end
       object dtTarih1: TcxDateEdit
@@ -2023,7 +2013,6 @@ object frmRaporlar: TfrmRaporlar
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 2
-        ExplicitHeight = 25
         Width = 121
       end
     end
@@ -2049,14 +2038,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 424
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
-        Value = nil
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
-        Value = nil
       end>
   end
   object dsHsRapor: TDataSource
@@ -2130,12 +2115,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 424
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
         Value = Null
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
         Value = Null
       end>
@@ -2184,12 +2167,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 432
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
         Value = Null
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
         Value = Null
       end>
@@ -2223,14 +2204,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 424
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
-        Value = nil
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
-        Value = nil
       end>
   end
   object dsHsRaporStokGrup: TDataSource
@@ -2262,12 +2239,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 424
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
         Value = Null
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
         Value = Null
       end>
@@ -2795,14 +2770,10 @@ object frmRaporlar: TfrmRaporlar
     Top = 184
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'tar1'
-        Value = nil
       end
       item
-        DataType = ftUnknown
         Name = 'tar2'
-        Value = nil
       end>
   end
 end

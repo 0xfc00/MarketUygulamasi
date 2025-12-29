@@ -8,14 +8,11 @@ uses
 
 
   Data.DB,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, FireDAC.Comp.Client, cxGridLevel,
+  cxButtons, Vcl.ExtCtrls, FireDAC.Comp.Client, cxGridLevel,
   cxGridCustomTableView, cxGridDBTableView,
   cxGrid, MainDM, Main, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS, DBAccess, cxGridTableView,
-  cxClasses, cxGridCustomView, dxSkinBasic, dxSkinBlack, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
@@ -30,7 +27,13 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, Vcl.StdCtrls, cxGridTableView, cxClasses,
+  cxGridCustomView;
 
 type
   TfrmStokSec = class(TfrmKartBase)

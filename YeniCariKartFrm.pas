@@ -5,16 +5,14 @@ interface
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, KartBaseFrm,
-  Vcl.StdCtrls,
-  cxButtons, Vcl.ExtCtrls, cxContainer, Data.DB, MemDS,
-  DBAccess, FireDAC.Comp.Client, cxGroupBox, MainDM, cxLabel, cxDBEdit,
-  cxTextEdit,
+
+  cxButtons, Vcl.ExtCtrls, Data.DB,
+  FireDAC.Comp.Client, cxGroupBox, MainDM, cxLabel, cxDBEdit,
+
   cxRadioGroup, cxDBLookupComboBox, STRUTils, Main,
-  _func, _cons, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxEdit, cxMemo, cxDropDownEdit,
-  cxCalendar, cxMaskEdit, cxLookupEdit, cxDBLookupEdit, dxSkinBasic,
-  dxSkinBlack, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  _func, _cons, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
@@ -28,7 +26,13 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Vcl.Menus, cxControls, cxContainer, cxEdit,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, cxMemo, Vcl.StdCtrls,
+  cxDropDownEdit, cxCalendar, cxTextEdit, cxMaskEdit, cxLookupEdit,
+  cxDBLookupEdit;
 
 type
   TfrmYeniCariKart = class(TfrmKartBase)

@@ -5,36 +5,58 @@ interface
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, FireDAC.Comp.Client,
-  cxContainer,
+  Vcl.ExtCtrls, Data.DB, FireDAC.Comp.Client,
+
   cxDBEdit,
-  cxDropDownEdit, cxTextEdit, Vcl.ComCtrls,
+  cxDropDownEdit, Vcl.ComCtrls,
   cxDBLookupComboBox, dxBevel, Vcl.Menus, cxButtons, StrUtils,
-  dxShellDialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxEdit, dxSkinsCore, dxSkinBlue, cxImage, cxLookupEdit, cxDBLookupEdit,
-  cxMaskEdit, cxCalendar, dxSkinBasic, dxSkinBlack, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  System.Net.HttpClient,
+  dxShellDialogs,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  FireDAC.Stan.Param,
+  FireDAC.Comp.DataSet,
+
   System.Net.URLClient,
-  System.RegularExpressions, REST.Types, Data.Bind.Components,
-  Data.Bind.ObjectScope, REST.Client,System.Net.HttpClientComponent;
+  System.RegularExpressions,
+  REST.Client,System.Net.HttpClientComponent, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, REST.Types, Data.Bind.Components,
+  Data.Bind.ObjectScope, cxImage, cxLookupEdit, cxDBLookupEdit, cxMaskEdit,
+  cxCalendar, cxTextEdit;
 
 type
   TfrmYeniStokKarti = class(TfrmKartBase)

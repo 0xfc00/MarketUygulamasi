@@ -174,7 +174,6 @@ object frmCariHarList: TfrmCariHarList
     Height = 395
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 437
     object vwCariHarlist: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -241,7 +240,6 @@ object frmCariHarList: TfrmCariHarList
     Height = 78
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 873
@@ -344,7 +342,6 @@ object frmCariHarList: TfrmCariHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -404,17 +401,19 @@ object frmCariHarList: TfrmCariHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitHeight = 28
     end
   end
   object qryCari: TFDQuery
+    Active = True
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select'
       ''
       ' * from CARI  where UNVAN <> '#39'PERAKENDE'#39)
-    ReadOnly = True
-    Active = True
     Left = 128
     Top = 176
   end
@@ -425,6 +424,7 @@ object frmCariHarList: TfrmCariHarList
     Top = 176
   end
   object qryCariHar: TFDQuery
+    Active = True
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select *,'
@@ -449,7 +449,6 @@ object frmCariHarList: TfrmCariHarList
       ''
       ''
       ' from ISLEM_BASLIK where ISLEMTURU in (1,4,5,6)')
-    Active = True
     Left = 618
     Top = 16
   end

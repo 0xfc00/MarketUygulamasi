@@ -120,7 +120,6 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = cxButton1Click
-      ExplicitTop = 415
     end
     object cxButton2: TcxButton
       Left = 3
@@ -302,7 +301,6 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     UseDockManager = False
     ParentColor = True
     TabOrder = 2
-    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 483
@@ -334,9 +332,6 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 481
-      ExplicitTop = 24
-      ExplicitHeight = 41
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -378,8 +373,6 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
-      ExplicitLeft = 3
-      ExplicitTop = 0
     end
   end
   object dsHsGrup: TDataSource
@@ -388,10 +381,10 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Top = 93
   end
   object qryHsGrup: TFDQuery
+    BeforePost = qryHsGrupBeforePost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_HSGRUP')
-    BeforePost = qryHsGrupBeforePost
     Left = 85
     Top = 93
   end
@@ -401,28 +394,28 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Top = 149
   end
   object qryHsStoklar: TFDQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from T_HSSIRA')
+    BeforePost = qryHsStoklarBeforePost
     MasterSource = dsHsGrup
     MasterFields = 'ID'
     DetailFields = 'GRUPID'
-    BeforePost = qryHsStoklarBeforePost
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from T_HSSIRA')
     Left = 309
     Top = 149
     ParamData = <
       item
-        DataType = ftInteger
         Name = 'id'
+        DataType = ftInteger
         ParamType = ptInput
         Value = 1
       end>
   end
   object qryStok: TFDQuery
+    DetailFields = 'GRUPID'
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from STOK')
-    DetailFields = 'GRUPID'
     Left = 309
     Top = 229
   end

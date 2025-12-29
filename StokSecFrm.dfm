@@ -22,7 +22,6 @@ object frmStokSec: TfrmStokSec
     Height = 399
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 409
     object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -82,7 +81,6 @@ object frmStokSec: TfrmStokSec
     Height = 68
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 373
@@ -185,7 +183,6 @@ object frmStokSec: TfrmStokSec
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnSec: TcxButton
       AlignWithMargins = True
@@ -246,7 +243,6 @@ object frmStokSec: TfrmStokSec
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSecClick
-      ExplicitTop = 0
     end
   end
   object qryStoklar: TFDQuery

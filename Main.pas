@@ -9,33 +9,51 @@ uses
   Vcl.Controls, Vcl.Forms, cxGraphics,
   dxNavBarCollns,
   dxNavBar,
-  dxNavBarStyles, Vcl.Menus, Vcl.ActnList, FireDAC.Comp.Client,
+  dxNavBarStyles, Vcl.ActnList, FireDAC.Comp.Client,
   cxStyles, cxGridTableView, dxSkinsForm,
   LoginFrm, _vars, cxImage,
   PosListFrm, cxButtons, Vcl.ExtCtrls,
   Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF,
-  Data.DB, DBAccess, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  dxSkinsCore, dxSkinBlue, cxContainer, cxEdit, dxCore, cxClasses,
+  Data.DB,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  BaseFrm, cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxContainer, cxEdit, Vcl.Menus, dxCore, cxClasses,
   System.Actions, System.ImageList, Vcl.ImgList, cxImageList, Vcl.StdCtrls,
-  dxGDIPlusClasses, dxNavBarBase, dxSkinBasic, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinBlack,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGroupBox, dxCustomTileControl,
-  dxTileBar, AdvSmoothTileList, Vcl.Buttons, sSpeedButton, BaseFrm, AdvNavBar,
-  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView;
+  dxGDIPlusClasses, dxNavBarBase;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;

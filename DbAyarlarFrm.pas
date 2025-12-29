@@ -3,16 +3,38 @@ unit DbAyarlarFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes,  windows,  System.IOUtils,
+  System.SysUtils, System.Classes,  windows,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Registry,
-  DBAccess, FireDAC.Comp.Client, cxButtons,
-  cxDropDownEdit, cxLabel, cxTextEdit,
-  System.IniFiles, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue,
-  Vcl.Menus, Data.DB, MemDS, cxMaskEdit, dxSkinBasic, dxSkinBlack,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+
+  FireDAC.Comp.Client, cxButtons,
+  cxLabel, cxTextEdit,
+  System.IniFiles,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  frmSqlSorguF,
+
+
+
+  cxPC,
+  Vcl.ExtCtrls, FireDAC.Phys.MSSQL, dxBarBuiltInMenu, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
@@ -26,12 +48,11 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, frmSqlSorguF, UniProvider,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxContainer, cxEdit, Vcl.Menus,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.Phys, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
-  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxPC,
-  Vcl.ExtCtrls, FireDAC.Phys.MSSQLDef, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL;
+  FireDAC.Phys, FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.Phys.ODBCBase, Data.DB;
 
 type
   TfrmDbAyarlar = class(TForm)

@@ -32,10 +32,10 @@ object stokAktarimForm: TstokAktarimForm
     Width = 1255
     object btnDosyaAc: TcxButton
       AlignWithMargins = True
-      Left = 5
-      Top = 5
+      Left = 6
+      Top = 6
       Width = 139
-      Height = 63
+      Height = 61
       Align = alLeft
       Caption = 'Dosya A'#231
       OptionsImage.Glyph.SourceDPI = 96
@@ -51,22 +51,19 @@ object stokAktarimForm: TstokAktarimForm
         0049454E44AE426082}
       TabOrder = 0
       OnClick = btnDosyaAcClick
-      ExplicitLeft = 6
-      ExplicitTop = 6
-      ExplicitHeight = 61
     end
     object cxGroupBox3: TcxGroupBox
       AlignWithMargins = True
-      Left = 332
-      Top = 5
+      Left = 333
+      Top = 6
       Align = alLeft
       Caption = 'Stok Kodu'
       TabOrder = 1
-      Height = 63
+      Height = 61
       Width = 85
       object cbStokKoduKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -77,25 +74,21 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 79
-        ExplicitHeight = 34
-        Width = 81
+        Width = 79
       end
     end
     object cxGroupBox4: TcxGroupBox
       AlignWithMargins = True
-      Left = 423
-      Top = 5
+      Left = 424
+      Top = 6
       Align = alLeft
       Caption = 'Stok Ad'#305
       TabOrder = 2
-      Height = 63
+      Height = 61
       Width = 78
       object cbStokAdiKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -106,25 +99,21 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 72
-        ExplicitHeight = 34
-        Width = 74
+        Width = 72
       end
     end
     object cxGroupBox5: TcxGroupBox
       AlignWithMargins = True
-      Left = 507
-      Top = 5
+      Left = 508
+      Top = 6
       Align = alLeft
       Caption = 'Barkod'
       TabOrder = 3
-      Height = 63
+      Height = 61
       Width = 71
       object cbBarkodKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -135,25 +124,21 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 65
-        ExplicitHeight = 34
-        Width = 67
+        Width = 65
       end
     end
     object cxGroupBox6: TcxGroupBox
       AlignWithMargins = True
-      Left = 584
-      Top = 5
+      Left = 585
+      Top = 6
       Align = alLeft
       Caption = 'Sat'#305#351' Fiyat'#305' 1'
       TabOrder = 4
-      Height = 63
+      Height = 61
       Width = 96
       object cbSatisFiyatKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -164,25 +149,21 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 90
-        ExplicitHeight = 34
-        Width = 92
+        Width = 90
       end
     end
     object cxGroupBox7: TcxGroupBox
       AlignWithMargins = True
-      Left = 686
-      Top = 5
+      Left = 687
+      Top = 6
       Align = alLeft
       Caption = 'Al'#305#351' Fiyat'#305
       TabOrder = 5
-      Height = 63
+      Height = 61
       Width = 89
       object cbAlisFiyatKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -193,25 +174,21 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 83
-        ExplicitHeight = 34
-        Width = 85
+        Width = 83
       end
     end
     object cxGroupBox8: TcxGroupBox
       AlignWithMargins = True
-      Left = 781
-      Top = 5
+      Left = 782
+      Top = 6
       Align = alLeft
       Caption = 'KDV'
       TabOrder = 6
-      Height = 63
+      Height = 61
       Width = 66
       object cbKdvKolon: TcxComboBox
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         Properties.DropDownListStyle = lsFixedList
         Properties.Items.Strings = (
@@ -222,19 +199,15 @@ object stokAktarimForm: TstokAktarimForm
           '5'
           '6')
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 60
-        ExplicitHeight = 34
-        Width = 62
+        Width = 60
       end
     end
     object btnKapat: TcxButton
       AlignWithMargins = True
-      Left = 1121
-      Top = 5
+      Left = 1120
+      Top = 6
       Width = 129
-      Height = 63
+      Height = 61
       Align = alRight
       Cancel = True
       Caption = 'Kapat'
@@ -254,39 +227,32 @@ object stokAktarimForm: TstokAktarimForm
         ED1FA5CBFF8205306B1EDD7B20108AD63FFD0000000049454E44AE426082}
       TabOrder = 7
       OnClick = btnKapatClick
-      ExplicitLeft = 1120
-      ExplicitTop = 6
-      ExplicitHeight = 61
     end
     object cxGroupBox9: TcxGroupBox
       AlignWithMargins = True
-      Left = 853
-      Top = 5
+      Left = 854
+      Top = 6
       Align = alLeft
       Caption = 'Ba'#351'lanacak Sat'#305'r'
       TabOrder = 8
-      Height = 63
+      Height = 61
       Width = 123
       object edtBaslangicSatir: TcxTextEdit
-        Left = 2
-        Top = 21
+        Left = 3
+        Top = 18
         Align = alClient
         TabOrder = 0
         Text = '1'
         OnKeyPress = edtBaslangicSatirKeyPress
-        ExplicitLeft = 3
-        ExplicitTop = 18
-        ExplicitWidth = 117
-        ExplicitHeight = 34
-        Width = 119
+        Width = 117
       end
     end
     object btnAktar: TcxButton
       AlignWithMargins = True
-      Left = 150
-      Top = 5
+      Left = 151
+      Top = 6
       Width = 139
-      Height = 63
+      Height = 61
       Margins.Right = 40
       Align = alLeft
       Caption = 'Aktar'
@@ -307,9 +273,6 @@ object stokAktarimForm: TstokAktarimForm
         2B58A1DE1AB60000000049454E44AE426082}
       TabOrder = 9
       OnClick = btnAktarClick
-      ExplicitLeft = 151
-      ExplicitTop = 6
-      ExplicitHeight = 61
     end
   end
   object cxGroupBox2: TcxGroupBox
@@ -322,10 +285,10 @@ object stokAktarimForm: TstokAktarimForm
     Width = 1255
     object sGrd: TStringGrid
       AlignWithMargins = True
-      Left = 5
-      Top = 5
-      Width = 1245
-      Height = 564
+      Left = 6
+      Top = 6
+      Width = 1243
+      Height = 562
       Align = alClient
       ColCount = 1
       FixedCols = 0
@@ -333,10 +296,6 @@ object stokAktarimForm: TstokAktarimForm
       FixedRows = 0
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing]
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 6
-      ExplicitWidth = 1243
-      ExplicitHeight = 562
       RowHeights = (
         24)
     end

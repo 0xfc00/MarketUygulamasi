@@ -6,20 +6,40 @@ uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, ListBaseFrm,
 
-  cxPC, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
+  cxPC, cxButtons, Vcl.ExtCtrls,
 
   Data.DB,  System.DateUtils,
-  cxGridCustomTableView, cxGridDBTableView, cxGridLevel,
-  cxGrid, DBAccess, FireDAC.Comp.Client,
+  cxGridDBTableView, cxGridLevel,
+  cxGrid, FireDAC.Comp.Client,
 
-  cxCalendar, dxBarBuiltInMenu, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, cxDBData, Vcl.Menus, cxContainer, Vcl.ComCtrls,
-  dxCore, cxDateUtils, MemDS, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxGridTableView, cxClasses, cxGridCustomView, dxSkinBasic, dxSkinBlack,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  cxCalendar,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  FireDAC.Stan.Param,
+
+  FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
   dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
@@ -33,10 +53,14 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, _func, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.Menus, cxContainer, Vcl.ComCtrls,
+  dxCore, cxDateUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  Vcl.StdCtrls, cxGridCustomTableView, cxGridTableView, cxClasses,
+  cxGridCustomView;
 
 type
   TfrmKasaPosHarList = class(TfrmListBase)

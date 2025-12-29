@@ -3,7 +3,7 @@ unit _func;
 interface
 
 uses
-  Data.DB,DBAccess, Vcl.Forms,FireDAC.Comp.Client,sysUtils,Winapi.Windows, System.IOUtils;
+  Data.DB,Vcl.Forms,FireDAC.Comp.Client,sysUtils,Winapi.Windows, System.IOUtils;
 
   function yeniQuery(sqlText:string; durum:boolean = true): TFDQuery;
   function EncryptStr(const S :WideString; Key: Word): String;

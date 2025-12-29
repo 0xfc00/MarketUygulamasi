@@ -398,6 +398,7 @@ object frmAyarlar: TfrmAyarlar
             DataBinding.DataField = 'OTO_YEDEK_DIZINI'
             DataBinding.DataSource = dsAyarlar
             TabOrder = 0
+            ExplicitHeight = 21
             Width = 173
           end
           object cxLabel8: TcxLabel
@@ -469,10 +470,10 @@ object frmAyarlar: TfrmAyarlar
     end
   end
   object qryAyarlar: TFDQuery
+    AfterPost = qryAyarlarAfterPost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select TOP 1 * from AYARLAR')
-    AfterPost = qryAyarlarAfterPost
     Left = 96
     Top = 256
   end

@@ -34,7 +34,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       Caption = 'Tablolar'#305' Kald'#305'r'
       TabOrder = 0
       OnClick = btnTablolariKaldirClick
-      ExplicitTop = 216
     end
     object btnQryEditor: TButton
       Left = 2
@@ -45,7 +44,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       Caption = 'Query Editor'
       TabOrder = 1
       OnClick = btnQryEditorClick
-      ExplicitTop = 191
     end
     object btnTablolariOlustur: TButton
       Left = 2
@@ -56,7 +54,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       Caption = 'Tablolar'#305' Olu'#351'tur'
       TabOrder = 2
       OnClick = btnTablolariOlusturClick
-      ExplicitTop = 166
     end
     object btnDbOlustur: TButton
       Left = 2
@@ -67,7 +64,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       Caption = 'DB Olu'#351'tur'
       TabOrder = 3
       OnClick = btnDbOlusturClick
-      ExplicitTop = 141
     end
     object cxPageControl1: TcxPageControl
       Left = 2
@@ -78,7 +74,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       TabOrder = 4
       Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
-      ExplicitHeight = 126
       ClientRectBottom = 94
       ClientRectLeft = 3
       ClientRectRight = 311
@@ -86,7 +81,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       object cxTabSheet1: TcxTabSheet
         Caption = 'DB Olu'#351'tur'
         ImageIndex = 0
-        ExplicitHeight = 93
         object mmDbOlustur: TMemo
           AlignWithMargins = True
           Left = 3
@@ -181,12 +175,14 @@ object frmDbAyarlar: TfrmDbAyarlar
             'GO')
           ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitHeight = 87
         end
       end
       object cxTabSheet2: TcxTabSheet
         Caption = 'Tablolar'#305' Olu'#351'tur'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 93
         object mmTablolariOlustur: TMemo
           AlignWithMargins = True
@@ -1343,12 +1339,14 @@ object frmDbAyarlar: TfrmDbAyarlar
             'GO')
           ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitHeight = 87
         end
       end
       object cxTabSheet3: TcxTabSheet
         Caption = 'Tablolar'#305' Kald'#305'r'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
         ExplicitHeight = 93
         object mmtablolariKaldir: TMemo
           AlignWithMargins = True
@@ -1485,13 +1483,14 @@ object frmDbAyarlar: TfrmDbAyarlar
             'GO')
           ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitHeight = 87
         end
       end
       object cxTabSheet4: TcxTabSheet
         Caption = 'Yedekten Geri Y'#252'kle'
         ImageIndex = 3
+        ExplicitLeft = 0
         ExplicitTop = 27
+        ExplicitWidth = 0
         ExplicitHeight = 93
         object mmRestoreDb: TMemo
           AlignWithMargins = True
@@ -1527,9 +1526,6 @@ object frmDbAyarlar: TfrmDbAyarlar
             'GO')
           ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitLeft = 6
-          ExplicitTop = 6
-          ExplicitHeight = 87
         end
       end
     end
@@ -1542,8 +1538,6 @@ object frmDbAyarlar: TfrmDbAyarlar
       Caption = 'Yedekten Geri Y'#252'kle'
       TabOrder = 5
       OnClick = btnRestoreDbClick
-      ExplicitLeft = 1
-      ExplicitTop = 231
     end
   end
   object Panel1: TPanel

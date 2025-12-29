@@ -25,9 +25,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Properties.ActivePage = shtKasa
     Properties.CustomButtons.Buttons = <>
     OnChange = pcAnaChange
-    ExplicitTop = 41
-    ExplicitWidth = 868
-    ExplicitHeight = 439
     ClientRectBottom = 385
     ClientRectLeft = 3
     ClientRectRight = 960
@@ -35,10 +32,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     object shtKasa: TcxTabSheet
       Caption = 'Kasa Hareketleri'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 858
-      ExplicitHeight = 406
       object cxGrid1: TcxGrid
         AlignWithMargins = True
         Left = 3
@@ -47,8 +40,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Height = 353
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 852
-        ExplicitHeight = 400
         object vwKasa: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -207,9 +198,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Height = 77
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 452
-    ExplicitWidth = 862
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 837
@@ -312,7 +300,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 758
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -372,7 +359,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitLeft = 652
     end
   end
   object Panel1: TPanel
@@ -382,7 +368,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Height = 61
     Align = alTop
     TabOrder = 2
-    ExplicitTop = -6
     object btnSonHafta: TcxButton
       AlignWithMargins = True
       Left = 239
@@ -400,7 +385,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSonHaftaClick
-      ExplicitHeight = 33
     end
     object btnDun: TcxButton
       AlignWithMargins = True
@@ -419,7 +403,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnDunClick
-      ExplicitHeight = 33
     end
     object btnBugun: TcxButton
       AlignWithMargins = True
@@ -438,7 +421,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnBugunClick
-      ExplicitHeight = 33
     end
     object btnSonAy: TcxButton
       AlignWithMargins = True
@@ -457,7 +439,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSonAyClick
-      ExplicitHeight = 33
     end
     object Panel2: TPanel
       AlignWithMargins = True
@@ -492,7 +473,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 1
-        ExplicitTop = 6
         Width = 150
       end
       object dtBas: TcxDateEdit
@@ -503,8 +483,6 @@ object frmKasaPosHarList: TfrmKasaPosHarList
         Properties.SaveTime = False
         Properties.ShowTime = False
         TabOrder = 2
-        ExplicitLeft = -20
-        ExplicitTop = 6
         Width = 150
       end
     end

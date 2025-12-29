@@ -9,6 +9,7 @@ object dmMain: TdmMain
       'Database=KHPRO'
       'DriverID=MSSQL'
       'OSAuthent=Yes')
+    Connected = True
     LoginPrompt = False
     Left = 72
     Top = 40

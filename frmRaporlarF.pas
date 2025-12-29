@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes,
   Vcl.Controls, Vcl.Forms,
 
-  Vcl.Menus, Vcl.StdCtrls, cxButtons,
+  Vcl.Menus, cxButtons,
   cxCalendar, cxGroupBox, cxPC,
   cxLabel, Vcl.ExtCtrls, Data.DB,
 
@@ -14,11 +14,7 @@ uses
   cxGridLevel, cxGrid, frxClass, frxDBSet, frxDesgn,
   FireDAC.Comp.Client, ListBaseFrm, Main,
   dateutils, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, dxBarBuiltInMenu, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, cxDBData, Vcl.ComCtrls, dxCore, cxDateUtils, MemDS,
-  DBAccess, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxGridCustomTableView,
-  cxGridTableView, cxClasses, cxGridCustomView, dxSkinBasic, dxSkinBlack,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
   dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
   dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
@@ -34,7 +30,14 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxBarBuiltInMenu, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, cxDBData, Vcl.ComCtrls, dxCore, cxDateUtils,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxGridCustomTableView, cxGridTableView, cxClasses,
+  cxGridCustomView, Vcl.StdCtrls;
 
 type
   TfrmRaporlar = class(TfrmListBase)

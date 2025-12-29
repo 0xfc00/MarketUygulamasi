@@ -34,10 +34,6 @@ object frmTanimlar: TfrmTanimlar
     object shBirimler: TcxTabSheet
       Caption = 'Birimler'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grdBirimler: TcxGrid
         Left = 0
         Top = 0
@@ -415,8 +411,6 @@ object frmTanimlar: TfrmTanimlar
     Height = 64
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 323
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 352

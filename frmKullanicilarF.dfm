@@ -24,7 +24,6 @@ object frmKullanicilar: TfrmKullanicilar
     Align = alLeft
     Caption = 'Kullan'#305'c'#305'lar'
     TabOrder = 0
-    ExplicitHeight = 475
     Height = 498
     Width = 230
     object cxGrid1: TcxGrid
@@ -35,7 +34,6 @@ object frmKullanicilar: TfrmKullanicilar
       Height = 386
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 363
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -108,7 +106,6 @@ object frmKullanicilar: TfrmKullanicilar
         0A093C2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 1
       OnClick = cxButton1Click
-      ExplicitTop = 387
     end
     object cxButton2: TcxButton
       AlignWithMargins = True
@@ -136,7 +133,6 @@ object frmKullanicilar: TfrmKullanicilar
         3620222F3E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = cxButton2Click
-      ExplicitTop = 428
     end
   end
   object cxGroupBox2: TcxGroupBox
@@ -146,7 +142,6 @@ object frmKullanicilar: TfrmKullanicilar
     Align = alClient
     Caption = 'Yetkiler'
     TabOrder = 1
-    ExplicitHeight = 475
     Height = 498
     Width = 852
     object cxGroupBox24: TcxGroupBox
@@ -156,7 +151,6 @@ object frmKullanicilar: TfrmKullanicilar
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 0
-      ExplicitHeight = 283
       Height = 306
       Width = 264
       object cxGroupBox23: TcxGroupBox
@@ -431,7 +425,6 @@ object frmKullanicilar: TfrmKullanicilar
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 1
-      ExplicitHeight = 283
       Height = 306
       Width = 264
       object cxGroupBox9: TcxGroupBox
@@ -857,7 +850,6 @@ object frmKullanicilar: TfrmKullanicilar
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 3
-      ExplicitHeight = 283
       Height = 306
       Width = 264
       object cxGroupBox5: TcxGroupBox
@@ -937,7 +929,6 @@ object frmKullanicilar: TfrmKullanicilar
     Align = alBottom
     PanelStyle.Active = True
     TabOrder = 2
-    ExplicitTop = 462
     Height = 73
     Width = 1088
     object btnKapat: TcxButton
@@ -971,7 +962,6 @@ object frmKullanicilar: TfrmKullanicilar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 39
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -1012,7 +1002,6 @@ object frmKullanicilar: TfrmKullanicilar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
-      ExplicitTop = 9
     end
   end
   object qryKullanicilar: TFDQuery

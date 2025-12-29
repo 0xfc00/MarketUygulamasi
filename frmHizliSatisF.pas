@@ -5,37 +5,59 @@ interface
 uses
   Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, strutils,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls,
-  cxContainer, cxEdit, Vcl.Menus, cxCustomData,
+  cxContainer, cxEdit, Vcl.Menus,
   Data.DB,
   Vcl.ActnList,
   Vcl.Touch.Keyboard, Vcl.ExtCtrls, cxImage,
-  cxLabel, cxPC, Vcl.StdCtrls, cxGridLevel, cxGridCustomTableView,
+  cxLabel, cxPC, Vcl.StdCtrls, cxGridLevel,
   cxGridTableView, cxGridDBTableView, cxGrid,
-  cxButtons, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
-  DBAccess, frxClass, frxDBSet,
-  FireDAC.Comp.Client, BaseFrm, PosListFrm, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
-  dxSkinBlue, cxStyles, cxFilter, cxData, cxDataStorage, cxNavigator,
-  dxDateRanges, dxScrollbarAnnotations, cxDBData, dxBarBuiltInMenu,
-  System.Actions, System.ImageList, Vcl.ImgList, cxImageList, dxGDIPlusClasses,
-  cxClasses, cxGridCustomView, cxMaskEdit, dxSkinBasic, dxSkinBlack,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
+  cxButtons, cxDropDownEdit, cxTextEdit, cxGroupBox,
+  frxClass, frxDBSet,
+  FireDAC.Comp.Client, BaseFrm, PosListFrm,
+  cxStyles,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  FireDAC.Stan.Param,
+  FireDAC.Comp.DataSet, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, dxBarBuiltInMenu,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  cxClasses, System.Actions, System.ImageList, Vcl.ImgList, cxImageList,
+  dxGDIPlusClasses, cxGridCustomTableView, cxGridCustomView, cxMaskEdit;
 
 type
   TfrmHizliSatis = class(TfrmBase)
@@ -218,7 +240,7 @@ implementation
 
 {$R *.dfm}
 
-uses _cons, _func, _vars, Main, MainDM;
+uses _cons, _func, _vars, Main;
 
 
 procedure TfrmHizliSatis.barkodOku(stokKodu:string);
