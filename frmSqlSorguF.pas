@@ -10,7 +10,7 @@ uses
   DBAccess,  cxGridLevel,
   cxGridCustomTableView, cxGridDBTableView, cxGrid,
   cxButtons, cxGroupBox, cxMemo,
-  Uni, MainDM, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  FireDAC.Comp.Client, MainDM, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, Vcl.Menus, MemDS, Vcl.StdCtrls, cxTextEdit,
@@ -30,7 +30,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmSqlSorgu = class(TForm)
@@ -41,7 +43,7 @@ type
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    q: TUniQuery;
+    q: TFDQuery;
     ds: TDataSource;
     cxMemo1: TcxMemo;
     procedure cxButton2Click(Sender: TObject);
@@ -79,7 +81,7 @@ begin
     begin
       close;
       sql.Text := cxmemo1.Lines.Text;
-      open;
+      OpenOrExecute;
     end;
 
     with cxGrid1DBTableView1 do

@@ -22,7 +22,7 @@ uses
 
   Vcl.Grids, cxGroupBox, cxButtons, ComObj,
   cxTextEdit, cxDropDownEdit,
-  Data.DB, MemDS, DBAccess,  Uni, Main, cxGraphics, cxControls, cxLookAndFeels,
+  Data.DB, MemDS, DBAccess,  FireDAC.Comp.Client, Main, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlue,
   Vcl.Menus, cxMaskEdit, Vcl.StdCtrls, dxSkinBasic, dxSkinBlack,
   dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
@@ -40,7 +40,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TstokAktarimForm = class(TForm)
@@ -65,7 +67,7 @@ type
     cbAlisFiyatKolon: TcxComboBox;
     cbKdvKolon: TcxComboBox;
     edtBaslangicSatir: TcxTextEdit;
-    MSQuery1: TUniQuery;
+    MSQuery1: TFDQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnDosyaAcClick(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
@@ -155,7 +157,7 @@ procedure TstokAktarimForm.btnAktarClick(Sender: TObject);
 var
 i, intBasariliIslem, inthataliIslem : integer;
 stokKodKolon, stokAdiKolon, barkodKolon, satisFiyatKolon, alýsFiyatKolon, kdvKolon, startOfset : integer;
-  q : TUniQuery;
+  q : TFDQuery;
 begin
   if sGrd.RowCount = 1 then exit;
 
@@ -208,11 +210,11 @@ begin
       q.FieldByName('BARKOD').AsString   := sGrd.Cells[  barkodKolon,  i  ] ;
 
       if satisFiyatKolon <> -1 then
-        q.FieldByName('SATISFIYATI').AsString := sGrd.Cells[ satisFiyatKolon, i];
+        q.FieldByName('SATISFIYATI').asfloat := StrToFloatDef(sGrd.Cells[ satisFiyatKolon, i], 0);
       if alýsFiyatKolon <> -1 then
-        q.FieldByName('ALISFIYATI').AsString   := sGrd.Cells[ alýsFiyatKolon, i];
+        q.FieldByName('ALISFIYATI').asfloat   := StrToFloatDef(sGrd.Cells[ alýsFiyatKolon, i], 0);
       if kdvKolon <> -1 then
-        q.FieldByName('KDV').AsString         := sGrd.Cells[ kdvKolon, i];
+        q.FieldByName('KDV').asfloat         := StrToFloatDef(sGrd.Cells[ kdvKolon, i], 0);
 
       q.Post;
       inc(intBasariliIslem);

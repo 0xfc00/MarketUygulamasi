@@ -135,7 +135,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
@@ -173,7 +172,6 @@ object frmCariHareketEkle: TfrmCariHareketEkle
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnkaydetClick
-      ExplicitLeft = 0
     end
   end
   object edtIslemTarihi: TcxDBDateEdit
@@ -284,12 +282,15 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Visible = False
     Width = 121
   end
-  object qryCari: TUniQuery
+  object qryCari: TFDQuery
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select'
       '* FROM CARI')
-    ReadOnly = True
     Left = 352
     Top = 120
   end
@@ -299,11 +300,11 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Left = 408
     Top = 120
   end
-  object qryCariHarEkle: TUniQuery
+  object qryCariHarEkle: TFDQuery
+    BeforePost = qryCariHarEkleBeforePost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from ISLEM_BASLIK where 1=0')
-    BeforePost = qryCariHarEkleBeforePost
     Left = 352
     Top = 168
   end
@@ -312,12 +313,15 @@ object frmCariHareketEkle: TfrmCariHareketEkle
     Left = 416
     Top = 176
   end
-  object qryPos: TUniQuery
+  object qryPos: TFDQuery
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select'
-      '* FROM POS where AKTIF = 1')
-    ReadOnly = True
+      '* FROM POS where AKTIF = 1 and POSADI <> '#39'POSSABIT'#39)
     Left = 296
     Top = 232
   end

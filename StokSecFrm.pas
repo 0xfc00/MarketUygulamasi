@@ -8,7 +8,7 @@ uses
 
 
   Data.DB,
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Uni, cxGridLevel,
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, FireDAC.Comp.Client, cxGridLevel,
   cxGridCustomTableView, cxGridDBTableView,
   cxGrid, MainDM, Main, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
@@ -41,7 +41,7 @@ type
     vwStoklarBARKOD: TcxGridDBColumn;
     vwStoklarSATISFIYATI: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    qryStoklar: TUniQuery;
+    qryStoklar: TFDQuery;
     dsStoklar: TDataSource;
     pnlAlt: TPanel;
     btnKapat: TcxButton;

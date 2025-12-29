@@ -25,10 +25,8 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     ActivePage = shStok
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 409
     object shStok: TTabSheet
       Caption = 'Stok Bilgileri'
-      ExplicitHeight = 381
       object Label1: TLabel
         Left = 12
         Top = 21
@@ -263,7 +261,7 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         DataBinding.DataField = 'BARKOD'
         DataBinding.DataSource = dsStok
         TabOrder = 1
-        Width = 250
+        Width = 219
       end
       object edtStokAdi: TcxDBTextEdit
         Left = 96
@@ -601,6 +599,45 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         TabOrder = 20
         OnClick = btnYeniMarkaClick
       end
+      object btnBarkodBul: TcxButton
+        AlignWithMargins = True
+        Left = 321
+        Top = 42
+        Width = 25
+        Height = 20
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.SourceHeight = 16
+        OptionsImage.Glyph.SourceWidth = 16
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000026744558745469746C650046696E643B426172733B526962626F6E3B
+          5374616E646172643B536561726368BB659C08000002D149444154785EAD936D
+          48936B18C7FF7B369FB5E3CB3C6AEACC66E66C94980AF6C1B74A462FE743E087
+          2526299812C519A20B03C98A3AC9D2E8E518519F52222A2789ACF99264C58AD0
+          322A848E9BBA6992D95496BACD3DDBF43EF7C62AE9ABFDE1C77D735DF7F5E7BA
+          EEFB79788410FC2EF128020A4B09A230AB733FF8454CEDE54EFF7AF8EFC6CD6A
+          4DFBA39A069DBDF282565F507A2AD96758A369939EB9D6ABAB6BEA75D55EE9D2
+          A9EAEE487D466A4D07FC525FF46F84AAF3DA572F07C7C8F0E814B9DD6A20AA73
+          5A0E40485D538F6BE0C3383159BE929B779F90AAFA760300BEEA6CDBCF2E9465
+          F5F9FF5CEF21D3338BC43060240DD75BC9D1DA7B04C0969397F464F2CB376234
+          5B49F3FD3EA23A7D8F9454DFC8FA3E0E43091286FD59BE4D168B2597070E9717
+          939356184DA3D8B1F784D16432C3C97941C0032B12C2EB716085B01500F87E83
+          2D698AE820365429A70636BB0B8B4E17161C2E78380F122591F0B8396ABA0CEF
+          0A8150148C20FE0ABCCB284ECB514600E031F2F4FDF58A6CB9302E468CD4E418
+          A46FDD88785FA1D78D71CB3838B71B3C1E81242A1407F2535176682FC0D9D689
+          C2132E0010308C4054989F2547F7D31114553DC4DB8F56ECCE4D839B165A67A6
+          C0D1B1A2C422E8FB465158A9C390D981A2821CDAA1BBC46FC0B9BCFCF03021BA
+          0CA38854E4A17BC08CED294960593EC6FFD3FF151B17075FBEF38505EBF765A3
+          67F013D25393E97D39F900186689B34F8E4DCC4091BB09F3AFFBB13B538A11F3
+          17D817E626000C3916178C96092BF6E44961EB7F83FCCC784C4DCF8273DA2D00
+          0833373D72B5B9F53912625834AA7642124CD0F2E031E667276E02B0DBAC9F2F
+          B5689F214922C0BFD53990867970ABB9034EFBAC06808702B12C43A94EC93B36
+          BC2DEF389165161B6365BB6A0044049E6A5D4A56E991949C8A77F2AC32929871
+          F0BD44AE2807205AFD2DFC4189A66CA0C450820371040EB18198981242610371
+          ACF96F64B046FD0FE22625E3DA6A63E80000000049454E44AE426082}
+        TabOrder = 21
+        OnClick = btnBarkodBulClick
+      end
     end
   end
   object pnlAlt: TPanel
@@ -611,7 +648,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Height = 70
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = -2
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 487
@@ -714,7 +750,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitLeft = 492
     end
     object btnKaydet: TcxButton
       AlignWithMargins = True
@@ -753,7 +788,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
-      ExplicitLeft = 310
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -797,7 +831,6 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetVeYeniClick
-      ExplicitLeft = 100
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -857,16 +890,7 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitLeft = 401
     end
-  end
-  object qryStok: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from stok')
-    BeforePost = qryStokBeforePost
-    Left = 392
-    Top = 24
   end
   object dsStok: TDataSource
     DataSet = qryStok
@@ -878,47 +902,19 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Left = 464
     Top = 80
   end
-  object qryMarkaLook: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from t_marka')
-    Left = 392
-    Top = 72
-  end
   object dsBirimLook: TDataSource
     DataSet = qryBirimLook
     Left = 456
     Top = 136
-  end
-  object qryBirimLook: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from T_BIRIM')
-    Left = 384
-    Top = 128
   end
   object dsGrupLook: TDataSource
     DataSet = qryGrupLook
     Left = 448
     Top = 176
   end
-  object qryGrupLook: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from T_STOKGRUP')
-    Left = 376
-    Top = 176
-  end
   object dsRafLook: TDataSource
     DataSet = qryRafLook
     Left = 456
-    Top = 232
-  end
-  object qryRafLook: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from T_REYONRAF')
-    Left = 392
     Top = 232
   end
   object opFileDlg: TdxOpenFileDialog
@@ -933,5 +929,46 @@ object frmYeniStokKarti: TfrmYeniStokKarti
       Caption = 'Sil'
       OnClick = Sil1Click
     end
+  end
+  object qryStok: TFDQuery
+    BeforePost = qryStokBeforePost
+    ObjectView = False
+    SQL.Strings = (
+      'select * from stok')
+    Left = 392
+    Top = 24
+  end
+  object qryMarkaLook: TFDQuery
+    ObjectView = False
+    SQL.Strings = (
+      'select * from t_marka')
+    Left = 392
+    Top = 72
+  end
+  object qryBirimLook: TFDQuery
+    ObjectView = False
+    SQL.Strings = (
+      'select * from T_BIRIM')
+    Left = 384
+    Top = 128
+  end
+  object qryGrupLook: TFDQuery
+    ObjectView = False
+    SQL.Strings = (
+      'select * from T_STOKGRUP')
+    Left = 376
+    Top = 176
+  end
+  object qryRafLook: TFDQuery
+    ObjectView = False
+    SQL.Strings = (
+      'select * from T_REYONRAF')
+    Left = 392
+    Top = 232
+  end
+  object RESTClient1: TRESTClient
+    Params = <>
+    Left = 527
+    Top = 259
   end
 end

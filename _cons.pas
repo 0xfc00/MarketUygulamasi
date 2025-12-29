@@ -49,6 +49,9 @@ resourcestring
   rstr_KAYIT_SILME_ONAY = 'Seçili kaydý silmek istediðinizden eminmisiniz';
   rstr_YETKI_YOK = 'Bu iþlem için yetkiniz yoktur.';
 
+var
+  DBFILE, DBDIR : string;
+
 implementation
 
 end.

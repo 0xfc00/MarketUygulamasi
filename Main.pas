@@ -9,7 +9,7 @@ uses
   Vcl.Controls, Vcl.Forms, cxGraphics,
   dxNavBarCollns,
   dxNavBar,
-  dxNavBarStyles, Vcl.Menus, Vcl.ActnList, Uni,
+  dxNavBarStyles, Vcl.Menus, Vcl.ActnList, FireDAC.Comp.Client,
   cxStyles, cxGridTableView, dxSkinsForm,
   LoginFrm, _vars, cxImage,
   PosListFrm, cxButtons, Vcl.ExtCtrls,
@@ -42,7 +42,7 @@ uses
   procedure MesajHata(AMesaj : string);
   procedure MesajBilgi(AMesaj : string);
   Function MesajSor(AMesaj : string) : Boolean;
-  procedure qAcKapa_fn(AQry : TUniQuery; AAckapa : boolean = true);
+  procedure qAcKapa_fn(AQry : TFDQuery; AAckapa : boolean = true);
   function VeriCek_fn(ATabloAdi, AKolonAdi, AVeri, ADonusKolon: string): string;
   function VeriEkle_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
   function VeriSil_fn(ATabloAdi, AKolonAdi, AVeri: string): string;
@@ -130,28 +130,14 @@ type
     acRaporlar: TAction;
     Panel2: TPanel;
     Panel3: TPanel;
-    Panel4: TPanel;
-    cxButton4: TcxButton;
     Panel5: TPanel;
     cxButton10: TcxButton;
-    Panel6: TPanel;
-    cxButton11: TcxButton;
-    Panel7: TPanel;
-    cxButton12: TcxButton;
     Panel8: TPanel;
     Panel9: TPanel;
     cxButton13: TcxButton;
-    Panel10: TPanel;
-    cxButton14: TcxButton;
     Panel11: TPanel;
     cxButton15: TcxButton;
-    Panel12: TPanel;
-    cxButton16: TcxButton;
     Panel13: TPanel;
-    Panel14: TPanel;
-    cxButton17: TcxButton;
-    Panel15: TPanel;
-    cxButton18: TcxButton;
     Panel16: TPanel;
     cxButton19: TcxButton;
     Panel17: TPanel;
@@ -173,24 +159,40 @@ type
     btnKapat: TcxButton;
     btnKullaniciDegistir: TcxButton;
     Panel18: TPanel;
+    Panel23: TPanel;
+    stylButonlar: TcxStyle;
+    Panel28: TPanel;
+    Panel31: TPanel;
+    cxButton23: TcxButton;
+    Panel32: TPanel;
+    cxButton24: TcxButton;
+    Panel30: TPanel;
+    cxButton22: TcxButton;
+    Panel29: TPanel;
+    cxButton21: TcxButton;
     Panel19: TPanel;
     cxButton1: TcxButton;
+    Panel15: TPanel;
+    cxButton18: TcxButton;
+    Panel10: TPanel;
+    cxButton14: TcxButton;
+    Panel4: TPanel;
+    cxButton4: TcxButton;
+    Panel6: TPanel;
+    cxButton11: TcxButton;
+    Panel12: TPanel;
+    cxButton16: TcxButton;
+    Panel7: TPanel;
+    cxButton12: TcxButton;
     Panel20: TPanel;
     cxButton2: TcxButton;
     Panel21: TPanel;
     cxButton3: TcxButton;
     Panel22: TPanel;
     cxButton5: TcxButton;
-    Panel23: TPanel;
-    Panel25: TPanel;
-    cxButton7: TcxButton;
-    Panel26: TPanel;
-    cxButton8: TcxButton;
-    Panel27: TPanel;
-    cxButton9: TcxButton;
-    stylButonlar: TcxStyle;
+    Panel14: TPanel;
+    cxButton17: TcxButton;
     Panel24: TPanel;
-    cxButton6: TcxButton;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -254,6 +256,9 @@ procedure LoginFormAc_fn();
 begin
   loginUserID := -1;
   loginSuccess := false;
+
+  FillChar(y,0,0) ;
+
   try
     Application.CreateForm(TfrmLogin, frmLogin);
       frmLogin.showmodal;
@@ -309,7 +314,7 @@ begin
   result := Application.MessageBox(PWideChar(AMesaj), PWideChar(APP_NAME), MB_ICONQUESTION + MB_YESNO ) = IDYES;
 end;
 
-procedure qAcKapa_fn(AQry : TUniQuery; AAckapa : boolean = True);
+procedure qAcKapa_fn(AQry : TFDQuery; AAckapa : boolean = True);
 begin
   if AAckapa then  AQry.Active := False;
   AQry.Open;
@@ -449,6 +454,7 @@ begin
   result := False;
 
   if (
+     (VeriCek_fn('ISLEM_BASLIK', 'CARIID', ACariId, 'ID') <> VERI_YOK) or
      (VeriCek_fn('ISLEM_H', 'CARIID', ACariId, 'ID') <> VERI_YOK)
      )
   then
@@ -460,6 +466,7 @@ begin
   result := False;
 
   if (
+     (VeriCek_fn('ISLEM_BASLIK', 'POSID', APosId, 'ID') <> VERI_YOK) or
      (VeriCek_fn('ISLEM_H', 'POSID', APosId, 'ID') <> VERI_YOK)
      )
   then

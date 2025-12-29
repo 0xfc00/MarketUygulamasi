@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes,
-  Vcl.Controls, Vcl.Forms, MainDM, uni, _func;
+  Vcl.Controls, Vcl.Forms, MainDM, FireDAC.Comp.Client, _func;
 
 type
   TfrmBase = class(TForm)
@@ -45,10 +45,10 @@ var
   i : integer;
 begin
   for I := 0 to AFrm.ComponentCount-1 do
-    if AFrm.Components[i] is TUniQuery then
+    if AFrm.Components[i] is TFDQuery then
     begin
       if AFrm.Components[i].Tag = 0 then
-        qAcKapa_fn(TUniQuery(AFrm.Components[i]), AAcKapa);
+        qAcKapa_fn(TFDQuery(AFrm.Components[i]), AAcKapa);
     end
 end;
 
@@ -59,8 +59,8 @@ var
   i : integer;
 begin
   for I := 0 to AFrm.ComponentCount-1 do
-    if AFrm.Components[i] is TUniQuery then
-      TUniQuery(AFrm.Components[i]).Connection := dmMain.UniConn;
+    if AFrm.Components[i] is TFDQuery then
+      TFDQuery(AFrm.Components[i]).Connection := dmMain.UniConn;
 end;
 
 end.

@@ -10,7 +10,7 @@ uses
   Data.DB, cxGridLevel,
   cxGridCustomTableView, cxGridDBTableView,
   cxGrid, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Uni,Main,MainDM, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
+  FireDAC.Comp.Client,Main,MainDM, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.Menus, cxControls, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, MemDS, DBAccess, cxGridTableView, cxClasses,
@@ -30,11 +30,13 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmCariSec = class(TfrmKartBase)
-    qryCariler: TUniQuery;
+    qryCariler: TFDQuery;
     dsCariler: TDataSource;
     pnlAlt: TPanel;
     btnKapat: TcxButton;

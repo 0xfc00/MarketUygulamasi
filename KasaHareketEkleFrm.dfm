@@ -195,7 +195,6 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
@@ -234,7 +233,6 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnkaydetClick
-      ExplicitLeft = 0
     end
   end
   object edtIslemTarihi: TcxDBDateEdit
@@ -245,11 +243,11 @@ object frmKasaHareketEkle: TfrmKasaHareketEkle
     TabOrder = 5
     Width = 121
   end
-  object qryKasaHarEkle: TUniQuery
+  object qryKasaHarEkle: TFDQuery
+    BeforePost = qryKasaHarEkleBeforePost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from ISLEM_BASLIK where 1=0')
-    BeforePost = qryKasaHarEkleBeforePost
     Left = 224
     Top = 48
   end

@@ -22,7 +22,6 @@ object frmCariList: TfrmCariList
     Height = 62
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 957
@@ -125,7 +124,6 @@ object frmCariList: TfrmCariList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -228,7 +226,6 @@ object frmCariList: TfrmCariList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitHeight = 28
     end
     object btnStokDuzenle: TcxButton
       AlignWithMargins = True
@@ -266,7 +263,6 @@ object frmCariList: TfrmCariList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitHeight = 28
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
@@ -309,7 +305,6 @@ object frmCariList: TfrmCariList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 130
     end
   end
   object cxGrid1: TcxGrid
@@ -320,9 +315,7 @@ object frmCariList: TfrmCariList
     Height = 431
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 457
     object vwCariList: TcxGridDBTableView
-      PopupMenu = pmGrid
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
       FindPanel.InfoText = 'Arama...'
@@ -360,24 +353,26 @@ object frmCariList: TfrmCariList
       object vwCariListCARIKODU: TcxGridDBColumn
         Caption = 'Cari Kodu'
         DataBinding.FieldName = 'CARIKODU'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 59
       end
       object vwCariListUNVAN: TcxGridDBColumn
         Caption = #220'nvan'
         DataBinding.FieldName = 'UNVAN'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
       object vwCariListBORC: TcxGridDBColumn
-        Caption = 'Toplam Bor'#231
-        DataBinding.FieldName = 'TOPLAM_BORC'
+        Caption = 'Giren'
+        DataBinding.FieldName = 'TOPLAM_GIREN'
         DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end
       object vwCariListALACAK: TcxGridDBColumn
-        Caption = 'Toplam Alacak'
-        DataBinding.FieldName = 'TOPLAM_ALACAK'
+        Caption = #199#305'kan'
+        DataBinding.FieldName = 'TOPLAM_CIKAN'
         DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
@@ -385,39 +380,46 @@ object frmCariList: TfrmCariList
       object vwCariListBAKIYE: TcxGridDBColumn
         Caption = 'Bakiye'
         DataBinding.FieldName = 'BAKIYE'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end
       object vwCariListTIPI: TcxGridDBColumn
         Caption = 'Cari Tipi'
         DataBinding.FieldName = 'tipistr'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end
       object vwCariListGROUPID: TcxGridDBColumn
         Caption = 'Cari Grup'
         DataBinding.FieldName = 'GRUPSTR'
+        DataBinding.IsNullValueType = True
         Options.Editing = False
         Width = 150
       end
       object vwCariListISTELEFONU1: TcxGridDBColumn
         Caption = #304#351' Telefonu 1'
         DataBinding.FieldName = 'ISTELEFONU1'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
       object vwCariListCEPTELEFONU: TcxGridDBColumn
         Caption = 'Cep Telefonu'
         DataBinding.FieldName = 'CEPTELEFONU'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
       object vwCariListEMAIL: TcxGridDBColumn
         Caption = 'E-Posta'
         DataBinding.FieldName = 'EMAIL'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
       object vwCariListVERESIYE_LIMITI: TcxGridDBColumn
         Caption = 'Veresiye Limiti'
         DataBinding.FieldName = 'VERESIYE_LIMITI'
+        DataBinding.IsNullValueType = True
         Width = 150
       end
     end
@@ -441,7 +443,7 @@ object frmCariList: TfrmCariList
       OnExecute = acCariHarListExecute
     end
   end
-  object qryCariler: TUniQuery
+  object qryCariler: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'
@@ -458,8 +460,7 @@ object frmCariList: TfrmCariList
       ''
       'FROM CARI C'
       'LEFT JOIN T_CARIGRUP CG ON C.GROUPID = CG.ID'
-      'WHERE UNVAN <> '#39'PERAKENDE'#39)
-    Active = True
+      'WHERE UNVAN <> '#39'PERAKENDE'#39' and UNVAN <> '#39'CARISABIT'#39)
     Left = 333
     Top = 104
   end
@@ -469,7 +470,7 @@ object frmCariList: TfrmCariList
     Left = 405
     Top = 104
   end
-  object qryGrupLookup: TUniQuery
+  object qryGrupLookup: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_CARIGRUP')

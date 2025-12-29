@@ -21,9 +21,11 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  cxGroupBox, Data.DB, MemDS, DBAccess,  Uni, dxSkinBasic,
+  cxGroupBox, Data.DB, MemDS, DBAccess,  FireDAC.Comp.Client, dxSkinBasic,
   dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White;
+  dxSkinOffice2019White, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TlisansForm = class(TForm)
@@ -32,7 +34,7 @@ type
     lblAnahtar: TLabeledEdit;
     cxButton1: TcxButton;
     cxButton2: TcxButton;
-    MSQuery1: TUniQuery;
+    MSQuery1: TFDQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxButton2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
@@ -40,7 +42,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    key : double;
+    key : string;
   end;
 
 var
@@ -54,17 +56,17 @@ uses _func, _vars, Main;
 
 procedure TlisansForm.cxButton1Click(Sender: TObject);
 var
-qLisans : TUniQuery;
+qLisans : TFDQuery;
 begin
   if lblAnahtar.Text = 'demo' then
   begin
     demo := true;
-    MesajBilgi('Uygulamanýn demo sürümünü kullanýyorsunuz. Demo sürümde yalnýzca 5 adet kayýt yapýlmasýna izin verilmektedir..' );
+    //MesajBilgi('Uygulamanýn demo sürümünü kullanýyorsunuz. Demo sürümde yalnýzca 5 adet kayýt yapýlmasýna izin verilmektedir..' ); //deneme
     close;
     exit;
   end;
 
-  if floattostr(key) = lblAnahtar.Text then
+  if (key) = lblAnahtar.Text then
   begin
     qLisans := yeniQuery('select * from AYARLAR');
 
@@ -73,7 +75,7 @@ begin
     else
       qLisans.Edit;
 
-    qLisans.FieldByName('LISANSKEY').AsString := floattostr(key);
+    qLisans.FieldByName('LISANSKEY').AsString := (key);
     qLisans.Post;
 
     FreeAndNil(qLisans);

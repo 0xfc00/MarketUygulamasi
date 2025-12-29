@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, ListBaseFrm,uni,main,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm,FireDAC.Comp.Client,main,
 
 
 
@@ -48,9 +48,9 @@ type
     cxGrid1: TcxGrid;
     vwCariHarlist: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    qryCari: TUniQuery;
+    qryCari: TFDQuery;
     dsCari: TDataSource;
-    qryCariHar: TUniQuery;
+    qryCariHar: TFDQuery;
     dsCariHar: TDataSource;
     pnlAlt: TPanel;
     btnKapat: TcxButton;

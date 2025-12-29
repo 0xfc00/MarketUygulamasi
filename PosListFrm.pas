@@ -8,7 +8,7 @@ uses
 
 
   Data.DB,
-  MemDS, Uni, cxGridLevel, cxGridCustomTableView,
+  MemDS, FireDAC.Comp.Client, cxGridLevel, cxGridCustomTableView,
   cxGridDBTableView, cxGrid,
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, _func, dxSkinsCore, dxSkinBlue,
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxControls,
@@ -30,7 +30,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmPosList = class(TfrmListBase)
@@ -39,7 +41,7 @@ type
     cxGrid1: TcxGrid;
     vw: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    qryPoslar: TUniQuery;
+    qryPoslar: TFDQuery;
     dsPoslar: TDataSource;
     vwPOSADI: TcxGridDBColumn;
     vwHESAPKODU: TcxGridDBColumn;

@@ -675,7 +675,6 @@ object frmLogin: TfrmLogin
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnkaydet: TcxButton
       AlignWithMargins = True
@@ -696,8 +695,6 @@ object frmLogin: TfrmLogin
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnkaydetClick
-      ExplicitTop = 3
-      ExplicitHeight = 28
     end
     object btnDbAyar: TcxButton
       AlignWithMargins = True
@@ -746,7 +743,6 @@ object frmLogin: TfrmLogin
         093C2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnDbAyarClick
-      ExplicitHeight = 28
     end
   end
   object cxLabel2: TcxLabel
@@ -781,25 +777,27 @@ object frmLogin: TfrmLogin
     Left = 96
     Top = 8
   end
-  object UniQuery: TUniQuery
+  object UniQuery: TFDQuery
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       
-        'select * from USERS where KULLANICI = :KULLANICI and SIFRE = :SI' +
-        'FRE')
-    ReadOnly = True
+        'select * from USERS where KULLANICI = :KULLANICI and isnull(SIFR' +
+        'E, '#39#39') = :SIFRE')
     Left = 32
     Top = 8
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'KULLANICI'
-        Value = nil
+        ParamType = ptInput
+        Value = Null
       end
       item
-        DataType = ftUnknown
         Name = 'SIFRE'
-        Value = nil
+        ParamType = ptInput
       end>
   end
 end

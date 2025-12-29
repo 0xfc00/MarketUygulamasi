@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, ListBaseFrm, uni,
+  Vcl.Controls, Vcl.Forms, ListBaseFrm, FireDAC.Comp.Client,
 
   Data.DB,
   DBAccess, cxDBEdit, Vcl.StdCtrls, dxPanel, cxButtons, Vcl.ExtCtrls, main,
@@ -32,7 +32,9 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmStokHarList = class(TfrmListBase)
@@ -54,9 +56,9 @@ type
     cxDBTextEdit6: TcxDBTextEdit;
     cxDBTextEdit4: TcxDBTextEdit;
     cxDBTextEdit7: TcxDBTextEdit;
-    qryStok: TUniQuery;
+    qryStok: TFDQuery;
     dsStok: TDataSource;
-    qryStokHar: TUniQuery;
+    qryStokHar: TFDQuery;
     dsStokHar: TDataSource;
     cxGrid1: TcxGrid;
     vw: TcxGridDBTableView;

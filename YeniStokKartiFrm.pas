@@ -1,11 +1,11 @@
-unit YeniStokKartiFrm;
+ï»¿unit YeniStokKartiFrm;
 
 interface
 
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, KartBaseFrm, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, Uni,
+  Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, FireDAC.Comp.Client,
   cxContainer,
   cxDBEdit,
   cxDropDownEdit, cxTextEdit, Vcl.ComCtrls,
@@ -28,11 +28,16 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  System.Net.HttpClient,
+  System.Net.URLClient,
+  System.RegularExpressions, REST.Types, Data.Bind.Components,
+  Data.Bind.ObjectScope, REST.Client,System.Net.HttpClientComponent;
 
 type
   TfrmYeniStokKarti = class(TfrmKartBase)
-    qryStok: TUniQuery;
     dsStok: TDataSource;
     pc: TPageControl;
     shStok: TTabSheet;
@@ -75,13 +80,9 @@ type
     btnSil: TcxButton;
     Label9: TLabel;
     dsMarkaLook: TDataSource;
-    qryMarkaLook: TUniQuery;
     dsBirimLook: TDataSource;
-    qryBirimLook: TUniQuery;
     dsGrupLook: TDataSource;
-    qryGrupLook: TUniQuery;
     dsRafLook: TDataSource;
-    qryRafLook: TUniQuery;
     cbxTeraziTip: TcxComboBox;
     opFileDlg: TdxOpenFileDialog;
     pmResimSil: TPopupMenu;
@@ -90,6 +91,13 @@ type
     btnYeniBirim: TcxButton;
     btnYeniGrup: TcxButton;
     btnYeniRafTanim: TcxButton;
+    qryStok: TFDQuery;
+    qryMarkaLook: TFDQuery;
+    qryBirimLook: TFDQuery;
+    qryGrupLook: TFDQuery;
+    qryRafLook: TFDQuery;
+    btnBarkodBul: TcxButton;
+    RESTClient1: TRESTClient;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure imgStokResimDblClick(Sender: TObject);
@@ -102,6 +110,7 @@ type
     procedure qryStokBeforePost(DataSet: TDataSet);
     procedure btnSilClick(Sender: TObject);
     procedure btnYeniMarkaClick(Sender: TObject);
+    procedure btnBarkodBulClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -145,6 +154,64 @@ begin
   cbxTeraziTip.ItemIndex := qryStok.FieldByName('TERAZITIP').AsInteger;
 end;
 
+procedure TfrmYeniStokKarti.btnBarkodBulClick(Sender: TObject);
+  function PostStokSorgu(const Barkod: string): string;
+  var
+    Client: TNetHTTPClient;
+    Params: TStringList;
+  begin
+    Client := TNetHTTPClient.Create(nil);
+    Params := TStringList.Create;
+    try
+      Client.ContentType := 'application/x-www-form-urlencoded';
+      Client.UserAgent := 'Mozilla/5.0';
+
+      Params.Add('barkodara=' + Barkod);
+
+      Result := Client.Post(
+        'http://www.bilsoftyazilim.com/stok3.asp',
+        Params
+      ).ContentAsString(TEncoding.GetEncoding(1254)); // TÃ¼rkÃ§e iÃ§in
+
+    finally
+      Params.Free;
+      Client.Free;
+    end;
+  end;
+  function UrunAdiniBul(const HTML: string): string;
+  var
+    Matches: TMatchCollection;
+  begin
+    Result := '';
+
+    Matches := TRegEx.Matches(
+      HTML,
+      '<td\s+class="icerik">.*?<font[^>]*>(.*?)</div>',
+      [roIgnoreCase, roSingleLine]
+    );
+
+    // 0 = SIRA
+    // 1 = ÃœRÃœN ADI  â† BUNU ALIYORUZ
+    // 2 = FÄ°YAT
+    if Matches.Count >= 2 then
+      Result := Trim(Matches[1].Groups[1].Value);
+  end;
+
+begin
+  inherited;
+  if trim(edtBarkod.text) <> EmptyStr then
+    if edtStokAdi.text = '' then
+    try
+      if not (qryStok.state in [dsedit,dsInsert]) then
+        qryStok.edit;
+
+
+      qryStok.FieldByName('STOKADI').asstring := (UrunAdiniBul(PostStokSorgu(edtBarkod.text)));
+    except
+      MesajHata('Api servisine baÄŸlanÄ±lamadÄ±');
+    end;
+end;
+
 procedure TfrmYeniStokKarti.btnKapatClick(Sender: TObject);
 begin
   inherited;
@@ -161,7 +228,7 @@ begin
     try
       (qryStok.FieldByName('RESIM') as TBlobField).LoadFromFile(opFileDlg.FileName);
       except on E: Exception do
-      MesajHata('Seçilen resim uygun formatta deðil..');
+      MesajHata('SeÃ§ilen resim uygun formatta deÄŸil..');
     end;
   end;
 end;
@@ -171,7 +238,7 @@ begin
   inherited;
   if trim(edtStokAdi.Text) = EmptyStr then
   begin
-    MesajHata('Ürün adý girilmedi..');
+    MesajHata('ÃœrÃ¼n adÄ± girilmedi..');
     edtStokAdi.SetFocus;
     Abort;
     Exit;
@@ -190,7 +257,7 @@ begin
 
     if StokKoduVarmi_fn(trim(edtStokKodu.Text)) then
     begin
-      MesajHata('Bu stok kodu zaten kayýtlý..');
+      MesajHata('Bu stok kodu zaten kayÄ±tlÄ±..');
       edtStokKodu.SetFocus;
       edtStokKodu.SelectAll;
       Abort;
@@ -199,7 +266,7 @@ begin
 
     if StokAdiVarmi_fn(trim(edtStokAdi.Text)) then
     begin
-      MesajHata('Bu ürün adý zaten kayýtlý..');
+      MesajHata('Bu Ã¼rÃ¼n adÄ± zaten kayÄ±tlÄ±..');
       edtStokAdi.SetFocus;
       edtStokadi.SelectAll;
       Abort;
@@ -208,7 +275,7 @@ begin
 
     if StokBarkodVarmi_fn(trim(edtBarkod.Text)) then
     begin
-      MesajHata('Bu barkod no zaten kayýtlý..');
+      MesajHata('Bu barkod no zaten kayÄ±tlÄ±..');
       edtBarkod.SetFocus;
       edtBarkod.SelectAll;
       Abort;
@@ -236,7 +303,7 @@ begin
     qryStok.edit;
 
   qryStok.Post;
-  MesajBilgi('Kayýt baþarýlý..');
+  MesajBilgi('KayÄ±t baÅŸarÄ±lÄ±..');
   if Sender = btnKaydet then
     Close;
 end;
@@ -285,12 +352,12 @@ begin
 
 
   for I := 0 to ComponentCount-1 do
-    if Components[i] is TUniQuery then
+    if Components[i] is TFDQuery then
     begin
-      TUniQuery(Components[i]).Connection := dmMain.UniConn;
+      TFDQuery(Components[i]).Connection := dmMain.UniConn;
 
       if Components[i].Tag = 0 then
-        TUniQuery(Components[i]).Open;
+        TFDQuery(Components[i]).Open;
     end;
 
 end;
@@ -303,12 +370,12 @@ begin
   if StokID = EmptyStr then
   begin
     YeniKayitIcinHazirla;
-    pnlHeader.Caption := '   STOK KARTI  -  Yeni kayýt';
+    pnlHeader.Caption := '   STOK KARTI  -  Yeni kayÄ±t';
   end
   else
   begin
     StokKartiGetir;
-    pnlHeader.Caption := '   STOK KARTI  -  Düzenle';
+    pnlHeader.Caption := '   STOK KARTI  -  DÃ¼zenle';
   end;
 end;
 

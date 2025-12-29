@@ -12,7 +12,7 @@ uses
 
   cxGridDBTableView,
   cxGridLevel, cxGrid, frxClass, frxDBSet, frxDesgn,
-  Uni, ListBaseFrm, Main,
+  FireDAC.Comp.Client, ListBaseFrm, Main,
   dateutils, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, dxBarBuiltInMenu, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
@@ -48,7 +48,7 @@ type
     cxGroupBox13: TcxGroupBox;
     shStokHarRaporu: TcxTabSheet;
     shCarHarRapor: TcxTabSheet;
-    qryHsRapor: TUniQuery;
+    qryHsRapor: TFDQuery;
     dsHsRapor: TDataSource;
     cxGrid1: TcxGrid;
     vwHsrapor: TcxGridDBTableView;
@@ -60,7 +60,7 @@ type
     vwHsraporkaydeden: TcxGridDBColumn;
     cxGrid1Level2: TcxGridLevel;
     vwHsraporDetay: TcxGridDBTableView;
-    qryHsRaporDet: TUniQuery;
+    qryHsRaporDet: TFDQuery;
     dsHsRaporDet: TDataSource;
     vwHsraporDetaystok_kodu: TcxGridDBColumn;
     vwHsraporDetaystok_adi: TcxGridDBColumn;
@@ -85,7 +85,7 @@ type
     cxGridDBColumn9: TcxGridDBColumn;
     cxGridDBColumn10: TcxGridDBColumn;
     cxGridDBColumn11: TcxGridDBColumn;
-    qryRaporStok: TUniQuery;
+    qryRaporStok: TFDQuery;
     dsRaporStok: TDataSource;
     vwStokHar: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
@@ -98,7 +98,7 @@ type
     vwStokHartoplam: TcxGridDBColumn;
     vwStokHaraciklama: TcxGridDBColumn;
     btnYazdir: TcxButton;
-    qryRaporCari: TUniQuery;
+    qryRaporCari: TFDQuery;
     dsRaporCari: TDataSource;
     cxGrid3: TcxGrid;
     cxGridDBTableView3: TcxGridDBTableView;
@@ -158,13 +158,13 @@ type
     cxGridDBColumn49: TcxGridDBColumn;
     cxGridDBColumn50: TcxGridDBColumn;
     cxGridDBColumn51: TcxGridDBColumn;
-    qryHsRaporStokGrup: TUniQuery;
+    qryHsRaporStokGrup: TFDQuery;
     dsHsRaporStokGrup: TDataSource;
     vwGrupRapor: TcxGridDBTableView;
     cxGrid4Level1: TcxGridLevel;
     vwGrupRaportoplam: TcxGridDBColumn;
     vwGrupRaporgrup_: TcxGridDBColumn;
-    qryHsRaporStokMarka: TUniQuery;
+    qryHsRaporStokMarka: TFDQuery;
     dsHsRaporStokMarka: TDataSource;
     hsMarkaSatisRapor: TcxTabSheet;
     cxGrid5: TcxGrid;
@@ -221,7 +221,7 @@ type
     cxGroupBox12: TPanel;
     cxLabel15: TcxLabel;
     lblVeresiyeSatis: TcxLabel;
-    qryRapor: TUniQuery;
+    qryRapor: TFDQuery;
     cxGroupBox4: TPanel;
     cxLabel3: TcxLabel;
     lblKasaCikis: TcxLabel;

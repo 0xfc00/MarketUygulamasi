@@ -539,15 +539,18 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     OnKeyPress = edtMiktarKeyPress
     Width = 121
   end
-  object qryStok: TUniQuery
+  object qryStok: TFDQuery
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select'
       
         '(SELECT TOP 1 BIRIMADI FROM T_BIRIM WHERE ID= stok.BIRIMID) AS B' +
         'IRIMADI,'
       ' * from stok')
-    ReadOnly = True
     Left = 144
     Top = 8
   end
@@ -557,11 +560,11 @@ object frmStokHareketEkle: TfrmStokHareketEkle
     Left = 200
     Top = 8
   end
-  object qryStokHarEkle: TUniQuery
+  object qryStokHarEkle: TFDQuery
+    BeforePost = qryStokHarEkleBeforePost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from ISLEM_H where 1=0')
-    BeforePost = qryStokHarEkleBeforePost
     Left = 168
     Top = 104
   end

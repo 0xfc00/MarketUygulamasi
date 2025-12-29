@@ -2,17 +2,25 @@ unit MainDM;
 
 interface
 
+
+
 uses
-  System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, Uni,
+  System.SysUtils,Vcl.Forms, System.Classes, Data.DB, DBAccess, FireDAC.Comp.Client,System.IOUtils,
   SQLServerUniProvider, Vcl.Dialogs, System.IniFiles, _cons, _vars, MemDS,
-  UniProvider, Winapi.Windows, SQLiteUniProvider;
+  UniProvider, Winapi.Windows, SQLiteUniProvider, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.MSSQLDef,
+  FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL;
+
+  function SetupMSSQLConnection(AConn: TFDConnection; const AServer, ADatabase, AUser, APassword: string; AUseWindowsAuth: Boolean ): boolean;
 
 type
   TdmMain = class(TDataModule)
-    UniConn: TUniConnection;
-    SQLServerUniProvider1: TSQLServerUniProvider;
-    qry1: TUniQuery;
-    SQLiteUniProvider1: TSQLiteUniProvider;
+    UniConn: TFDConnection;
+    FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
+    qry1: TFDQuery;
     procedure SabitSatirlarKontrol();
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -32,58 +40,130 @@ uses DbAyarlarFrm, _func, Main;
 
 {$R *.dfm}
 
+function SetupMSSQLConnection(
+  AConn: TFDConnection;
+  const AServer, ADatabase, AUser, APassword: string;
+  AUseWindowsAuth: Boolean
+) : boolean;
+begin
+  result := false;
+  AConn.Close;
+  AConn.Params.Clear;
+
+  AConn.Params.DriverID := 'MSSQL';
+  AConn.Params.Add('Server=' + AServer);
+  AConn.Params.Add('Database=' + ADatabase);
+//  AConn.Params.Add('AttachDbFileName=' + DBFILE);
+
+  if AUseWindowsAuth then
+    AConn.Params.Add('OSAuthent=Yes')
+  else
+  begin
+    AConn.Params.Add('User_Name=' + AUser);
+    AConn.Params.Add('Password=' + APassword);
+  end;
+
+  AConn.LoginPrompt := False;
+
+  try
+    AConn.Connected := True;
+    result := true;
+  except
+    on E: Exception do
+      ShowMessage('DB Baðlantý Hatasý: ' + E.Message);
+  end;
+end;
+
 procedure TdmMain.SabitSatirlarKontrol();
 var
-  q : TUniQuery;
+  q : TFDQuery;
+  HataList : string;
 begin
+  HataList := '';
   q := yeniQuery('',false);
+                        
+  try
+    q.sql.text := 'select * from USERS where  KULLANICI = ''ADMIN'' ';
+    qAcKapa_fn(q);
+    if q.IsEmpty then q.append else q.edit;
 
-  q.sql.text := 'select * from CARI where ID = 0 AND CARIKODU = ''CARISABIT'' and UNVAN = ''CARISABIT''';
-  qAcKapa_fn(q);
-  if q.IsEmpty then
-  begin
-    q.append;
-    q.FieldByName('ID').asstring        := '0';
-    q.FieldByName('CARIKODU').asstring  := 'CARISABIT';
-    q.FieldByName('UNVAN').asstring     := 'CARISABIT';
+    q.FieldByName('KULLANICI').asstring  := 'ADMIN';
+    q.FieldByName('YONETICI').asboolean  := true;
     q.post;
-  end;
-
-  q.SQL.text := 'select * from POS where ID = 0 AND POSADI = ''POSSABIT'' ';
-  qAcKapa_fn(q);
-  if q.IsEmpty then
-  begin
-    q.append;
-    q.FieldByName('ID').asstring     := '0';
-    q.FieldByName('POSADI').asstring := 'POSSABIT';
-    q.post;
-  end;
-
-  q.sql.text := 'select * from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE');
-  qAcKapa_fn(q);
-  if q.IsEmpty then
-  begin
-    q.append;
-    q.FieldByName('CARIKODU').asstring := 'PERAKENDE';
-    q.FieldByName('UNVAN').asstring    := 'PERAKENDE';
-    q.post;
-  end;
-
-  q.SQL.text := 'SELECT * FROM ISLEM_BASLIK WHERE ISLEMTURU = 0 AND ODEMETURU = 0 AND EVRAKNO = ''STOKHARSABIT''';
-  qAcKapa_fn(q);
-  if q.IsEmpty then
-  begin
-    q.append;
-    q.FieldByName('ISLEMTURU').asstring   := '0';
-    q.FieldByName('ODEMETURU').asstring   := '0';
-    q.FieldByName('ISLEMTARIHI').asstring := tarihForSqlite(now);
-    q.FieldByName('CARIID').asstring      := '0';
-    q.FieldByName('POSID').asstring       := '0';
-    q.FieldByName('EVRAKNO').asstring     := 'STOKHARSABIT';
-    q.post;
+  except
+    on E: Exception do
+    HataList := HataList + sLineBreak + e.Message;
   end;
 
 
+  try
+    q.sql.text := 'select * from CARI where CARIKODU = ''CARISABIT'' and UNVAN = ''CARISABIT''';
+    qAcKapa_fn(q);
+    if q.IsEmpty then
+    begin
+      q.append;
+      q.FieldByName('CARIKODU').asstring  := 'CARISABIT';
+      q.FieldByName('UNVAN').asstring     := 'CARISABIT';
+      q.post;
+    end;
+    a.SABITCARIID := q.FieldByName('ID').asstring;
+  except
+    on E: Exception do
+    HataList := HataList + sLineBreak + e.Message;
+  end;
+
+  try
+    q.SQL.text := 'select * from POS where POSADI = ''POSSABIT'' ';
+    qAcKapa_fn(q);
+    if q.IsEmpty then
+    begin
+      q.append;
+      q.FieldByName('POSADI').asstring := 'POSSABIT';
+      q.post;
+    end;
+    a.SABITPOSID := q.FieldByName('ID').asstring;
+  except
+    on E: Exception do
+    HataList := HataList + sLineBreak + e.Message;
+  end;
+
+  try
+    q.sql.text := 'select * from CARI where CARIKODU = ' + QuotedStr('PERAKENDE') + ' AND  UNVAN = ' + QuotedStr('PERAKENDE');
+    qAcKapa_fn(q);
+    if q.IsEmpty then
+    begin
+      q.append;
+      q.FieldByName('CARIKODU').asstring := 'PERAKENDE';
+      q.FieldByName('UNVAN').asstring    := 'PERAKENDE';
+      q.post;
+    end;
+  except
+    on E: Exception do
+    HataList := HataList + sLineBreak + e.Message;
+
+  end;
+
+  try
+    q.SQL.text := 'SELECT * FROM ISLEM_BASLIK WHERE ISLEMTURU = 0 AND ODEMETURU = 0 AND EVRAKNO = ''STOKHARSABIT''';
+    qAcKapa_fn(q);
+    if q.IsEmpty then
+    begin
+      q.append;
+      q.FieldByName('ISLEMTURU').asstring   := '0';
+      q.FieldByName('ODEMETURU').asstring   := '0';
+      q.FieldByName('ISLEMTARIHI').AsDateTime := (now);
+      q.FieldByName('CARIID').asstring      := a.SABITCARIID;
+      q.FieldByName('POSID').asstring       := a.SABITPOSID;
+      q.FieldByName('EVRAKNO').asstring     := 'STOKHARSABIT';
+      q.post;
+    end;
+  except
+    on E: Exception do
+    HataList := HataList + sLineBreak + e.Message;
+  end;
+
+  if HataList <> EmptyStr then
+    MesajHata('Yükleme hatalarý : ' + sLineBreak + HataList);
 
   freeandnil(q);
 end;
@@ -91,7 +171,17 @@ end;
 procedure TdmMain.DataModuleCreate(Sender: TObject);
 var
   Ini: TIniFile;
+  Server,Database,Username,Password : string;
 begin
+  FDPhysMSSQLDriverLink1.VendorLib := '';
+
+  DBDIR := ExtractFilePath(ParamStr(0)) + 'data\';
+  DBFILE := ExtractFilePath(ParamStr(0)) + 'data\KHPRO.mdf';
+
+  if not TDirectory.Exists(DBDIR) then
+    TDirectory.CreateDirectory(DBDIR);
+
+
   if UniConn.Connected then
     showmessage('UniConn açýk');  //deneme
   UniConn.close;
@@ -105,54 +195,32 @@ begin
   begin
     Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'khpro.ini');
     try
-      if Ini.ReadString('Database', 'Db', '0') = '0' then
-      begin
-        if FileExists(ExtractFilePath(ParamStr(0)) + 'db.db') then
-        begin
-          UniConn.Database := ExtractFilePath(ParamStr(0)) + 'db.db';
-          UniConn.ProviderName := 'SQLite';
-          a.DB_TIPI := 0;
-        end
-        else
-        begin
-          raise Exception.Create('db.db dosyasý yok.');
-        end;
-      end
-      else
-      if Ini.ReadString('Database', 'Db', '0') = '1' then
-      begin
-        UniConn.Server   := Ini.ReadString('Database', 'Server', '');
-        UniConn.Database := Ini.ReadString('Database', 'Database', '');
-
-        if Ini.ReadString('Database', 'AuthType', '') = 'Windows Auth' then
-        begin
-          UniConn.SpecificOptions.Values['Authentication'] := 'auWindows';
-        end
-        else
-        if Ini.ReadString('Database', 'AuthType', '') = 'SQL' then
-        begin
-          UniConn.SpecificOptions.Values['Authentication'] := 'auServer';
-          UniConn.Username := Ini.ReadString('Database', 'Username', '');
-          UniConn.Password := DecryptStr(Ini.ReadString('Database', 'Password', ''), 123);
-        end;
-
-        UniConn.ProviderName := 'SQL Server';
-
-        a.DB_TIPI := 1;
-      end;
+      Server   := Ini.ReadString('Database', 'Server', '');
+      Database := Ini.ReadString('Database', 'Database', '');
+      Username := Ini.ReadString('Database', 'Username', '');
+      Password := DecryptStr(Ini.ReadString('Database', 'Password', ''), 123);
     finally
       Ini.Free;
     end;
   end;
 
   try
-    if (Trim(UniConn.Server) = EmptyStr) or (Trim(UniConn.Database) = EmptyStr) then
+    if (Trim(Server) = EmptyStr) or (trim(Database) = EmptyStr) then
       raise Exception.Create('Server yada Database bilgisi yok.');
-    UniConn.open;
+
+    if not SetupMSSQLConnection(
+                      UniConn,
+                      Server,
+                      Database,
+                      Username,
+                      Password,
+                      ( (trim(Username) = EmptyStr) and (trim(Password) = EmptyStr) )
+                       )
+    then
+      raise Exception.Create('');
 
     with  yeniQuery('select ID from AYARLAR',TRUE) DO
     begin
-
       if FieldByName('ID').AsString = '' then
         FREE;
     end;
@@ -167,12 +235,15 @@ begin
     end;
   end;
 
+  SabitSatirlarKontrol;
+  ayarlariYukle;
+
   LoginFormAc_fn; //deneme
   //loginUserID := 1; //deneme
 
 
-  SabitSatirlarKontrol;
-  ayarlariYukle;
+
+
 
 end;
 

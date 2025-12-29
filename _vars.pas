@@ -28,7 +28,9 @@ interface
   TAyar = record
     OTO_YEDEK              : BOOLEAN;
     OTO_YEDEK_DIZINI       : string;
-    DB_TIPI                : integer;
+    SABITCARIID            : String;
+    SABITPOSID             : string;
+    //DB_TIPI                : integer;
 
   end;
 

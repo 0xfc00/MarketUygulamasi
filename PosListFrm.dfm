@@ -22,7 +22,6 @@ object frmPosList: TfrmPosList
     Height = 74
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 8
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 533
@@ -125,7 +124,6 @@ object frmPosList: TfrmPosList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -222,8 +220,6 @@ object frmPosList: TfrmPosList
         2F673E0D0A3C2F7376673E0D0A}
       TabOrder = 2
       OnClick = btnSilClick
-      ExplicitLeft = 127
-      ExplicitHeight = 28
     end
   end
   object cxGrid1: TcxGrid
@@ -234,7 +230,6 @@ object frmPosList: TfrmPosList
     Height = 359
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 397
     object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = False
@@ -318,13 +313,13 @@ object frmPosList: TfrmPosList
       GridView = vw
     end
   end
-  object qryPoslar: TUniQuery
-    Connection = dmMain.UniConn
-    SQL.Strings = (
-      'select * from POS')
+  object qryPoslar: TFDQuery
     BeforePost = qryPoslarBeforePost
     BeforeDelete = qryPoslarBeforeDelete
     OnNewRecord = qryPoslarNewRecord
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from POS where POSADI <> '#39'POSSABIT'#39)
     Left = 277
     Top = 96
   end

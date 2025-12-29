@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, KartBaseFrm, main, MainDM,
 
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls,
-  Data.DB, MemDS, DBAccess, Uni, dxPanel, cxContainer,
+  Data.DB, MemDS, DBAccess, FireDAC.Comp.Client, dxPanel, cxContainer,
   cxDBEdit, cxTextEdit,
   _cons, _func, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.Menus, cxControls, cxGeometry, dxFramedControl,
@@ -27,7 +27,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmStokHareketEkle = class(TfrmKartBase)
@@ -35,7 +37,7 @@ type
     btnKapat: TcxButton;
     btnkaydet: TcxButton;
     dxPanel1: TdxPanel;
-    qryStok: TUniQuery;
+    qryStok: TFDQuery;
     dsStok: TDataSource;
     Label1: TLabel;
     cxDBTextEdit1: TcxDBTextEdit;
@@ -51,7 +53,7 @@ type
     cxDBTextEdit4: TcxDBTextEdit;
     cxDBTextEdit7: TcxDBTextEdit;
     Label6: TLabel;
-    qryStokHarEkle: TUniQuery;
+    qryStokHarEkle: TFDQuery;
     dsStokHarEkle: TDataSource;
     Label7: TLabel;
     edtIslemTarihi: TcxDBDateEdit;
@@ -101,6 +103,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses _vars;
 
 
 
@@ -279,8 +283,8 @@ begin
   DataSet.FieldByName('BIRIMADI').AsString    := qryStok.FieldByName('BIRIMADI').AsString;
   DataSet.FieldByName('KDVORANI').AsString    := qryStok.FieldByName('KDV').AsString;
   DataSet.FieldByName('KDVTUTARI').AsFloat    := StrToFloatDef(edtFiyatKdvDahil.Text,0) - StrToFloatDef(edtFiyatKdvHaric.Text,0);
-  DataSet.FieldByName('CARIID').AsString      := '0';
-  DataSet.FieldByName('POSID').AsString       := '0';
+  DataSet.FieldByName('CARIID').AsString      := a.SABITCARIID;
+  DataSet.FieldByName('POSID').AsString       := a.SABITPOSID;
 
 
   if DataSet.FieldByName('KDVTUTARI').AsFloat <= 0 then

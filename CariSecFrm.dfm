@@ -124,7 +124,6 @@ object frmCariSec: TfrmCariSec
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnSec: TcxButton
       AlignWithMargins = True
@@ -185,7 +184,6 @@ object frmCariSec: TfrmCariSec
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSecClick
-      ExplicitTop = 0
     end
   end
   object cxGrid1: TcxGrid
@@ -196,7 +194,6 @@ object frmCariSec: TfrmCariSec
     Height = 367
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 391
     object vmCariler: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -222,27 +219,31 @@ object frmCariSec: TfrmCariSec
       object vmCarilerSTOKKODU: TcxGridDBColumn
         Caption = 'Kod'
         DataBinding.FieldName = 'CARIKODU'
+        DataBinding.IsNullValueType = True
         Width = 81
       end
       object vmCarilerSTOKADI: TcxGridDBColumn
         Caption = #220'nvan'
         DataBinding.FieldName = 'UNVAN'
+        DataBinding.IsNullValueType = True
         Width = 212
       end
       object vmCarilerColumn1: TcxGridDBColumn
         Caption = 'Bakiye'
         DataBinding.FieldName = 'BAKIYE'
+        DataBinding.IsNullValueType = True
       end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = vmCariler
     end
   end
-  object qryCariler: TUniQuery
+  object qryCariler: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
-      'select * from CARI where UNVAN <> '#39'PERAKENDE'#39)
-    Active = True
+      
+        'select * from CARI where UNVAN <> '#39'PERAKENDE'#39' and UNVAN <> '#39'CARI' +
+        'SABIT'#39)
     Left = 328
     Top = 104
   end

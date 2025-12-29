@@ -407,7 +407,7 @@ object frmCariHarList: TfrmCariHarList
       ExplicitHeight = 28
     end
   end
-  object qryCari: TUniQuery
+  object qryCari: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select'
@@ -424,7 +424,7 @@ object frmCariHarList: TfrmCariHarList
     Left = 184
     Top = 176
   end
-  object qryCariHar: TUniQuery
+  object qryCariHar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select *,'

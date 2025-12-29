@@ -126,7 +126,6 @@ object frmStokList: TfrmStokList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitTop = 0
     end
     object btnKaydetVeYeni: TcxButton
       AlignWithMargins = True
@@ -229,7 +228,6 @@ object frmStokList: TfrmStokList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitHeight = 28
     end
     object btnStokDuzenle: TcxButton
       AlignWithMargins = True
@@ -268,7 +266,6 @@ object frmStokList: TfrmStokList
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitHeight = 28
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
@@ -312,7 +309,6 @@ object frmStokList: TfrmStokList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = cxButton1Click
-      ExplicitLeft = 160
     end
     object cxButton3: TcxButton
       AlignWithMargins = True
@@ -356,7 +352,6 @@ object frmStokList: TfrmStokList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = cxButton3Click
-      ExplicitTop = 0
     end
     object cxButton4: TcxButton
       AlignWithMargins = True
@@ -401,7 +396,7 @@ object frmStokList: TfrmStokList
       ParentFont = False
     end
   end
-  object cxGrid1: TcxGrid
+  object gtdStoklar: TcxGrid
     AlignWithMargins = True
     Left = 3
     Top = 3
@@ -409,7 +404,6 @@ object frmStokList: TfrmStokList
     Height = 647
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 681
     object vwStoklar: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FindPanel.DisplayMode = fpdmAlways
@@ -448,71 +442,83 @@ object frmStokList: TfrmStokList
       object vwStoklarSTOKKODU: TcxGridDBColumn
         Caption = 'Stok Kodu'
         DataBinding.FieldName = 'STOKKODU'
+        DataBinding.IsNullValueType = True
         Width = 81
       end
       object vwStoklarSTOKADI: TcxGridDBColumn
         Caption = 'Stok Ad'#305
         DataBinding.FieldName = 'STOKADI'
+        DataBinding.IsNullValueType = True
         Width = 200
       end
       object vwStoklarBARKOD: TcxGridDBColumn
         Caption = 'Barkod'
         DataBinding.FieldName = 'BARKOD'
+        DataBinding.IsNullValueType = True
         Width = 90
       end
       object vwStoklarColumn1: TcxGridDBColumn
         Caption = 'Giren'
         DataBinding.FieldName = 'TOPLAM_GIREN'
+        DataBinding.IsNullValueType = True
       end
       object vwStoklarColumn2: TcxGridDBColumn
         Caption = #199#305'kan'
         DataBinding.FieldName = 'TOPLAM_CIKAN'
+        DataBinding.IsNullValueType = True
       end
       object vwStoklarColumn3: TcxGridDBColumn
         Caption = 'Stok Adet'
-        DataBinding.FieldName = 'MEVCUT'
+        DataBinding.FieldName = 'BAKIYE'
         DataBinding.IsNullValueType = True
       end
       object vwStoklarURUNMARKASI: TcxGridDBColumn
         Caption = 'Marka'
         DataBinding.FieldName = 'MARKAADI'
+        DataBinding.IsNullValueType = True
         Width = 90
       end
       object vwStoklarBIRIMID: TcxGridDBColumn
         Caption = 'Birim'
         DataBinding.FieldName = 'BIRIMADI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object vwStoklarGRUPID: TcxGridDBColumn
         Caption = 'Stok Grup'
         DataBinding.FieldName = 'GRUPADI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object vwStoklarKDV: TcxGridDBColumn
         DataBinding.FieldName = 'KDV'
+        DataBinding.IsNullValueType = True
         Width = 50
       end
       object vwStoklarSATISFIYATI: TcxGridDBColumn
         Caption = 'Sat'#305#351' Fiyat'#305
         DataBinding.FieldName = 'SATISFIYATI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object vwStoklarSONALISFIYATI: TcxGridDBColumn
         Caption = 'Al'#305#351' Fiyat'#305
         DataBinding.FieldName = 'ALISFIYATI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
       object vwStoklarREYONRAFID: TcxGridDBColumn
         Caption = 'Reyon Raf Ad'#305
         DataBinding.FieldName = 'REYONRAFADI'
+        DataBinding.IsNullValueType = True
         Width = 80
       end
     end
-    object cxGrid1Level1: TcxGridLevel
+    object gtdStoklarLevel1: TcxGridLevel
       GridView = vwStoklar
     end
   end
-  object qryStoklar: TUniQuery
+  object qryStoklar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * '
@@ -556,5 +562,16 @@ object frmStokList: TfrmStokList
       Caption = 'Excelden Aktar'
       OnClick = E1Click
     end
+    object E2: TMenuItem
+      Caption = 'Excele Aktar'
+      OnClick = E2Click
+    end
+  end
+  object FileSaveDialog1: TFileSaveDialog
+    FavoriteLinks = <>
+    FileTypes = <>
+    Options = []
+    Left = 144
+    Top = 224
   end
 end

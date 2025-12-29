@@ -509,7 +509,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
       end
     end
   end
-  object qryKasaHar: TUniQuery
+  object qryKasaHar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select *,'
@@ -535,7 +535,7 @@ object frmKasaPosHarList: TfrmKasaPosHarList
     Left = 410
     Top = 112
   end
-  object qryPosHar: TUniQuery
+  object qryPosHar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select *,'

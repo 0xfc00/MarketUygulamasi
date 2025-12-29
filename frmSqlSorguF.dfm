@@ -132,7 +132,7 @@ object frmSqlSorgu: TfrmSqlSorgu
       OnClick = cxButton2Click
     end
   end
-  object q: TUniQuery
+  object q: TFDQuery
     Connection = dmMain.UniConn
     Left = 432
     Top = 304

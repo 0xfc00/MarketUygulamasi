@@ -3,9 +3,9 @@ unit _func;
 interface
 
 uses
-  Data.DB,DBAccess, Vcl.Forms,Uni,sysUtils,Winapi.Windows, System.IOUtils;
+  Data.DB,DBAccess, Vcl.Forms,FireDAC.Comp.Client,sysUtils,Winapi.Windows, System.IOUtils;
 
-  function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
+  function yeniQuery(sqlText:string; durum:boolean = true): TFDQuery;
   function EncryptStr(const S :WideString; Key: Word): String;
   function DecryptStr(const S: String; Key: Word): String;
   function Randomstring(strLen: Integer): string;
@@ -13,14 +13,14 @@ uses
   function veriCekSQL(SQL,donusKolon: string) : string;
   procedure yetkileriYukle();
   procedure ayarlariYukle();
-  procedure sabitTablolarKontrol();
+
   function lisansKontrol(): Boolean;
   procedure lisansYoksaKapat();
   procedure demoKontrol();
   procedure EkleyenDegistiren(ADataset: TDataSet);
   function YetkiKontrol(AYetki : boolean = False): boolean;
   function OtoYedek_fn() : boolean;
-  function tarihForSqlite(ATarih : TDateTime): string;
+
 
 
 
@@ -32,11 +32,11 @@ const
   CKEY1 = 53761;
   CKEY2 = 32618;
 
-function yeniQuery(sqlText:string; durum:boolean = true): TUniQuery;
-var q : TUniQuery;
+function yeniQuery(sqlText:string; durum:boolean = true): TFDQuery;
+var q : TFDQuery;
 begin
   try
-    q := TUniQuery.Create(nil);
+    q := TFDQuery.Create(nil);
     q.Connection := dmMain.UniConn;
     q.SQL.Text := sqlText;
     if durum then q.Open;
@@ -118,11 +118,11 @@ end;
 
 function sqlCalistir(sql : string): Integer;
 var
-  cmd : TUniQuery;
+  cmd : TFDQuery;
 begin
   result := -1;
 
-  cmd := TUniQuery.Create(nil);
+  cmd := TFDQuery.Create(nil);
   cmd.Connection := dmMain.UniConn;
   cmd.sql.Text := sql;
   cmd.Execute;
@@ -132,7 +132,7 @@ end;
 
 function veriCekSQL(SQL,donusKolon: string) : string;
 var
-  q:TUniQuery;
+  q:TFDQuery;
 begin
   try
     q := yeniQuery(sql);
@@ -149,28 +149,28 @@ end;
 
 procedure yetkileriYukle();
 var
-  q: TUniQuery;
+  q: TFDQuery;
 begin
   q := yeniQuery('select * from USERS where ID='+ loginUserID.tostring);
 
-  y.admin          := q.FieldByName('YONETICI').asinteger         = 1;
-  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').asinteger       = 1;
-  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').asinteger   = 1;
-  y.STOKSIL        := q.FieldByName('y_STOKSIL').asinteger        = 1;
-  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').asinteger       = 1;
-  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').asinteger   = 1;
-  y.CARISIL        := q.FieldByName('y_CARISIL').asinteger        = 1;
-  y.FATEKLE        := q.FieldByName('y_FATEKLE').asinteger        = 1;
-  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').asinteger    = 1;
-  y.FATSIL         := q.FieldByName('y_FATSIL').asinteger         = 1;
-  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').asinteger       = 1;
-  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').asinteger    = 1;
-  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').asinteger = 1;
-  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').asinteger     = 1;
-  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').asinteger     = 1;
-  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').asinteger  = 1;
-  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').asinteger   = 1;
-  y.RAPORLAR       := q.FieldByName('y_RAPORLAR').asinteger       = 1;
+  y.admin          := q.FieldByName('YONETICI').asboolean         = true;
+  y.STOKEKLE       := q.FieldByName('y_STOKEKLE').asboolean       = true;
+  y.STOKGUNCELLE   := q.FieldByName('y_STOKGUNCELLE').asboolean   = true;
+  y.STOKSIL        := q.FieldByName('y_STOKSIL').asboolean        = true;
+  y.CARIEKLE       := q.FieldByName('y_CARIEKLE').asboolean       = true;
+  y.CARIGUNCELLE   := q.FieldByName('y_CARIGUNCELLE').asboolean   = true;
+  y.CARISIL        := q.FieldByName('y_CARISIL').asboolean        = true;
+  y.FATEKLE        := q.FieldByName('y_FATEKLE').asboolean        = true;
+  y.FATGUNCELLE    := q.FieldByName('y_FATGUNCELLE').asboolean    = true;
+  y.FATSIL         := q.FieldByName('y_FATSIL').asboolean         = true;
+  y.BORCEKLE       := q.FieldByName('y_BORCEKLE').asboolean       = true;
+  y.TAHSILATGIR    := q.FieldByName('y_TAHSILATGIR').asboolean    = true;
+  y.HSSATIRDUZENLE := q.FieldByName('y_HSSATIRDUZENLE').asboolean = true;
+  y.STOKHARSIL     := q.FieldByName('y_STOKHARSIL').asboolean     = true;
+  y.CARIHARSIL     := q.FieldByName('y_CARIHARSIL').asboolean     = true;
+  y.KASAISLEMEKLE  := q.FieldByName('y_KASAISLEMEKLE').asboolean  = true;
+  y.KASAISLEMSIL   := q.FieldByName('y_KASAISLEMSIL').asboolean   = true;
+  y.RAPORLAR       := q.FieldByName('y_RAPORLAR').asboolean       = true;
 
 
 
@@ -179,13 +179,13 @@ end;
 
 procedure ayarlariYukle();
 var
-  q: TUniQuery;
+  q: TFDQuery;
 begin
   q := yeniQuery('select * from AYARLAR');
 
   if not q.IsEmpty then
   begin
-    a.OTO_YEDEK  := q.FieldByName('OTO_YEDEK').asinteger = 1;
+    a.OTO_YEDEK  := q.FieldByName('OTO_YEDEK').asboolean;
     a.OTO_YEDEK_DIZINI      := q.FieldByName('OTO_YEDEK_DIZINI').asString;
   end;
 
@@ -193,36 +193,18 @@ begin
   FreeAndNil(q);
 end;
 
-procedure sabitTablolarKontrol();
-var
-  q : TUniQuery;
-begin
-  //admin user kontrolü
-  q := yeniQuery('select * from t_kullanicilar where username= ''admin''');
-  if q.IsEmpty then
-  begin
-    q.Append;
-    q.FieldByName('username').AsString := 'admin';
-    q.FieldByName('admin').AsString := '1';
-    q.Post;
-  end;
 
-  //ADMÝN USER KONTROLÜ
-
-
-  FreeAndNil(q);
-end;
 
 
 function lisansKontrol(): Boolean;
 var
-SerialNum: DWord;
-A,B: DWord;
-C: array [0..255] of Char;
-Buffer: array [0..255] of Char;
-dSerial, dKey : double;
-  q : TUniQuery;
-mForm : TlisansForm;
+  SerialNum: DWord;
+  A,B: DWord;
+  C: array [0..255] of Char;
+  Buffer: array [0..255] of Char;
+  q : TFDQuery;
+  mForm : TlisansForm;
+  strSerial, strKey : string;
 begin
   if not demo then
   begin
@@ -235,32 +217,38 @@ begin
         A,
         B,
         C,
-        256);
+        256);             ;
 
-      dSerial := SerialNum;
+      strSerial := SerialNum.ToString;
+      strSerial := EncryptStr(strSerial,31);
+      strSerial := EncryptStr(strSerial,52);
+      strSerial := EncryptStr(strSerial,69);
 
-      dSerial := dSerial *31;
-      dSerial := dSerial + 52;
-      dSerial := dSerial /69;
+      strSerial := Copy(strSerial, strSerial.Length - 10 ,strSerial.Length - 1);
 
-      dKey := dSerial;
 
-      dKey := dKey *31;
-      dKey := dKey +52;
-      dKey := dKey /69;
+//      dSerial := dSerial *31;
+//      dSerial := dSerial + 52;
+//      dSerial := dSerial /69;
 
-      dKey := trunc (dKey);
+      strKey := strSerial;
+
+      strKey := EncryptStr(strKey,31);
+      strKey := EncryptStr(strKey,52);
+      strKey := EncryptStr(strKey,69);
+
+      strKey := Copy(strKey, strKey.Length - 10 ,strKey.Length - 1);
 
 
       q := yeniQuery('select * from AYARLAR');
 
 
-      if (q.IsEmpty) or  (q.FieldByName('LISANSKEY').AsString <> FloatToStr(dKey)  )  then
+      if (q.IsEmpty) or  (q.FieldByName('LISANSKEY').AsString <> (strKey)  )  then
       begin
         mForm := TlisansForm.Create(nil);
-        mForm.lblSeriNO.Text := FloatToStr(dSerial);
+        mForm.lblSeriNO.Text := (strSerial);
         //mform.lblAnahtar.Text := FloatToStr(dKey);//deneme;;
-        mform.key := dKey;
+        mform.key := strKey;
         mForm.ShowModal;
       end
       else
@@ -292,7 +280,7 @@ procedure demoKontrol();
 begin
   if demo then
   begin
-    MesajBilgi('Demo Sürümde 5 den Fazla Kayýt Yapýlamaz..' );
+    MesajBilgi('Demo Sürümde 3 den Fazla Kayýt Yapýlamaz..' );
      abort;
 
     ExitProcess(0);
@@ -309,14 +297,14 @@ begin
       ADataset.FieldByName('USERID').Asinteger := loginUserID;
 
     if ADataset.FindField('CREATEDAT') <> nil then
-      ADataset.FieldByName('CREATEDAT').AsString := tarihForSqlite(now);
+      ADataset.FieldByName('CREATEDAT').AsDateTime := (now);
   end
   else if ADataset.State = dsEdit then
   begin
     if ADataset.FindField('USERIDUP') <> nil then
       ADataset.FieldByName('USERIDUP').Asinteger := loginUserID;
     if ADataset.FindField('UPDATEDAT') <> nil then
-      ADataset.FieldByName('UPDATEDAT').AsString := tarihForSqlite(now);
+      ADataset.FieldByName('UPDATEDAT').AsDateTime := (now);
   end;
 end;
 
@@ -379,9 +367,6 @@ begin
 
 end;
 
-function tarihForSqlite(ATarih : TDateTime): string;
-begin
-  result := FormatDateTime('yyyy-mm-dd hh:nn:ss', ATarih);
-end;
+
 
 end.

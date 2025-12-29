@@ -2028,7 +2028,7 @@ object frmRaporlar: TfrmRaporlar
       end
     end
   end
-  object qryHsRapor: TUniQuery
+  object qryHsRapor: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT '
@@ -2065,7 +2065,7 @@ object frmRaporlar: TfrmRaporlar
     Left = 16
     Top = 488
   end
-  object qryHsRaporDet: TUniQuery
+  object qryHsRaporDet: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT '
@@ -2103,7 +2103,7 @@ object frmRaporlar: TfrmRaporlar
     Left = 715
     Top = 322
   end
-  object qryRaporStok: TUniQuery
+  object qryRaporStok: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT '
@@ -2146,7 +2146,7 @@ object frmRaporlar: TfrmRaporlar
     Left = 240
     Top = 488
   end
-  object qryRaporCari: TUniQuery
+  object qryRaporCari: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT *,'
@@ -2200,7 +2200,7 @@ object frmRaporlar: TfrmRaporlar
     Left = 320
     Top = 496
   end
-  object qryHsRaporStokGrup: TUniQuery
+  object qryHsRaporStokGrup: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'
@@ -2239,7 +2239,7 @@ object frmRaporlar: TfrmRaporlar
     Left = 408
     Top = 488
   end
-  object qryHsRaporStokMarka: TUniQuery
+  object qryHsRaporStokMarka: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'
@@ -2761,7 +2761,7 @@ object frmRaporlar: TfrmRaporlar
       OnClick = RaporTasarm1Click
     end
   end
-  object qryRapor: TUniQuery
+  object qryRapor: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'SELECT'

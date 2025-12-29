@@ -249,7 +249,7 @@ object frmStokSec: TfrmStokSec
       ExplicitTop = 0
     end
   end
-  object qryStoklar: TUniQuery
+  object qryStoklar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from STOK')

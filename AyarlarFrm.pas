@@ -24,7 +24,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   Vcl.Menus, cxControls, cxContainer, cxEdit, dxBarBuiltInMenu, cxDBEdit,
-  cxLabel, cxGroupBox, Data.DB, DBAccess, Uni, MemDS, cxPC, cxTextEdit,
+  cxLabel, cxGroupBox, Data.DB, DBAccess, FireDAC.Comp.Client, MemDS, cxPC, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, cxCheckBox, _func;
 
@@ -37,8 +37,8 @@ type
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     pc: TcxPageControl;
     shTemelAyarlar: TcxTabSheet;
-    qryAyarlar: TUniQuery;
-    dsAyarlar: TUniDataSource;
+    qryAyarlar: TFDQuery;
+    dsAyarlar: TDataSource;
     cxTabSheet1: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
     cxGroupBox8: TcxGroupBox;

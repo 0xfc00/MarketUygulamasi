@@ -10,7 +10,7 @@ uses
 
   Data.DB,  System.DateUtils,
   cxGridCustomTableView, cxGridDBTableView, cxGridLevel,
-  cxGrid, DBAccess, Uni,
+  cxGrid, DBAccess, FireDAC.Comp.Client,
 
   cxCalendar, dxBarBuiltInMenu, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
@@ -33,7 +33,10 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, _func;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, _func, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
 
 type
   TfrmKasaPosHarList = class(TfrmListBase)
@@ -47,7 +50,7 @@ type
     btnDun: TcxButton;
     btnBugun: TcxButton;
     btnSonAy: TcxButton;
-    qryKasaHar: TUniQuery;
+    qryKasaHar: TFDQuery;
     dsKasaHar: TDataSource;
     cxGrid1: TcxGrid;
     vwKasa: TcxGridDBTableView;
@@ -61,7 +64,7 @@ type
     cxGrid2: TcxGrid;
     vwPos: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    qryPosHar: TUniQuery;
+    qryPosHar: TFDQuery;
     dsPosHar: TDataSource;
     vwPosPOSID: TcxGridDBColumn;
     vwPosTARIH: TcxGridDBColumn;
@@ -122,7 +125,7 @@ end;
 procedure TfrmKasaPosHarList.btnFiltreleClick(Sender: TObject);
 var
   sql : string;
-  q : TUniQuery;
+  q : TFDQuery;
 Begin
   if pcAna.ActivePage = shtKasa then
   begin
@@ -140,8 +143,8 @@ Begin
 
   q.sql.text := sql;
   q.sql.add(' and CAST(ISLEMTARIHI AS date) >= :bastarih and CAST(ISLEMTARIHI AS date) <= :bittarih');
-  q.ParamByName('bastarih').AsString := tarihForSqlite(dtBas.Date);
-  q.ParamByName('bittarih').AsString := tarihForSqlite(dtBit.Date);
+  q.ParamByName('bastarih').AsDateTime := (dtBas.Date);
+  q.ParamByName('bittarih').AsDateTime := (dtBit.Date);
   qAcKapa_fn(q);
 
   if pcAna.ActivePage = shtKasa then

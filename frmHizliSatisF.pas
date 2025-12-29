@@ -13,7 +13,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid,
   cxButtons, cxDropDownEdit, cxTextEdit, cxGroupBox, MemDS,
   DBAccess, frxClass, frxDBSet,
-  Uni, BaseFrm, PosListFrm, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  FireDAC.Comp.Client, BaseFrm, PosListFrm, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
   dxSkinBlue, cxStyles, cxFilter, cxData, cxDataStorage, cxNavigator,
   dxDateRanges, dxScrollbarAnnotations, cxDBData, dxBarBuiltInMenu,
   System.Actions, System.ImageList, Vcl.ImgList, cxImageList, dxGDIPlusClasses,
@@ -33,7 +33,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmHizliSatis = class(TfrmBase)
@@ -132,29 +134,28 @@ type
     btnSatirAdetArttir: TcxButton;
     btnSatirAdetEksilt: TcxButton;
     cxButton6: TcxButton;
-    qryTempSatis: TUniQuery;
+    qryTempSatis: TFDQuery;
     Panel2: TPanel;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
     dsTempSatis: TDataSource;
-    qryStokBul: TUniQuery;
+    qryStokBul: TFDQuery;
     dsStokBul: TDataSource;
-    qryBekleyenSatislar: TUniQuery;
+    qryBekleyenSatislar: TFDQuery;
     dsBekleyenSatislar: TDataSource;
-    qryBekleyenSatislarDetay: TUniQuery;
+    qryBekleyenSatislarDetay: TFDQuery;
     dsBekleyenSatislarDetay: TDataSource;
     frxDsHsCari: TfrxDBDataset;
     frxDsHsFisTitle: TfrxDBDataset;
     frxHsFis: TfrxReport;
     frxDsHsFis: TfrxDBDataset;
-    qryFis: TUniQuery;
+    qryFis: TFDQuery;
     pmRaporTasarim: TPopupMenu;
     RaporTasarm1: TMenuItem;
-    qryCari: TUniQuery;
+    qryCari: TFDQuery;
     cbPos: TcxComboBox;
-    qrySatisBitir__yedek: TUniQuery;
-    qrySatisBitir: TUniQuery;
-    qryFisTitle: TUniQuery;
+    qrySatisBitir__yedek: TFDQuery;
+    qryFisTitle: TFDQuery;
     cxStyleRepository1: TcxStyleRepository;
     GridTableViewStyleSheetPumpkinlarge: TcxGridTableViewStyleSheet;
     cxStyle1: TcxStyle;
@@ -168,7 +169,7 @@ type
     cxStyle9: TcxStyle;
     cxStyle10: TcxStyle;
     cxStyle11: TcxStyle;
-    qrySatisBitirYedekkkk: TUniQuery;
+    qrySatisBitir: TFDQuery;
     procedure barkodOku(stokKodu:string);
     procedure hizliSatisDoldur();
     procedure FormCreate(Sender: TObject);
@@ -223,7 +224,7 @@ uses _cons, _func, _vars, Main, MainDM;
 procedure TfrmHizliSatis.barkodOku(stokKodu:string);
 var
   i , adet: integer;
-  qS, qG, qToplam, q : TUniQuery;
+  qS, qG, qToplam, q : TFDQuery;
   sTartilan, sTartiBarkod, s : string;
   dTartilan, dTartilanTutar : double;
 label
@@ -241,7 +242,7 @@ label
 begin
   // stokID parametresi boþsa edtBarkod.text deki barkodla okuyacak. stokID parametresi dolusa gelen veriyi stok id de arayacak..
 
-  if grdHizliSatisDBTableView1.DataController.RecordCount > 5 then demoKontrol;
+  if grdHizliSatisDBTableView1.DataController.RecordCount > 2 then demoKontrol;
   if (stokKodu = '') and (edtBarkod.Text = '') then exit;
 
   adet := 0;
@@ -278,19 +279,19 @@ begin
   begin
     if qS.FieldByName('TERAZITIP').AsInteger > 1 then
     begin
-      sTartilan := InputBox('Tartýlý Ürün', 'Terazi Baðlantýsý Kurulamadý. Lütfen Ürünün Tartým Sonucunu Giriniz..','');
+      sTartilan := InputBox('Tartýlý Ürün', 'Terazi Baðlantýsý Kurulamadý. Lütfen Ürünün Tartým Sonucunu Gram Olarak Giriniz..','');
       dTartilan := StrToFloatDef(sTartilan,0);
 
       if dTartilan = 0  then exit;
 
       lblTeraziBarkodu:
 
-      if sTartiBarkod = '' then                          //deneme
-      begin
-        dTartilanTutar := (dTartilan / qS.FieldByName('tarti_carpan').AsFloat) * qS.FieldByName('sfiyat1').AsFloat;
-        dTartilan :=  dTartilan / qS.FieldByName('tarti_carpan').AsFloat;
-      end
-      else
+//      if sTartiBarkod = '' then                          //deneme
+//      begin
+//        dTartilanTutar := (dTartilan / qS.FieldByName('tarti_carpan').AsFloat) * qS.FieldByName('sfiyat1').AsFloat;
+//        dTartilan :=  dTartilan / qS.FieldByName('tarti_carpan').AsFloat;
+//      end
+//      else
         dTartilan :=  dTartilan / 1000;
     end;
 
@@ -413,7 +414,7 @@ end;
 
 procedure TfrmHizliSatis.hizliSatisDoldur();
 var
-  qHsGrup_, qHsStok_, qStok_ : TUniQuery;
+  qHsGrup_, qHsStok_, qStok_ : TFDQuery;
   shtHS: TcxTabSheet;
   sboxHS: TScrollBox;
   fPanelHS: TFlowPanel;
@@ -602,7 +603,7 @@ end;
 
 procedure TfrmHizliSatis.btnSatisBekletClick(Sender: TObject);
 var
-  q:TUniQuery;
+  q:TFDQuery;
   yeniNo : integer;
 begin
   if qryTempSatis.IsEmpty then exit;
@@ -695,10 +696,10 @@ end;
 
 procedure TfrmHizliSatis.edtCariBulPropertiesChange(Sender: TObject);
 var
-  q : TUniQuery;
+  q : TFDQuery;
 begin
   //cari comboboxu dolduruluyor..
-  q := yeniQuery('select * from CARI where 1=1 ', false);
+  q := yeniQuery('select * from CARI where UNVAN <> ''CARISABIT'' ', false);
   if edtCariBul.Text <> '' then q.sql.Add(' and UNVAN like ' + QuotedStr('%'+edtCariBul.Text+'%') + ' order by UNVAN asc');
 
   q.Open;
@@ -719,7 +720,7 @@ begin
 
   cbCari.Text := 'PERAKENDE';
 
-  q.sql.text := 'select POSADI from POS where AKTIF = 1';
+  q.sql.text := 'select POSADI from POS where AKTIF = 1 and POSADI <> ''POSSABIT'' ';
   qackapa_fn(q);
   q.first;
 
@@ -862,7 +863,7 @@ end;
 
 procedure TfrmHizliSatis.tutarEditGuncelle();
 var
-  qToplam : TUniQuery;
+  qToplam : TFDQuery;
   toplam : double;
   sPU : string;
 begin
@@ -920,7 +921,7 @@ end;
 
 procedure TfrmHizliSatis.satisTamamla(Aislem:string);
 var
-  qTemp, qHar: TUniQuery;
+  qTemp, qHar: TFDQuery;
   PosID, EvrakNo, cariID, SatisID : string;
 begin
   if Aislem = '' then exit;
@@ -952,7 +953,7 @@ begin
     PosID := veriCekSQL('select ID from POS where POSADI = ' + quotedstr(cbPos.text), 'ID');
   end
   else
-    PosID := '0';
+    PosID := a.SABITPOSID;
 
   if not MesajSor('Ekrandaki Satýþ Ýþlemi ' + Aislem +  ' Olarak Tamamlanýp Yenini Baþlatýlacak. Eminmisiniz?' +
               #13#10 + 'ÖDEME ÞEKLÝ : ' + Aislem)
@@ -977,7 +978,7 @@ begin
   qrySatisBitir.ParamByName('UserID').AsInteger    := loginUserID;
   qrySatisBitir.ParamByName('CariID').AsString     := cariID;
   qrySatisBitir.ParamByName('ISLEMTURU').AsInteger := ord(HIT_KASIYER_SATIS);
-  //qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS;
+  qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS;
 
   if Aislem = NAKIT  then
   begin
@@ -996,8 +997,9 @@ begin
     qrySatisBitir.ParamByName('EVRAKNO').AsString    := EVRAKNO_KASIYERSAYIS + '-' + CARI;
   end;
 
-  qrySatisBitir.Execute;
-                                asdasd
+  qrySatisBitir.Close;
+  qrySatisBitir.open;
+
   SatisID := qrySatisBitir.FieldByName('SatisID').AsString;
 
   with qryCari do

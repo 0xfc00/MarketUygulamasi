@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, main,ListBaseFrm,
   Vcl.Menus,
-  Vcl.ActnList, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, uni,
+  Vcl.ActnList, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, FireDAC.Comp.Client,
 
   Data.DB,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
@@ -30,7 +30,9 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmCariList = class(TfrmListBase)
@@ -47,7 +49,7 @@ type
     cxGrid1: TcxGrid;
     vwCariList: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    qryCariler: TUniQuery;
+    qryCariler: TFDQuery;
     dsCariler: TDataSource;
     vwCariListCARIKODU: TcxGridDBColumn;
     vwCariListUNVAN: TcxGridDBColumn;
@@ -60,7 +62,7 @@ type
     vwCariListBAKIYE: TcxGridDBColumn;
     vwCariListVERESIYE_LIMITI: TcxGridDBColumn;
     vwCariListTIPI: TcxGridDBColumn;
-    qryGrupLookup: TUniQuery;
+    qryGrupLookup: TFDQuery;
     dsGrupLookup: TDataSource;
     pmGrid: TPopupMenu;
     S1: TMenuItem;

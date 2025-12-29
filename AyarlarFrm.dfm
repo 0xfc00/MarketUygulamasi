@@ -468,7 +468,7 @@ object frmAyarlar: TfrmAyarlar
       end
     end
   end
-  object qryAyarlar: TUniQuery
+  object qryAyarlar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select TOP 1 * from AYARLAR')
@@ -476,7 +476,7 @@ object frmAyarlar: TfrmAyarlar
     Left = 96
     Top = 256
   end
-  object dsAyarlar: TUniDataSource
+  object dsAyarlar: TDataSource
     DataSet = qryAyarlar
     Left = 216
     Top = 248

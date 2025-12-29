@@ -3,14 +3,14 @@ unit TanimlarFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes, Vcl.Graphics,
+  System.SysUtils, System.Classes, Vcl.Graphics, FireDAC.Comp.Client,
   Vcl.Controls, Vcl.Forms, KartBaseFrm,
   cxContainer,
   cxEdit,
   Data.DB, Vcl.Menus,
   Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.ExtCtrls, cxGridLevel,
   cxGridDBTableView,
-  cxGrid, cxPC, Uni, MainDM, dxBarBuiltInMenu, cxGraphics, cxControls,
+  cxGrid, cxPC, MainDM, dxBarBuiltInMenu, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlue, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, MemDS, DBAccess, cxGridCustomTableView,
@@ -30,7 +30,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmTanimlar = class(TfrmKartBase)
@@ -45,14 +47,14 @@ type
     Panel2: TPanel;
     edtBirimEkle: TcxTextEdit;
     btnBirimEkle: TcxButton;
-    qryBirim: TUniQuery;
+    qryBirim: TFDQuery;
     dsBrim: TDataSource;
     viewBrimlerBIRIMADI: TcxGridDBColumn;
-    qryStokGrup: TUniQuery;
+    qryStokGrup: TFDQuery;
     dsStokGrup: TDataSource;
-    qryMarka: TUniQuery;
+    qryMarka: TFDQuery;
     dsMarka: TDataSource;
-    qryReyonRaf: TUniQuery;
+    qryReyonRaf: TFDQuery;
     dsReyonRaf: TDataSource;
     grdStokGrup: TcxGrid;
     viewStokGrup: TcxGridDBTableView;
@@ -87,7 +89,7 @@ type
     Panel5: TPanel;
     edtCariGrupEkle: TcxTextEdit;
     btnCariGrupEkle: TcxButton;
-    qryCariGrup: TUniQuery;
+    qryCariGrup: TFDQuery;
     dsCariGrup: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure btnBirimEkleClick(Sender: TObject);
@@ -115,7 +117,7 @@ procedure TfrmTanimlar.btnBirimEkleClick(Sender: TObject);
 var
   sTabloAdi, sAlanAdi, sVeri, sSonuc : string;
   TextEdit : TcxTextEdit;
-  qry : TUniQuery;
+  qry : TFDQuery;
 begin
   if Sender = btnBirimEkle then
   begin
@@ -198,12 +200,12 @@ begin
   pc.ActivePageIndex := 0;
 
   for I := 0 to ComponentCount-1 do
-    if Components[i] is TUniQuery then
+    if Components[i] is TFDQuery then
     begin
-      TUniQuery(Components[i]).Connection := dmMain.UniConn;
+      TFDQuery(Components[i]).Connection := dmMain.UniConn;
 
       if Components[i].Tag = 0 then
-        TUniQuery(Components[i]).Open;
+        TFDQuery(Components[i]).Open;
     end;
 end;
 
@@ -230,7 +232,7 @@ procedure TfrmTanimlar.Sil1Click(Sender: TObject);
 var
   sAlanAdi, sTabloAdi, sVeri, sSonuc : string;
   TextEdit : TcxTextEdit;
-  qry : TUniQuery;
+  qry : TFDQuery;
 begin
   inherited;
   sTabloAdi := 'STOK';

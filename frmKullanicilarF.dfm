@@ -1015,7 +1015,7 @@ object frmKullanicilar: TfrmKullanicilar
       ExplicitTop = 9
     end
   end
-  object qryKullanicilar: TUniQuery
+  object qryKullanicilar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from USERS')

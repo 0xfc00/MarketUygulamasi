@@ -23,7 +23,6 @@ object frmStokHarList: TfrmStokHarList
     Height = 69
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 424
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 845
@@ -126,7 +125,6 @@ object frmStokHarList: TfrmStokHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKapatClick
-      ExplicitHeight = 28
     end
     object btnSil: TcxButton
       AlignWithMargins = True
@@ -186,7 +184,6 @@ object frmStokHarList: TfrmStokHarList
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnSilClick
-      ExplicitTop = 0
     end
   end
   object dxPanel1: TdxPanel
@@ -386,7 +383,6 @@ object frmStokHarList: TfrmStokHarList
     Height = 322
     Align = alClient
     TabOrder = 2
-    ExplicitHeight = 340
     object vw: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -464,15 +460,18 @@ object frmStokHarList: TfrmStokHarList
       GridView = vw
     end
   end
-  object qryStok: TUniQuery
+  object qryStok: TFDQuery
     Connection = dmMain.UniConn
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select'
       
         '(SELECT TOP 1 BIRIMADI FROM T_BIRIM WHERE ID= stok.BIRIMID) AS B' +
         'IRIMADI,'
       ' * from stok')
-    ReadOnly = True
     Left = 144
     Top = 8
   end
@@ -482,7 +481,7 @@ object frmStokHarList: TfrmStokHarList
     Left = 184
     Top = 8
   end
-  object qryStokHar: TUniQuery
+  object qryStokHar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select *,'
@@ -502,7 +501,9 @@ object frmStokHarList: TfrmStokHarList
       'END as strOdemeTuru,'
       ''
       ''
-      '(select UNVAN FROM CARI WHERE ID = ISLEM_H.CARIID) AS cariadi'
+      
+        '(select UNVAN FROM CARI WHERE ID = ISLEM_H.CARIID and UNVAN <> '#39 +
+        'CARISABIT'#39') AS cariadi'
       ' from ISLEM_H where ISLEMTURU in (1,2,3,4)')
     Left = 538
     Top = 40

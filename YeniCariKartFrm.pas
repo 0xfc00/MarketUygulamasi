@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, KartBaseFrm,
   Vcl.StdCtrls,
   cxButtons, Vcl.ExtCtrls, cxContainer, Data.DB, MemDS,
-  DBAccess, Uni, cxGroupBox, MainDM, cxLabel, cxDBEdit,
+  DBAccess, FireDAC.Comp.Client, cxGroupBox, MainDM, cxLabel, cxDBEdit,
   cxTextEdit,
   cxRadioGroup, cxDBLookupComboBox, STRUTils, Main,
   _func, _cons, dxSkinsCore, dxSkinBlue, cxGraphics, cxLookAndFeels,
@@ -38,7 +38,7 @@ type
     btnKaydetVeYeni: TcxButton;
     btnSil: TcxButton;
     cxGroupBox1: TcxGroupBox;
-    qryCari: TUniQuery;
+    qryCari: TFDQuery;
     dsCari: TDataSource;
     cxLabel1: TcxLabel;
     edtCariKodu: TcxDBTextEdit;
@@ -116,7 +116,7 @@ type
     cxGroupBox7: TcxGroupBox;
     cxDBMemo1: TcxDBMemo;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
-    qryCariGrupLook: TUniQuery;
+    qryCariGrupLook: TFDQuery;
     dsCariGrupLook: TDataSource;
     cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBLookupComboBox3: TcxDBLookupComboBox;

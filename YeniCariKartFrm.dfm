@@ -1072,7 +1072,7 @@ object frmYeniCariKart: TfrmYeniCariKart
       Width = 288
     end
   end
-  object qryCari: TUniQuery
+  object qryCari: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from CARI')
@@ -1086,7 +1086,7 @@ object frmYeniCariKart: TfrmYeniCariKart
     Left = 456
     Top = 8
   end
-  object qryCariGrupLook: TUniQuery
+  object qryCariGrupLook: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_CARIGRUP')

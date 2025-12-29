@@ -63,6 +63,7 @@ object lisansForm: TlisansForm
     Height = 71
     Align = alRight
     Caption = 'Kaydet'
+    Default = True
     TabOrder = 1
     OnClick = cxButton1Click
   end
@@ -78,7 +79,7 @@ object lisansForm: TlisansForm
     TabOrder = 2
     OnClick = cxButton2Click
   end
-  object MSQuery1: TUniQuery
+  object MSQuery1: TFDQuery
     Left = 232
     Top = 88
   end

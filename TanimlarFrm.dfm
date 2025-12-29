@@ -34,6 +34,10 @@ object frmTanimlar: TfrmTanimlar
     object shBirimler: TcxTabSheet
       Caption = 'Birimler'
       ImageIndex = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdBirimler: TcxGrid
         Left = 0
         Top = 0
@@ -105,6 +109,10 @@ object frmTanimlar: TfrmTanimlar
     object shGruplar: TcxTabSheet
       Caption = 'Stok Gruplar'#305
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdStokGrup: TcxGrid
         Left = 0
         Top = 0
@@ -176,6 +184,10 @@ object frmTanimlar: TfrmTanimlar
     object shMarkalar: TcxTabSheet
       Caption = 'Markalar'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdMarkalar: TcxGrid
         Left = 0
         Top = 0
@@ -247,6 +259,10 @@ object frmTanimlar: TfrmTanimlar
     object shReyonRaf: TcxTabSheet
       Caption = 'Reyon - Raf'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdReyonRaf: TcxGrid
         Left = 0
         Top = 0
@@ -318,6 +334,10 @@ object frmTanimlar: TfrmTanimlar
     object shCariGruplar: TcxTabSheet
       Caption = 'Cari Gruplar'#305
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -501,7 +521,7 @@ object frmTanimlar: TfrmTanimlar
       OnClick = cxButton1Click
     end
   end
-  object qryBirim: TUniQuery
+  object qryBirim: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_BIRIM')
@@ -514,7 +534,7 @@ object frmTanimlar: TfrmTanimlar
     Left = 56
     Top = 288
   end
-  object qryStokGrup: TUniQuery
+  object qryStokGrup: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_STOKGRUP')
@@ -527,7 +547,7 @@ object frmTanimlar: TfrmTanimlar
     Left = 152
     Top = 288
   end
-  object qryMarka: TUniQuery
+  object qryMarka: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_MARKA')
@@ -540,7 +560,7 @@ object frmTanimlar: TfrmTanimlar
     Left = 240
     Top = 288
   end
-  object qryReyonRaf: TUniQuery
+  object qryReyonRaf: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_REYONRAF')
@@ -561,7 +581,7 @@ object frmTanimlar: TfrmTanimlar
       OnClick = Sil1Click
     end
   end
-  object qryCariGrup: TUniQuery
+  object qryCariGrup: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_CARIGRUP')

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, KartBaseFrm, main,
 
-  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, Uni,
+  Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS, DBAccess, FireDAC.Comp.Client,
   cxContainer, cxCalc, cxDBEdit, cxTextEdit,
   cxDropDownEdit, cxDBLookupComboBox, dxSkinsCore, dxSkinBlue, cxGraphics,
   cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxControls, cxEdit,
@@ -26,18 +26,20 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmCariHareketEkle = class(TfrmKartBase)
     pnlAlt: TPanel;
     btnKapat: TcxButton;
     btnkaydet: TcxButton;
-    qryCari: TUniQuery;
+    qryCari: TFDQuery;
     dsCari: TDataSource;
-    qryCariHarEkle: TUniQuery;
+    qryCariHarEkle: TFDQuery;
     dsCariHarEkle: TDataSource;
-    qryPos: TUniQuery;
+    qryPos: TFDQuery;
     dsPos: TDataSource;
     Label7: TLabel;
     lblIslemTuru: TLabel;
@@ -82,7 +84,7 @@ implementation
 
 {$R *.dfm}
 
-uses _cons, _func;
+uses _cons, _func, _vars;
 
 procedure TfrmCariHareketEkle.btnKapatClick(Sender: TObject);
 begin
@@ -191,12 +193,18 @@ begin
   begin
     DataSet.FieldByName('CIKAN').AsString   := edtTutar.Text;
     if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString := EVRAKNO_CARIYEODEME;
+    DataSet.FieldByName('POSID').AsString := a.SABITPOSID;
   end
   else
   if GCKodu = ord(HIT_CARIDEN_TAHSILAT) then            //cariden yapýlan tahsilat
   begin
     DataSet.FieldByName('GIREN').AsString   := edtTutar.Text;
     if trim(DataSet.FieldByName('EVRAKNO').AsString) = EmptyStr then DataSet.FieldByName('EVRAKNO').AsString := EVRAKNO_CARIDENTAHSILAT;
+
+    if (cbxIslemTuru.ItemIndex = 1) then
+      DataSet.FieldByName('POSID').AsString := qryPos.FieldByName('ID').asstring
+    else
+      DataSet.FieldByName('POSID').AsString := a.SABITPOSID;
   end
   else
   if GCKodu = 0 then
@@ -204,7 +212,8 @@ begin
     //deneme
   end;
 
-  DataSet.FieldByName('POSID').AsString       := qryPos.FieldByName('ID').asstring;
+
+
 
   DataSet.FieldByName('CARIID').AsString := CariID;
   DataSet.FieldByName('TUTAR').AsString  := edtTutar.Text;

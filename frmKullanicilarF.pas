@@ -10,7 +10,7 @@ uses
   cxDBEdit, cxLabel, cxGridLevel,
   cxGridDBTableView, cxGrid,
   Vcl.StdCtrls, cxButtons, cxGroupBox, MemDS,
-  Uni, KartBaseFrm,
+  FireDAC.Comp.Client, KartBaseFrm,
   frmSqlSorguF, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, dxSkinsCore, dxSkinBlue, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
@@ -41,7 +41,7 @@ type
     cxGroupBox3: TcxGroupBox;
     btnKapat: TcxButton;
     cxGrid1: TcxGrid;
-    qryKullanicilar: TUniQuery;
+    qryKullanicilar: TFDQuery;
     dsKullanicilar: TDataSource;
     cxGroupBox24: TcxGroupBox;
     cxGroupBox23: TcxGroupBox;

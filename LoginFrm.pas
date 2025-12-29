@@ -8,7 +8,7 @@ uses
   cxContainer,
   cxButtons, Vcl.ExtCtrls, cxDropDownEdit,
   cxLabel, cxTextEdit, cxImage, MainDM, dxBevel, Data.DB,
-  DBAccess, Uni, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  DBAccess, FireDAC.Comp.Client, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxEdit, dxSkinsCore, dxSkinBlue, Vcl.Menus, MemDS, cxMaskEdit, Vcl.StdCtrls,
   dxGDIPlusClasses, dxSkinBasic, dxSkinBlack, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -26,7 +26,9 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmLogin = class(TForm)
@@ -37,7 +39,7 @@ type
     btnKapat: TcxButton;
     btnkaydet: TcxButton;
     DataSource: TDataSource;
-    UniQuery: TUniQuery;
+    UniQuery: TFDQuery;
     cxLabel2: TcxLabel;
     dxBevel1: TdxBevel;
     cbUserName: TcxComboBox;
@@ -112,27 +114,12 @@ begin
   try
     with yeniQuery('select * from USERS')do
     begin
-      if IsEmpty then
-      begin
-        sqlCalistir('INSERT INTO USERS (KULLANICI, YONETICI, SIFRE) VALUES (''ADMIN'', 1, '''')');
-        close;
-        open;
-      end;
-
       First;
       while not eof  do
       begin
         cbUserName.Properties.Items.Add(FieldByName('KULLANICI').AsString);
         Next;
       end;
-
-      close;
-      sql.text := 'select * from USERS where  KULLANICI = ''ADMIN'' ';
-      open;
-      edit;
-      FieldByName('YONETICI').asinteger := 1;
-      post;
-
       Free;
     end;
   except

@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms,
   cxContainer,
   Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, Data.DB, MemDS,
-  Uni, cxCalc,
+  FireDAC.Comp.Client, cxCalc,
   cxDBEdit, cxTextEdit, KartBaseFrm,
    _cons, _func, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxEdit, dxSkinsCore, dxSkinBlue, Vcl.Menus, DBAccess, cxCalendar, cxMaskEdit,
@@ -27,7 +27,9 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TfrmKasaHareketEkle = class(TfrmKartBase)
@@ -40,7 +42,7 @@ type
     cxDBTextEdit9: TcxDBTextEdit;
     cxDBTextEdit4: TcxDBTextEdit;
     edtTutar: TcxCalcEdit;
-    qryKasaHarEkle: TUniQuery;
+    qryKasaHarEkle: TFDQuery;
     dsKasaHarEkle: TDataSource;
     pnlAlt: TPanel;
     btnKapat: TcxButton;
@@ -65,7 +67,7 @@ implementation
 
 {$R *.dfm}
 
-uses Main;
+uses Main, _vars;
 
 
 
@@ -148,8 +150,8 @@ begin
   DataSet.FieldByName('ODEMETURU').asinteger := ord(HOT_NAKIT);
   DataSet.FieldByName('TUTAR').AsString      := edtTutar.Text;
 
-  DataSet.FieldByName('CARIID').AsString      := '0';
-  DataSet.FieldByName('POSID').AsString       := '0';
+  DataSet.FieldByName('CARIID').AsString      := a.SABITCARIID;
+  DataSet.FieldByName('POSID').AsString       := a.SABITPOSID;
 
   EkleyenDegistiren(DataSet);
 end;

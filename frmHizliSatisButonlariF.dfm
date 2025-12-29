@@ -387,7 +387,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Left = 149
     Top = 93
   end
-  object qryHsGrup: TUniQuery
+  object qryHsGrup: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_HSGRUP')
@@ -400,7 +400,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
     Left = 373
     Top = 149
   end
-  object qryHsStoklar: TUniQuery
+  object qryHsStoklar: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from T_HSSIRA')
@@ -418,7 +418,7 @@ object frmHizliSatisButonlari: TfrmHizliSatisButonlari
         Value = 1
       end>
   end
-  object qryStok: TUniQuery
+  object qryStok: TFDQuery
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from STOK')

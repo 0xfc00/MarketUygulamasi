@@ -5,8 +5,8 @@ interface
 uses
   System.SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, ListBaseFrm,
-  Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, uni,
-
+  Vcl.Menus, Vcl.StdCtrls, cxButtons, Vcl.ExtCtrls, FireDAC.Comp.Client,
+   cxGridExportLink,
   Data.DB,
   cxGridLevel, cxGridCustomTableView,
   cxGridDBTableView, cxGrid, Vcl.ActnList,
@@ -30,7 +30,10 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  Vcl.Dialogs;
 
 type
   TfrmStokList = class(TfrmListBase)
@@ -39,9 +42,9 @@ type
     btnKaydetVeYeni: TcxButton;
     btnSil: TcxButton;
     vwStoklar: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    qryStoklar: TUniQuery;
+    gtdStoklarLevel1: TcxGridLevel;
+    gtdStoklar: TcxGrid;
+    qryStoklar: TFDQuery;
     dsStoklar: TDataSource;
     vwStoklarSTOKKODU: TcxGridDBColumn;
     vwStoklarSTOKADI: TcxGridDBColumn;
@@ -66,6 +69,8 @@ type
     vwStoklarColumn1: TcxGridDBColumn;
     vwStoklarColumn2: TcxGridDBColumn;
     vwStoklarColumn3: TcxGridDBColumn;
+    E2: TMenuItem;
+    FileSaveDialog1: TFileSaveDialog;
     procedure FormCreate(Sender: TObject);
     procedure acStokDuzenleExecute(Sender: TObject);
     procedure vwStoklarCellDblClick(Sender: TcxCustomGridTableView;
@@ -79,6 +84,7 @@ type
     procedure acStokHarListExecute(Sender: TObject);
     procedure E1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure E2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -174,6 +180,14 @@ begin
   inherited;
   with TstokAktarimForm.create(nil) do
     showmodal;
+end;
+
+procedure TfrmStokList.E2Click(Sender: TObject);
+begin
+  inherited;
+  if FileSaveDialog1.execute then
+    if FileSaveDialog1.FileName <> EmptyStr then
+      ExportGridToExcel(FileSaveDialog1.FileName, gtdStoklar);
 end;
 
 procedure TfrmStokList.FormCreate(Sender: TObject);
