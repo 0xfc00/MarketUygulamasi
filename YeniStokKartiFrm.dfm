@@ -3,7 +3,7 @@ object frmYeniStokKarti: TfrmYeniStokKarti
   Top = 0
   BorderStyle = bsDialog
   Caption = 'frmYeniStokKarti'
-  ClientHeight = 457
+  ClientHeight = 545
   ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,12 +21,15 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Left = 3
     Top = 3
     Width = 581
-    Height = 375
+    Height = 463
     ActivePage = shStok
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 375
     object shStok: TTabSheet
       Caption = 'Stok Bilgileri'
+      ExplicitTop = 28
+      ExplicitHeight = 389
       object Label1: TLabel
         Left = 12
         Top = 21
@@ -638,16 +641,82 @@ object frmYeniStokKarti: TfrmYeniStokKarti
         TabOrder = 21
         OnClick = btnBarkodBulClick
       end
+      object cxButton2: TcxButton
+        AlignWithMargins = True
+        Left = 16
+        Top = 330
+        Width = 145
+        Height = 45
+        Caption = 'Raf Etiket Tasar'#305'm'#305
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C0000000E744558745469746C6500426172636F64653B9DCFD916
+          000003AF49444154785EC557BB52154D10EE59B690F27934C60431014DD04434
+          A04A7D0F63435FC00C8448CF39890906BE80F17FA9F20D48CE757B9CBECFB285
+          1450E5591866A6A72FDF7CDDB3B3A49C33ACF36960CD4F1A8CFF6ECB14B4DFF4
+          B909B05BDA20B596D27032F9F9AD69361E4939E43E449F661E873C5FB1CE23E0
+          DF6CF2A16CD575E747070F770840BAB8983D3A7AFEE0F63C5E2B1CB68F9F7E6C
+          D3E6990154E8F325D6D6314C91B19CF2150142351B3529719F521299B2B0B5D9
+          02C5340090B13421CBBD24190E684E462BA40856E3154359CFA42720025C626B
+          44364A9C023404180ED564B0B7CC1D3B894DD6AA4CA2AEDBC831060B88E8EF81
+          94058DD3B4F7E22DECECBFE2D9EEB3D7F0CF7FBFCAFC90D7F70EDEC1CEDE2107
+          7D226BDCFF5BFAC7222FF66F60B7E893AFDDA745E7FFB2B6FF9268E796C101A4
+          067C428BC00D6A389A43A0DEF783D0505E99023B113C178F34371920A9442D88
+          5B4F0133A0A884621A637D643400C9738C91E7A6C784877D469D03FB42F351C7
+          E801407714C5A84E32A2CB78243A43193791A303ACC08BCC19EEB4065A039085
+          25ED11D0C7590B4E43A2360896D09840A4B9E9840D2BA1E8844D9C825C2F4218
+          0F1B659F82B0BEF61517BE036790C7AA169BA96B40E810B1D782E548C63E574B
+          03133DC9101CA86EA83E6E5A17E07AD85D55846E841A940252A94731455EB166
+          876D228568FAA11704F17A00E850294AAA845EF5E8F944B222705E50D07945EB
+          EE7C03CA0AB3E1390FB0E227DE8466188556175F7F9746B13BED531FEC4461C7
+          E9B9A208D1F22A4276C43248E1288E65C844A26B2A53FBB820D08461110C4013
+          6FA530A9F38CD851BE3C7FF3D90CC08295B57A5B56EE8BF9CC640198F592F9F1
+          228C14E80A8643EEC65F4FA06D00265F8E39F078745CE65294E32F27B0B1910C
+          A033331A7D86B6C8CD1564673052D7BF0DAD508487F97C0AA9AA8165A7642E85
+          A3658E6B7B49851845E740962B5140C40088A0278340F719880204E09DB56DA3
+          C8ED22B681DDBFD18FBE9E15FD04E3C9A9D9C8930A4BE3D3C2460393F159EF18
+          E74111065D7C7F2D56F4D7CE7F929B4C155236A85139AB95F40B0EA35851595A
+          E9A941BF61EBDBD072220BEC1D0697138DE30845E8FE1B5164C142B29DD660FD
+          26F5CB28739E20C3FDADD6E88BE66CFFF94B3396635E7F2A096D89FABA069000
+          2C17B3E9F9FB0FE36DA83FA3222A647714F2CC53D3867E5A38562097470283DA
+          2D17D3EF94319A6E96B655DA3DFB44BBEE9F8DBBAD33CAAEB47969531236DE6E
+          FEA43BFC2B81D4923B5ACF931BAEE0F53DF01B561D2DE87CFF0B760000000049
+          454E44AE426082}
+        TabOrder = 22
+        OnClick = cxButton2Click
+      end
+      object cxButton3: TcxButton
+        AlignWithMargins = True
+        Left = 167
+        Top = 330
+        Width = 148
+        Height = 45
+        Caption = 'Raf Etiket Yazd'#305'r'
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F400000014744558745469746C65005072696E743B5072696E7465723B62E37C
+          3B0000007A49444154785EEDD7310E80201044512EE8A50C47A220E170A37634
+          1A9C1DB316B3C96FC9CB86020A80D4FE0F30A0D68A481200391CC000034EF598
+          6EB104309D375600F810000A40A60100084501D465020C28571280EFC0CB0901
+          DA1D60DBFB4A4F80463DC9D80DC8DE84C406E480FC0D78034CFE19AD64C001F5
+          0E009F986BE8420000000049454E44AE426082}
+        TabOrder = 23
+        OnClick = cxButton3Click
+      end
     end
   end
   object pnlAlt: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 384
+    Top = 472
     Width = 581
     Height = 70
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 384
     object btnKapat: TcxButton
       AlignWithMargins = True
       Left = 487
@@ -933,6 +1002,7 @@ object frmYeniStokKarti: TfrmYeniStokKarti
   object qryStok: TFDQuery
     BeforePost = qryStokBeforePost
     ObjectView = False
+    Connection = dmMain.UniConn
     SQL.Strings = (
       'select * from stok')
     Left = 392
@@ -970,5 +1040,132 @@ object frmYeniStokKarti: TfrmYeniStokKarti
     Params = <>
     Left = 527
     Top = 259
+  end
+  object frxBarkod: TfrxReport
+    Version = '6.6.17'
+    DataSet = frxDBbarkod
+    DataSetName = 'frxDBbarkod'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Varsay'#305'lan'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44089.478214513900000000
+    ReportOptions.LastChange = 44089.478975659720000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 399
+    Top = 323
+    Datasets = <
+      item
+        DataSet = frxDBbarkod
+        DataSetName = 'frxDBbarkod'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object BarCode1: TfrxBarCodeView
+        AllowVectorExport = True
+        Left = 151.181200000000000000
+        Top = 98.267780000000000000
+        Width = 103.000000000000000000
+        Height = 83.149660000000000000
+        BarType = bcCodeEAN13
+        Expression = '<frxDBbarkod."barkod">'
+        Frame.Typ = []
+        Rotation = 0
+        TestLine = False
+        Text = '12345678'
+        WideBarRatio = 2.000000000000000000
+        Zoom = 1.000000000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ColorBar = clBlack
+      end
+    end
+  end
+  object frxDBbarkod: TfrxDBDataset
+    UserName = 'frxDBbarkod'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'ID=ID'
+      'STOKKODU=STOKKODU'
+      'STOKADI=STOKADI'
+      'BARKOD=BARKOD'
+      'TARIH=TARIH'
+      'ACIKLAMA=ACIKLAMA'
+      'BIRIMID=BIRIMID'
+      'GRUPID=GRUPID'
+      'MARKAID=MARKAID'
+      'KDV=KDV'
+      'RESIM=RESIM'
+      'SATISFIYATI=SATISFIYATI'
+      'SATISFIYATI2=SATISFIYATI2'
+      'SATISFIYATI3=SATISFIYATI3'
+      'PLU_NO=PLU_NO'
+      'ALISFIYATI=ALISFIYATI'
+      'KDV_ISTISNA_KODU=KDV_ISTISNA_KODU'
+      'REYONRAFID=REYONRAFID'
+      'TERAZITIP=TERAZITIP'
+      'AKTIF=AKTIF'
+      'DELETED=DELETED'
+      'CREATEDAT=CREATEDAT'
+      'UPDATEDAT=UPDATEDAT'
+      'DELETEDAT=DELETEDAT'
+      'USERID=USERID'
+      'USERIDUP=USERIDUP'
+      'TOPLAM_GIREN=TOPLAM_GIREN'
+      'TOPLAM_CIKAN=TOPLAM_CIKAN'
+      'BAKIYE=BAKIYE')
+    DataSet = qryStok
+    BCDToCurrency = False
+    Left = 455
+    Top = 323
+  end
+  object frxBarCodeObject1: TfrxBarCodeObject
+    Left = 231
+    Top = 11
+  end
+  object frxDesigner1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 298
+    Top = 94
   end
 end

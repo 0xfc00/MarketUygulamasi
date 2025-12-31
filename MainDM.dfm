@@ -7,9 +7,8 @@ object dmMain: TdmMain
     Params.Strings = (
       'Server=DESKTOP-MCB\MSSQLSERVER2014'
       'Database=KHPRO'
-      'DriverID=MSSQL'
-      'OSAuthent=Yes')
-    Connected = True
+      'OSAuthent=Yes'
+      'DriverID=MSSQL')
     LoginPrompt = False
     Left = 72
     Top = 40

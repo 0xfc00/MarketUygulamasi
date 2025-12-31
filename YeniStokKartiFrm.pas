@@ -56,7 +56,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, REST.Types, Data.Bind.Components,
   Data.Bind.ObjectScope, cxImage, cxLookupEdit, cxDBLookupEdit, cxMaskEdit,
-  cxCalendar, cxTextEdit;
+  cxCalendar, cxTextEdit, frxClass, frxDBSet, frxDesgn, frxBarcode;
 
 type
   TfrmYeniStokKarti = class(TfrmKartBase)
@@ -120,6 +120,12 @@ type
     qryRafLook: TFDQuery;
     btnBarkodBul: TcxButton;
     RESTClient1: TRESTClient;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    frxBarkod: TfrxReport;
+    frxDBbarkod: TfrxDBDataset;
+    frxBarCodeObject1: TfrxBarCodeObject;
+    frxDesigner1: TfrxDesigner;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure imgStokResimDblClick(Sender: TObject);
@@ -133,6 +139,8 @@ type
     procedure btnSilClick(Sender: TObject);
     procedure btnYeniMarkaClick(Sender: TObject);
     procedure btnBarkodBulClick(Sender: TObject);
+    procedure cxButton2Click(Sender: TObject);
+    procedure cxButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -148,7 +156,7 @@ implementation
 {$R *.dfm}
 
 uses
-  MainDM,Main, TanimlarFrm;
+  MainDM,Main, TanimlarFrm, _cons;
 
 procedure TfrmYeniStokKarti.YeniKayitIcinHazirla();
 begin
@@ -366,6 +374,40 @@ begin
   else if Sender = btnYeniRafTanim then  qAcKapa_fn(qryRafLook);
 end;
 
+procedure TfrmYeniStokKarti.cxButton2Click(Sender: TObject);
+begin
+  inherited;
+  if StokID = EmptyStr then exit;
+
+  if FileExists(RAPORLAR+ '\stok_Barkod.fr3') then
+  begin
+    try frxBarkod.LoadFromFile(RAPORLAR+ '\stok_Barkod.fr3');
+    except
+    end;
+  end
+  else
+    MesajBilgi(RAPORLAR+ '\stok_Barkod.fr3 Dosyası bulunamadı..');
+
+  frxBarkod.DesignReport();
+end;
+
+procedure TfrmYeniStokKarti.cxButton3Click(Sender: TObject);
+begin
+  inherited;
+  if StokID = EmptyStr then exit;
+
+  if FileExists(RAPORLAR+ '\stok_Barkod.fr3') then
+  begin
+    try frxBarkod.LoadFromFile(RAPORLAR+ '\stok_Barkod.fr3');
+    except
+    end;
+  end
+  else
+    MesajBilgi(RAPORLAR+ '\stok_Barkod.fr3 Dosyası bulunamadı..');
+
+   frxBarkod.ShowReport();
+end;
+
 procedure TfrmYeniStokKarti.FormCreate(Sender: TObject);
 var
   i : integer;
@@ -398,6 +440,7 @@ begin
   begin
     StokKartiGetir;
     pnlHeader.Caption := '   STOK KARTI  -  Düzenle';
+
   end;
 end;
 
