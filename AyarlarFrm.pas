@@ -48,7 +48,10 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, cxCheckBox,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGrid;
 
 type
   TfrmAyarlar = class(TfrmKartBase)
@@ -61,7 +64,7 @@ type
     shTemelAyarlar: TcxTabSheet;
     qryAyarlar: TFDQuery;
     dsAyarlar: TDataSource;
-    cxTabSheet1: TcxTabSheet;
+    shYedekAyarlari: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
     cxGroupBox8: TcxGroupBox;
     cxLabel7: TcxLabel;
@@ -91,6 +94,25 @@ type
     cxButton1: TcxButton;
     FileSaveDialog1: TFileSaveDialog;
     cxButton2: TcxButton;
+    shMasaTanimlari: TcxTabSheet;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    cxGrid1: TcxGrid;
+    vmSalon: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    qrySalon: TFDQuery;
+    dsSalon: TDataSource;
+    qryMasa: TFDQuery;
+    dsMasa: TDataSource;
+    vmSalonID: TcxGridDBColumn;
+    vmSalonADI: TcxGridDBColumn;
+    cxGrid2: TcxGrid;
+    vmMasa: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    vmMasaID: TcxGridDBColumn;
+    vmMasaSALONID: TcxGridDBColumn;
+    vmMasaADI: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure btnKapatClick(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
@@ -111,6 +133,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Main;
 
 
 
@@ -154,6 +178,8 @@ end;
 procedure TfrmAyarlar.FormCreate(Sender: TObject);
 begin
   pntUst.visible := false;
+
+  pc.ActivePageIndex := 0;
 
   TumQuerylereConnectionAta(self);
   TumQueryleriAc(self);

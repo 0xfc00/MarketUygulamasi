@@ -164,6 +164,7 @@ object frmAyarlar: TfrmAyarlar
       Font.Style = [fsBold]
       ParentFont = False
       OnClick = btnKaydetClick
+      ExplicitTop = 3
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 720
@@ -187,7 +188,7 @@ object frmAyarlar: TfrmAyarlar
     Height = 349
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = shTemelAyarlar
+    Properties.ActivePage = shMasaTanimlari
     Properties.CustomButtons.Buttons = <>
     ClientRectBottom = 342
     ClientRectLeft = 3
@@ -373,7 +374,7 @@ object frmAyarlar: TfrmAyarlar
         end
       end
     end
-    object cxTabSheet1: TcxTabSheet
+    object shYedekAyarlari: TcxTabSheet
       Caption = 'Yedekleme Ayarlar'#305
       ImageIndex = 1
       object cxGroupBox7: TcxGroupBox
@@ -398,7 +399,6 @@ object frmAyarlar: TfrmAyarlar
             DataBinding.DataField = 'OTO_YEDEK_DIZINI'
             DataBinding.DataSource = dsAyarlar
             TabOrder = 0
-            ExplicitHeight = 21
             Width = 173
           end
           object cxLabel8: TcxLabel
@@ -452,9 +452,6 @@ object frmAyarlar: TfrmAyarlar
             DataBinding.DataSource = dsAyarlar
             Style.TransparentBorder = False
             TabOrder = 1
-            ExplicitLeft = 179
-            ExplicitTop = 9
-            ExplicitHeight = 19
           end
         end
         object cxButton2: TcxButton
@@ -468,25 +465,219 @@ object frmAyarlar: TfrmAyarlar
         end
       end
     end
+    object shMasaTanimlari: TcxTabSheet
+      Caption = 'Masa Tan'#305'mlar'#305
+      ImageIndex = 2
+      ExplicitTop = 30
+      object cxPageControl1: TcxPageControl
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 653
+        Height = 310
+        Align = alClient
+        TabOrder = 0
+        Properties.ActivePage = cxTabSheet2
+        Properties.CustomButtons.Buttons = <>
+        ExplicitLeft = 168
+        ExplicitTop = 48
+        ExplicitWidth = 289
+        ExplicitHeight = 193
+        ClientRectBottom = 303
+        ClientRectLeft = 3
+        ClientRectRight = 646
+        ClientRectTop = 26
+        object cxTabSheet1: TcxTabSheet
+          Caption = 'Masa Tan'#305'mlar'#305
+          ImageIndex = 0
+          ExplicitTop = 30
+          object cxGrid2: TcxGrid
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 637
+            Height = 271
+            Align = alClient
+            TabOrder = 0
+            ExplicitLeft = 6
+            ExplicitTop = 6
+            object vmMasa: TcxGridDBTableView
+              Navigator.Buttons.ConfirmDelete = True
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FindPanel.InfoText = 'Ara..'
+              FindPanel.Layout = fplCompact
+              FindPanel.ShowClearButton = False
+              FindPanel.ShowCloseButton = False
+              FindPanel.ShowNextButton = False
+              FindPanel.ShowPreviousButton = False
+              ScrollbarAnnotations.CustomAnnotations = <>
+              DataController.DataSource = dsMasa
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Appending = True
+              OptionsData.Inserting = False
+              OptionsView.CellAutoHeight = True
+              OptionsView.GroupByBox = False
+              Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
+              object vmMasaID: TcxGridDBColumn
+                Caption = 'No'
+                DataBinding.FieldName = 'ID'
+                Options.Editing = False
+                Width = 70
+              end
+              object vmMasaSALONID: TcxGridDBColumn
+                Caption = 'Salon Ad'#305
+                DataBinding.FieldName = 'SALONID'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'ID'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'ADI'
+                  end>
+                Properties.ListSource = dsSalon
+                Width = 120
+              end
+              object vmMasaADI: TcxGridDBColumn
+                Caption = 'Masa Ad'#305
+                DataBinding.FieldName = 'ADI'
+                Width = 120
+              end
+            end
+            object cxGridLevel1: TcxGridLevel
+              GridView = vmMasa
+            end
+          end
+        end
+        object cxTabSheet2: TcxTabSheet
+          Caption = 'Salon Tan'#305'mlar'#305
+          ImageIndex = 1
+          ExplicitTop = 30
+          object cxGrid1: TcxGrid
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 637
+            Height = 271
+            Align = alClient
+            TabOrder = 0
+            ExplicitLeft = 6
+            ExplicitTop = 6
+            object vmSalon: TcxGridDBTableView
+              Navigator.Buttons.ConfirmDelete = True
+              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.First.Visible = False
+              Navigator.Buttons.PriorPage.Visible = False
+              Navigator.Buttons.Prior.Visible = False
+              Navigator.Buttons.Next.Visible = False
+              Navigator.Buttons.NextPage.Visible = False
+              Navigator.Buttons.Last.Visible = False
+              Navigator.Buttons.Insert.Visible = False
+              Navigator.Buttons.Append.Visible = True
+              Navigator.Buttons.Edit.Visible = False
+              Navigator.Buttons.Cancel.Visible = False
+              Navigator.Buttons.Refresh.Visible = False
+              Navigator.Buttons.SaveBookmark.Visible = False
+              Navigator.Buttons.GotoBookmark.Visible = False
+              Navigator.Buttons.Filter.Visible = False
+              Navigator.Visible = True
+              FindPanel.InfoText = 'Ara..'
+              FindPanel.Layout = fplCompact
+              FindPanel.ShowClearButton = False
+              FindPanel.ShowCloseButton = False
+              FindPanel.ShowNextButton = False
+              FindPanel.ShowPreviousButton = False
+              ScrollbarAnnotations.CustomAnnotations = <>
+              DataController.DataSource = dsSalon
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Appending = True
+              OptionsData.Inserting = False
+              OptionsView.CellAutoHeight = True
+              OptionsView.GroupByBox = False
+              Styles.StyleSheet = frmMain.GridTableViewStyleSheetUserFormat2
+              object vmSalonID: TcxGridDBColumn
+                Caption = 'No'
+                DataBinding.FieldName = 'ID'
+                Options.Editing = False
+                Width = 70
+              end
+              object vmSalonADI: TcxGridDBColumn
+                Caption = 'Salon Ad'#305
+                DataBinding.FieldName = 'ADI'
+                Width = 120
+              end
+            end
+            object cxGrid1Level1: TcxGridLevel
+              GridView = vmSalon
+            end
+          end
+        end
+      end
+    end
   end
   object qryAyarlar: TFDQuery
     AfterPost = qryAyarlarAfterPost
     Connection = dmMain.UniConn
     SQL.Strings = (
       'select TOP 1 * from AYARLAR')
-    Left = 96
-    Top = 256
+    Left = 32
+    Top = 264
   end
   object dsAyarlar: TDataSource
     DataSet = qryAyarlar
-    Left = 216
-    Top = 248
+    Left = 112
+    Top = 272
   end
   object FileSaveDialog1: TFileSaveDialog
     FavoriteLinks = <>
     FileTypes = <>
     Options = []
-    Left = 392
+    Left = 48
+    Top = 208
+  end
+  object qrySalon: TFDQuery
+    AfterPost = qryAyarlarAfterPost
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select * from T_SALON')
+    Left = 48
+    Top = 88
+  end
+  object dsSalon: TDataSource
+    DataSet = qrySalon
+    Left = 112
+    Top = 88
+  end
+  object qryMasa: TFDQuery
+    AfterPost = qryAyarlarAfterPost
+    Connection = dmMain.UniConn
+    SQL.Strings = (
+      'select'
+      '(select ADI from T_SALON where ID= T_MASA.SALONID) salonadi,'
+      ' * from T_MASA')
+    Left = 48
+    Top = 152
+  end
+  object dsMasa: TDataSource
+    DataSet = qryMasa
+    Left = 112
     Top = 152
   end
 end

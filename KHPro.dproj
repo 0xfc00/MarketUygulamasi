@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>KHPro.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -230,6 +230,11 @@
             <Form>lisansForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="servicesU.pas"/>
+        <DCCReference Include="AdisyonFrm.pas">
+            <Form>frmAdisyon</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -258,6 +263,12 @@
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="..\KHPro.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>KHPro.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\KHPro.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>KHPro.exe</RemoteName>
                         <Overwrite>true</Overwrite>

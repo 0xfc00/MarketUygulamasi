@@ -34,7 +34,9 @@ uses
   frmSqlSorguF in 'frmSqlSorguF.pas' {frmSqlSorgu},
   frmRaporlarF in 'frmRaporlarF.pas' {frmRaporlar},
   AyarlarFrm in 'AyarlarFrm.pas' {frmAyarlar},
-  lisansFormF in 'lisansFormF.pas' {lisansForm};
+  lisansFormF in 'lisansFormF.pas' {lisansForm},
+  servicesU in 'servicesU.pas',
+  AdisyonFrm in 'AdisyonFrm.pas' {frmAdisyon};
 
 {$R *.res}
 
@@ -44,6 +46,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TfrmMain, frmMain);
-
+  Application.CreateForm(TfrmAdisyon, frmAdisyon);
   Application.Run;
 end.
