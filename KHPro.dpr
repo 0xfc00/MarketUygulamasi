@@ -46,6 +46,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TfrmAdisyon, frmAdisyon);
   Application.Run;
 end.

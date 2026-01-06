@@ -15,25 +15,6 @@ uses
   PosListFrm, cxButtons, Vcl.ExtCtrls,
   Vcl.ComCtrls, KasaHareketEkleFrm, KasaPosHarListFrm, frmHizliSatisButonlariF,
   Data.DB,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   BaseFrm, cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
   dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -53,7 +34,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxContainer, cxEdit, Vcl.Menus, dxCore, cxClasses,
   System.Actions, System.ImageList, Vcl.ImgList, cxImageList, Vcl.StdCtrls,
-  dxGDIPlusClasses, dxNavBarBase;
+  dxGDIPlusClasses, dxNavBarBase, AdisyonFrm;
 
   procedure FormYarat_fn(Tformadi: TComponentClass; var formadi: TForm; checkIfNotExist : boolean = true);
   function GenerateRandomNumbers(const ALength: Integer; const ACharSequence: String = '1234567890'): String;
@@ -211,6 +192,9 @@ type
     Panel14: TPanel;
     cxButton17: TcxButton;
     Panel24: TPanel;
+    Panel25: TPanel;
+    cxButton6: TcxButton;
+    acAdisyon: TAction;
     procedure acYeniStokKartiExecute(Sender: TObject);
     procedure acTanimlarExecute(Sender: TObject);
     procedure acTumStoklarExecute(Sender: TObject);
@@ -242,6 +226,7 @@ type
     procedure acAyarlarExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure acAdisyonExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -639,6 +624,12 @@ begin
 
   if trim(CariSec_CariID) <> EmptyStr then
     Result := CariSec_CariID;
+end;
+
+procedure TfrmMain.acAdisyonExecute(Sender: TObject);
+begin
+  inherited;
+  CallFrmAdisyon;
 end;
 
 procedure TfrmMain.acAyarlarExecute(Sender: TObject);
